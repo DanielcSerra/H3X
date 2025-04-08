@@ -63,7 +63,8 @@ body.menu-open {
   transition: transform 0.3s ease;
 }
 
-.menu-toggle:hover {
+.menu-toggle:hover,
+.fullscreen-menu .sel_nav {
   color: #ff0099;
 }
 
@@ -256,7 +257,6 @@ footer {
 }
 
 /* MOBILE */
-
 
 @media (max-width: 1000px) {
   .footer-row {

@@ -1,6 +1,10 @@
-<?php include 'require/head.php'; ?>
-<title>H3X - Pagina</title>
-<link rel="stylesheet" href="css/arcade.css">
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+<head>
+    <?php include 'require/head.php'; ?>
+    <title>H3X - Pagina</title>
+    <link rel="stylesheet" href="css/arcade.css">
 </head>
 
 <body>
@@ -93,6 +97,7 @@
             </div>
         </div>
     </main>
-
+    <?php include 'require/footer.php'; ?>
 </body>
-<?php include 'require/footer.php'; ?>
+
+</html>
