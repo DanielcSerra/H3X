@@ -16,13 +16,13 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
 
 <div class="fullscreen-menu" id="fullscreenMenu">
   <div class="fullscreen-box" id="fullscreenbox">
-    <a href="index.php" class="<?= $fileName == 'index.php' ? 'sel_nav' : '' ?>">HOME</a>
-    <a href="sobre.php" class="<?= $fileName == 'sobre.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
+    <a href="#" class="<?= $fileName == 'index.php' ? 'sel_nav' : '' ?>">HOME</a>
+    <a href="#" class="<?= $fileName == 'sobre.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
     <a href="#">EVENTOS</a>
     <a href="#">VIP</a>
     <a href="#">GALERIA</a>
     <a href="#">BLOG</a>
-    <a href="#">ARCADE</a>
+    <a href="arcade.php" class="<?= $fileName == 'arcade.php' ? 'sel_nav' : '' ?>">ARCADE</a>
     <a href="#">COMO CHEGAR</a>
     <a href="#">CONTACTOS</a>
   </div>
