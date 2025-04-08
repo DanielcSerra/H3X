@@ -1,0 +1,283 @@
+@font-face {
+  font-family: Aldrich;
+  src: url(../fonts/Aldrich-Regular.ttf);
+}
+
+@font-face {
+  font-family: Laceration;
+  src: url(../fonts/Laceration.otf);
+}
+
+body {
+  background-image: url(../img/background.png);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar img {
+  margin-left: 20px;
+}
+
+.navbar .menu-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.menu-toggle {
+  font-size: 32px;
+  background: none;
+  margin-left: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1061;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: #ff0099;
+}
+
+.login-btn {
+  margin-left: 16px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: Aldrich, sans-serif;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  color: #ff0099;
+}
+
+/* MENU */
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+  text-align: center;
+}
+
+.fullscreen-box {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.fullscreen-menu.show {
+  transform: translateY(0);
+}
+
+.fullscreen-menu a {
+  color: white;
+  font-family: Aldrich, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.fullscreen-menu a:hover {
+  color: #ff0099;
+  transform: translateX(10px);
+}
+
+/* MOBILE */
+
+@media (min-width: 992px) {
+  .fullscreen-menu a {
+    font-size: 85px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar img {
+    height: 50px;
+  }
+
+  .fullscreen-menu a {
+    font-size: 70px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+  }
+
+  .menu-toggle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar img {
+    height: 45px;
+  }
+
+  .fullscreen-menu a {
+    font-size: 60px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .menu-toggle {
+    font-size: 28px;
+  }
+
+  .fullscreen-box {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fullscreen-menu a {
+    font-size: 40px;
+  }
+
+  .navbar img {
+    height: 40px;
+  }
+
+  .login-btn {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .menu-toggle {
+    font-size: 24px;
+  }
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #111111bb;
+  color: #ccc;
+  padding: 24px 0;
+  font-size: 14px;
+  border-top: 1px solid #ffffff;
+}
+
+.footer-logo {
+  height: 50px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 18px;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  font-family: Aldrich, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.footer-links a i {
+  margin-right: 6px;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* MOBILE */
+
+
+@media (max-width: 1000px) {
+  .footer-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    margin: 6px 0;
+    margin-left: 0;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+  }
+}

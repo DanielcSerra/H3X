@@ -1,0 +1,255 @@
+@font-face {
+  font-family: PressStart;
+  src: url(../fonts/PressStart2P-Regular.ttf);
+}
+
+body {
+  background-color: #0d0d0d;
+  color: white;
+  font-family: "Aldrich", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  height: 800px;
+  background: url("../img/heroimg.png") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: PressStart;
+  font-size: 96px;
+  color: white;
+  text-shadow: 10px 10px 70px rgba(255, 0, 153, 0.5);
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px; 
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: url("../img/barra.png") no-repeat center center;
+  background-size: cover;
+  z-index: 6;
+}
+.section-title {
+  font-size: 64px;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  text-align: center;
+}
+
+.caixa-com-cantos {
+  position: relative;
+  padding: 60px 20px;
+  margin-top: 60px;
+  background: transparent;
+  border-radius: 10px;
+  max-width: 100%;
+  overflow: hidden; 
+}
+
+.canto {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0; 
+}
+
+@media screen and (max-width: 768px) {
+  .caixa-com-cantos {
+    padding: 30px 15px;
+  }
+
+  .canto {
+    display: none; 
+  }
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  right: 0;
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.image-frame {
+  position: relative;
+  background: url("../img/frame.png") no-repeat center center;
+  background-size: 100% 100%;
+  aspect-ratio: 16 / 9; 
+  width: 100%;
+  max-width: 500px;
+  min-width: 280px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 17px; 
+  box-sizing: border-box;
+}
+
+.frame-inner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hr_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.hr_title h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.hr_title hr {
+  flex: 1;
+  height: 3px;
+  opacity: 100%;
+  background-color: #bb4492;
+  justify-content: center;
+  border: none;
+}
+
+.destaque-card {
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;
+  width: 265px;
+  height: 445px;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.destaque-card:hover {
+  transform: scale(1.05);
+}
+
+.card-text h5 {
+  font-size: 18px;
+}
+
+.card-text p {
+  font-size: 14px;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    height: 700px;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    -webkit-text-stroke: 1.5px white;
+  }
+
+  .destaque-card {
+    width: 230px;
+    height: 400px;
+  }
+
+  .canto {
+    width: 80px;
+  }
+
+  .caixa-com-cantos {
+    padding: 40px 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 500px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    -webkit-text-stroke: 1px white;
+  }
+
+  .destaque-card {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .caixa-com-cantos {
+    padding: 30px 20px;
+  }
+
+  .image-frame {
+    padding: 13px;
+  }
+
+  .canto {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 400px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .card-text h5 {
+    font-size: 16px;
+  }
+
+  .card-text p {
+    font-size: 13px;
+  }
+}
