@@ -23,7 +23,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
     <a href="#">GALERIA</a>
     <a href="#">BLOG</a>
     <a href="arcade.php" class="<?= $fileName == 'arcade.php' ? 'sel_nav' : '' ?>">ARCADE</a>
-    <a href="#">COMO CHEGAR</a>
+    <a href="comochegar.php" class="<?= $fileName == 'comochegar.php' ? 'sel_nav' : '' ?>">COMO CHEGAR</a>
     <a href="#">CONTACTOS</a>
   </div>
 </div>
