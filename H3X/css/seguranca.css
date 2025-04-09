@@ -1,0 +1,186 @@
+ /* Estilização base */
+ body {
+  color: #fff;
+  font-family: 'Aldrich', sans-serif;
+  /* background-image: url('background.png');
+  background-repeat: no-repeat;
+  background-size: cover; */
+  margin: 0;
+  padding: 0;
+}
+
+/* Banner */
+.Banner {
+  position: relative;
+}
+
+.Banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Banner h1 {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Título das seções */
+.section-title {
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+}
+
+/* Container principal das seções */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Estilização da parte com imagem e texto */
+.imagem, .texto {
+  flex: 1 1 300px;
+  margin: 10px;
+}
+
+.texto {
+  text-align: left;
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+h2 {
+  font-family: 'Aldrich', sans-serif;
+  -webkit-text-stroke: 2px;
+  color: transparent;
+  margin: 0 0 20px;
+}
+
+.sub {
+  font-size: 14pt;
+}
+
+
+.cards .row {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.card1, .card2 {
+  flex:  300px;
+  max-width: 500px;
+  margin: 20px;
+  text-align: center;
+}
+
+
+.textocard1{
+  text-align: left;
+  margin-left: 35px;
+
+}
+.textocard1 span{
+  font-size: 14pt;
+}
+
+
+.subtextocard1 {
+  text-align: left;
+  margin-left: 35px;
+
+}
+
+.textocard2{
+  text-align: left;
+  margin-left: 35px;
+
+}
+.textocard2 span{
+  font-size: 14pt;
+}
+
+
+.subtextocard2 {
+  text-align: left;
+  margin-left: 35px;
+
+}
+
+.custom-card, .border-container {
+  padding: 15px;
+}
+
+.imgcard1 img, .imgcard2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+
+  .Banner h1 {
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .imagem, .texto {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+
+  .texto {
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  .cards .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card1, .card2 {
+    margin: 15px 0;
+  }
+}
+
+/* Ajustes para dispositivos muito pequenos */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  .sub {
+    font-size: 12pt;
+  }
+}
