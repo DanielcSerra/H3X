@@ -17,7 +17,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
 <div class="fullscreen-menu" id="fullscreenMenu">
   <div class="fullscreen-box" id="fullscreenbox">
     <a href="#" class="<?= $fileName == 'index.php' ? 'sel_nav' : '' ?>">HOME</a>
-    <a href="#" class="<?= $fileName == 'sobre.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
+    <a href="sobrenos.php" class="<?= $fileName == 'sobrenos.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
     <a href="#">EVENTOS</a>
     <a href="#">VIP</a>
     <a href="#">GALERIA</a>

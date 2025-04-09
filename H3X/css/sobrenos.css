@@ -1,0 +1,408 @@
+html {
+    scroll-behavior: smooth;
+}
+body{
+    overflow-x: hidden;
+}
+.banner{
+    position:relative; 
+    width:100vw;
+    height:500px;
+}
+.banner img{
+    width:100%;
+    position:relative;
+}
+.banner h1{
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    margin: 0; 
+    text-align: center; 
+    font-size: 36pt;
+}
+.buttons{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+    margin-bottom:25px ;
+    margin-top: 50px;
+}
+.buttons h2{
+    margin-right: 50px;
+    color:white;
+    font-family: 'laceration';
+    border:20px solid transparent;
+    border-image: url("../img/caixa3.png") 30 round;
+}
+
+.buttons2{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+    margin-bottom: 50px;
+}
+
+.button1{
+    color:white;
+    font-family: 'laceration';
+    border:20px solid transparent;
+    border-image: url("../img/caixa1.png") 30 round;
+    padding:0 10px;
+}
+.button2{
+    color:white;
+    font-family: 'laceration';
+    border:20px solid transparent;
+    border-image: url("../img/caixa2.png") 30 round;
+    margin-left: 200px;
+    padding:0 10px;
+}
+.buttons a, 
+.buttons2 a {
+    text-decoration: none;
+}
+.buttons a:hover h2,
+.buttons2 a:hover h2{
+    color: #ff0099 !important;
+}
+.buttons a:visited h2,
+.buttons2 a:visited h2,.button2 a:visited h2{
+    color:white;
+}
+
+.significado {
+    height: 300px;
+    position: relative; 
+    margin:21px 0;
+}
+
+.significado h1 {
+    margin-top: 0; 
+    padding-top: 30px; 
+}
+
+.significado p {
+    position: absolute;
+    bottom: 50px; 
+    padding: 0 15px; 
+    margin: 0; 
+    max-width: 500px;
+}
+.significado img{
+    position:absolute;
+    right:100px;
+    top:50%;
+    transform:translateY(-50%)
+}
+
+.significado::before,
+.significado::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 21px; 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.significado::before {
+    top: -21px; 
+    background-image: url('../img/before.png');
+}
+
+.significado::after {
+    bottom: -21px; 
+    background-image: url('../img/after.png');
+}
+
+#textoartistas{
+color:white;
+text-align: center;
+}
+
+#textoartistas h1{
+font-family: 'laceration';
+font-size: 24pt;
+margin-top: 30px;
+}
+
+#textoartistas h2{
+    font-size: 16pt;
+    margin-bottom:30px;
+}
+
+.artista{
+    font-size: 24pt;
+    color:white;
+    text-align: center;
+}
+
+.artista p{
+    max-width: 250px;
+    font-size: 16pt;
+}
+
+.artista img, .artista h2{
+    max-width: 250px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.artistas{
+    display:flex;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+#containerpremios{
+    display:flex;
+    gap:15px;
+}
+
+#premios{
+    color:white;
+}
+#textopremios{
+    max-width: 380px;
+    top:50%;
+    transform: translateY(50%);
+    margin-right: 50px;
+}
+.imagempremios{
+    max-width: 200px;
+    text-align: center;
+    align-self: flex-end;
+}
+.imagempremios h1{
+    font-size: 24px;
+}
+
+.equipabuttons h1{
+    -webkit-text-stroke: 2px black;
+    color:transparent;
+}
+
+.botaosobrenos h1{
+    background-image: url("../img/botaosobrenos.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 240px;
+    text-align: center;
+    font-size: 24pt;
+}
+.botaosobrenos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+
+}
+.equipabuttons p{
+    max-width: 300px;
+    margin-right: 15px;
+}
+
+.equipabuttons img{
+    margin-bottom:10px ;
+}
+
+.equipabuttons{
+    margin-right: 100px;
+}
+
+.containerequipa{
+    display:flex;
+}
+
+.containerequipa1 {
+    position: relative; 
+    margin: 21px 0; 
+}
+
+.containerequipa1::before,.containerequipa1::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 21px; 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerequipa1::before {
+    top: -21px; 
+    background-image: url('../img/before.png');
+}
+
+.containerequipa1::after {
+    bottom: -21px; 
+    background-image: url('../img/after.png');
+}
+#equipah3x{
+    margin-bottom: 50px;
+}
+#historia{
+    color:white;
+    background-image: url('../img/historiabackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#historia h1{
+    margin-bottom:20px;
+}
+.esquerda h1,.direita h1{
+font-size: 24pt;
+}
+.esquerda p,.direita p{
+    font-size: 16pt;
+    max-width: 500px;
+}
+.esquerda img, .direita img{
+    width:300px;
+    height:150px;
+}
+
+.historiacontainer{
+    display:flex;
+    flex-direction: column;
+}
+
+.direita{
+    margin-left: auto;
+    margin-right: 100px;
+}
+.esquerda{
+    margin-left: 100px;
+}
+
+@media(max-width:1200px) {
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        width:50%;
+    }
+    .buttons2{
+        width:80%
+    }
+    .button2{
+        margin-left: 10%;
+    }
+    .banner{
+        position: relative;
+    margin-right:0;
+    height:45%;
+    }
+
+    .significado p {
+        max-width: 50%;
+    }
+    
+    .significado img{
+       width:50%;
+        right:0;
+ 
+    }
+
+    .artistas{
+        display: flex;
+        flex-direction: column;
+    }
+    .artista p{
+        max-width: none;
+        font-size: 16pt;
+    }
+    
+    .artista img, .artista h2{
+        max-width: none;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    #containerpremios{
+        flex-direction: column;
+    }
+    .imagempremios{
+        max-width: 200px;
+        align-self: center;
+    }
+    .barra{
+        width:100%;
+    }
+    .containerequipa{
+        flex-direction: column;
+    }
+    .esquerda{
+        margin-left:0;
+    }
+    .direita{
+        margin-right:0;
+    }
+    .historiacontainer{
+        text-align: center;
+    }
+
+    }
+    @media(max-width:800px) {
+        .banner{
+            position: relative;
+        margin-right:0;
+        height:25%;
+        }
+    }
+    @media(max-width:450px) {
+        h1{
+            font-size: 16pt;
+        }
+        p{
+            font-size: 10pt;
+        }
+        h2{
+            font-size: 14pt;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: column;
+            width:50%;
+        }
+        .buttons h2{
+            width:120%;
+        }
+        .buttons2{
+            width:80%
+        }
+        .button2{
+            margin-left: 10%;
+        }
+        .banner{
+            position: relative;
+        margin-right:0;
+        height:15%;
+        }
+    
+        .significado p {
+            max-width: 50%;
+        }
+        
+        .significado img{
+           width:50%;
+            right:0;
+     
+        }
+    
+        .artistas{
+            display: flex;
+            flex-direction: column;
+        }
+        .artista p{
+            max-width: none;
+            font-size: 16pt;
+        }
+        
+        .artista img, .artista h2{
+            max-width: none;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    
+    }
