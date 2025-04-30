@@ -1,3 +1,7 @@
+<?php
+$fileName = basename($_SERVER["SCRIPT_NAME"]);
+?>
+
 <nav class="navbar fixed-top">
   <a href="index.php">
     <img src="img/logo.png" alt="Logo H3X">
@@ -12,14 +16,14 @@
 
 <div class="fullscreen-menu" id="fullscreenMenu">
   <div class="fullscreen-box" id="fullscreenbox">
-    <a href="#">HOME</a>
-    <a href="#">SOBRE NÓS</a>
+    <a href="#" class="<?= $fileName == 'index.php' ? 'sel_nav' : '' ?>">HOME</a>
+    <a href="sobrenos.php" class="<?= $fileName == 'sobrenos.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
     <a href="#">EVENTOS</a>
     <a href="#">VIP</a>
     <a href="#">GALERIA</a>
     <a href="#">BLOG</a>
-    <a href="#">ARCADE</a>
-    <a href="#">COMO CHEGAR</a>
+    <a href="arcade.php" class="<?= $fileName == 'arcade.php' ? 'sel_nav' : '' ?>">ARCADE</a>
+    <a href="comochegar.php" class="<?= $fileName == 'comochegar.php' ? 'sel_nav' : '' ?>">COMO CHEGAR</a>
     <a href="#">CONTACTOS</a>
   </div>
 </div>

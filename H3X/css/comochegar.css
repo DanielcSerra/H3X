@@ -1,0 +1,458 @@
+@keyframes aparecer {
+  0% {
+      transform: translateY(-250px);
+
+  }
+  100% {
+      transform: translateY(0);
+
+  }
+}
+
+
+
+h1 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent; 
+  -webkit-text-stroke: 2px white;
+}
+h2 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40);
+  color: white;
+}
+p {
+  font-family: Aldrich, sans-serif;
+  font-size: 18px;
+  color: white;
+
+}
+
+
+.titulo{
+  align-items: center;
+  text-align: center;
+  height: 300px;
+}
+
+.terc{
+    -webkit-text-stroke: 2px #828282;
+    opacity: 50% ;
+    animation: aparecer 1.5s forwards;
+}
+.seg{
+    -webkit-text-stroke: 2px #CACACA;
+    position: relative; 
+    top: -65px ; 
+    opacity: 50%;
+    animation: aparecer 1s forwards;
+}
+.prim{
+  -webkit-text-stroke: 2px white;
+    position: relative; 
+    top: -130px ; 
+    animation: aparecer 0.5s forwards;
+}
+
+.minitit{
+    align-items: center;
+    text-align: center;
+    color:white;
+}
+.caixa1{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.imagem{
+    position: relative;
+    width: 420px;
+    height: 390px;
+    max-width: 420px; /* or whatever fits your design */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.mapa{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* keeps image from stretching weirdly */
+    pointer-events: none; /* allows clicking the map without issues */
+}
+gmp-map {
+    position: relative;
+    top: 22px;
+    left: -4px;
+    z-index: 1; /* ensure it's above the background image */
+    display: block;
+    width: 70%;
+    height: 75%; /* or whatever height you want */
+    border:20px transparent;
+  }
+.codeqr{
+    position: relative;
+    width: 380px;
+    height: 380px;
+    max-width: 380px; /* or whatever fits your design */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.caixa2{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.codigo{
+    position: relative;
+    z-index: 1; /* ensure it's above the background image */
+    display: block;
+    width: 90%;
+    height: 90%; /* or whatever height you want */
+    border:20px transparent;
+}
+
+.caixa3{
+    height: 500px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.imagens2{
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 270px;
+}
+.botoes{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+.botao{
+    position: absolute;
+    width: 270px;
+    height: 270px;
+}
+.botao2{
+    position: relative;
+    width: 240px;
+    height: 240px;
+    max-width: 240px; 
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    top:7%;
+}
+
+.botoes h2{
+    color: white;
+}
+
+.divisao{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.divisao img{
+    width: 45%;
+    height: 24px;
+}
+.conteudo{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap:2%;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+  }
+  .top-right {
+    top: 0;
+    right: 0;
+  }
+  .bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+  .caixa-com-cantos {
+    position: relative;
+    background: transparent;
+    max-width: 50vw;
+    width: 100%;
+  }
+  
+  .canto {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    pointer-events: none;
+    z-index: 0; 
+  }
+
+  .pmaior{
+    font-size:22px;
+    color: white;
+  }
+
+  .contactos{
+    margin:5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .contactos h2{
+    color:white;
+  }
+
+  .contactos button{
+
+    border-image:"img/caixabranca.png";
+  }
+  .botao2 img{
+    position:absolute;
+  }
+  .botao2 h2{
+    font-family: Laceration, sans-serif;
+    margin-top:0;
+    margin-bottom: 0;
+    position:relative;
+  }
+
+
+
+
+  @media (max-width: 995px){
+
+    .terc{
+      -webkit-text-stroke: 2px #828282;
+      opacity: 50%;
+  }
+  .seg{
+      position: relative; 
+      top: -50px ; 
+
+      opacity: 50%;
+  }
+  .prim{
+      position: relative; 
+      top: -100px ; 
+  }
+
+    .imagens2{
+      justify-items: center;
+      justify-content: center;
+      align-items: center;
+      width: 135px;
+      height: 135px;
+    }
+    .botoes{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+    }
+
+    .botao{
+      position: absolute;
+      width: 135px;
+      height: 135px;
+  }
+  .botao2{
+      position: relative;
+      width: 120px;
+      height: 120px;
+      max-width: 120px; 
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      top:7%;
+  }
+
+    .imagem{
+      position: relative;
+      width: 210px;
+      height: 195px;
+      max-width: 210px; /* or whatever fits your design */
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+    }
+    gmp-map {
+      position: relative;
+      top: 11px;
+      left: -3px;
+      z-index: 1; /* ensure it's above the background image */
+      display: block;
+      width: 70%;
+      height: 75%; /* or whatever height you want */
+      border:20px transparent;
+    }
+    
+    .codeqr{
+      position: relative;
+      width: 190px;
+      height: 190px;
+      max-width: 190px; /* or whatever fits your design */
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+    }
+
+    .caixa1{
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+      justify-content: center;
+      width:100%;
+    }
+    
+    .caixa3{
+      height: 250px;
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+      justify-content: center;
+    
+    }
+    .caixa3 h2{
+      font-size: clamp(20px, 3vw, 30px);
+    }
+    
+    .conteudo{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap:2%;
+    }
+    
+    .texto3{
+      text-align: center !important;
+    }
+
+    #conteudo2 .imagens2{
+      order:1;
+
+    }
+
+    #conteudo2 .container{
+      order:2;
+    
+    }
+    .caixa-com-cantos {
+      position: relative;
+      background: transparent;
+      max-width: 90vw;
+      width: 100%;
+    }
+
+    .canto {
+      position: absolute;
+      width: 80px;
+      height: auto;
+      pointer-events: none;
+      z-index: 0; 
+    }
+
+
+  }
+
+  @media (max-width: 769px){
+      .terc{
+        -webkit-text-stroke: 2px #828282;
+        opacity: 50%;
+    }
+    .seg{
+        position: relative; 
+        top: -40px ; 
+
+        opacity: 50%;
+    }
+    .prim{
+        position: relative; 
+        top: -80px ; 
+    }
+
+
+    .caixa-com-cantos {
+      position: relative;
+      background: transparent;
+      max-width: 90vw;
+      width: 100%;
+      overflow: visible;
+    }
+
+    .canto {
+      position: absolute;
+      width: 30px;
+      height: auto;
+      pointer-events: none;
+      z-index: 0; 
+    }
+
+
+  }
+
+  @media (max-width: 600px){
+  .terc{
+      -webkit-text-stroke: 2px #828282;
+      opacity: 50%;
+  }
+  .seg{
+      position: relative; 
+      top: -35px ; 
+
+      opacity: 50%;
+  }
+  .prim{
+      position: relative; 
+      top: -70px ; 
+  }
+
+  .botao2 img{
+    position:absolute;
+    width: 80vw;
+  }
+  .botao2 h2{
+    font-family: Laceration, sans-serif;
+    margin-top:0;
+    margin-bottom: 0;
+    position:relative;
+  }
+
+
+    }

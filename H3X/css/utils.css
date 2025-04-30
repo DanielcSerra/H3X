@@ -63,7 +63,8 @@ body.menu-open {
   transition: transform 0.3s ease;
 }
 
-.menu-toggle:hover {
+.menu-toggle:hover,
+.fullscreen-menu .sel_nav {
   color: #ff0099;
 }
 
@@ -97,8 +98,8 @@ body.menu-open {
   justify-content: center;
   align-items: center;
   padding: 32px;
-  transform: translateY(-100%);
-  transition: transform 0.5s ease;
+  top: -100vh;
+  transition: top 0.5s ease;
   text-align: center;
 }
 
@@ -111,7 +112,7 @@ body.menu-open {
 }
 
 .fullscreen-menu.show {
-  transform: translateY(0);
+  top: 0;
 }
 
 .fullscreen-menu a {
@@ -256,7 +257,6 @@ footer {
 }
 
 /* MOBILE */
-
 
 @media (max-width: 1000px) {
   .footer-row {
