@@ -1,0 +1,37 @@
+main{
+    margin:81px 10%;
+}
+
+.container h1{
+    -webkit-text-stroke: 1px white;
+    color:transparent;
+}
+
+.container{
+    text-align: center;
+    margin:10px 0;
+}
+
+h2{
+    color:white;
+    font-family: 'laceration';
+}
+
+#populares h2{
+    text-align: center;
+}
+
+#populares img{
+    border:20px solid transparent;
+    border-image: url("../img/caixa10.png") 30 round;
+}
+
+.botao{
+    border:20px solid transparent;
+    border-image: url("../img/caixa3.png") 30 round;
+    width:605px;
+}
+.caixaimg{
+    width:300px;
+    height:267px;
+}
