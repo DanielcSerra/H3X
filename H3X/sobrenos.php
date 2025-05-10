@@ -88,34 +88,34 @@
                     </div>
                     <div class="imagempremios">
                         <div>
-                            <h1>
+                            <h3>
                             Melhor disco 
                             de 1997 e 2004
-                            </h1>
+                            </h3>
                             <img src="img/trofeu1.png" alt="premio1">
                         </div>
                     </div>
                     <div class="imagempremios">
                         <div>
-                            <h1>
+                            <h3>
                             Melhores dançarinos
-                            </h1>
+                            </h3>
                             <img src="img/trofeu2.png" alt="premio2">
                         </div>
                     </div>
                     <div class="imagempremios">
                         <div>
-                            <h1>
+                            <h3>
                             Disco de ouro
-                            </h1>
+                            </h3>
                             <img src="img/trofeu3.png" alt="premio3">
                         </div>
                     </div>
                     <div class="imagempremios">
                         <div>
-                            <h1>
+                            <h3>
                             MTV awards
-                            </h1>
+                            </h3>
                             <img src="img/trofeu4.png" alt="premio4">
                         </div>
                     </div>
