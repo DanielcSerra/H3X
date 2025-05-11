@@ -1,51 +1,167 @@
-@font-face {
-  font-family: PressStart;
-  src: url(../fonts/PressStart2P-Regular.ttf);
-}
-
-body {
-  background-color: #0d0d0d;
-  color: white;
-  font-family: "Aldrich", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.hero {
-  height: 800px;
-  background: url("../img/heroimg.png") no-repeat center center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-.hero h1 {
-  font-family: PressStart;
-  font-size: 96px;
-  color: white;
-  text-shadow: 10px 10px 70px rgba(255, 0, 153, 0.5);
-}
-
-.hero::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 15px;
-  background: url("../img/barra.png") no-repeat center center;
-  background-size: cover;
-  z-index: 6;
-}
 .section-title {
   font-size: 96px;
   color: transparent;
   -webkit-text-stroke: 2px white;
   text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 36px;
+    -webkit-text-stroke: 1px white;
+  }
+}
+
+.h3x-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.h3x-box {
+  flex: 1 1 260px;
+  max-width: 100%;
+  min-height: 260px;
+  background: url("../img/caixa4.png") no-repeat center center;
+  background-size: 100% 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.h3x-box:hover {
+  transform: scale(1.03);
+}
+
+.h3x-img-container {
+  height: 55%;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.h3x-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.h3x-content {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h3x-content h6 {
+  font-size: 18px;
+  padding: 5px;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.h3x-content h5 {
+  font-size: 10px;
+  padding-left: 5px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .h3x-content h6 {
+    font-size: 16px;
+  }
+  .h3x-content h5 {
+    font-size: 9px;
+  }
+}
+
+.post-link {
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  padding-left: 2px;
+}
+
+.caixa_botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.botao-custom,
+.botao-custom2 {
+  font-family: "Laceration", sans-serif;
+  font-size: 24px;
+  color: white;
+  padding: 0px 20px;
+  text-decoration: none;
+  background-color: transparent;
+  border: 10px solid transparent;
+  border-image: url("../img/caixabranca.png") 30 stretch;
+  text-shadow: 1px 1px 2px #000;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+.botao-custom:hover,
+.botao-custom2:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .botao-custom,
+  .botao-custom2 {
+    font-size: 16px;
+    border-width: 6px;
+  }
+}
+
+.barra {
+  width: 100%;
+}
+
+.filtro {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filtro {
+    justify-content: center !important;
+  }
+}
+
+.filtro .form-select {
+  appearance: none;
+  background-color: #333;
+  color: white;
+  padding-right: 40px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.filtro .form-select:hover {
+  background-color: #444;
+}
+
+.btn {
+  border: 2px solid white;
+  background-color: #444;
+}
+
+.btn i {
+  font-size: 15px;
+  color: white;
 }
 
 .caixa-com-cantos {
@@ -53,17 +169,32 @@ body {
   padding: 60px 20px;
   margin-top: 60px;
   background: transparent;
-  border-radius: 10px;
-  max-width: 100%;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .canto {
   position: absolute;
   width: 80px;
-  height: auto;
   pointer-events: none;
   z-index: 0;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  right: 0;
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -76,183 +207,149 @@ body {
   }
 }
 
-.image-frame {
-  position: relative;
-  background: url("../img/frame.png") no-repeat center center;
-  background-size: 100% 100%;
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  max-width: 500px;
-  min-width: 280px;
-  justify-content: center;
-  overflow: hidden;
-  padding: 17px;
-  box-sizing: border-box;
+@keyframes aparecer {
+  0% {
+      transform: translateY(-250px);
+
+  }
+  100% {
+      transform: translateY(0);
+
+  }
 }
 
-.frame-inner-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
-.hr_title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-.hr_title h2 {
-  margin: 0;
-  padding: 0;
-}
-
-.hr_title hr {
-  flex: 1;
-  height: 3px;
-  opacity: 100%;
-  background-color: #bb4492;
-  justify-content: center;
-  border: none;
-}
-
-.destaque-card {
-  background: url("../img/caixa4.png") no-repeat center center;
-  background-size: 100% 100%;
-  width: 300px;
-  height: 240px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  color: white;
-  text-shadow: 1px 1px 3px #000;
-  transition: transform 0.2s ease;
-}
-
-.destaque-card:hover {
-  transform: scale(1.05);
-}
-
-.destaque-img {
-  width: 100%;
-  height: 55%;
-  padding: 6px 7px 0 7px;
-}
-
-.destaque-img img {
-  width: 100%;
-  padding: 0.1px 8px 0px 8px;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.card-text {
-  padding: 0 0 0 8px;
-  font-size: 12px;
-}
-
-.card-text h5 {
-  font-size: 18px;
-  padding: 0px 10px 0 10px;
-  margin: 0 0 1px 0;
+.titulo {
+  position: absolute;
+  top: 50%;
+  left: 12%;
+  transform: rotate(-90deg) translate(-50%, -50%);
+  transform-origin: left top;
   text-align: left;
 }
 
-.card-text a {
-  color: white;
-  padding: 0px 0px 8px 8px;
-  margin-bottom: 15px;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-@media screen and (max-width: 1024px) {
-  .hero {
-    height: 700px;
-  }
-
-  .hero h1 {
-    font-size: 60px;
-  }
-
-  .section-title {
-    font-size: 32px;
-    -webkit-text-stroke: 1.5px white;
-  }
-
-  .destaque-card {
-    width: 230px;
-    height: 400px;
-  }
-
-  .canto {
-    width: 80px;
-  }
-
-  .caixa-com-cantos {
-    padding: 40px 30px;
+@media (max-width: 768px) {
+  .titulo {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .hero {
-    height: 500px;
-  }
+.prim,
+.seg,
+.terc {
+  font-size: 96px;
+  white-space: nowrap;
+  opacity: 0.5;
+}
 
-  .hero h1 {
-    font-size: 42px;
-  }
+.prim {
+  top: 0;
+  -webkit-text-stroke: 2px white;
+      animation: aparecer 0.5s forwards;
+}
 
-  .section-title {
-    font-size: 26px;
+.seg {
+  top: -50px;
+  -webkit-text-stroke: 2px #cacaca;
+  animation-delay: 0.5s;
+      animation: aparecer 1.0s forwards;
+}
+
+.terc {
+  top: -100px;
+  -webkit-text-stroke: 2px #828282;
+  animation-delay: 1s;
+      animation: aparecer 1.5s forwards;
+}
+
+@media (max-width: 768px) {
+  .prim,
+  .seg,
+  .terc {
+    font-size: 36px;
     -webkit-text-stroke: 1px white;
-  }
-
-  .destaque-card {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-  }
-
-  .caixa-com-cantos {
-    padding: 30px 20px;
-  }
-
-  .image-frame {
-    padding: 13px;
-  }
-
-  .canto {
-    display: none;
+    top: 0;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .hero {
-    height: 400px;
-  }
+.formulario {
+  max-width: 600px;
+  margin: auto;
+  padding: 0 15px;
+}
 
-  .hero h1 {
-    font-size: 30px;
-  }
 
-  .section-title {
-    font-size: 22px;
-  }
+.pesquisar {
+  background-color: #d9d9d965;
+  color: white;
+  width: 20%;
+  border: 2px solid white;
+  border-radius: 5px;
+}
 
-  .card-text h5 {
-    font-size: 16px;
-  }
+.pesquisar::placeholder {
+  color: white;
+}
 
-  .card-text p {
-    font-size: 13px;
+
+.inputtext {
+  background-color: #d9d9d965;
+  color: white;
+  width: 100%;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.inputtext::placeholder {
+  color: white;
+}
+
+
+.form-label {
+  -webkit-text-stroke: 1px white;
+  font-size: 20px;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+.regras-titulo {
+  text-align: center;
+}
+
+.regras {
+  max-width: 500px;
+  margin: auto;
+  background-image: url('../img/caixa.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 30px;
+  color: white;
+  text-align: left;
+}
+
+.regras h2 {
+  -webkit-text-stroke: 1px white;
+  font-size: 36px;
+  color: transparent;
+  font-family: Aldrich, sans-serif;
+}
+
+.regras p,
+.regras ul {
+  font-family: Aldrich, sans-serif;
+}
+
+.regras ul {
+  padding-left: 20px;
+  list-style-position: inside;
+}
+
+@media (max-width: 768px) {
+  .regras {
+    max-width: 100%;
   }
 }
