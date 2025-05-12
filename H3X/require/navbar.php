@@ -8,14 +8,15 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
     <img src="img/logo.png" alt="Logo H3X">
   </a>
   <div class="menu-container">
-      <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['tipo'], ['a', 'f'])): ?>
-    <a href="admin/dashboard_utilizadores.php" class="<?= $fileName == 'admin/dashboard_utilizadores.php' ? 'sel_nav' : '' ?>">DASHBOARD</a>
-  <?php endif; ?>
+    <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['tipo'], ['a', 'f'])): ?>
+      <a href="admin/dashboard_utilizadores.php"
+        class="text-decoration-none <?= $fileName == 'admin/dashboard_utilizadores.php' ? 'sel_nav' : '' ?>">Dashboard</a>
+    <?php endif; ?>
     <?php if (!isset($_SESSION['user'])): ?>
-      <a href="admin/login.php" class="login-btn">Login / Registar</a>
+      <a href="admin/login.php" class="login-btn text-decoration-none">Login / Registar</a>
     <?php else: ?>
       <span class="login-btn"><?= htmlspecialchars($_SESSION['user']['nome']) ?></span>
-      <a href="admin/logout.php" class="login-btn">Logout</a>
+      <a href="admin/logout.php" class="login-btn text-decoration-none">Logout</a>
     <?php endif; ?>
     <button class="menu-toggle" id="menuToggle">
       <i class="ri-menu-line"></i>

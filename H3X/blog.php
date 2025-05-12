@@ -1,5 +1,5 @@
 <?php
-require_once 'db_config.php'; 
+require_once 'db_config.php';
 
 $categorias = [];
 $resultadoCategorias = mysqli_query($conn, "SELECT id, nome FROM categorias_posts ORDER BY nome");
@@ -38,13 +38,6 @@ if ($categoriaSelecionada > 0) {
 $resultadoTotal = mysqli_query($conn, $sqlCount);
 $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
 
-function resumo_palavras($texto, $limite = 4)
-{
-    $palavras = explode(' ', strip_tags($texto));
-    $resumo = array_slice($palavras, 0, $limite);
-    return implode(' ', $resumo) . (count($palavras) > $limite ? '...' : '');
-}
-
 $pesquisa = isset($_GET['pesquisa']) ? mysqli_real_escape_string($conn, $_GET['pesquisa']) : '';
 $categoriaSelecionada = isset($_GET['categoria']) ? (int) $_GET['categoria'] : 0;
 
@@ -56,11 +49,11 @@ $sql = "SELECT posts.id, posts.titulo, posts.conteudo, posts.imagem, posts.data_
         WHERE posts.aprovado = 1";
 
 if ($categoriaSelecionada > 0) {
-    $sql .= " AND posts.id_categoria = $categoriaSelecionada"; 
+    $sql .= " AND posts.id_categoria = $categoriaSelecionada";
 }
 
 if (!empty($pesquisa)) {
-    $sql .= " AND posts.titulo LIKE '%$pesquisa%'"; 
+    $sql .= " AND posts.titulo LIKE '%$pesquisa%'";
 }
 
 $sql .= " ORDER BY posts.data_criacao DESC LIMIT $limite";
@@ -70,7 +63,9 @@ $posts = [];
 
 while ($post = mysqli_fetch_assoc($resultadoPosts)) {
     $posts[] = $post;
+    $sql .= " AND posts.titulo LIKE '%$pesquisa%'";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +92,8 @@ while ($post = mysqli_fetch_assoc($resultadoPosts)) {
                 <div class="d-flex justify-content-end w-100 w-md-auto px-4">
 
                     <form method="GET" class="d-flex align-items-center w-100">
-                        <input type="text" name="pesquisa" class="form-control pesquisar me-2" placeholder="Pesquisar..."
+                        <input type="text" name="pesquisa" class="form-control pesquisar me-2"
+                            placeholder="Pesquisar..."
                             value="<?= isset($_GET['pesquisa']) ? htmlspecialchars($_GET['pesquisa']) : '' ?>">
                         <button type="submit" class="btn btn-light"><i class="ri-search-line"></i></button>
                     </form>
@@ -136,7 +132,7 @@ while ($post = mysqli_fetch_assoc($resultadoPosts)) {
                                 <img src="<?= htmlspecialchars($post['imagem']) ?>" alt="Imagem do post" />
                             </div>
                             <div class="h3x-content mt-2 px-2">
-                                <h6 class="fw-bold"><?= resumo_palavras($post['titulo'], 8) ?></h6>
+                                <h6 class="fw-bold"><?= $post['titulo'] ?></h6>
                                 <h5><?= $post['data_criacao'] ?></h5>
                                 <h5><?= $post['autor'] ?></h5>
                                 <a href="post.php?id=<?= $post['id'] ?>" class="post-link">
@@ -211,8 +207,8 @@ while ($post = mysqli_fetch_assoc($resultadoPosts)) {
 
                             <div class="mb-3">
                                 <label for="texto" class="form-label">Texto</label>
-                                <textarea class="form-control inputtext border-white bg-transparent text-white" id="texto"
-                                    rows="4" placeholder="Digite o conteúdo do post"></textarea>
+                                <textarea class="form-control inputtext border-white bg-transparent text-white"
+                                    id="texto" rows="4" placeholder="Digite o conteúdo do post"></textarea>
                             </div>
 
                             <div class="text-center">

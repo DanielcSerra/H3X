@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../db_config.php'; 
+require_once '../db_config.php';
 
 if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['tipo'], ['a', 'f'])) {
     header("Location: login.php");
@@ -17,7 +17,7 @@ $offset = ($pagina - 1) * $por_pagina;
 if (!empty($pesquisa)) {
     $like = "%$pesquisa%";
 
-    $count_stmt = $mysqli->prepare("SELECT COUNT(*) FROM utilizadores WHERE nome LIKE ? OR email LIKE ?");
+    $count_stmt = $conn->prepare("SELECT COUNT(*) FROM utilizadores WHERE nome LIKE ? OR email LIKE ?");
     $count_stmt->bind_param("ss", $like, $like);
     $count_stmt->execute();
     $count_stmt->bind_result($total_resultados);
@@ -25,16 +25,16 @@ if (!empty($pesquisa)) {
     $count_stmt->close();
 
     $query = "SELECT id, nome, email, tipo, estado, ultima_atividade FROM utilizadores WHERE nome LIKE ? OR email LIKE ? ORDER BY id ASC LIMIT ? OFFSET ?";
-    $stmt = $mysqli->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("ssii", $like, $like, $por_pagina, $offset);
     $stmt->execute();
     $result = $stmt->get_result();
 } else {
-    $result_total = $mysqli->query("SELECT COUNT(*) as total FROM utilizadores");
+    $result_total = $conn->query("SELECT COUNT(*) as total FROM utilizadores");
     $total_resultados = $result_total->fetch_assoc()['total'];
 
     $query = "SELECT id, nome, email, tipo, estado, ultima_atividade FROM utilizadores ORDER BY id ASC LIMIT $por_pagina OFFSET $offset";
-    $result = $mysqli->query($query);
+    $result = $conn->query($query);
 }
 
 $total_paginas = ceil($total_resultados / $por_pagina);
