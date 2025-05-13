@@ -61,10 +61,6 @@ h3{
     margin:10px 0;
 }
 
-#populares h2{
-    text-align: center;
-}
-
 .caixaimg{
     border:20px solid transparent;
     border-image: url("../img/caixa10.png") 30 round;
@@ -97,6 +93,7 @@ color:transparent;
     height: 100%;
     object-fit: cover;
     display: block;
+    padding:0 5px;
 }
 
 form label{
@@ -151,3 +148,60 @@ textarea{
     bottom: 0;
     right: 0;
   }
+
+  .file-upload {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    background-color: #d9d9d9;
+    width:500px;
+    margin-left: 10px;
+    justify-content: center;
+  }
+
+  .file-upload img {
+    width: 65px;
+    height: 63px;
+  }
+
+  .file-upload h3 {
+    margin: 0;
+    font-size: 36px;
+    color: black;
+  }
+
+  #img {
+    display: none;
+  }
+  .submit-btn{
+    background-color: #492352;
+    border-color: #cf44e9;
+    font-size: 36px;
+    padding:0 20px 10px 20px;
+  }
+  .submit-btn-container{
+    width:500px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+  }
+
+  .containersubmit {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 100%; 
+    gap: 20px; 
+}
+
+.submitimg {
+    flex: 1; 
+    max-width: 45%;
+}
+
+.regras {
+    flex: 1; 
+    max-width: 45%;
+}
