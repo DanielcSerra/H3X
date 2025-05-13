@@ -101,10 +101,10 @@ body.menu-open {
 /* MENU */
 .fullscreen-menu {
   position: fixed;
-  top: 0;
+  top: -100vh;
   left: 0;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   background-color: black;
   z-index: 200;
   display: flex;
@@ -112,10 +112,10 @@ body.menu-open {
   justify-content: center;
   align-items: center;
   padding: 32px;
-  top: -100vh;
   transition: top 0.5s ease;
   text-align: center;
-  visibility: hidden; 
+  visibility: hidden;
+  overflow-y: auto; 
 }
 
 .fullscreen-menu.show {
@@ -135,6 +135,7 @@ body.menu-open {
   color: white;
   font-family: Aldrich, sans-serif;
   font-weight: bold;
+    font-size: clamp(28px, 6vw, 60px);
   line-height: 1;
   padding: 0;
   text-decoration: none;
@@ -147,12 +148,6 @@ body.menu-open {
 }
 
 /* MOBILE */
-
-@media (min-width: 992px) {
-  .fullscreen-menu a {
-    font-size: 85px;
-  }
-}
 
 @media (max-width: 992px) {
   .navbar img {
@@ -169,6 +164,18 @@ body.menu-open {
 
   .menu-toggle {
     font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) and (min-height: 900px) {
+  .fullscreen-menu a {
+    font-size: 85px;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 899px) {
+  .fullscreen-menu a {
+    font-size: 60px;
   }
 }
 
