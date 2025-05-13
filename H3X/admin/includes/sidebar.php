@@ -54,7 +54,7 @@
     
 
     <div class="dropdown w-100">
-        <a href="#" class="d-block px-3 py-2 text-start  <?= $fileName == 'dashboard_eventos.php' ? 'sel_nav' : '' ?>" data-bs-toggle="collapse" data-bs-target="#faqdropdown" aria-expanded="false" style="font-size: 18px;">
+        <a href="dashboard_faq.php" class="d-block px-3 py-2 text-start  <?= $fileName == 'dashboard_faq.php' ? 'sel_nav' : '' ?>" data-bs-toggle="collapse" data-bs-target="#faqdropdown" aria-expanded="false" style="font-size: 18px;">
             <i class="ri-calendar-event-line"></i> FAQ
         </a>
         <div class="collapse <?= $fileName == 'dashboard_faq.php' ? 'show' : '' ?>" id="faq_dropdown">
