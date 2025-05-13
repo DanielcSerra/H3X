@@ -1,142 +1,154 @@
 <?php
 session_start();
 
-require_once '../db_config.php';
+if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
+    header("location:login.php");
+    exit();
+}
 
-if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['tipo'], ['a', 'f'])) {
+if (!isset($_SESSION['tipo']) || !in_array($_SESSION['tipo'], ['a', 'f'])) {
     header("Location: login.php");
     exit();
 }
 
-$pesquisa = isset($_GET['pesquisa']) ? trim($_GET['pesquisa']) : "";
+require_once "../db_config.php";
 
-$por_pagina = 10;
-$pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-$offset = ($pagina - 1) * $por_pagina;
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
+$tipoUtilizador = $_SESSION["tipo"] ?? "c";
 
-if (!empty($pesquisa)) {
-    $like = "%$pesquisa%";
-
-    $stmt_total = $conn->prepare("SELECT COUNT(*) FROM posts WHERE titulo LIKE ? OR conteudo LIKE ?");
-    $stmt_total->bind_param("ss", $like, $like);
-    $stmt_total->execute();
-    $stmt_total->bind_result($total_resultados);
-    $stmt_total->fetch();
-    $stmt_total->close();
-
-    $stmt = $conn->prepare("SELECT id, titulo, data_criacao, aprovado, id_utilizador, id_categoria, imagem FROM posts WHERE titulo LIKE ? OR conteudo LIKE ? ORDER BY id DESC LIMIT ? OFFSET ?");
-    $stmt->bind_param("ssii", $like, $like, $por_pagina, $offset);
-    $stmt->execute();
-    $result = $stmt->get_result();
-} else {
-    $result_total = $conn->query("SELECT COUNT(*) as total FROM posts");
-    $total_resultados = $result_total->fetch_assoc()['total'];
-
-    $query = "SELECT id, titulo, data_criacao, aprovado, id_utilizador, id_categoria, imagem FROM posts ORDER BY id DESC LIMIT $por_pagina OFFSET $offset";
-    $result = $conn->query($query);
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
 }
 
-$total_paginas = ceil($total_resultados / $por_pagina);
+$pageTitle = "H3X ADMIN - Posts";
 ?>
-<!DOCTYPE html>
-<html lang="pt">
+<?php require 'includes/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Posts</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/dashboard.css">
-</head>
+<?php require 'includes/sidebar.php'; ?>
 
-<body>
-    <div class="container-fluid">
-        <div class="row">
+<div class="content">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <h2 class="mb-0">Posts</h2>
 
-            <?php include 'require/sidebar.php'; ?>
+        <div class="d-flex align-items-center gap-2">
+            <form method="GET" class="d-flex align-items-center gap-2 mb-0">
+                <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar..."
+                    style="width: 200px;">
+                <button type="submit" class="btn btn-outline-secondary btn-sm px-2">
+                    <i class="ri-search-line"></i>
+                </button>
+                <a href="dashboard_posts.php" class="btn btn-outline-danger btn-sm px-2">
+                    <i class="ri-close-line"></i>
+                </a>
+            </form>
 
-            <div class="col-md-10 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-                    <div class="d-flex align-items-center gap-3 flex-wrap">
-                        <h2 class="m-0">Posts</h2>
-                        <form class="d-flex" method="GET" action="">
-                            <input class="form-control form-control-sm" type="search" name="pesquisa"
-                                placeholder="Pesquisar..." value="<?= htmlspecialchars($pesquisa) ?>">
-                            <button class="btn btn-sm btn-outline-secondary ms-2" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <button class="btn btn-dark" disabled>+ Adicionar</button>
-                </div>
-
-                <table class="table table-bordered table-hover bg-white shadow-sm">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Data</th>
-                            <th>Aprovado</th>
-                            <th>Utilizador</th>
-                            <th>Categoria</th>
-                            <th>Imagem</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = $result->fetch_assoc()): ?>
-                            <tr>
-                                <td><?= $row['id'] ?></td>
-                                <td><?= htmlspecialchars($row['titulo']) ?></td>
-                                <td><?= $row['data_criacao'] ?></td>
-                                <td><?= $row['aprovado'] ? 'Sim' : 'Não' ?></td>
-                                <td><?= $row['id_utilizador'] ?></td>
-                                <td><?= $row['id_categoria'] ?></td>
-                                <td>
-                                    <?php if (!empty($row['imagem'])): ?>
-                                        <img src="../<?= htmlspecialchars($row['imagem']) ?>" alt="Imagem do post">
-                                    <?php else: ?>
-                                        <em>Sem imagem</em>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="table-actions">
-                                    <i class="bi bi-pencil-square text-primary" title="Editar"></i>
-                                    <i class="bi bi-trash text-danger" title="Remover"></i>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
-
-                <nav aria-label="Paginação">
-                    <ul class="pagination justify-content-center mt-4">
-                        <?php if ($pagina > 1): ?>
-                            <li class="page-item">
-                                <a class="page-link"
-                                    href="?pagina=<?= $pagina - 1 ?>&pesquisa=<?= urlencode($pesquisa) ?>">Anterior</a>
-                            </li>
-                        <?php endif; ?>
-
-                        <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
-                            <li class="page-item <?= $i == $pagina ? 'active' : '' ?>">
-                                <a class="page-link"
-                                    href="?pagina=<?= $i ?>&pesquisa=<?= urlencode($pesquisa) ?>"><?= $i ?></a>
-                            </li>
-                        <?php endfor; ?>
-
-                        <?php if ($pagina < $total_paginas): ?>
-                            <li class="page-item">
-                                <a class="page-link"
-                                    href="?pagina=<?= $pagina + 1 ?>&pesquisa=<?= urlencode($pesquisa) ?>">Seguinte</a>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </nav>
-            </div>
+            <a href="adicionar_post.php" class="btn btn-dark btn-sm px-3">
+                <i class="ri-add-line me-1"></i> Adicionar
+            </a>
         </div>
     </div>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <div class="table-container">
+        <?php
+        if (isset($_GET["pesquisa"]) && !empty($_GET["pesquisa"])) {
+            $pesquisa = $_GET["pesquisa"];
+            $pesquisa = mysqli_real_escape_string($conn, $pesquisa);
+            $sql = "SELECT * FROM posts WHERE titulo LIKE '%$pesquisa%' OR conteudo LIKE '%$pesquisa%'";
+        } else {
+            $sql = "SELECT * FROM posts";
+        }
 
-</html>
+        $result = $conn->query($sql);
+        if ($result && $result->num_rows != 0) {
+            echo '
+            <table class="table table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+                <thead class="bg-light text-secondary">
+                    <tr>
+                        <th>#</th>
+                        <th>Título</th>
+                        <th>Conteúdo</th>
+                        <th>Data Criação</th>
+                        <th>Aprovado</th>
+                        <th>Autor</th>
+                        <th>Categoria</th>
+                        <th>Imagem</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">';
+
+            $count = 1;
+            while ($post = $result->fetch_object()) {
+                $sqlAutor = "SELECT nome FROM utilizadores WHERE id = " . (int)$post->id_utilizador;
+                $resultAutor = $conn->query($sqlAutor);
+                $autor = $resultAutor ? $resultAutor->fetch_object()->nome : "Desconhecido";
+
+                $sqlCategoria = "SELECT nome FROM categorias_posts WHERE id = " . (int)$post->id_categoria;
+                $resultCategoria = $conn->query($sqlCategoria);
+                $categoria = $resultCategoria ? $resultCategoria->fetch_object()->nome : "Sem Categoria";
+
+                echo '<tr class="border-bottom">
+                        <td>' . $count++ . '</td>
+                        <td>' . htmlspecialchars($post->titulo) . '</td>
+                        <td>' . htmlspecialchars(substr($post->conteudo, 0, 100)) . '...</td>
+                        <td>' . date("d/m/Y H:i", strtotime($post->data_criacao)) . '</td>
+                        <td>
+                            <span class="badge bg-' . ($post->aprovado === '1' ? 'success' : 'secondary') . '">
+                                ' . ($post->aprovado === '1' ? 'Aprovado' : 'Pendente') . '
+                            </span>
+                        </td>
+                        <td>' . $autor . '</td>
+                        <td>' . $categoria . '</td>';
+
+                if (!empty($post->imagem)) {
+                    echo '<td>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal' . $post->id . '">
+                            <img src="../uploads/' . trim($post->imagem) . '" class="img-fluid" style="width: 60px; height: auto;" alt="Imagem do post">
+                        </a>
+                    </td>';
+
+                    echo '<div class="modal fade" id="imageModal' . $post->id . '" tabindex="-1" aria-labelledby="imageModalLabel' . $post->id . '" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModalLabel' . $post->id . '">Imagem do Post</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <img src="../uploads/' . trim($post->imagem) . '" class="img-fluid" alt="Imagem do post">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                } else {
+                    echo '<td><span class="text-muted">Sem imagem</span></td>';
+                }
+
+                echo '
+                        <td>
+                            <a href="edit_post.php?id=' . urlencode($post->id) . '" class="btn btn-link text-warning p-0 me-2">
+                                <i class="ri-pencil-line"></i>
+                            </a>
+                            <a href="delete_post.php?id=' . urlencode($post->id) . '" class="btn btn-link text-danger p-0">
+                                <i class="ri-delete-bin-line"></i>
+                            </a>
+                        </td>
+                    </tr>';
+            }
+            echo '</tbody></table>';
+        } else {
+            echo "<p class='alert alert-warning'>Sem resultados encontrados.</p>";
+        }
+        ?>
+    </div>
+</div>
+
+<?php require 'includes/footer.php'; ?>

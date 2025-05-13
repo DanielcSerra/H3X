@@ -1,6 +1,20 @@
 const menuToggle = document.getElementById("menuToggle");
 const fullscreenMenu = document.getElementById("fullscreenMenu");
 
+function handleResize() {
+  if (window.innerWidth <= 768) {
+    fullscreenMenu.classList.remove("show");
+    menuToggle.classList.remove("open");
+  }
+}
+
+window.addEventListener("resize", handleResize);
+
+window.addEventListener("load", () => {
+  fullscreenMenu.classList.remove("show");
+  menuToggle.classList.remove("open");
+});
+
 menuToggle.addEventListener("click", () => {
   fullscreenMenu.classList.toggle("show");
   menuToggle.classList.toggle("open");

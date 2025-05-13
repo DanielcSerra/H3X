@@ -52,6 +52,20 @@ body.menu-open {
   margin-right: 20px;
 }
 
+.dropdown-menu-dark {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.dropdown-menu-dark .dropdown-item {
+  color: #ddd;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+  background-color: #333;
+  color: #fff;
+}
+
 .menu-toggle {
   font-size: 32px;
   background: none;
@@ -101,6 +115,12 @@ body.menu-open {
   top: -100vh;
   transition: top 0.5s ease;
   text-align: center;
+  visibility: hidden; 
+}
+
+.fullscreen-menu.show {
+  top: 0;
+  visibility: visible;
 }
 
 .fullscreen-box {
@@ -109,10 +129,6 @@ body.menu-open {
   flex-direction: column;
   justify-content: center;
   align-items: left;
-}
-
-.fullscreen-menu.show {
-  top: 0;
 }
 
 .fullscreen-menu a {
