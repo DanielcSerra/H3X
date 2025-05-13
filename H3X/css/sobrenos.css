@@ -21,7 +21,6 @@ body{
     color: white; 
     margin: 0; 
     text-align: center; 
-    font-size: 36pt;
 }
 .buttons{
     display:flex;
@@ -125,24 +124,20 @@ text-align: center;
 
 #textoartistas h1{
 font-family: 'laceration';
-font-size: 24pt;
 margin-top: 30px;
 }
 
 #textoartistas h2{
-    font-size: 16pt;
     margin-bottom:30px;
 }
 
 .artista{
-    font-size: 24pt;
     color:white;
     text-align: center;
 }
 
 .artista p{
     max-width: 250px;
-    font-size: 16pt;
 }
 
 .artista img, .artista h2{
@@ -175,9 +170,6 @@ margin-top: 30px;
     text-align: center;
     align-self: flex-end;
 }
-.imagempremios h1{
-    font-size: 24px;
-}
 
 .equipabuttons h1{
     -webkit-text-stroke: 2px black;
@@ -188,9 +180,8 @@ margin-top: 30px;
     background-image: url("../img/botaosobrenos.png");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 240px;
+    width: 280px;
     text-align: center;
-    font-size: 24pt;
 }
 .botaosobrenos {
     display: flex;
@@ -252,11 +243,8 @@ margin-top: 30px;
 #historia h1{
     margin-bottom:20px;
 }
-.esquerda h1,.direita h1{
-font-size: 24pt;
-}
+
 .esquerda p,.direita p{
-    font-size: 16pt;
     max-width: 500px;
 }
 .esquerda img, .direita img{

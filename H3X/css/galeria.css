@@ -1,10 +1,59 @@
+@keyframes aparecer {
+    0% {
+        transform: translateY(-250px);
+  
+    }
+    100% {
+        transform: translateY(0);
+  
+    }
+  }
+
 main{
-    margin:81px 10%;
+    margin:0 10%;
 }
 
-.container h1{
-    -webkit-text-stroke: 1px white;
-    color:transparent;
+h1{
+    color:white;
+}
+
+.titulo{
+    align-items: center;
+    text-align: center;
+    height: 250px;
+  }
+
+#bannertext h1{
+    font-family: Aldrich, sans-serif;
+    font-size: clamp(32px, 8vw, 96px);
+    color: transparent; 
+}
+
+.terc{
+    -webkit-text-stroke: 2px #514252;
+    opacity: 50% ;
+    animation: aparecer 1.5s forwards;
+    filter:blur(2px)
+}
+.seg{
+    -webkit-text-stroke: 2px #b58fb7;
+    position: relative; 
+    top: -65px ; 
+    opacity: 50%;
+    animation: aparecer 1s forwards;
+    filter:blur(1px)
+}
+.prim{
+  -webkit-text-stroke: 2px white;
+    position: relative; 
+    top: -130px ; 
+    animation: aparecer 0.5s forwards;
+}
+
+h3{
+    size:24px;
+    color: white;
+    margin-top: 30px;
 }
 
 .container{
@@ -12,16 +61,11 @@ main{
     margin:10px 0;
 }
 
-h2{
-    color:white;
-    font-family: 'laceration';
-}
-
 #populares h2{
     text-align: center;
 }
 
-#populares img{
+.caixaimg{
     border:20px solid transparent;
     border-image: url("../img/caixa10.png") 30 round;
 }
@@ -29,8 +73,19 @@ h2{
 .botao{
     border:20px solid transparent;
     border-image: url("../img/caixa3.png") 30 round;
-    width:605px;
+    display: inline-block;
+    padding:0 20px;
 }
+
+.botao h2{
+font-size: 36px;
+color:transparent;
+}
+
+.direita{
+    margin-left: auto;
+}
+
 .caixaimg {
     width: 300px;
     height: 267px;
@@ -43,3 +98,56 @@ h2{
     object-fit: cover;
     display: block;
 }
+
+form label{
+    color:white;
+    font-size: 24px;
+}
+
+#titulo {
+    width: 250px;  
+    min-width: 250px;
+    min-height: 45px;
+    border-radius: 0%;
+    background-color: grey;
+    background-image: url("../img/caixabranca.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+#descricao {
+    width: 500px;  
+    min-width: 500px;
+    border-radius: 0%;
+}
+
+textarea{
+    resize: none;
+}
+
+.caixa-com-cantos {
+    position: relative;
+    background: transparent;
+    max-width: 100%;
+    overflow: hidden; 
+    width:520px;
+    padding:10px;
+  }
+  
+  .canto {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    pointer-events: none;
+    z-index: 0; 
+  }
+  .top-left {
+    top: 0;
+    left: 0;
+  }
+  .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
