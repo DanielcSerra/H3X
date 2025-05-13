@@ -17,6 +17,7 @@ $pageTitle = "H3X ADMIN – FAQs";
 <div class="content">
   <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
     <h2 class="mb-0">FAQs</h2>
+    
 
     <div class="d-flex align-items-center gap-2">
       <form method="GET" class="d-flex gap-2 mb-0">
