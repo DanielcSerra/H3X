@@ -1,3 +1,9 @@
+<?php
+
+$fileName = basename($_SERVER["SCRIPT_NAME"]);
+?>
+
+
 <div class="col-md-2 sidebar" style="background-color: #2C2C2C; height: 100vh; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
 
     <div class="logo d-flex justify-content-center align-items-center mb-4">
