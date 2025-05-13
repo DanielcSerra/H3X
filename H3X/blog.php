@@ -174,7 +174,7 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
                 </div>
 
                 <div class="col-12 col-md-6 formulario">
-                    <div class="container caixa-com-cantos py-4 px-4 position-relative">
+                    <div class="container caixa-com-cantos py-1 px-1 position-relative">
                         <img src="img/lefttop.png" class="canto top-left d-none d-md-block" alt="">
                         <img src="img/righttop.png" class="canto top-right d-none d-md-block" alt="">
                         <img src="img/leftbottom.png" class="canto bottom-left d-none d-md-block" alt="">

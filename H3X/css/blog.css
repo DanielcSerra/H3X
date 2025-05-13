@@ -127,7 +127,6 @@
     
     form {
         width: 100%;
-        display: flex;
         justify-content: center;
     }
 }
@@ -394,11 +393,11 @@
   }
 }
 
-@media (max-width: 725px) {
+@media (max-width: 610px) {
   .prim,
   .seg,
   .terc {
-    font-size: 58px;
+    font-size: 48px;
     top: 0;
   }
   
@@ -459,7 +458,7 @@
 
 .regras-imagem {
   max-width: 350px;
-  min-width: 300px;
+  min-width: 350px;
   width: 100%;
   margin-top: 70px;
   height: auto;
@@ -471,6 +470,6 @@
 @media (max-width: 768px) {
   .regras-imagem {
     max-width: 350px;
-  min-width: 300px;
+  min-width: 350px;
   }
 }
