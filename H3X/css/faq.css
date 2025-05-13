@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 100px 20px 20px 20px; 
+}
+
+
+.faq-container {
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 50px;
+    justify-content: center;
+    width:100%;
+}
+
+
+
+
+.faq-header {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    cursor: pointer;
+    
+}
+
+.faq-question {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-spacer {
+    height: 60px; /* Ajuste conforme necessário para separar do footer */
+}
+
+.faq-question::after {
+    content: "▼";
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    color: #ffffff;
+    line-height: 1.5;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding-top 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-top: 10px;
+}
+
+
+
+.faq-divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 20px;
+}
+
+.faq-divider:last-of-type {
+    margin-bottom: 30px;
+}
+
+.contain{
+    display: flex;
+    width:100%;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+    .faq-header {
+        font-size: 2em;
+        padding: 15px;
+    }
+
+    .faq-question {
+        font-size: 1em;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .faq-item {
+        padding: 15px;
+    }
+
+    .faq-answer {
+        font-size: 0.95em;
+    }
+
+    body {
+        padding: 80px 10px 20px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-header {
+        font-size: 1.5em;
+    }
+
+    .faq-question::after {
+        align-self: flex-end;
+        margin-top: 5px;
+    }
+}
