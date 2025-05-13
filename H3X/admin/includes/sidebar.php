@@ -51,6 +51,16 @@
     <a href="#" class="d-block px-3 py-2 w-100 text-start" style="font-size: 18px;">
         <i class="ri-mail-line"></i> Contactos
     </a>
+    
+
+    <div class="dropdown w-100">
+        <a href="#" class="d-block px-3 py-2 text-start  <?= $fileName == 'dashboard_eventos.php' ? 'sel_nav' : '' ?>" data-bs-toggle="collapse" data-bs-target="#faqdropdown" aria-expanded="false" style="font-size: 18px;">
+            <i class="ri-calendar-event-line"></i> FAQ
+        </a>
+        <div class="collapse <?= $fileName == 'dashboard_faq.php' ? 'show' : '' ?>" id="faq_dropdown">
+        </div>
+    </div>
+    
         <div class="position-absolute bottom-0 w-100 p-3 border-top d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <?php
