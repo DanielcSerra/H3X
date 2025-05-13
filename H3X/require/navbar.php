@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $fileName = basename($_SERVER["SCRIPT_NAME"]);
 ?>
 
@@ -8,22 +9,39 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
     <img src="img/logo.png" alt="Logo H3X">
   </a>
   <div class="menu-container">
-    <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['tipo'], ['a', 'f'])): ?>
-      <a href="admin/dashboard_utilizadores.php"
-        class="text-decoration-none <?= $fileName == 'admin/dashboard_utilizadores.php' ? 'sel_nav' : '' ?>">Dashboard</a>
-    <?php endif; ?>
-    <?php if (!isset($_SESSION['user'])): ?>
+    <?php if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true): ?>
       <a href="admin/login.php" class="login-btn text-decoration-none">Login / Registar</a>
     <?php else: ?>
-      <span class="login-btn"><?= htmlspecialchars($_SESSION['user']['nome']) ?></span>
-      <a href="admin/logout.php" class="login-btn text-decoration-none">Logout</a>
+      <div class="dropdown">
+        <a class="login-btn dropdown-toggle d-flex align-items-center text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <?php
+            if (!empty($_SESSION['foto']) && file_exists('../uploads/' . $_SESSION['foto'])) {
+                echo '<img src="../uploads/' . htmlspecialchars($_SESSION['foto']) . '" alt="Foto" style="width: 32px; height: 32px; object-fit: cover; border-radius: 50%; margin-right: 8px;">';
+            } else {
+                $letra = strtoupper(substr($_SESSION['nome'], 0, 1));
+                echo '<div class="bg-light text-dark rounded-circle text-center me-2 fw-bold" 
+                style="width: 32px; height: 32px; line-height: 32px; display: flex; justify-content: center; align-items: center;">' . $letra . '</div>';
+            }
+          ?>
+          <?= htmlspecialchars($_SESSION['nome']) ?>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow-sm border-0">
+          <li><a class="dropdown-item" href="admin/perfil.php">Perfil</a></li>
+          <?php if (in_array($_SESSION['tipo'], ['a', 'f'])): ?>
+            <li><a class="dropdown-item" href="admin/dashboard_utilizadores.php">Dashboard</a></li>
+          <?php endif; ?>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="admin/logout.php">Logout</a></li>
+        </ul>
+      </div>
     <?php endif; ?>
+
     <button class="menu-toggle" id="menuToggle">
       <i class="ri-menu-line"></i>
     </button>
   </div>
-
 </nav>
+
 
 <div class="fullscreen-menu" id="fullscreenMenu">
   <div class="fullscreen-box" id="fullscreenbox">

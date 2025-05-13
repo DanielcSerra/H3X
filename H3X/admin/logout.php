@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_unset();
 session_destroy();
-header("Location: ../blog.php");
+header("location:login.php");
 exit();
+?>

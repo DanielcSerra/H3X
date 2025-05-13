@@ -1,140 +1,155 @@
 <?php
 session_start();
 
-require_once '../db_config.php';
+if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
+    header("location:login.php");
+    exit();
+}
 
-if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['tipo'], ['a', 'f'])) {
+if (!isset($_SESSION['tipo']) || !in_array($_SESSION['tipo'], ['a', 'f'])) {
     header("Location: login.php");
     exit();
 }
 
-$pesquisa = isset($_GET['pesquisa']) ? trim($_GET['pesquisa']) : "";
+require_once "../db_config.php";
 
-$por_pagina = 10;
-$pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-$offset = ($pagina - 1) * $por_pagina;
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
+$tipoUtilizador = $_SESSION["tipo"] ?? "c";
 
-if (!empty($pesquisa)) {
-    $like = "%$pesquisa%";
-
-    $count_stmt = $conn->prepare("SELECT COUNT(*) FROM utilizadores WHERE nome LIKE ? OR email LIKE ?");
-    $count_stmt->bind_param("ss", $like, $like);
-    $count_stmt->execute();
-    $count_stmt->bind_result($total_resultados);
-    $count_stmt->fetch();
-    $count_stmt->close();
-
-    $query = "SELECT id, nome, email, tipo, estado, ultima_atividade FROM utilizadores WHERE nome LIKE ? OR email LIKE ? ORDER BY id ASC LIMIT ? OFFSET ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssii", $like, $like, $por_pagina, $offset);
-    $stmt->execute();
-    $result = $stmt->get_result();
-} else {
-    $result_total = $conn->query("SELECT COUNT(*) as total FROM utilizadores");
-    $total_resultados = $result_total->fetch_assoc()['total'];
-
-    $query = "SELECT id, nome, email, tipo, estado, ultima_atividade FROM utilizadores ORDER BY id ASC LIMIT $por_pagina OFFSET $offset";
-    $result = $conn->query($query);
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
 }
 
-$total_paginas = ceil($total_resultados / $por_pagina);
+$pageTitle = "H3X ADMIN - Utilizadores";
+
 ?>
+<?php require 'includes/header.php'; ?>
 
-<!DOCTYPE html>
-<html lang="pt">
+<?php require 'includes/sidebar.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Utilizadores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/dashboard.css">
-</head>
+<div class="content">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <h2 class="mb-0">Utilizadores</h2>
 
-<body>
-    <div class="container-fluid">
-        <div class="row">
+        <div class="d-flex align-items-center gap-2">
+            <form method="GET" class="d-flex align-items-center gap-2 mb-0">
+                <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar..."
+                    style="width: 200px;">
+                <button type="submit" class="btn btn-outline-secondary btn-sm px-2">
+                    <i class="ri-search-line"></i>
+                </button>
+                <a href="dashboard_utilizadores.php" class="btn btn-outline-danger btn-sm px-2">
+                    <i class="ri-close-line"></i>
+                </a>
+            </form>
 
-            <?php include 'require/sidebar.php'; ?>
-
-            <!-- Main content -->
-            <div class="col-md-10 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-                    <div class="d-flex align-items-center gap-3 flex-wrap">
-                        <h2 class="m-0">Utilizadores</h2>
-                        <form class="d-flex" role="search" method="GET" action="">
-                            <input class="form-control form-control-sm" type="search" name="pesquisa"
-                                placeholder="Pesquisar..." aria-label="Pesquisar"
-                                value="<?= htmlspecialchars($pesquisa) ?>">
-                            <button class="btn btn-sm btn-outline-secondary ms-2" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <button class="btn btn-dark" disabled>+ Adicionar</button>
-                </div>
-
-                <table class="table table-bordered table-hover bg-white shadow-sm">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Tipo</th>
-                            <th>Estado</th>
-                            <th>Última Atividade</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = $result->fetch_assoc()): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($row['id']) ?></td>
-                                <td><?= htmlspecialchars($row['nome']) ?></td>
-                                <td><?= htmlspecialchars($row['email']) ?></td>
-                                <td><?= ucfirst(htmlspecialchars($row['tipo'])) ?></td>
-                                <td><?= htmlspecialchars($row['estado']) ?></td>
-                                <td><?= htmlspecialchars($row['ultima_atividade']) ?></td>
-                                <td class="table-actions">
-                                    <i class="bi bi-pencil-square text-primary" title="Editar"></i>
-                                    <i class="bi bi-trash text-danger" title="Remover"></i>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
-
-                <!-- Paginação -->
-                <nav aria-label="Navegação de páginas">
-                    <ul class="pagination justify-content-center mt-4">
-                        <?php if ($pagina > 1): ?>
-                            <li class="page-item">
-                                <a class="page-link"
-                                    href="?pagina=<?= $pagina - 1 ?>&pesquisa=<?= urlencode($pesquisa) ?>">Anterior</a>
-                            </li>
-                        <?php endif; ?>
-
-                        <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
-                            <li class="page-item <?= $i == $pagina ? 'active' : '' ?>">
-                                <a class="page-link"
-                                    href="?pagina=<?= $i ?>&pesquisa=<?= urlencode($pesquisa) ?>"><?= $i ?></a>
-                            </li>
-                        <?php endfor; ?>
-
-                        <?php if ($pagina < $total_paginas): ?>
-                            <li class="page-item">
-                                <a class="page-link"
-                                    href="?pagina=<?= $pagina + 1 ?>&pesquisa=<?= urlencode($pesquisa) ?>">Seguinte</a>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </nav>
-            </div>
+            <a href="adicionar.php" class="btn btn-dark btn-sm px-3">
+                <i class="ri-add-line me-1"></i> Adicionar
+            </a>
         </div>
     </div>
 
-    <!-- Bootstrap Icons + JS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <div class="table-container">
+        <?php
+        if (isset($_GET["pesquisa"]) && !empty($_GET["pesquisa"])) {
+            $pesquisa = $_GET["pesquisa"];
+            $pesquisa = mysqli_real_escape_string($conn, $pesquisa);
+            $sql = "SELECT * FROM utilizadores WHERE nome LIKE '%$pesquisa%' OR email LIKE '%$pesquisa%' ";
+        } else {
+            $sql = "SELECT * FROM utilizadores";
+        }
 
-</html>
+        $result = $conn->query($sql);
+        if ($result && $result->num_rows != 0) {
+            echo '
+<table class="table table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="bg-light text-secondary">
+        <tr>
+            <th>#</th>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Data Nascimento</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Última Atividade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody class="bg-white">';
+
+            $count = 1;
+            while ($user = $result->fetch_object()) {
+                switch ($user->tipo) {
+                    case 'a':
+                        $tipo = 'Administrador';
+                        break;
+                    case 'f':
+                        $tipo = 'Funcionário';
+                        break;
+                    default:
+                        $tipo = 'Cliente';
+                        break;
+                }
+
+                echo '<tr class="border-bottom">
+        <td>' . $count++ . '</td>';
+
+                // FOTO
+                if (!empty($user->foto)) {
+                    echo '<td class="d-flex justify-content-center align-items-center">
+            <img src="../uploads/' . trim($user->foto) . '" 
+            class="me-2"
+            style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;" alt="Foto do usuário">
+        </td>';
+                } else {
+                    $primeiraLetra = strtoupper(substr($user->nome, 0, 1));
+                    echo '<td class="d-flex justify-content-center align-items-center">
+            <div class="bg-light text-dark rounded-circle text-center me-2 fw-bold" 
+            style="width: 40px; height: 40px; line-height: 40px; display: flex; justify-content: center; align-items: center;">
+            ' . $primeiraLetra . '
+            </div>
+        </td>';
+                }
+
+                echo '
+        <td>' . trim($user->nome) . '</td>
+        <td>' . trim($user->email) . '</td>
+        <td>' . trim($user->telefone) . '</td>
+        <td>' . trim($user->data_nascimento) . '</td>
+        <td>' . $tipo . '</td>
+        <td>
+            <span class="badge bg-' . ($user->estado === 'a' ? 'success' : 'secondary') . '">
+                ' . ($user->estado === 'a' ? 'Ativo' : 'Desativo') . '
+            </span>
+        </td>
+        <td>' . trim($user->ultima_atividade) . '</td>
+        <td>
+            <a href="edit.php?email=' . urlencode($user->email) . '" class="btn btn-link text-warning p-0 me-2">
+                <i class="ri-pencil-line"></i>
+            </a>
+            <a href="delete.php?email=' . urlencode($user->email) . '" class="btn btn-link text-danger p-0">
+                <i class="ri-delete-bin-line"></i>
+            </a>
+        </td>
+    </tr>';
+            }
+            echo '</tbody></table>';
+        } else {
+            echo "<p class='alert alert-warning'>Sem resultados encontrados.</p>";
+
+        }
+        ?>
+    </div>
+</div>
+
+<?php require 'includes/footer.php'; ?>
