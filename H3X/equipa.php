@@ -11,8 +11,13 @@
 
     <?php include 'require/navbar.php'; ?>
     <div class="hero d-flex justify-content-center align-items-center text-center position-relative">
-        <h1>ARCADE</h1>
+        <h1>A EQUIPA</h1>
     </div>
+    <div class="titulo">
+        <h1>FUNDADORES E GESTÃO <span class="staff">STAFF</span></h1>
+    </div>
+
+
     <?php include 'require/footer.php'; ?>
 </body>
 
