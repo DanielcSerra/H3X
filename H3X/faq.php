@@ -65,5 +65,6 @@
             }
         });
     </script>
+    <?php include 'require/footer.php';?>
 </body>
 </html>
