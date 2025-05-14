@@ -88,7 +88,7 @@ $pageTitle = "H3X ADMIN - Serviços VIP";
                 if (!empty($servico->imagem)) {
                     echo '<td>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal' . $servico->id . '">
-                            <img src="../uploads/' . trim($servico->imagem) . '" class="img-fluid" style="width: 60px; height: auto;" alt="Imagem do serviço">
+                            <img src="../img/' . trim($servico->imagem) . '" class="img-fluid" style="width: 60px; height: auto;" alt="Imagem do serviço">
                         </a>
                     </td>';
 
@@ -100,7 +100,7 @@ $pageTitle = "H3X ADMIN - Serviços VIP";
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-center">
-                                        <img src="../uploads/' . trim($servico->imagem) . '" class="img-fluid" alt="Imagem do serviço">
+                                        <img src="../img/' . trim($servico->imagem) . '" class="img-fluid" alt="Imagem do serviço">
                                     </div>
                                 </div>
                             </div>
