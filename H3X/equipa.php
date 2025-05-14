@@ -26,6 +26,14 @@
             <h2>MANAGER</h2>
         </div>
     </div>
+    <div class="areastaff">
+        <div class="titulostaff">
+            <h1>STAFF</h1>
+        </div>
+        <img src="img/before.png" width="100%" alt="barra">
+        <img src="img/Retangulo21.png" width="100%" alt="branco">
+    </div>
+
     <?php include 'require/footer.php'; ?>
 </body>
 

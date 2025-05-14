@@ -82,3 +82,28 @@ p {
   max-width: 100%;
   max-height: 100%;
 }
+
+.areastaff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.titulostaff {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.titulostaff h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Imagens responsivas */
+.areastaff img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
