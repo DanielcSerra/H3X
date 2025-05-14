@@ -1,4 +1,6 @@
-<?php include 'require/head.php'; ?>
+<?php include 'require/head.php'; 
+
+?>
 <title>H3X - Galeria</title>
 <link rel="stylesheet" href="css/galeria.css">
 </head>

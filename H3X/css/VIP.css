@@ -1,0 +1,442 @@
+body {
+  color: white;
+}
+
+h1 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+h2 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40);
+  color: white;
+}
+p {
+  font-family: Aldrich, sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+.Parte1 {
+  background: url("../img/imagemdefundo.png") no-repeat center center;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  min-height: 30vh;
+  width: 100%;
+}
+
+.imagemdefundo img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.titulo {
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.terceiro {
+  -webkit-text-stroke: 2px #828282;
+  opacity: 50%;
+  animation: aparecer 1.5s forwards;
+}
+.segundo {
+  -webkit-text-stroke: 2px #cacaca;
+  position: relative;
+  top: -65px;
+  opacity: 50%;
+  animation: aparecer 1s forwards;
+}
+.primeiro {
+  -webkit-text-stroke: 2px white;
+  position: relative;
+  top: -130px;
+  animation: aparecer 0.5s forwards;
+}
+
+.textotitulo {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  font-family: Aldrich, sans-serif;
+  stroke: #828282;
+}
+
+.textodepois {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.botao img {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao h2 {
+  font-family: Laceration, sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.form-botao {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-botao h2 {
+  color: white;
+}
+
+.form-botao button {
+  border-image: "img/caixabranca.png";
+}
+
+.beneficios {
+  font-size: 64px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.botao-reservar {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.botao-reservar img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.texto-reservar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Laceration, sans-serif;
+  font-size: 18px;
+  color: white;
+  pointer-events: none;
+}
+
+.before {
+  width: 100%;
+}
+
+.quadrado {
+  width: 100%;
+  height: 700px;
+}
+
+.caixas {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.beneficios {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 64px;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cartas2 {
+  position: absolute;
+  top: 180px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 80%;
+  z-index: 2;
+}
+
+.cartas-sobre-fundo {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.CARD {
+  border: none;
+}
+
+.carta-bloco,
+.carta-bloco2,
+.carta-bloco3 {
+  width: 30%;
+  text-align: center;
+  flex: 1;
+}
+
+.carta-bloco img,
+.carta-bloco2 img,
+.carta-bloco3 img {
+  max-width: 100%;
+  height: auto;
+}
+
+.carta-bloco h3 {
+  margin-left: -40px;
+}
+
+.carta-bloco h3,
+.carta-bloco2 h3,
+.carta-bloco3 h3 {
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: Aldrich, sans-serif;
+  margin-top: 10px;
+}
+
+.botao-reservar {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 690px;
+  transform: translateX(-50%);
+  z-index: 2;
+  margin-bottom: 60px;
+}
+
+.texto-reservar {
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
+
+.imagem-fundo {
+  width: 100%;
+}
+
+/* Formulário */
+.formulario-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 100px;
+  font-family: Aldrich, sans-serif;
+}
+
+.mapa-area,
+.formulario-area {
+  flex: 1;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 80px;
+}
+
+.mapa-area img {
+  margin-top: 200px;
+}
+
+.formulario-area h1 {
+  font-size: 64px;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid #ffffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border 0.3s ease;
+  background-color: #d9d9d9;
+  opacity: 30%;
+  font-family: Aldrich, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  font-family: Aldrich, sans-serif;
+  border-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.image-submit-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-submit-button img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .Parte1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .primeiro,
+  .segundo,
+  .terceiro {
+    position: static;
+  }
+  .formulario-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: -140px;
+  }
+
+  .mapa-area,
+  .formulario-area {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .formulario-area h1 {
+    font-size: 24px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 14px;
+  }
+
+  .beneficios {
+    width: 1000vw;
+    font-size: 45px;
+  }
+
+  .cartas2 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cartas-sobre-fundo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 64px;
+    margin-top: 30px;
+  }
+
+  .carta-bloco {
+    margin-left: 30px;
+  }
+
+  .carta-bloco h3 {
+    margin-right: 64px;
+  }
+  .carta-bloco,
+  .carta-bloco2,
+  .carta-bloco3 {
+    width: 90%;
+    text-align: center;
+  }
+
+  .carta-bloco h3,
+  .carta-bloco2 h3,
+  .carta-bloco3 h3 {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+  }
+
+  .quadrado {
+    min-height: 1750px;
+  }
+
+  .botao-reservar {
+    margin-top: 1020px;
+    text-align: center;
+  }
+
+  .form-botao {
+    margin-top: 50px;
+  }
+  .botao-reservar h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .beneficios {
+    width: 1000vw;
+    font-size: 45px;
+  }
+  .carta-bloco,
+  .carta-bloco2,
+  .carta-bloco3 {
+    text-align: center;
+  }
+
+  .textodepois {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
