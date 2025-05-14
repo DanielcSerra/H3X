@@ -16,11 +16,6 @@ if ($result && $result->num_rows > 0) {
 
 <body>
 <?php include 'require/navbar.php';?>
-<!--banner/mudar para estilo cruz-->
-<!--Secção "fotos populares" com 4 fotos e um botão ver mais/ver album completo-->
-<!--se o utilizador estiver logado ->formulário para adicionar imagem á coleção
-    se o utilizador não estiver logado -> secção com botões registrar ou login-->
-<!--secção de regras(lado a lado ao formulário ou em baixo dos botões-->
 <main>
 <div class="container" id="bannertext">
             <div class="titulo">
@@ -35,7 +30,7 @@ if ($result && $result->num_rows > 0) {
     </div>
 <div class="container d-flex flex-row justify-content-center mt-4">
     <?php
-    // Query to get 4 approved images
+
     $sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
     $result = $conn->query($sql);
     
@@ -48,7 +43,7 @@ if ($result && $result->num_rows > 0) {
             </div>';
         }
     } else {
-        // Fallback if no images found in database
+
         echo '
         <div class="caixaimg">
             <img class="imgborder" src="img/galeria1.jpg" alt="foto">
