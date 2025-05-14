@@ -73,7 +73,6 @@ $pageTitle = "H3X ADMIN - FAQ";
                         <th>#</th>
                         <th>Título</th>
                         <th>Resposta</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">';
