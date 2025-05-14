@@ -16,8 +16,16 @@
     <div class="titulo">
         <h1>FUNDADORES E GESTÃO <span class="staff">STAFF</span></h1>
     </div>
-
-
+    <div class="partes-container">
+        <div class="part1">
+            <img src="img/fundador.png" alt="fundador">
+            <h2>FUNDADOR</h2>
+        </div>
+        <div class="part2">
+            <img src="img/manager.png" alt="manager">
+            <h2>MANAGER</h2>
+        </div>
+    </div>
     <?php include 'require/footer.php'; ?>
 </body>
 

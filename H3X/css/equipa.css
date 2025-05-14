@@ -52,3 +52,31 @@ p {
 .staff {
   margin-left: 140px;
 }
+
+.partes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.partes-container h2 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40);
+  color: white;
+}
+.part1,
+.part2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+.part1 img,
+.part2 img {
+  max-width: 100%;
+  max-height: 100%;
+}
