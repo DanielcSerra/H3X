@@ -58,12 +58,13 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  margin-top: 120px;
 }
 
 .partes-container h2 {
   font-family: Aldrich, sans-serif;
-  font-size: clamp(30px, 8vw, 40);
   color: white;
+  margin-top: 120px;
 }
 .part1,
 .part2 {
@@ -72,6 +73,7 @@ p {
   align-items: center;
   width: 35%;
   box-sizing: border-box;
+  font-size: clamp(30px, 8vw, 40);
   gap: 1rem;
 }
 
