@@ -51,7 +51,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
         </div>
     </div>
 
-    <a href="dashboard_galeria" class="d-block px-3 py-2 w-100 text-start" style="font-size: 18px;">
+    <a href="dashboard_galeria.php" class="d-block px-3 py-2 w-100 text-start" style="font-size: 18px;">
         <i class="ri-gallery-line"></i> Galeria
     </a>
     <a href="#" class="d-block px-3 py-2 w-100 text-start" style="font-size: 18px;">

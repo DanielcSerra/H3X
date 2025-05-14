@@ -1,6 +1,6 @@
 <?php include 'require/head.php'; ?>
 <title>H3X - Pagina</title>
-<link rel="stylesheet" href="css/faq.css"> <!-- CSS AQUI -->
+<link rel="stylesheet" href="css/faq.css"> 
 </head>
 <body>
     <?php include 'require/navbar.php'; ?>
@@ -9,7 +9,7 @@
         <div class="faq-header">FAQ</div>
 
         <?php
-        require_once 'db_config.php'; // <- Usa o arquivo com a conexão
+        require_once 'db_config.php';
 
         $sql = "SELECT * FROM faq ORDER BY id";
         $result = $conn->query($sql);

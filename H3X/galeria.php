@@ -1,5 +1,14 @@
 <?php include 'require/head.php'; 
+require_once 'db_config.php';
 
+$sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
+$result = $conn->query($sql);
+$popular_images = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_object()) {
+        $popular_images[] = $row;
+    }
+}
 ?>
 <title>H3X - Galeria</title>
 <link rel="stylesheet" href="css/galeria.css">
@@ -7,11 +16,6 @@
 
 <body>
 <?php include 'require/navbar.php';?>
-<!--banner/mudar para estilo cruz-->
-<!--Secção "fotos populares" com 4 fotos e um botão ver mais/ver album completo-->
-<!--se o utilizador estiver logado ->formulário para adicionar imagem á coleção
-    se o utilizador não estiver logado -> secção com botões registrar ou login-->
-<!--secção de regras(lado a lado ao formulário ou em baixo dos botões-->
 <main>
 <div class="container" id="bannertext">
             <div class="titulo">
@@ -25,18 +29,36 @@
         <h1>Fotos Populares</h1>
     </div>
 <div class="container d-flex flex-row justify-content-center mt-4">
-    <div class="caixaimg">
-        <img class="imgborder" src="img/galeria1.jpg" alt="foto">
-    </div>
-    <div class="caixaimg">
-        <img class="imgborder" src="img/galeria2.jpg" alt="">
-    </div>
-    <div class="caixaimg">
-        <img class="imgborder" src="img/galeria3.jpg" alt="">
-    </div>
-    <div class="caixaimg">
-        <img class="imgborder" src="img/galeria4.jpg" alt="">
-    </div>
+    <?php
+
+    $sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
+    $result = $conn->query($sql);
+    
+    if ($result && $result->num_rows > 0) {
+        while ($image = $result->fetch_object()) {
+            echo '
+            <div class="caixaimg">
+                <img class="imgborder" src="uploads/galeria/'.htmlspecialchars($image->imagem).'" 
+                     alt="'.htmlspecialchars($image->titulo ?: 'Gallery image').'">
+            </div>';
+        }
+    } else {
+
+        echo '
+        <div class="caixaimg">
+            <img class="imgborder" src="img/galeria1.jpg" alt="foto">
+        </div>
+        <div class="caixaimg">
+            <img class="imgborder" src="img/galeria2.jpg" alt="">
+        </div>
+        <div class="caixaimg">
+            <img class="imgborder" src="img/galeria3.jpg" alt="">
+        </div>
+        <div class="caixaimg">
+            <img class="imgborder" src="img/galeria4.jpg" alt="">
+        </div>';
+    }
+    ?>
 </div>
 <div class="container d-flex justify-content-end mt-4">
 <div class="botao direita">
