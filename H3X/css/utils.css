@@ -15,20 +15,6 @@ body {
   padding: 0;
 }
 
-h1{
-  font-family: 'laceration','sans-serif';
-}
-
-p{
-  color:white;
-  font-size: 16px;
-}
-
-h2{
-  -webkit-text-stroke: 1px white;
-  color:transparent;
-}
-
 html,
 body {
   height: 100%;

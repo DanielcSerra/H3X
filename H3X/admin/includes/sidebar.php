@@ -35,7 +35,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
         </a>
         <div class="collapse <?= $fileName == 'dashboard_vip.php' ? 'show' : '' ?>" id="vipDropdown">
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">VIP</a>
-            <a href="#" class="ms-3 d-block" style="font-size: 16px;">VIP_Mesas</a>
+            <a href="dashboard_servicoes_vip.php" class="ms-3 d-block" style="font-size: 16px;">Serviços</a>
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">Mesas</a>
         </div>
     </div>

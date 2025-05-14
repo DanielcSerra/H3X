@@ -19,6 +19,22 @@ p {
   color: white;
 }
 
+
+
+h1{
+  font-family: 'laceration','sans-serif';
+}
+
+p{
+  color:white;
+  font-size: 16px;
+}
+
+h2{
+  -webkit-text-stroke: 1px white;
+  color:transparent;
+}
+
 .Parte1 {
   background: url("../img/imagemdefundo.png") no-repeat center center;
   background-size: cover;
@@ -36,31 +52,32 @@ p {
   height: auto;
 }
 
-.titulo {
-  align-items: center;
-  text-align: center;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 
 .terceiro {
   -webkit-text-stroke: 2px #828282;
   opacity: 50%;
+  position: relative;
+  top: 35px;
+  font-size: 50px;
+  font-family: Aldrich, sans-serif;
   animation: aparecer 1.5s forwards;
 }
 .segundo {
   -webkit-text-stroke: 2px #cacaca;
   position: relative;
-  top: -65px;
+  top: 35px;
+  font-size: 50px;
   opacity: 50%;
+  font-family: Aldrich, sans-serif;
   animation: aparecer 1s forwards;
 }
 .primeiro {
   -webkit-text-stroke: 2px white;
   position: relative;
-  top: -130px;
+  font-size: 50px;
+  font-family: Aldrich, sans-serif;
+  top: 30px;
   animation: aparecer 0.5s forwards;
 }
 
@@ -207,17 +224,13 @@ p {
   text-align: center;
   flex: 1;
 }
-
-.carta-bloco img,
-.carta-bloco2 img,
-.carta-bloco3 img {
-  max-width: 100%;
-  height: auto;
+.carta-bloco img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.carta-bloco h3 {
-  margin-left: -40px;
-}
+
 
 .carta-bloco h3,
 .carta-bloco2 h3,
@@ -252,6 +265,7 @@ p {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  color: white;
   margin-top: 100px;
   font-family: Aldrich, sans-serif;
 }
@@ -272,7 +286,9 @@ p {
 
 .formulario-area h1 {
   font-size: 64px;
+  color: transparent;
   text-align: center;
+  font-family: Aldrich, sans-serif;
 }
 
 input[type="text"],
@@ -370,49 +386,43 @@ textarea:focus {
     font-size: 45px;
   }
 
+  .carta-bloco img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .cartas2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
+  
   .cartas-sobre-fundo {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: space-between;
+    align-items: center; /
     width: 100%;
-    margin-left: 64px;
     margin-top: 30px;
+    margin-left: 0; 
   }
-
+  
   .carta-bloco {
-    margin-left: 30px;
-  }
-
-  .carta-bloco h3 {
-    margin-right: 64px;
-  }
-  .carta-bloco,
-  .carta-bloco2,
-  .carta-bloco3 {
     width: 90%;
     text-align: center;
+    margin: 0 auto; 
   }
-
-  .carta-bloco h3,
-  .carta-bloco2 h3,
-  .carta-bloco3 h3 {
-    color: rgb(0, 0, 0);
-    font-size: 18px;
+  
+  .carta-bloco h3 {
+    margin: 10px 0 0 0; 
   }
-
   .quadrado {
     min-height: 1750px;
   }
 
   .botao-reservar {
-    margin-top: 1020px;
+    margin-top: 1060px;
     text-align: center;
   }
 
@@ -426,8 +436,10 @@ textarea:focus {
 
 @media (max-width: 1200px) {
   .beneficios {
-    width: 1000vw;
+    width: 100%;
+    max-width: 100%;
     font-size: 45px;
+    overflow-wrap: break-word;
   }
   .carta-bloco,
   .carta-bloco2,

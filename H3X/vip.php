@@ -1,9 +1,16 @@
-<?php include 'require/head.php';?>
-<title>H3X - Pagina</title>
-<link rel="stylesheet" href="css/vip.css"> <!-- CSS AQUI -->
+<?php
+
+require_once 'db_config.php';
+
+$sql = "SELECT * FROM servicos_vip";
+$result = $conn->query($sql);
+?>
+<title>H3X - VIP</title>
+<link rel="stylesheet" href="css/vip.css">
 </head>
 
 <body>
+<?php include 'require/head.php';?>
     <?php include 'require/navbar.php';?>
 
     <div class="Parte1">
@@ -48,21 +55,15 @@
             <div class="caixas">
                 <h2 class="beneficios">BENEFÍCIOS VIP</h2>
                 <div class="cartas2">
-                    <div class="cartas-sobre-fundo">
-                        <div class="carta-bloco">
-                            <img src="img/Garrafa.png" class="CARD" alt="Card">
-                            <h3>2 Garrafas Premium</h3>
-                        </div>
-                        <div class="carta-bloco2">
-                            <img src="img/conforto.png" class="CARD2" alt="Carta 2">
-                            <h3>Maior conforto</h3>
-                        </div>
-                        <div class="carta-bloco3">
-                            <img src="img/Dj.png" class="CARD3" alt="Carta 3">
-                            <h3>Conhece os DJS</h3>
-                        </div>
-                    </div>
-                </div>
+    <div class="cartas-sobre-fundo">
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <div class="carta-bloco text-center mb-4">
+        <img src="img/<?php echo trim($row['imagem']); ?>" class="CARD mb-2" alt="Card">
+        <h3><?php echo trim($row['titulo']); ?></h3>
+    </div>
+<?php endwhile; ?>
+    </div>
+</div>
                 <div class="botao-reservar">
                     <img src="img/Botao_Rese.png" alt="Botão Reservar">
                     <h2 class="texto-reservar">RESERVAR</h2>
