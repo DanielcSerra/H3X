@@ -3,7 +3,7 @@
 
 <head>
     <?php include 'require/head.php'; ?>
-    <title>H3X - Arcade</title>
+    <title>H3X - Equipa</title>
     <link rel="stylesheet" href="css/equipa.css">
 </head>
 
