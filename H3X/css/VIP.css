@@ -366,7 +366,7 @@ textarea:focus {
   }
 
   .beneficios {
-    width: 1000vw;
+    width: 100%;
     font-size: 45px;
   }
 
@@ -426,7 +426,7 @@ textarea:focus {
 
 @media (max-width: 1200px) {
   .beneficios {
-    width: 1000vw;
+    width: 600vw;
     font-size: 45px;
   }
   .carta-bloco,
