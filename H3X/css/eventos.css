@@ -1,0 +1,820 @@
+@keyframes aparecer {
+  0% {
+      transform: translateY(-250px);
+
+  }
+  100% {
+      transform: translateY(0);
+
+  }
+}
+
+
+.banner {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+
+.banner-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: auto;
+  height: 200vw;
+  object-fit: cover;
+  z-index: 1;
+  
+}
+
+
+@media (min-aspect-ratio: 16/9) {
+  .banner-video {
+    height: auto;
+    width: 200vh;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+
+.side-markers {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20vw;
+  height: auto;
+  z-index: 5;
+}
+
+.left-marker {
+  left: 1vw;
+}
+
+.right-marker {
+  right: 1vw;
+}
+
+.left-img {
+    left:0;
+    top: 50%;
+    transform: translateY(0%) rotate(90deg);
+}
+
+.right-img {
+    right: 0;
+    top: 50%;
+    transform: translateY(0%) rotate(90deg);
+}
+
+.marker-img {
+    position: absolute;
+    width: auto;
+    height: 2vh;
+    transform: rotate(90deg);
+    object-fit: contain;
+}
+
+
+.side-text-left,
+.side-text-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(2.5rem, 2vw, 7rem);
+  color: #fff;
+  text-align: center;
+  width: 3vh;
+  z-index: 10;
+}
+
+.side-text-left {
+  left: 17.5vh;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.side-text-right {
+  right: 17.5vh;
+}
+
+.scroll-wrapper {
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: row;
+  gap:5%;
+  align-items: center;
+  animation: scroll-up-loop 4s linear infinite;
+  height: 200%;
+}
+
+.side-text-right .scroll-content {
+  animation: scroll-down-loop 4s linear infinite;
+}
+
+.text-block {
+  font-family: 'Aldrich', sans-serif;
+  padding: 1vh 0;
+}
+
+
+
+
+@keyframes scroll-up-loop {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes scroll-down-loop {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+
+.center-button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+  width: clamp(440px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.center-button:hover {
+  background-image: url('../img/caixa3.png');
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.button-text {
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.center-button:hover .button-text {
+  color: #A853A8;
+  transform: scale(1.1);
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+.eventos-button {
+  position: relative;
+  left: 50%;
+  margin-top:7%;
+  transform: translate(-50%, -50%);
+  width: clamp(440px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.eventos-button:hover {
+  background-image: url('../img/caixa3.png');
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.button-text {
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.eventos-button:hover .button-text {
+  color: #A853A8;
+  transform: scale(1.1);
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+
+.banner-left-texts {
+  position: absolute;
+  top: 55%;
+  left: 17vw;
+  transform: translateY(-50%);
+  z-index: 6;
+  color: white;
+  font-family: 'Aldrich', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 9vh;
+  max-width: 37vw;
+}
+
+.event-date {
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  font-weight: 700;
+  color:#A853A8;
+  font-family: 'Aldrich', sans-serif;
+}
+
+.event-title {
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-family: 'Laceration', sans-serif;
+}
+
+.event-lineup {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  line-height: 1.2;
+  white-space: pre-line;
+  color:#A853A8;
+  font-family: 'Aldrich', sans-serif;
+}
+
+
+.banner-right-image {
+  position: absolute;
+  top: 65%;
+  right: 10vw;
+  transform: translateY(-50%) scaleX(-1);
+  z-index: 4;
+  width: 30vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-right-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.destaque-card {
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;
+  width: 265px;
+  height: 445px;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.destaque-card:hover {
+  transform: scale(1.05);
+}
+
+.card-text h5 {
+  font-size: 18px;
+}
+
+.card-text p {
+  font-size: 14px;
+  margin: 0;
+}
+
+
+.hr_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.hr_title h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.section-title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 64px;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  text-align: center;
+}
+.section-title2 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 64px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.white-section {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.content-box {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row-section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 520px;
+  height: 520px;
+}
+
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.inner-image {
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 2;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.desc1,
+.desc2 {
+  font-size: 1.3rem;
+  color: #000000;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+
+.custom-button {
+  width: clamp(200px, 6vw, 300px);
+  height: clamp(45px, 5vw, 65px);
+  background-image: url("../img/caixasec.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  border: none;
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  z-index: 5;
+  padding: 0;
+  box-sizing: border-box;
+}
+.custom-button:hover {
+  transform: scale(1.1);
+}
+
+
+.reverse-row {
+  text-align: end;
+}
+.reverse-row .text-column .button-wrapper {
+  align-self: flex-end;
+}
+
+
+.white-section .text-column {
+  color: black;
+  font-family: 'Aldrich', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 520px;
+}
+
+
+.white-section .text-column .name2 {
+  font-size: 36px;
+}
+
+
+
+
+
+.destaque-card {
+  position: relative;
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;
+  width: 265px;
+  height: 445px;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.destaque-card:hover {
+  transform: scale(1.05);
+}
+
+
+.destaque-card .card-bg {
+  background:url("../img/fundobanner.png");
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  width: 89%;
+  height: 95%;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.7); 
+  z-index: 0;
+}
+
+
+.destaque-card .card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+
+.destaque-card .event-date {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+
+.destaque-card .event-title {
+  z-index: 3;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: auto; 
+}
+
+
+.destaque-card .dj1-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.destaque-card .dj1-image-wrapper img {
+  position: absolute;
+  z-index: 1;
+  bottom: 30px;
+  max-width: 220px;   
+  max-height: 220px; 
+  object-fit: contain;
+}
+
+
+.destaque-card .event-lineup {
+  color:white;
+  z-index: 3;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: pre-line;
+  margin-top: auto;
+  text-align: center;
+}
+
+
+.destaque-card .mini-button {
+  position: absolute;
+  left: 50%;
+  bottom: -4%; 
+  transform: translateX(-50%);
+  width: 170px; 
+  height: 60px; 
+  background-image: url("../img/caixasec.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  border: none;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.destaque-card .mini-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  background-image: url('../img/caixasec.png'); 
+}
+
+.destaque-card .mini-button .button-text {
+  font-family: 'Aldrich', sans-serif;
+  color: white;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.destaque-card .mini-button:hover .button-text {
+  transform: scale(1.1);
+  font-size: 1.9rem;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .row-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  order:1;
+
+}
+
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.inner-image {
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 2;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  order:2;
+}
+.reverse-row {
+  text-align: center;
+}
+.reverse-row .text-column .button-wrapper {
+  align-self: center;
+}
+.button-wrapper {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.section-title2 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 42px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.eventos-button {
+  position: relative; 
+  left: 50%;
+  margin-top:20%;
+  transform: translate(-50%, -50%);
+  width: clamp(440px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png"); 
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.section-title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 42px;
+
+}
+}
+
+@media (max-width:1000px) {
+   .row-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  order:1;
+
+}
+
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.inner-image {
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 2;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  order:2;
+}
+.reverse-row {
+  text-align: center;
+}
+.reverse-row .text-column .button-wrapper {
+  align-self: center;
+}
+.button-wrapper {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.section-title2 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  text-align: center;
+}
+.section-title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+}
+.eventos-button {
+  position: relative; 
+  left: 50%;
+  margin-top:15%;
+  transform: translate(-50%, -50%);
+  width: clamp(440px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png"); 
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+}
+
