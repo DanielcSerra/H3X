@@ -246,4 +246,7 @@ textarea{
   .titulo{
     height:15%;
   }
+    .file-upload {
+    width:200%;
+  }
 }
