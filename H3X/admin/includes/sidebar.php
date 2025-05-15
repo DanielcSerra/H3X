@@ -45,7 +45,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
             <i class="ri-calendar-event-line"></i> Eventos
         </a>
         <div class="collapse <?= $fileName == 'dashboard_eventos.php' ? 'show' : '' ?>" id="eventosDropdown">
-            <a href="#" class="ms-3 d-block" style="font-size: 16px;">Eventos</a>
+            <a href="dashboard_eventos.php" class="ms-3 d-block" style="font-size: 16px;">Eventos</a>
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">Categorias Eventos</a>
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">DJs</a>
         </div>
