@@ -382,10 +382,11 @@ textarea:focus {
   }
 
   .beneficios {
-    width: 1000vw;
+    width: 100%;
     font-size: 45px;
   }
 
+<<<<<<< HEAD
   .carta-bloco img {
     display: block;
     margin-left: auto;
@@ -393,14 +394,20 @@ textarea:focus {
   }
   
   .cartas2 {
+=======
+    .cartas2 {
+>>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
     flex-direction: column;
+        margin-top: 50px;
     align-items: center;
     text-align: center;
+    width: 100%;
   }
   
   .cartas-sobre-fundo {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     gap: 20px;
     align-items: center; /
     width: 100%;
@@ -416,6 +423,30 @@ textarea:focus {
   
   .carta-bloco h3 {
     margin: 10px 0 0 0; 
+=======
+    align-items: center; /* centra horizontalmente os blocos */
+    justify-content: center;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .carta-bloco,
+  .carta-bloco2,
+  .carta-bloco3 {
+    width: 100%;
+    max-width: 300px; /* controla a largura máxima das cartas */
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .carta-bloco h3,
+  .carta-bloco2 h3,
+  .carta-bloco3 h3 {
+    margin: 10px 0 0 0;
+    text-align: center;
+>>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
   }
   .quadrado {
     min-height: 1750px;
@@ -436,8 +467,12 @@ textarea:focus {
 
 @media (max-width: 1200px) {
   .beneficios {
+<<<<<<< HEAD
     width: 100%;
     max-width: 100%;
+=======
+  width: 100%;
+>>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
     font-size: 45px;
     overflow-wrap: break-word;
   }

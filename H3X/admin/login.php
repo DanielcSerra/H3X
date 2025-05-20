@@ -17,6 +17,7 @@ if (isset($_SESSION["email"])) {
 <body>
 
 <div class="login-container">
+
     <img src="../uploads/logo.png" alt="Logo" class="logo">
     <h1 class="login-title">Iniciar Sessão</h1>
 
@@ -43,7 +44,6 @@ if (isset($_SESSION["email"])) {
 
     <div class="register-link">
         Ainda não tem conta? <a href="registar.php">Registe-se aqui</a>
-    </div>
 </div>
 
 </body>

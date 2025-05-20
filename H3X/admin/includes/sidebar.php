@@ -35,7 +35,11 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
         </a>
         <div class="collapse <?= $fileName == 'dashboard_vip.php' ? 'show' : '' ?>" id="vipDropdown">
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">VIP</a>
+<<<<<<< HEAD
             <a href="dashboard_servicoes_vip.php" class="ms-3 d-block" style="font-size: 16px;">Serviços</a>
+=======
+            <a href="dashboard_servicos_vip.php" class="ms-3 d-block" style="font-size: 16px;">Serviços</a>
+>>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">Mesas</a>
         </div>
     </div>
@@ -45,7 +49,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
             <i class="ri-calendar-event-line"></i> Eventos
         </a>
         <div class="collapse <?= $fileName == 'dashboard_eventos.php' ? 'show' : '' ?>" id="eventosDropdown">
-            <a href="#" class="ms-3 d-block" style="font-size: 16px;">Eventos</a>
+            <a href="dashboard_eventos.php" class="ms-3 d-block" style="font-size: 16px;">Eventos</a>
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">Categorias Eventos</a>
             <a href="#" class="ms-3 d-block" style="font-size: 16px;">DJs</a>
         </div>
@@ -59,7 +63,7 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
     </a>
     
     <a href="dashboard_faq.php" class="d-block px-3 py-2 w-100 text-start <?= $fileName == 'dashboard_faq.php' ? 'sel_nav' : '' ?>" style="font-size: 18px;">
-        <i class="ri-user-line"></i> Faq
+        <i class="ri-question-line"></i> FAQ
     </a>
     
         <div class="position-absolute bottom-0 w-100 p-3 border-top d-flex justify-content-between align-items-center">

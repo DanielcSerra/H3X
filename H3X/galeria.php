@@ -28,7 +28,7 @@ if ($result && $result->num_rows > 0) {
     <div class="container">
         <h1>Fotos Populares</h1>
     </div>
-<div class="container d-flex flex-row justify-content-center mt-4">
+<div class="container d-flex flex-column flex-md-row justify-content-center mt-4">
     <?php
 
     $sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";

@@ -28,28 +28,28 @@ switch ($tipoUtilizador) {
         break;
 }
 
-$pageTitle = "H3X ADMIN - FAQ";
+$pageTitle = "H3X ADMIN - Eventos";
+
 ?>
 <?php require 'includes/header.php'; ?>
 <?php require 'includes/sidebar.php'; ?>
 
 <div class="content">
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-        <h2 class="mb-0">FAQ</h2>
+        <h2 class="mb-0">Eventos</h2>
 
         <div class="d-flex align-items-center gap-2">
             <form method="GET" class="d-flex align-items-center gap-2 mb-0">
-                <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar..."
-                    style="width: 200px;">
+                <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar..." style="width: 200px;">
                 <button type="submit" class="btn btn-outline-secondary btn-sm px-2">
                     <i class="ri-search-line"></i>
                 </button>
-                <a href="dashboard_faq.php" class="btn btn-outline-danger btn-sm px-2">
+                <a href="dashboard_eventos.php" class="btn btn-outline-danger btn-sm px-2">
                     <i class="ri-close-line"></i>
                 </a>
             </form>
 
-            <a href="adicionar_faq.php" class="btn btn-dark btn-sm px-3">
+            <a href="adicionar_evento.php" class="btn btn-dark btn-sm px-3">
                 <i class="ri-add-line me-1"></i> Adicionar
             </a>
         </div>
@@ -59,9 +59,9 @@ $pageTitle = "H3X ADMIN - FAQ";
         <?php
         if (isset($_GET["pesquisa"]) && !empty($_GET["pesquisa"])) {
             $pesquisa = mysqli_real_escape_string($conn, $_GET["pesquisa"]);
-            $sql = "SELECT * FROM faq WHERE titulo LIKE '%$pesquisa%' OR resposta LIKE '%$pesquisa%'";
+            $sql = "SELECT * FROM eventos WHERE titulo LIKE '%$pesquisa%'";
         } else {
-            $sql = "SELECT * FROM faq";
+            $sql = "SELECT * FROM eventos";
         }
 
         $result = $conn->query($sql);
@@ -71,28 +71,41 @@ $pageTitle = "H3X ADMIN - FAQ";
                 <thead class="bg-light text-secondary">
                     <tr>
                         <th>#</th>
+                        <th>Imagem</th>
                         <th>Título</th>
-                        <th>Resposta</th>
+                        <th>Data Início</th>
+                        <th>Data Fim</th>
+                        <th>Hora Início</th>
+                        <th>Hora Fim</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">';
-            
+
             $count = 1;
-            while ($faq = $result->fetch_object()) {
+            while ($evento = $result->fetch_object()) {
                 echo '<tr class="border-bottom">
                         <td>' . $count++ . '</td>
-                        <td>' . htmlspecialchars($faq->titulo) . '</td>
-                        <td>' . htmlspecialchars(substr($faq->resposta, 0, 100)) . '...</td>
                         <td>
-                            <a href="edit_faq.php?id=' . urlencode($faq->id) . '" class="btn btn-link text-warning p-0 me-2">
+                            <img src="../' . trim($evento->imagem_banner) . '" class="me-2"
+                            style="width: 80px; height: 60px; object-fit: cover;" alt="' . htmlspecialchars($evento->titulo) . '">
+                        </td>
+                        <td>' . htmlspecialchars($evento->titulo) . '</td>
+                        <td>' . $evento->data_inicio . '</td>
+                        <td>' . $evento->data_fim . '</td>
+                        <td>' . $evento->hora_inicio . '</td>
+                        <td>' . $evento->hora_fim . '</td>
+                        <td>
+                            <a href="edit_evento.php?id=' . $evento->id . '" class="btn btn-link text-warning p-0 me-2">
                                 <i class="ri-pencil-line"></i>
                             </a>
-                            <a href="delete_faq.php?id=' . urlencode($faq->id) . '" class="btn btn-link text-danger p-0">
+                            <a href="delete_evento.php?id=' . $evento->id . '" class="btn btn-link text-danger p-0">
                                 <i class="ri-delete-bin-line"></i>
                             </a>
                         </td>
                     </tr>';
             }
+
             echo '</tbody></table>';
         } else {
             echo "<p class='alert alert-warning'>Sem resultados encontrados.</p>";
