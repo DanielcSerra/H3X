@@ -1,48 +1,37 @@
 body {
-  background-color: #f8f9fa;
-  font-size: 1rem;
+  overflow-x: hidden;
+  background-color: #f7f7f8;
 }
-
-.sidebar .sel_nav {
-  color: #ff0099;
-}
-
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
-  background-color: #212529;
+  width: 240px;
+  background-color: #1c1c1e;
   color: white;
-  width: 250px;
-  padding-top: 1rem;
-  font-size: 1.1rem;
+  padding-top: 20px;
 }
 .sidebar a {
   color: white;
-  text-decoration: none;
-  padding: 1rem 1.5rem;
   display: block;
+  padding: 12px 20px;
+  text-decoration: none;
 }
 .sidebar a:hover {
-  background-color: #343a40;
+  background-color: #333;
 }
-.table {
-  font-size: 1.1rem;
-  width: 100%;
-  max-width: 100%;
+.content {
+  margin-left: 250px;
+  padding: 20px;
 }
-.table th,
-.table td {
-  padding: 1rem;
+.table-container {
+  max-height: 70vh;
+  overflow-y: auto;
 }
-.table-actions i {
-  cursor: pointer;
-  margin-right: 15px;
-}
-.btn {
-  font-size: 1.1rem;
-  padding: 0.5rem 1.25rem;
-}
-
-.table img {
-  max-width: 80px;
-  height: auto;
+.table thead {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 }

@@ -366,45 +366,43 @@ textarea:focus {
   }
 
   .beneficios {
-    width: 1000vw;
+    width: 100%;
     font-size: 45px;
   }
 
-  .cartas2 {
+    .cartas2 {
     flex-direction: column;
+        margin-top: 50px;
     align-items: center;
     text-align: center;
+    width: 100%;
   }
 
   .cartas-sobre-fundo {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    justify-content: space-between;
+    align-items: center; /* centra horizontalmente os blocos */
+    justify-content: center;
     width: 100%;
-    margin-left: 64px;
-    margin-top: 30px;
+    padding: 0 16px;
+    margin: 0 auto;
+    gap: 20px;
   }
 
-  .carta-bloco {
-    margin-left: 30px;
-  }
-
-  .carta-bloco h3 {
-    margin-right: 64px;
-  }
   .carta-bloco,
   .carta-bloco2,
   .carta-bloco3 {
-    width: 90%;
+    width: 100%;
+    max-width: 300px; /* controla a largura máxima das cartas */
     text-align: center;
+    margin: 0 auto;
   }
 
   .carta-bloco h3,
   .carta-bloco2 h3,
   .carta-bloco3 h3 {
-    color: rgb(0, 0, 0);
-    font-size: 18px;
+    margin: 10px 0 0 0;
+    text-align: center;
   }
 
   .quadrado {
@@ -426,7 +424,7 @@ textarea:focus {
 
 @media (max-width: 1200px) {
   .beneficios {
-    width: 1000vw;
+  width: 100%;
     font-size: 45px;
   }
   .carta-bloco,

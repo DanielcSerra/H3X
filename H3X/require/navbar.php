@@ -47,9 +47,9 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
   <div class="fullscreen-box" id="fullscreenbox">
     <a href="#" class="<?= $fileName == 'index.php' ? 'sel_nav' : '' ?>">HOME</a>
     <a href="sobrenos.php" class="<?= $fileName == 'sobrenos.php' ? 'sel_nav' : '' ?>">SOBRE NÓS</a>
-    <a href="#">EVENTOS</a>
-    <a href="#">VIP</a>
-    <a href="#">GALERIA</a>
+    <a href="eventos.php" class="<?= $fileName == 'eventos.php' ? 'sel_nav' : '' ?>">EVENTOS</a> 
+    <a href="vip.php" class="<?= $fileName == 'vip.php' ? 'sel_nav' : '' ?>">VIP</a> 
+    <a href="galeria.php" class="<?= $fileName == 'galeria.php' ? 'sel_nav' : '' ?>">GALERIA</a> 
     <a href="blog.php" class="<?= $fileName == 'blog.php' ? 'sel_nav' : '' ?>">BLOG</a>
     <a href="arcade.php" class="<?= $fileName == 'arcade.php' ? 'sel_nav' : '' ?>">ARCADE</a>
     <a href="comochegar.php" class="<?= $fileName == 'comochegar.php' ? 'sel_nav' : '' ?>">COMO CHEGAR</a>

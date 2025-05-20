@@ -2,24 +2,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background-image: url(../img/background.png);
     background-size: cover;
     background-position: center;
     color: white;
+    font-family: Arial, sans-serif;
 }
 
 .login-container {
-    width: 100%;
+    width: 90%;
     max-width: 400px;
-    background: rgba(255, 255, 255, 0.07); 
+    background: rgba(255, 255, 255, 0.07);
     padding: 30px;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .login-title {
@@ -30,50 +32,62 @@ body {
 }
 
 .form-control {
-    border-radius: 3px;
+    width: 100%;
+    border-radius: 5px;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
+
 .form-control::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
 .form-text-link {
     text-align: right;
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #ddd;
 }
+
 .btn-primary {
     background-color: #ffffff;
     color: #333;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-weight: bold;
-    margin-bottom: 20px; 
+    margin-top: 10px;
+    margin-bottom: 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
 }
 .btn-primary:hover {
     background-color: #ff0099;
     color: white;
 }
 
+.register-link {
+    font-size: 14px;
+}
 .register-link a {
     color: #ffffff;
     text-decoration: underline;
     transition: color 0.3s ease;
 }
 .register-link a:hover {
-    color:rgb(173, 173, 173);
+    color: rgb(173, 173, 173);
 }
 
 .logo {
-    width: 120px;
+    width: 100px;
     margin-bottom: 20px;
 }
+
 .alert {
     background-color: rgba(255, 0, 0, 0.2);
     color: #fff;
@@ -81,4 +95,42 @@ body {
     border-radius: 8px;
     margin-bottom: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 80px;
+    }
+
+    .register-link {
+        font-size: 13px;
+    }
 }
