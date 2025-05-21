@@ -39,15 +39,20 @@
             <img src="img/ImagemDJ.png" alt="barra" class="ImagemDJ">
         </div>
     </div>
-    <div class="barraverme">
-        <img src="img/Barra.png" alt="barra" class="Barra2">
-    </div>
+        <div class="barraverme">
+            <img src="img/Barra.png" alt="barra" class="Barra2">
+        </div>
 
-                    <div class="titulo23">
-                        <h1 class="prim">NOVO POST</h1>
-                        <h1 class="seg">NOVO POST</h1>
-                        <h1 class="terc">NOVO POST</h1>
-                    </div>
+        <div class="titulo23">
+            <h1 class="prim">NOVO POST</h1>
+            <h1 class="seg">NOVO POST</h1>
+            <h1 class="terc">NOVO POST</h1>
+        </div>
+
+        <div class="imagens-dj">
+            <img src="img/imagemDJ1.png" alt="imagem DJ 1" class="Imagemdj1">
+            <img src="img/imagemDJ2.png" alt="imagem DJ 2" class="Imagemdj2">
+        </div>
     <?php include 'require/footer.php'; ?>
 </body>
 
