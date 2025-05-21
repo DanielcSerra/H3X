@@ -39,6 +39,15 @@
             <img src="img/ImagemDJ.png" alt="barra" class="ImagemDJ">
         </div>
     </div>
+    <div class="barraverme">
+        <img src="img/Barra.png" alt="barra" class="Barra2">
+    </div>
+
+                    <div class="titulo23">
+                        <h1 class="prim">NOVO POST</h1>
+                        <h1 class="seg">NOVO POST</h1>
+                        <h1 class="terc">NOVO POST</h1>
+                    </div>
     <?php include 'require/footer.php'; ?>
 </body>
 
