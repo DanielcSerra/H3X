@@ -3,11 +3,12 @@
 
 <head>
     <?php include 'require/head.php'; ?>
-    <title>H3X - Arcade</title>
+    <title>H3X - Equipa</title>
     <link rel="stylesheet" href="css/equipa.css">
 </head>
 
 <body>
+
     <?php include 'require/navbar.php'; ?>
     <div class="hero d-flex justify-content-center align-items-center text-center position-relative">
         <h1>A EQUIPA</h1>
@@ -26,13 +27,12 @@
         </div>
     </div>
     <div class="areastaff">
-        <img src="img/before.png" width="100%" alt="barra">
-        <img src="img/Retangulo21.png" width="100%" alt="branco">
         <div class="titulostaff">
             <h1>STAFF</h1>
         </div>
+        <img src="img/before.png" width="100%" alt="barra">
+        <img src="img/Retangulo21.png" width="100%" alt="branco">
     </div>
-    
 
     <?php include 'require/footer.php'; ?>
 </body>

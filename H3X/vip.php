@@ -1,14 +1,4 @@
 <?php
-<<<<<<< HEAD
-
-require_once 'db_config.php';
-
-$sql = "SELECT * FROM servicos_vip";
-$result = $conn->query($sql);
-?>
-<title>H3X - VIP</title>
-<link rel="stylesheet" href="css/vip.css">
-=======
 // 1. Conexão com o banco de dados
 require_once("db_config.php");
 
@@ -19,11 +9,9 @@ $result = $conn->query($sql);
 <?php include 'require/head.php';?>
 <title>H3X - Pagina</title>
 <link rel="stylesheet" href="css/vip.css"> <!-- CSS AQUI -->
->>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
 </head>
 
 <body>
-<?php include 'require/head.php';?>
     <?php include 'require/navbar.php';?>
 
     <div class="Parte1">
@@ -67,18 +55,6 @@ $result = $conn->query($sql);
         <div class="container">
             <div class="caixas">
                 <h2 class="beneficios">BENEFÍCIOS VIP</h2>
-<<<<<<< HEAD
-                <div class="cartas2">
-    <div class="cartas-sobre-fundo">
-    <?php while ($row = $result->fetch_assoc()): ?>
-    <div class="carta-bloco text-center mb-4">
-        <img src="img/<?php echo trim($row['imagem']); ?>" class="CARD mb-2" alt="Card">
-        <h3><?php echo trim($row['titulo']); ?></h3>
-    </div>
-<?php endwhile; ?>
-    </div>
-</div>
-=======
 <div class="cartas2">
     <div class="cartas-sobre-fundo">
         <?php while ($row = $result->fetch_assoc()): ?>
@@ -90,7 +66,6 @@ $result = $conn->query($sql);
     </div>
 </div>
 <?php $conn->close(); ?>
->>>>>>> 464f6d35776e80c4e5d3cb3da389b3ee87e37aa6
                 <div class="botao-reservar">
                     <img src="img/Botao_Rese.png" alt="Botão Reservar">
                     <h2 class="texto-reservar">RESERVAR</h2>
