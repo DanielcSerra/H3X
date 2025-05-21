@@ -44,9 +44,9 @@
         </div>
 
         <div class="titulo23">
-            <h1 class="prim">NOVO POST</h1>
-            <h1 class="seg">NOVO POST</h1>
-            <h1 class="terc">NOVO POST</h1>
+            <h1 class="prim">MOMENTOS DA EQUIPA</h1>
+            <h1 class="seg">MOMENTOS DA EQUIPA</h1>
+            <h1 class="terc">MOMENTOS DA EQUIPA</h1>
         </div>
 
         <div class="imagens-dj">

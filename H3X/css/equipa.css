@@ -171,3 +171,39 @@ p {
   animation: aparecer 1.5s forwards;
 }
 
+.barraverme {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.Barra2 {
+  height: auto;
+  width: 1200px;
+}
+
+/* Texto NOVO POST no canto inferior direito rotacionado */
+.titulo23 {
+  bottom: 15px;
+  right: 15px;
+  transform: rotate(-90deg) translate(10%, 50%);
+  transform-origin: right bottom;
+  white-space: nowrap;
+  text-align: right;
+}
+
+
+.imagens-dj {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  transform: translateX(-60px); 
+}
+
+.Imagemdj1,
+.Imagemdj2 {
+  height: auto;
+}
