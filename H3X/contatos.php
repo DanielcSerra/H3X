@@ -14,10 +14,10 @@
 
   <section class="container">
   <div class="texto">
-          <p >
-            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">.Proibido Fumar </span><br><br>
-            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">.Proibido Fumar </span><br><br>
-            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">.Proibido Fumar </span><br><br>
+          <p>
+            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">TELEFONE 9988888887 </span><br><br>
+            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">EMAIL h3xnightclub@gmai.com </span><br><br>
+            <img src="img/iconelocalizacao.png" class="imagem-informa" alt=""><span class="text-informa">LOCALIZAÇÃO Av. Brasília 66, 1200-481 Lisboa </span><br><br>
           </p>
         </div>
         

@@ -48,7 +48,13 @@
     border:20px solid transparent;
     border-image: url('../img/caixacontactos.png') 30 round;
 
+
+
+    
   }
+
+
+
   /* Título das seções */
 .section-title {
     background-repeat: no-repeat;
