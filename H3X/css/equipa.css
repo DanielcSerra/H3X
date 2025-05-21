@@ -6,7 +6,6 @@
 body {
   background-color: #0d0d0d;
   color: white;
-  font-family: "Aldrich", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -82,28 +81,55 @@ p {
   max-height: 100%;
 }
 
-.areastaff {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+.staff-background {
+  position: relative;
+  width: 100%;
 }
 
+/* Título já está ok com efeito texto */
 .titulostaff {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   text-align: center;
   width: 100%;
-  margin-bottom: 1rem;
+  padding: 10px 0;
+  color: rgb(255, 255, 255);
 }
 
-.titulostaff h1 {
-  font-size: 2rem;
+.titulostaff h3 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
   margin: 0;
 }
 
-/* Imagens responsivas */
-.areastaff img {
-  width: 100%;
+
+.staff-background img {
   height: auto;
   display: block;
 }
+
+
+.staff-icons {
+  position: absolute;
+  top: 40%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  z-index: 11;
+}
+
+
+.staff-icons img {
+  height: auto;
+}
+
+
 
