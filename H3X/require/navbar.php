@@ -25,14 +25,15 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
           ?>
           <?= htmlspecialchars($_SESSION['nome']) ?>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow-sm border-0">
-          <li><a class="dropdown-item" href="profile.php">Perfil</a></li>
-          <?php if (in_array($_SESSION['tipo'], ['a', 'f'])): ?>
-            <li><a class="dropdown-item" href="admin/admin_dashboard.php">Dashboard</a></li>
-          <?php endif; ?>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-danger" href="admin/logout.php">Logout</a></li>
-        </ul>
+<ul class="dropdown-menu custom-dropdown dropdown-menu-end shadow border-0">
+  <li><a class="dropdown-item" href="profile.php"><i class="bi bi-person me-2"></i>Perfil</a></li>
+  <?php if (in_array($_SESSION['tipo'], ['a', 'f'])): ?>
+    <li><a class="dropdown-item" href="admin/admin_dashboard.php"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+  <?php endif; ?>
+  <li><hr class="dropdown-divider"></li>
+  <li><a class="dropdown-item logout-item" href="admin/logout.php"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+</ul>
+
       </div>
     <?php endif; ?>
 
