@@ -33,9 +33,27 @@
             </div>
             <img src="img/before.png" alt="barra">
             <img src="img/Retangulo21.png" alt="branco">
+            <img src="img/Retangulo21.png" alt="branco" class="retangulo">
+            <img src="img/ImagemBAR.png" alt="barra" class="imagemBAR">
+            <img src="img/ImagemBAR2.png" alt="barra" class="ImagemBAR2">
+            <img src="img/ImagemSecur.png" alt="barra" class="ImagemSecur">
+            <img src="img/ImagemDJ.png" alt="barra" class="ImagemDJ">
         </div>
     </div>
+    <div class="barraverme">
+        <img src="img/Barra.png" alt="barra" class="Barra2">
+    </div>
 
+    <div class="titulo23">
+        <h1 class="prim">MOMENTOS DA EQUIPA</h1>
+        <h1 class="seg">MOMENTOS DA EQUIPA</h1>
+        <h1 class="terc">MOMENTOS DA EQUIPA</h1>
+    </div>
+
+    <div class="imagens-dj">
+        <img src="img/imagemDJ1.png" alt="imagem DJ 1" class="Imagemdj1">
+        <img src="img/imagemDJ2.png" alt="imagem DJ 2" class="Imagemdj2">
+    </div>
     <?php include 'require/footer.php'; ?>
 </body>
 

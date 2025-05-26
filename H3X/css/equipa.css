@@ -6,7 +6,6 @@
 body {
   background-color: #0d0d0d;
   color: white;
-  font-family: "Aldrich", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -82,6 +81,7 @@ p {
   max-height: 100%;
 }
 
+
 .areastaff {
   display: flex;
   flex-direction: column;
@@ -90,11 +90,23 @@ p {
   width: 100%;
   display: flex;
   align-items: center;
+
+.staff-background {
+  position: relative;
+  width: 100%;
+
 }
 
+/* Título já está ok com efeito texto */
 .titulostaff {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   text-align: center;
   width: 100%;
+
   margin-bottom: 1rem;
   position: absolute;
   top: 20px;
@@ -107,9 +119,23 @@ p {
 }
 
 .areastaff img {
+  padding: 10px 0;
+  color: rgb(255, 255, 255);
+}
+
+.titulostaff h3 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  margin: 0;
+}
+
+.staff-background img {
   height: auto;
   display: block;
 }
+
 
 .staff-background {
   position: relative;
@@ -125,9 +151,102 @@ p {
   -webkit-text-stroke: 2px rgb(0, 0, 0);
 }
 
-/* Imagens responsivas */
 .staff-background img {
   width: 100%;
   height: auto;
   display: block;
 }
+
+.staff-icons {
+  position: absolute;
+  top: 40%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  z-index: 11;
+}
+
+
+.staff-icons img {
+  height: auto;
+}
+
+.barraverme {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.barraverme img {
+  height: auto;
+}
+
+.prim,
+.seg,
+.terc {
+  font-size: 96px;
+  white-space: nowrap;
+  opacity: 0.5;
+}
+
+.prim {
+  top: 0;
+      position: relative; 
+  -webkit-text-stroke: 2px white;
+  animation: aparecer 0.5s forwards;
+}
+
+.seg {
+  top: -45px;
+      position: relative; 
+    -webkit-text-stroke: 2px #CACACA;
+  animation-delay: 0.5s;
+  animation: aparecer 1.0s forwards;
+}
+
+.terc {
+  top: -90px;
+  position: relative; 
+  -webkit-text-stroke: 2px #828282;
+  animation-delay: 1s;
+  animation: aparecer 1.5s forwards;
+}
+
+.barraverme {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.Barra2 {
+  height: auto;
+  width: 1200px;
+}
+
+.titulo23 {
+  bottom: 15px;
+  right: 15px;
+  transform: rotate(-90deg) translate(10%, 50%);
+  transform-origin: right bottom;
+  white-space: nowrap;
+  text-align: right;
+}
+
+
+.imagens-dj {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  transform: translateX(-60px); 
+}
+
+.Imagemdj1,
+.Imagemdj2 {
+  height: auto;
+}
+

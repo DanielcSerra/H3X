@@ -45,7 +45,7 @@ if (count($_SESSION["errors"]) == 0) {
                 $_SESSION["foto"] = $user->foto;
                 $_SESSION["tipo"] = $user->tipo;
                 $_SESSION["errors"] = [];
-                header("location:../blog.php");
+                header("location:../index.php");
                 exit();
             } else {
                 $_SESSION["errors"]["pass"] = "Password inválida";
