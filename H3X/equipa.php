@@ -26,19 +26,26 @@
             <h2>MANAGER</h2>
         </div>
     </div>
+
     <div class="areastaff">
         <div class="staff-background">
             <div class="titulostaff">
                 <h3>STAFF</h3>
             </div>
-            <img src="img/before.png" alt="barra">
+
+            <img src="img/before.png" alt="barra" class="barrabranca">
             <img src="img/Retangulo21.png" alt="branco" class="retangulo">
-            <img src="img/ImagemBAR.png" alt="barra" class="imagemBAR">
-            <img src="img/ImagemBAR2.png" alt="barra" class="ImagemBAR2">
-            <img src="img/ImagemSecur.png" alt="barra" class="ImagemSecur">
-            <img src="img/ImagemDJ.png" alt="barra" class="ImagemDJ">
+
+            <!-- Container com as imagens -->
+            <div class="staff-imagens">
+                <img src="img/ImagemBAR.png" alt="barra" class="staff-img">
+                <img src="img/ImagemBAR2.png" alt="barra" class="staff-img">
+                <img src="img/ImagemSecur.png" alt="barra" class="staff-img">
+                <img src="img/ImagemDJ.png" alt="barra" class="staff-img">
+            </div>
         </div>
     </div>
+
     <div class="barraverme">
         <img src="img/Barra.png" alt="barra" class="Barra2">
     </div>
