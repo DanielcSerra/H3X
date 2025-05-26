@@ -87,23 +87,47 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .titulostaff {
   text-align: center;
   width: 100%;
   margin-bottom: 1rem;
-}
-
-.titulostaff h1 {
-  font-size: 2rem;
-  margin: 0;
-}
-
-/* Imagens responsivas */
-.areastaff img {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
   width: 100%;
+  padding: 10px 0;
+}
+
+.areastaff img {
   height: auto;
   display: block;
 }
 
+.staff-background {
+  position: relative;
+  width: 100%;
+}
+
+.titulostaff h3 {
+  font-size: 64px;
+  margin: 0;
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40);
+  color: #ffffff;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+/* Imagens responsivas */
+.staff-background img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

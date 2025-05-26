@@ -27,11 +27,13 @@
         </div>
     </div>
     <div class="areastaff">
-        <div class="titulostaff">
-            <h1>STAFF</h1>
+        <div class="staff-background">
+            <div class="titulostaff">
+                <h3>STAFF</h3>
+            </div>
+            <img src="img/before.png" alt="barra">
+            <img src="img/Retangulo21.png" alt="branco">
         </div>
-        <img src="img/before.png" width="100%" alt="barra">
-        <img src="img/Retangulo21.png" width="100%" alt="branco">
     </div>
 
     <?php include 'require/footer.php'; ?>
