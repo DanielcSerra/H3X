@@ -32,7 +32,6 @@
                 <h3>STAFF</h3>
             </div>
             <img src="img/before.png" alt="barra">
-            <img src="img/Retangulo21.png" alt="branco">
             <img src="img/Retangulo21.png" alt="branco" class="retangulo">
             <img src="img/ImagemBAR.png" alt="barra" class="imagemBAR">
             <img src="img/ImagemBAR2.png" alt="barra" class="ImagemBAR2">

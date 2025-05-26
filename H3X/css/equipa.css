@@ -81,7 +81,6 @@ p {
   max-height: 100%;
 }
 
-
 .areastaff {
   display: flex;
   flex-direction: column;
@@ -95,7 +94,6 @@ p {
 .staff-background {
   position: relative;
   width: 100%;
-
 }
 
 /* Título já está ok com efeito texto */
@@ -104,23 +102,12 @@ p {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
   text-align: center;
   width: 100%;
-
-  margin-bottom: 1rem;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 10;
-  text-align: center;
-  width: 100%;
-  padding: 10px 0;
 }
 
 .areastaff img {
-  padding: 10px 0;
   color: rgb(255, 255, 255);
 }
 
@@ -136,7 +123,6 @@ p {
   height: auto;
   display: block;
 }
-
 
 .staff-background {
   position: relative;
@@ -160,7 +146,7 @@ p {
 
 .staff-icons {
   position: absolute;
-  top: 40%; 
+  top: 40%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -170,7 +156,6 @@ p {
   z-index: 11;
 }
 
-
 .staff-icons img {
   height: auto;
 }
@@ -178,8 +163,9 @@ p {
 .barraverme {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
+
 .barraverme img {
   height: auto;
 }
@@ -194,22 +180,22 @@ p {
 
 .prim {
   top: 0;
-      position: relative; 
+  position: relative;
   -webkit-text-stroke: 2px white;
   animation: aparecer 0.5s forwards;
 }
 
 .seg {
   top: -45px;
-      position: relative; 
-    -webkit-text-stroke: 2px #CACACA;
+  position: relative;
+  -webkit-text-stroke: 2px #cacaca;
   animation-delay: 0.5s;
-  animation: aparecer 1.0s forwards;
+  animation: aparecer 1s forwards;
 }
 
 .terc {
   top: -90px;
-  position: relative; 
+  position: relative;
   -webkit-text-stroke: 2px #828282;
   animation-delay: 1s;
   animation: aparecer 1.5s forwards;
@@ -224,18 +210,10 @@ p {
 
 .Barra2 {
   height: auto;
-  width: 1200px;
 }
 
 .titulo23 {
-  bottom: 15px;
-  right: 15px;
-  transform: rotate(-90deg) translate(10%, 50%);
-  transform-origin: right bottom;
-  white-space: nowrap;
-  text-align: right;
 }
-
 
 .imagens-dj {
   display: flex;
@@ -243,11 +221,10 @@ p {
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 40px;
-  transform: translateX(-60px); 
+  transform: translateX(-60px);
 }
 
 .Imagemdj1,
 .Imagemdj2 {
   height: auto;
 }
-
