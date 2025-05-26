@@ -204,3 +204,87 @@ p {
 .Imagemdj2 {
   height: auto;
 }
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    height: 300px;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 250px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .part1,
+  .part2 {
+    width: 80%;
+  }
+
+  .titulo h1 {
+    font-size: 32px;
+  }
+
+  .staff {
+    margin-left: 0;
+    display: block;
+  }
+
+  .titulostaff h3 {
+    font-size: 48px;
+    margin-top: 20px;
+  }
+
+  .staff-imagens {
+    flex-direction: column;
+    align-items: center;
+    top: 51%;
+    gap: 20px;
+    width: 90%;
+  }
+
+  .staff-imagens img {
+    width: 80%;
+  }
+
+  .retangulo {
+    min-height: 2550px;
+  }
+
+  .barraverme {
+    margin-top: 60px;
+    padding: 0 20px;
+  }
+
+  .barraverme img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .titulo23 {
+    margin-top: 60px;
+  }
+
+  .prim,
+  .seg,
+  .terc {
+    font-size: 37px;
+  }
+
+  .seg {
+    top: -25px;
+  }
+
+  .terc {
+    top: -50px;
+  }
+}
