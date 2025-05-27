@@ -59,7 +59,7 @@ $result = $conn->query($sql);
     <div class="cartas-sobre-fundo">
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="carta-bloco d-flex flex-column align-items-center">
-                <img src="img/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2" alt="Card" style="height: 400px; object-fit: contain;">
+                <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2" alt="Card" style="height: 400px; object-fit: contain;">
                 <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
             </div>
         <?php endwhile; ?>
