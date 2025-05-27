@@ -370,9 +370,9 @@ textarea:focus {
     font-size: 45px;
   }
 
-    .cartas2 {
+  .cartas2 {
     flex-direction: column;
-        margin-top: 50px;
+    margin-top: 50px;
     align-items: center;
     text-align: center;
     width: 100%;
@@ -424,7 +424,8 @@ textarea:focus {
 
 @media (max-width: 1200px) {
   .beneficios {
-  width: 100%;
+    width: 600vw;
+    width: 100%;
     font-size: 45px;
   }
   .carta-bloco,
