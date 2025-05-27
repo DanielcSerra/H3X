@@ -53,12 +53,12 @@ body.menu-open {
 }
 
 .custom-dropdown {
-  background-color: #0e0e0e !important; 
+  background-color: #0e0e0e !important;
   border: 1px solid #2a2a2a;
-  border-radius: 0 !important; 
+  border-radius: 0 !important;
   padding: 0;
   min-width: 200px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .custom-dropdown .dropdown-item {
@@ -68,7 +68,7 @@ body.menu-open {
   border-bottom: 1px solid #1a1a1a;
   font-size: 0.95rem;
   transition: background-color 0.2s ease, color 0.2s ease;
-  border-radius: 0 !important; 
+  border-radius: 0 !important;
 }
 
 .custom-dropdown .dropdown-item:hover {
@@ -89,7 +89,6 @@ body.menu-open {
   background-color: #ff0099 !important;
   color: #fff !important;
 }
-
 
 .menu-toggle {
   font-size: 32px;
@@ -140,7 +139,7 @@ body.menu-open {
   transition: top 0.5s ease;
   text-align: center;
   visibility: hidden;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .fullscreen-menu.show {
@@ -160,7 +159,7 @@ body.menu-open {
   color: white;
   font-family: Aldrich, sans-serif;
   font-weight: bold;
-    font-size: clamp(28px, 6vw, 60px);
+  font-size: clamp(28px, 6vw, 60px);
   line-height: 1;
   padding: 0;
   text-decoration: none;

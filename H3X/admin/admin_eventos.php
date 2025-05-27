@@ -79,7 +79,9 @@ require 'partials/header.php';
                             <tr>
                                 <td><?= $evento->id ?></td>
                                 <td><?= trim($evento->titulo) ?></td>
-                                <td><?= date('d/m/Y', strtotime($evento->data_inicio)) ?> - <?= date('d/m/Y', strtotime($evento->data_fim)) ?></td>
+                                <td><?= date('d/m/Y', strtotime($evento->data_inicio)) ?> -
+                                    <?= date('d/m/Y', strtotime($evento->data_fim)) ?>
+                                </td>
                                 <td><?= substr($evento->hora_inicio, 0, 5) ?> - <?= substr($evento->hora_fim, 0, 5) ?></td>
                                 <td>
                                     <?php if (!empty($evento->imagem_banner)): ?>
@@ -92,13 +94,16 @@ require 'partials/header.php';
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Banner - <?= trim($evento->titulo) ?></h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Fechar"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="../uploads/<?= trim($evento->imagem_banner) ?>" class="img-fluid" alt="Banner completo">
+                                                        <img src="../uploads/<?= trim($evento->imagem_banner) ?>" class="img-fluid"
+                                                            alt="Banner completo">
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,4 +128,5 @@ require 'partials/header.php';
 
     <?php require 'partials/footer.php'; ?>
 </body>
+
 </html>

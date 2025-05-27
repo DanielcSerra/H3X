@@ -69,8 +69,8 @@
             $result = $conn->query($sql);
             if ($result && $result->num_rows != 0) {
                 $user = $result->fetch_object();
-                if (!empty($user->foto)) {
-                    echo '<img src="../uploads/' . htmlspecialchars(trim($user->foto)) . '" alt="Foto do usuário"> class:"fotousutilizador';
+                if (!empty($_SESSION["foto"])) {
+                    echo '<img src="../uploads/' . trim($_SESSION["foto"]) . '" alt="Foto do usuário" class="fotousutilizador">';
                 } else {
                     $primeiraLetra = strtoupper(substr($user->nome, 0, 1));
                     echo '<div class="primeiraletra">' . $primeiraLetra . '</div>';
