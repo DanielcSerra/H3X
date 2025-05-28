@@ -1,80 +1,219 @@
-body {
-    background-color: black;
-    font-family: Arial, Helvetica, sans-serif;
+@keyframes aparecer {
+  0% {
+    transform: translateY(-250px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.container-fluid {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
+h1 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+h2 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40);
+  color: white;
+}
+p {
+  font-family: Aldrich, sans-serif;
+  font-size: 18px;
+  color: white;
 }
 
-.header img {
-    width: 100%;
+.titulo {
+  margin-top: 100px;
+  align-items: center;
+  text-align: center;
+  height: 300px;
+  font-size: clamp(24px, 6vw, 80px);
 }
 
-.header {
-    width: 100%;
-    display: block;
+.terc {
+  -webkit-text-stroke: 2px #828282;
+  opacity: 50%;
+  animation: aparecer 1.5s forwards;
 }
-
-.Titulo h1 {
-    color: white;
-    font-size: 64px;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    margin-top: -80px;
-    font-family: Aldrich;
-    -webkit-text-stroke: 0.5px white;
-    color: transparent;
-    letter-spacing: 0.5px;
+.seg {
+  -webkit-text-stroke: 2px #cacaca;
+  position: relative;
+  top: -65px;
+  opacity: 50%;
+  animation: aparecer 1s forwards;
+}
+.prim {
+  -webkit-text-stroke: 2px white;
+  position: relative;
+  top: -130px;
+  animation: aparecer 0.5s forwards;
 }
 
 .texto {
-    color: white;
-    margin: auto;
-    padding-top: 120px;
-    line-height: 2.5;
-    padding-bottom: 120px;
-    font-family: Aldrich;
-    letter-spacing: 0.5px;
-    font-size: 16px;
-    padding: 120px 120px;
-    max-width: 100%;
+  color: white;
+  margin: auto;
+  padding-top: 120px;
+  line-height: 2.5;
+  padding-bottom: 120px;
+  font-family: Aldrich;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  padding: 120px 120px;
+  max-width: 100%;
 }
 
 .texto h2 {
-    font-size: 19px;
-    font-weight: bold;
+  font-size: 19px;
+  font-weight: bold;
 }
 
+.barrabranca {
+  text-align: center;
+}
 
+.botoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
+.botao2 {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  max-width: 240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 7%;
+}
 
+.botoes h2 {
+  color: white;
+}
 
-@media (max-width: 768px) {
+.pmaior {
+  font-size: 22px;
+  color: white;
+}
 
+.contactos {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contactos h2 {
+  color: white;
+}
 
-    .header {
-        padding: 80px 0;
-    }
+.contactos button {
+  border-image: "img/caixabranca.png";
+}
+.botao2 img {
+  position: absolute;
+}
+.botao2 h2 {
+  font-family: Laceration, sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
 
-    .Titulo h1 {
-        font-size: 28px;
-        -webkit-text-stroke: 0.5px white;
-        color: transparent;
-        letter-spacing: 0.5px;
-        margin-top: -30px;
-    }
+@media (max-width: 995px) {
+  .titulo h1 {
+    font-size: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .terc {
+    -webkit-text-stroke: 2px #828282;
+    opacity: 50%;
+  }
+  .seg {
+    position: relative;
+    top: -50px;
 
-    .texto {
-        padding-top: 10px;
-        padding-right: 20px;
-        padding-bottom: 40px;
-        padding-left: 30px;
-    }
+    opacity: 50%;
+  }
+  .prim {
+    position: relative;
+    top: -100px;
+  }
 
+  .botao2 {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    max-width: 120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 7%;
+  }
+}
 
+@media (max-width: 769px) {
+  .titulo {
+    height: auto;
+    margin-top: 60px;
+  }
+
+  .titulo h1 {
+    font-size: 28px;
+  }
+
+  .terc {
+    top: 0;
+  }
+
+  .seg {
+    top: -30px;
+  }
+
+  .prim {
+    top: -60px;
+  }
+  .texto {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+  }
+  .barrabranca img {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .botao2 img {
+    position: absolute;
+    width: 80vw;
+  }
+  .botao2 h2 {
+    font-family: Laceration, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+  }
+}
+
+.titulo h1 {
+  font-size: 96px;
+}
+
+@media (max-width: 1400px) {
+  .titulo h1 {
+    font-size: clamp(32px, 6vw, 96px);
+  }
+  .barrabranca img {
+    width: 90%;
+  }
 }
