@@ -132,6 +132,8 @@ require 'partials/header.php';
                                             class="fas fa-pen-to-square text-warning"></i></a>
                                     <a href="admin_galeria_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
                                             class="fas fa-trash text-danger"></i></a>
+                                    <a href="admin_galeria_aproveimg.php?id=<?= urlencode($id) ?>" title="Aprovar" class="ms-2"><i
+                                            class="fas fa-check-square text-success"></i></a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

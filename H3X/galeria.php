@@ -1,26 +1,77 @@
-<?php include 'require/head.php'; 
+<?php  include 'require/navbar.php';
+$id_utilizador = $_SESSION['id'] ?? null;
+
+var_dump($id_utilizador);
+
+include 'require/head.php'; 
 require_once 'db_config.php';
 
-$sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
-$result = $conn->query($sql);
+$sql = "SELECT g.*, u.id AS id_utilizador, u.nome AS nome_utilizador
+        FROM imagens_galeria g
+        LEFT JOIN utilizadores u ON g.id_utilizador = u.id
+        WHERE g.aprovado = 1
+        ORDER BY g.data_upload DESC
+        LIMIT 4";
+
+/* $result = $conn->query($sql); */
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
 $popular_images = [];
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_object()) {
         $popular_images[] = $row;
     }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $_SESSION["errors"] = [];
+
+    if (isset($_POST["titulo"])) {
+        $titulo = trim($_POST["titulo"]);
+    } else {
+        $titulo = "";
+    }
+
+    if (strlen($titulo) == 0) {
+        $_SESSION["errors"]["titulo"] = "Título inválido";
+    }
+
+    if (count($_SESSION["errors"]) === 0) {
+
+
+            $imagem = "";
+
+            if (isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0) {
+                $imagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
+                $upload_path = "uploads/galeria/" . $imagem;
+                move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path);
+            }
+
+
+           $sql = "INSERT INTO imagens_galeria (titulo, imagem, id_utilizador) VALUES ('$titulo', '$imagem', '$id_utilizador')";
+            if ($conn->query($sql)) {
+                $_SESSION["errors"] = [];
+                header("Location: galeria.php");
+                exit();
+            } else {
+                $_SESSION["errors"]["db"] = "Erro ao inserir imagem: " . $conn->error;
+            }
+        }
+    }
+
 ?>
 <title>H3X - Galeria</title>
 <link rel="stylesheet" href="css/galeria.css">
 </head>
 
 <body>
-<?php include 'require/navbar.php';?>
+
 <main>
 <div class="container" id="bannertext">
             <div class="titulo">
                 <h1 class="terc">GALERIA</h1>
-                <h1 class="seg">GALERIA</>
+                <h1 class="seg">GALERIA</h1>
                 <h1 class="prim">GALERIA</h1>
             </div>
 </div>
@@ -68,18 +119,11 @@ if ($result && $result->num_rows > 0) {
 <div class="containersubmit mt-5 mb-5">
 <div class="submitimg">
 <h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
-    <form method="GET">
+    <form method="POST" enctype=multipart/form-data>
         <div class="form-group">
             <label class="text-white" for="titulo">Título</label>
             <textarea class="form-control" id="titulo" name="titulo" rows="1"></textarea>
         </div>  
-        <div class="form-group">
-        <label class="text-white" for="descricao">Descrição</label>
-        <div class="container caixa-com-cantos position-relative">
-            <img src="img/lefttop.png" class="canto top-left d-none d-md-block">
-            <img src="img/rightbottom.png" class="canto bottom-right d-none d-md-block">
-            <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
-            </div>
             <input type="file" id="img" name="imgfile" />
                 <label for="img" class="file-upload">
                     <img src="img/imgattach.png" alt="Attach file icon" />

@@ -30,16 +30,21 @@ if (count($_SESSION["errors"]) == 0) {
     if ($conn->connect_errno) {
         $_SESSION["errors"]["auth"] = "Erro de ligação à base de dados";
     } else {
-        $email = mysqli_real_escape_string($conn, $email);
-        $sql = "SELECT email, pass, tipo, foto, nome FROM utilizadores WHERE email = '$email'";
+        /* $email = mysqli_real_escape_string($conn, $email); */
+        $sql = "SELECT id, email, pass, tipo, foto, nome FROM utilizadores WHERE email = ?";
 
-        $result = $conn->query($sql);
+        /* $result = $conn->query($sql); */
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result && $result->num_rows != 0) {
             $user = $result->fetch_object();
             $password = trim($_POST["password"]);
 
             if ($user->pass == hash("sha512", $password)) {
                 $_SESSION["authenticated"] = true;
+                $_SESSION["id"] = $user->id;
                 $_SESSION["email"] = $user->email;
                 $_SESSION["nome"] = $user->nome;
                 $_SESSION["foto"] = $user->foto;
