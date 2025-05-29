@@ -103,7 +103,8 @@ require 'partials/header.php';
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="imagemModalLabel<?= $id ?>">Imagem -
-                                                            <?= trim($img->titulo) ?></h5>
+                                                            <?= trim($img->titulo) ?>
+                                                        </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Fechar"></button>
                                                     </div>
@@ -132,6 +133,18 @@ require 'partials/header.php';
                                             class="fas fa-pen-to-square text-warning"></i></a>
                                     <a href="admin_galeria_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
                                             class="fas fa-trash text-danger"></i></a>
+                                    <?php if ($img->aprovado) { ?>
+                                        <a href="admin_galeria_disaproveimg.php?id=<?php echo urlencode($id); ?>" title="Desaprovar"
+                                            class="ms-2">
+                                            <i class="fas fa-check-square text-secondary"></i>
+                                        </a>
+                                    <?php } else { ?>
+                                        <a href="admin_galeria_aproveimg.php?id=<?php echo urlencode($id); ?>" title="Aprovar"
+                                            class="ms-2">
+                                            <i class="fas fa-check-square text-success"></i>
+                                        </a>
+                                    <?php } ?>
+
                                 </td>
                             </tr>
                         <?php endwhile; ?>
