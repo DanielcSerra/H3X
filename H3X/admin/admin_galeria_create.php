@@ -33,7 +33,9 @@ switch ($tipoUtilizador) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION["errors"] = [];
     $titulo = trim($_POST["titulo"] ?? "");
-    $data = $_POST["data"] ?? date("Y-m-d");
+    $data = $_POST["data"] ?? date("Y-m-d H:i:s");
+
+    $data = str_replace('T', ' ', $data);
 
     if (empty($titulo)) {
         $_SESSION["errors"][] = "Imagem não tem título";
@@ -108,8 +110,8 @@ require 'partials/header.php';
                         </div>
 
                         <div class="mb-3">
-                            <label for="data" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="data" name="data" value="<?= htmlspecialchars($_POST['data'] ?? date("Y-m-d")) ?>" required>
+                            <label for="data" class="form-label">Data e Hora</label>
+                            <input type="datetime-local" class="form-control" id="data" name="data" value="<?= htmlspecialchars($_POST['data'] ?? date('Y-m-d\TH:i')) ?>" required>
                         </div>
 
                         <div class="mb-3">
