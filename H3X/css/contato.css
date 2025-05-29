@@ -1,0 +1,160 @@
+
+
+
+/* Estilos Gerais */
+body {
+  color: #fff;
+  font-family: 'Aldrich', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+}
+
+/* Banner */
+.Banner {
+  position: relative;
+  width: 100%;
+}
+
+.Banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Banner h1 {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.barra_branca{
+  width: 1280.76px;
+  height: 24px;
+  justify-content: center;
+}
+/* Seção de Contactos */
+.contact-section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+.barra{
+  display: flex;
+  justify-content: center;
+
+}
+/* Informações de Contacto - Estilo Original */
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.icon-box {
+  background-image: url('../img/caixacontactos.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  border: 20px solid transparent;
+  border-image: url('img/caixacontactos.png') 30 round;
+  padding: 20px;
+}
+
+
+
+.icon-box img {
+  width: 79px;
+  height: 83px;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.contact-label {
+  font-size: 10px;
+  color: #bbbbbb;
+  letter-spacing: 1px;
+}
+
+.contact-detail {
+  font-size: 14px;
+}
+
+/* Formulário - Estilo Original */
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-control {
+  background-image: url('img/retangulocontact.png');
+  border: 2px solid white;
+  background-color: gray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0;
+  padding: 10px 15px;
+  color: white;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+textarea.form-control {
+  resize: none;
+ 
+}
+.mapa_container{
+  display: flex;
+  justify-content: center;
+
+}
+.mapa_discoteca{
+  
+  width: 1245px;
+  height: 729px;
+  background-color: #64626281;
+
+}
+.mapa_escuro{
+  margin-top:150px;
+  margin-left:75px;
+  margin-right:75px;
+  height: 470px;
+  border:  10px solid white;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .Banner h1 {
+    font-size: 2rem;
+  }
+  
+  .contact-container {
+    flex-direction: column;
+  }
+}
