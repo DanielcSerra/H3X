@@ -19,7 +19,7 @@ if (!isset($_GET["id"])) {
     exit();
 }
 
-$id = (int) $_GET["id"]; // Força a ser número
+
 
 // Verifica se a FAQ existe
 $sql = "SELECT * FROM faq WHERE id = $id";
