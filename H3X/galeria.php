@@ -1,8 +1,6 @@
 <?php  include 'require/navbar.php';
 $id_utilizador = $_SESSION['id'] ?? null;
-
-var_dump($id_utilizador);
-
+/* var_dump($id_utilizador);*/
 include 'require/head.php'; 
 require_once 'db_config.php';
 
@@ -116,7 +114,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Ver album completo</h2>
     </div>
 </div>
-<div class="containersubmit mt-5 mb-5">
+<div class="caixa">
+<?php 
+if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
+    echo "<h3 class='mt-5 w-75'>Para submeter a sua própria imagem, por favor <a href='admin/login.php'>registe</a> ou dê <a href='admin/login.php'>login</a></h3>";
+}else{
+    echo '<div class="containersubmit mt-5 mb-5">
 <div class="submitimg">
 <h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
     <form method="POST" enctype=multipart/form-data>
@@ -127,14 +130,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="file" id="img" name="imgfile" />
                 <label for="img" class="file-upload">
                     <img src="img/imgattach.png" alt="Attach file icon" />
-                    <h3>Attach File</h3>
+                    <h4 class="text-black">Attach File</h4>
                 </label>
                 <div class="submit-btn-container mt-3">
                 <input type="submit" value="Submeter" name="post" class="submit-btn">
                 </div>
         </div>
     </form>
-</div>
+</div>';
+}?>
+
 <div class="regras">
 <h2>Olá Utilizador</h2>
 <p>Antes de adicionar algo pedimos que leia as regras!</p>
