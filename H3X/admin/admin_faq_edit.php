@@ -19,7 +19,8 @@ if (!isset($_GET["id"])) {
     exit();
 }
 
-$id = (int) $_GET["id"];
+
+$id = $_GET["id"];
 
 // Busca a FAQ
 $sql = "SELECT * FROM faq WHERE id = $id";
