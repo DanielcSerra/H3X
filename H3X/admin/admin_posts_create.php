@@ -168,7 +168,7 @@ $pageTitle = "H3X ADMIN - Criar Post";
         </div>
     </div>
     <script>
-        document.getElementById(' postForm').addEventListener('submit', function (e) {
+        document.getElementById(' postForm').addEventListener('submit', function (submitEvent) {
             const
                 titulo = document.getElementById('titulo').value.trim(); const
                     conteudo = document.getElementById('conteudo').value.trim(); const
@@ -177,22 +177,22 @@ $pageTitle = "H3X ADMIN - Criar Post";
                                 categoria = document.getElementById('id_categoria').value; if (titulo.length < 5 ||
                                     titulo.length > 20) {
                 alert("O título deve ter entre 5 e 20 caracteres.");
-                e.preventDefault();
+                submitEvent.preventDefault();
                 return;
             }
 
             if (conteudo.length < 10) {
                 alert("O conteúdo deve ter pelo menos 10 caracteres.");
-                e.preventDefault(); return;
+                submitEvent.preventDefault(); return;
             } if (imagem === 0) {
                 alert("Escolha uma imagem.");
-                e.preventDefault(); return;
+                submitEvent.preventDefault(); return;
             } if (utilizador === "") {
                 alert("Escolha um utilizador.");
-                e.preventDefault(); return;
+                submitEvent.preventDefault(); return;
             } if (categoria === "") {
                 alert("Escolha uma categoria.");
-                e.preventDefault(); return;
+                submitEvent.preventDefault(); return;
             }
         }); </script>
 </body>

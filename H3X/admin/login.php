@@ -95,24 +95,24 @@ if (isset($_SESSION["email"])) {
    <script src="js/login.js"></script>
 
    <script>
-      document.getElementById('login-form').addEventListener('submit', function (e) {
+      document.getElementById('login-form').addEventListener('submit', function (submitEvent) {
          const email = document.getElementById('email').value.trim();
          const password = document.getElementById('password').value;
 
          if (email === "" || email.length > 100) {
             alert("Preencha um email válido.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
 
          if (password.length < 6 || password.length > 20) {
             alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
       });
 
-      document.getElementById('register-form').addEventListener('submit', function (e) {
+      document.getElementById('register-form').addEventListener('submit', function (submitEvent) {
          const nome = document.getElementById('nome-register').value.trim();
          const email = document.getElementById('email-register').value.trim();
          const telefone = document.getElementById('telefone-register').value.trim();
@@ -121,39 +121,39 @@ if (isset($_SESSION["email"])) {
 
          if (nome.length < 2 || nome.length > 15) {
             alert("O nome deve ter entre 2 e 15 caracteres.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
 
          if (email === "") {
             alert("O email é obrigatório.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
 
          if (email.length > 100) {
             alert("O email deve ter no máximo 100 caracteres.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
 
          if (telefone !== "") {
             if (telefone.length !== 9 || isNaN(telefone)) {
                alert("O telefone deve conter exatamente 9 dígitos numéricos.");
-               e.preventDefault();
+               submitEvent.preventDefault();
                return;
             }
          }
 
          if (dataNascimento === "") {
             alert("Preencha a data de nascimento.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
 
          if (password.length < 6 || password.length > 20) {
             alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
-            e.preventDefault();
+            submitEvent.preventDefault();
             return;
          }
       });

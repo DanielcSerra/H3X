@@ -163,26 +163,26 @@ $pageTitle = "H3X ADMIN - Editar Comentário";
         </div>
     </div>
     <script>
-        document.getElementById('comentarioForm').addEventListener('submit', function (e) {
+        document.getElementById('comentarioForm').addEventListener('submit', function (submitEvent) {
             const conteudo = document.getElementById('conteudo').value.trim();
             const idPost = document.getElementById('id_post').value;
             const idUtilizador = document.getElementById('id_utilizador').value;
 
             if (conteudo.length < 5 || conteudo.length > 500) {
                 alert("O comentário deve ter entre 5 e 500 caracteres.");
-                e.preventDefault();
+                submitEvent.preventDefault();
                 return;
             }
 
             if (idPost === "") {
                 alert("Escolha um post.");
-                e.preventDefault();
+                submitEvent.preventDefault();
                 return;
             }
 
             if (idUtilizador === "") {
                 alert("Escolha um utilizador.");
-                e.preventDefault();
+                submitEvent.preventDefault();
                 return;
             }
         });

@@ -198,7 +198,7 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
             </div>
 
             <script>
-                function validarFormulario(e) {
+                function validarFormulario(submitEvent) {
                     var nome = document.getElementById("nome").value.trim();
                     var email = document.getElementById("email").value.trim();
                     var telefone = document.getElementById("telefone").value.trim();
@@ -208,45 +208,45 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
 
                     if (nome.length < 2 || nome.length > 15) {
                         alert("O nome deve ter entre 2 e 15 caracteres.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
 
                     if (email === "") {
                         alert("O email é obrigatório.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
 
                     if (email.length > 100) {
                         alert("O email deve ter no máximo 100 caracteres.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
 
                     if (telefone !== "") {
                         if (telefone.length !== 9 || isNaN(telefone)) {
                             alert("O telefone deve conter exatamente 9 dígitos numéricos.");
-                            e.preventDefault();
+                            submitEvent.preventDefault();
                             return;
                         }
                     }
 
                     if (dataNascimento === "") {
                         alert("Preencha a data de nascimento.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
 
                     if (senha.length < 6 || senha.length > 20) {
                         alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
 
                     if (tipo === "") {
                         alert("Selecione o tipo de utilizador.");
-                        e.preventDefault();
+                        submitEvent.preventDefault();
                         return;
                     }
                 }

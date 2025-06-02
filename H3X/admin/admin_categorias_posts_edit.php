@@ -113,12 +113,12 @@ $pageTitle = "H3X ADMIN - Editar Categoria Post";
 
     $conn->close(); ?>
     <script>
-        document.getElementById('categoriaForm').addEventListener('submit', function (e) {
+        document.getElementById('categoriaForm').addEventListener('submit', function (submitEvent) {
             const nome = document.getElementById('nome').value.trim();
 
             if (nome.length < 2 || nome.length > 20) {
                 alert("O nome da categoria deve ter entre 2 e 20 caracteres.");
-                e.preventDefault();
+                submitEvent.preventDefault();
                 return;
             }
         });
