@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($nome) == 0) {
         $_SESSION["errors"]["nome"] = "Nome da categoria é obrigatório";
     } else {
-        // Verificar se já existe categoria com esse nome
         $nomeEscaped = mysqli_real_escape_string($conn, $nome);
         $checkSql = "SELECT id FROM categorias_posts WHERE nome = '$nomeEscaped' LIMIT 1";
         $checkResult = $conn->query($checkSql);
