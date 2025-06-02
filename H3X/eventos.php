@@ -1,20 +1,26 @@
+<?php
+session_start();
+?>
+
 <head>
-        <?php
-            include 'require/head.php'; 
+    <?php
+    include 'partials/head.php';
 
-            require_once 'db_config.php';
+    require_once 'db_config.php';
 
-            $query = "SELECT * FROM eventos ORDER BY data_inicio LIMIT 1";
-            $result = mysqli_query($conn, $query);
-            $evento = mysqli_fetch_assoc($result); 
-        ?>
-        
-        <title>H3X - Eventos</title>
-        <link rel="stylesheet" href="css/eventos.css">
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRKosi_QbT8SoLjpqlJ7D5TuvaFvebKc&callback=console.debug&libraries=maps,marker&v=beta"></script>
+    $query = "SELECT * FROM eventos ORDER BY data_inicio LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $evento = mysqli_fetch_assoc($result);
+    ?>
+
+    <title>H3X - Eventos</title>
+    <link rel="stylesheet" href="css/eventos.css">
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRKosi_QbT8SoLjpqlJ7D5TuvaFvebKc&callback=console.debug&libraries=maps,marker&v=beta"></script>
 </head>
+
 <body>
-    <?php include 'require/navbar.php';
+    <?php include 'partials/navbar.php';
     ?>
     <div class="banner">
         <video autoplay loop muted playsinline class="banner-video">
@@ -27,7 +33,7 @@
 
         <div class="side-markers left-marker">
             <img src="img/barra.png" alt="" class="marker-img left-img" />
-           <div class="side-text-left">
+            <div class="side-text-left">
                 <div class="scroll-wrapper">
                     <div class="scroll-content">
                         <div class="text-block">ÚLTIMA HORA</div>
@@ -40,11 +46,13 @@
         </div>
 
         <div class="banner-left-texts">
-            <div class="event-date"><?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?></div>
-                <div class="event-title"><?= $evento['titulo']; ?></div>
-                <div class="event-lineup">
-                    <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
-                </div>
+            <div class="event-date">
+                <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
+            </div>
+            <div class="event-title"><?= $evento['titulo']; ?></div>
+            <div class="event-lineup">
+                <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
+            </div>
         </div>
 
         <div class="center-button">
@@ -69,92 +77,100 @@
             </div>
             <img src="img/barra.png" alt="" class="marker-img right-img" />
         </div>
-    </div> 
+    </div>
 
-     <div class="hr_title my-5">
+    <div class="hr_title my-5">
         <h2 class="section-title">PRÓXIMOS EVENTOS</h2>
     </div>
 
 
     <div class="container pb-5">
-            <div class="cards-container row g-4 justify-content-center text-center text-white">
+        <div class="cards-container row g-4 justify-content-center text-center text-white">
 
-                <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
-                    <div class="destaque-card">
-                        <div class="card-bg"></div>
-                        <div class="card-content">
-                            <div class="event-date"><?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?></div>
-                            <div class="event-title"><?= $evento['titulo']; ?></div>
-                            <div class="dj1-image-wrapper">
-                                <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
-                            </div>
-                            <div class="event-lineup">
-                                <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
-                            </div>
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="destaque-card">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="event-date">
+                            <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
                         </div>
-                        <button class="mini-button"><span class="button-text">Details</span></button>
-                    </div>
-                </div>
-
-               <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
-                    <div class="destaque-card">
-                        <div class="card-bg"></div>
-                        <div class="card-content">
-                            <div class="event-date"><?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?></div>
-                            <div class="event-title"><?= $evento['titulo']; ?></div>
-                            <div class="dj1-image-wrapper">
-                                <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
-                            </div>
-                            <div class="event-lineup">
-                                <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
-                            </div>
+                        <div class="event-title"><?= $evento['titulo']; ?></div>
+                        <div class="dj1-image-wrapper">
+                            <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
                         </div>
-                        <button class="mini-button"><span class="button-text">Details</span></button>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
-                    <div class="destaque-card">
-                        <div class="card-bg"></div>
-                        <div class="card-content">
-                            <div class="event-date"><?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?></div>
-                            <div class="event-title"><?= $evento['titulo']; ?></div>
-                            <div class="dj1-image-wrapper">
-                                <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
-                            </div>
-                            <div class="event-lineup">
-                                <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
-                            </div>
+                        <div class="event-lineup">
+                            <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
                         </div>
-                        <button class="mini-button"><span class="button-text">Details</span></button>
                     </div>
+                    <button class="mini-button"><span class="button-text">Details</span></button>
                 </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
-                    <div class="destaque-card">
-                        <div class="card-bg"></div>
-                        <div class="card-content">
-                            <div class="event-date"><?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?></div>
-                            <div class="event-title"><?= $evento['titulo']; ?></div>
-                            <div class="dj1-image-wrapper">
-                                <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
-                            </div>
-                            <div class="event-lineup">
-                                <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
-                            </div>
-                        </div>
-                        <button class="mini-button"><span class="button-text">Details</span></button>
-                    </div>
-                </div>
-
             </div>
 
-            <div class="eventos-button">
-                <div class="button-content ">
-                    <span class="button-text">VER MAIS</span>
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="destaque-card">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="event-date">
+                            <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
+                        </div>
+                        <div class="event-title"><?= $evento['titulo']; ?></div>
+                        <div class="dj1-image-wrapper">
+                            <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
+                        </div>
+                        <div class="event-lineup">
+                            <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
+                        </div>
+                    </div>
+                    <button class="mini-button"><span class="button-text">Details</span></button>
                 </div>
             </div>
-        
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="destaque-card">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="event-date">
+                            <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
+                        </div>
+                        <div class="event-title"><?= $evento['titulo']; ?></div>
+                        <div class="dj1-image-wrapper">
+                            <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
+                        </div>
+                        <div class="event-lineup">
+                            <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
+                        </div>
+                    </div>
+                    <button class="mini-button"><span class="button-text">Details</span></button>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="destaque-card">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="event-date">
+                            <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
+                        </div>
+                        <div class="event-title"><?= $evento['titulo']; ?></div>
+                        <div class="dj1-image-wrapper">
+                            <img src="<?= $evento['imagem_banner']; ?>" alt="DJ 1" />
+                        </div>
+                        <div class="event-lineup">
+                            <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
+                        </div>
+                    </div>
+                    <button class="mini-button"><span class="button-text">Details</span></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="eventos-button">
+            <div class="button-content ">
+                <span class="button-text">VER MAIS</span>
+            </div>
+        </div>
+
     </div>
 
     <div class="white-section">
@@ -176,7 +192,10 @@
                                 <h3>terças-feiras</h3>
                             </div>
                         </div>
-                        <div class="desc1">As terças no H3X são uma transição cromática entre o caos da cidade e a paz do ritmo. Em “Tuesday Spectrum”, os sons são profundos mas não pesados — techno melódico com alma, linhas minimalistas que se desdobram como luz através de prismas. Uma noite para quem aprecia detalhe, groove e atmosfera.</div>
+                        <div class="desc1">As terças no H3X são uma transição cromática entre o caos da cidade e a paz
+                            do ritmo. Em “Tuesday Spectrum”, os sons são profundos mas não pesados — techno melódico com
+                            alma, linhas minimalistas que se desdobram como luz através de prismas. Uma noite para quem
+                            aprecia detalhe, groove e atmosfera.</div>
                         <div class="desc2">Género musical: Melodic Techno / Deep Techno / Minimal / Downtempo</div>
                         <div class="button-wrapper">
                             <button class="custom-button">VER FOTOS</button>
@@ -193,7 +212,10 @@
                                 <h3>sextas-feiras</h3>
                             </div>
                         </div>
-                        <div class="desc1">Quando o sol se põe, a H3X acende. “Solar Drift” é a noite mais solar do clube — grooves quentes, batidas soul e texturas suaves misturam-se com house atmosférico e techno relaxado. É o preâmbulo perfeito do fim de semana, com cocktails na mão e o corpo entregue ao ritmo.</div>
+                        <div class="desc1">Quando o sol se põe, a H3X acende. “Solar Drift” é a noite mais solar do
+                            clube — grooves quentes, batidas soul e texturas suaves misturam-se com house atmosférico e
+                            techno relaxado. É o preâmbulo perfeito do fim de semana, com cocktails na mão e o corpo
+                            entregue ao ritmo.</div>
                         <div class="desc2">Género musical: techno House / sunset House / Soft Techno / Deep House</div>
                         <div class="button-wrapper">
                             <button class="custom-button">VER FOTOS</button>
@@ -208,11 +230,11 @@
             </div>
 
         </div>
-        
-        
+
+
     </div>
 
-    
 
-    <?php include 'require/footer.php'; ?>
+
+    <?php include 'partials/footer.php'; ?>
 </body>

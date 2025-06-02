@@ -1,7 +1,10 @@
-<?php  include 'require/navbar.php';
+<?php
+session_start();
+?>
+<?php include 'partials/navbar.php';
 $id_utilizador = $_SESSION['id'] ?? null;
 /* var_dump($id_utilizador);*/
-include 'require/head.php'; 
+include 'partials/head.php';
 require_once 'db_config.php';
 
 $sql = "SELECT g.*, u.id AS id_utilizador, u.nome AS nome_utilizador
@@ -38,25 +41,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (count($_SESSION["errors"]) === 0) {
 
 
-            $imagem = "";
+        $imagem = "";
 
-            if (isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0) {
-                $imagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
-                $upload_path = "uploads/galeria/" . $imagem;
-                move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path);
-            }
+        if (isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0) {
+            $imagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
+            $upload_path = "uploads/galeria/" . $imagem;
+            move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path);
+        }
 
 
-           $sql = "INSERT INTO imagens_galeria (titulo, imagem, id_utilizador) VALUES ('$titulo', '$imagem', '$id_utilizador')";
-            if ($conn->query($sql)) {
-                $_SESSION["errors"] = [];
-                header("Location: galeria.php");
-                exit();
-            } else {
-                $_SESSION["errors"]["db"] = "Erro ao inserir imagem: " . $conn->error;
-            }
+        $sql = "INSERT INTO imagens_galeria (titulo, imagem, id_utilizador) VALUES ('$titulo', '$imagem', '$id_utilizador')";
+        if ($conn->query($sql)) {
+            $_SESSION["errors"] = [];
+            header("Location: galeria.php");
+            exit();
+        } else {
+            $_SESSION["errors"]["db"] = "Erro ao inserir imagem: " . $conn->error;
         }
     }
+}
 
 ?>
 <title>H3X - Galeria</title>
@@ -65,35 +68,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<main>
-<div class="container" id="bannertext">
+    <main>
+        <div class="container" id="bannertext">
             <div class="titulo">
                 <h1 class="terc">GALERIA</h1>
                 <h1 class="seg">GALERIA</h1>
                 <h1 class="prim">GALERIA</h1>
             </div>
-</div>
-<section id="populares">
-    <div class="container">
-        <h1>Fotos Populares</h1>
-    </div>
-<div class="container d-flex flex-column flex-md-row justify-content-center mt-4">
-    <?php
+        </div>
+        <section id="populares">
+            <div class="container">
+                <h1>Fotos Populares</h1>
+            </div>
+            <div class="container d-flex flex-column flex-md-row justify-content-center mt-4">
+                <?php
 
-    $sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
-    $result = $conn->query($sql);
-    
-    if ($result && $result->num_rows > 0) {
-        while ($image = $result->fetch_object()) {
-            echo '
+                $sql = "SELECT * FROM imagens_galeria WHERE aprovado = 1 ORDER BY data_upload DESC LIMIT 4";
+                $result = $conn->query($sql);
+
+                if ($result && $result->num_rows > 0) {
+                    while ($image = $result->fetch_object()) {
+                        echo '
             <div class="caixaimg">
-                <img class="imgborder" src="uploads/galeria/'.htmlspecialchars($image->imagem).'" 
-                     alt="'.htmlspecialchars($image->titulo ?: 'Gallery image').'">
+                <img class="imgborder" src="uploads/galeria/' . htmlspecialchars($image->imagem) . '" 
+                     alt="' . htmlspecialchars($image->titulo ?: 'Gallery image') . '">
             </div>';
-        }
-    } else {
+                    }
+                } else {
 
-        echo '
+                    echo '
         <div class="caixaimg">
             <img class="imgborder" src="img/galeria1.jpg" alt="foto">
         </div>
@@ -106,20 +109,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="caixaimg">
             <img class="imgborder" src="img/galeria4.jpg" alt="">
         </div>';
-    }
-    ?>
-</div>
-<div class="container d-flex justify-content-end mt-4">
-<div class="botao direita">
-    <h2>Ver album completo</h2>
-    </div>
-</div>
-<div class="caixa">
-<?php 
-if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
-    echo "<h3 class='mt-5 w-75'>Para submeter a sua própria imagem, por favor <a href='admin/login.php'>registe</a> ou dê <a href='admin/login.php'>login</a></h3>";
-}else{
-    echo '<div class="containersubmit mt-5 mb-5">
+                }
+                ?>
+            </div>
+            <div class="container d-flex justify-content-end mt-4">
+                <div class="botao direita">
+                    <h2>Ver album completo</h2>
+                </div>
+            </div>
+            <div class="caixa">
+                <?php
+                if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
+                    echo "<h3 class='mt-5 w-75'>Para submeter a sua própria imagem, por favor <a href='admin/login.php'>registe</a> ou dê <a href='admin/login.php'>login</a></h3>";
+                } else {
+                    echo '<div class="containersubmit mt-5 mb-5">
 <div class="submitimg">
 <h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
     <form method="POST" enctype=multipart/form-data>
@@ -138,19 +141,19 @@ if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
         </div>
     </form>
 </div>';
-}?>
+                } ?>
 
-<div class="regras">
-<h2>Olá Utilizador</h2>
-<p>Antes de adicionar algo pedimos que leia as regras!</p>
-<h3 class="text-white">Regras:</h3>
-<p>Regra 1: Nada de conteúdo explicito</p>
-<p>Regra 2: Tamanho de imagem deve ser menor que 25mb</p>
-<p>Regra 3: Não use palavras ofensivas</p>
-<p>Regra 4: Divertir-se</p>
-</div>
-</div>
-</section>
-</main>
+                <div class="regras">
+                    <h2>Olá Utilizador</h2>
+                    <p>Antes de adicionar algo pedimos que leia as regras!</p>
+                    <h3 class="text-white">Regras:</h3>
+                    <p>Regra 1: Nada de conteúdo explicito</p>
+                    <p>Regra 2: Tamanho de imagem deve ser menor que 25mb</p>
+                    <p>Regra 3: Não use palavras ofensivas</p>
+                    <p>Regra 4: Divertir-se</p>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
-<?php include 'require/footer.php';?>
+<?php include 'partials/footer.php'; ?>

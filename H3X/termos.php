@@ -1,14 +1,17 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 
 <head>
-    <?php include 'require/head.php'; ?>
+    <?php include 'partials/head.php'; ?>
     <title>H3X - Termos e Condições</title>
     <link rel="stylesheet" href="css/termos.css">
 </head>
 
 <body>
-    <?php include 'require/navbar.php';?>
+    <?php include 'partials/navbar.php'; ?>
     <div class="container">
         <div class="titulo">
             <h1 class="terc">TERMOS E CONDIÇÕES</h1>
@@ -62,7 +65,7 @@
             <h2>CONTACTOS</h2>
         </div>
     </div>
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

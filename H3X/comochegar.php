@@ -1,8 +1,11 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 
 <head>
-    <?php include 'require/head.php'; ?>
+    <?php include 'partials/head.php'; ?>
     <title>H3X - Como Chegar</title>
     <link rel="stylesheet" href="css/comochegar.css">
     <script async
@@ -10,7 +13,7 @@
 </head>
 
 <body>
-    <?php include 'require/navbar.php'; ?>
+    <?php include 'partials/navbar.php'; ?>
     <div class="container">
         <div class="titulo">
             <h1 class="terc">COMO CHEGAR</h1>
@@ -184,7 +187,7 @@
         </div>
     </div>
 
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

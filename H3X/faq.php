@@ -1,10 +1,13 @@
-<?php include 'require/head.php'; ?>
+<?php
+session_start();
+?>
+<?php include 'partials/head.php'; ?>
 <title>H3X - Pagina</title>
 <link rel="stylesheet" href="css/faq.css">
 </head>
 
 <body>
-    <?php include 'require/navbar.php'; ?>
+    <?php include 'partials/navbar.php'; ?>
     <div class="contain">
         <section class="faq-container">
             <div class="faq-header">FAQ</div>
@@ -66,7 +69,7 @@
             }
         });
     </script>
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

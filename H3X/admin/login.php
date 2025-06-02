@@ -10,7 +10,7 @@ if (isset($_SESSION["email"])) {
 <html lang="pt-pt">
 
 <head>
-   <?php include '../require/head.php'; ?>
+   <?php include '../partials/head.php'; ?>
    <title>H3X - Login</title>
    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
    <link rel="stylesheet" href="css/login.css">

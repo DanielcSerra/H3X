@@ -49,14 +49,14 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
 <html lang="pt-pt">
 
 <head>
-    <?php include 'require/head.php'; ?>
+    <?php include 'partials/head.php'; ?>
     <title>H3X - Blog</title>
     <link rel="stylesheet" href="css/blog.css">
 </head>
 
 <body>
 
-    <?php include 'require/navbar.php'; ?>
+    <?php include 'partials/navbar.php'; ?>
 
     <main class="px-3 px-md-5">
 
@@ -228,7 +228,7 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
 
     </main>
 
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 
 </body>
 

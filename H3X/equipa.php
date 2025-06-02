@@ -1,15 +1,18 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 
 <head>
-    <?php include 'require/head.php'; ?>
+    <?php include 'partials/head.php'; ?>
     <title>H3X - Equipa</title>
     <link rel="stylesheet" href="css/equipa.css">
 </head>
 
 <body>
 
-    <?php include 'require/navbar.php'; ?>
+    <?php include 'partials/navbar.php'; ?>
     <div class="hero d-flex justify-content-center align-items-center text-center position-relative">
         <h1>A EQUIPA</h1>
     </div>
@@ -60,7 +63,7 @@
         <img src="img/imagemDJ1.png" alt="imagem DJ 1" class="Imagemdj1">
         <img src="img/imagemDJ2.png" alt="imagem DJ 2" class="Imagemdj2">
     </div>
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>
