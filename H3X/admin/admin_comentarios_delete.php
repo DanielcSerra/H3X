@@ -25,9 +25,15 @@ $result = $conn->query($sql);
 
 if (!$result || $result->num_rows === 0) {
     $_SESSION["errors"]["not_found"] = "Comentário não encontrado.";
+    if ($result) {
+        $result->free();
+    }
+    $conn->close();
     header("Location: admin_comentarios.php");
     exit();
 }
+
+$result->free();
 
 $deleteSql = "DELETE FROM comentarios WHERE id = $id";
 if ($conn->query($deleteSql)) {
@@ -36,5 +42,6 @@ if ($conn->query($deleteSql)) {
     $_SESSION["errors"]["db"] = "Erro ao eliminar comentário: " . $conn->error;
 }
 
+$conn->close();
 header("Location: admin_comentarios.php");
 exit();

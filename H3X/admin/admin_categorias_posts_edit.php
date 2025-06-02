@@ -26,6 +26,7 @@ $result = $conn->query($sql);
 if (!$result || $result->num_rows === 0) {
     $_SESSION["errors"]["not_found"] = "Categoria não encontrada.";
     header("Location: admin_categorias_posts.php");
+    $result->free();
     exit();
 }
 
@@ -88,8 +89,7 @@ $pageTitle = "H3X ADMIN - Editar Categoria Post";
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da Categoria</label>
                             <input type="text" class="form-control" id="nome" name="nome"
-                                value="<?= trim($categoria["nome"]) ?>" required maxlength="20"
-                                pattern="^[A-Za-zÀ-ÿ\s]{2,20}$"
+                                value="<?= trim($categoria["nome"]) ?>" required minlength="2" maxlength="20"
                                 title="O nome da categoria deve ter entre 2 e 20 caracteres.">
                         </div>
 
@@ -106,6 +106,23 @@ $pageTitle = "H3X ADMIN - Editar Categoria Post";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+    <?php
+    if ($result) {
+        $result->free();
+    }
+
+    $conn->close(); ?>
+    <script>
+        document.getElementById('categoriaForm').addEventListener('submit', function (e) {
+            const nome = document.getElementById('nome').value.trim();
+
+            if (nome.length < 2 || nome.length > 20) {
+                alert("O nome da categoria deve ter entre 2 e 20 caracteres.");
+                e.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,49 +1,50 @@
 <?php include 'require/head.php'; ?>
 <title>H3X - Pagina</title>
-<link rel="stylesheet" href="css/faq.css"> 
+<link rel="stylesheet" href="css/faq.css">
 </head>
+
 <body>
     <?php include 'require/navbar.php'; ?>
-        <div class="contain">
-    <section class="faq-container">
-        <div class="faq-header">FAQ</div>
+    <div class="contain">
+        <section class="faq-container">
+            <div class="faq-header">FAQ</div>
 
-        <?php
-        require_once 'db_config.php';
+            <?php
+            require_once 'db_config.php';
 
-        $sql = "SELECT * FROM faq ORDER BY id";
-        $result = $conn->query($sql);
+            $sql = "SELECT * FROM faq ORDER BY id";
+            $result = $conn->query($sql);
 
-        if ($result && $result->num_rows > 0) {
-            $first = true;
-            $count = 0;
-            $total = $result->num_rows;
+            if ($result && $result->num_rows > 0) {
+                $first = true;
+                $count = 0;
+                $total = $result->num_rows;
 
-            while($faq = $result->fetch_assoc()) {
-                echo '<div class="faq-item' . ($first ? ' active' : '') . '">';
-                echo '<div class="faq-question">' . htmlspecialchars($faq['titulo']) . '</div>';
-                echo '<div class="faq-answer">' . htmlspecialchars($faq['resposta']) . '</div>';
-                echo '</div>';
+                while ($faq = $result->fetch_assoc()) {
+                    echo '<div class="faq-item' . ($first ? ' active' : '') . '">';
+                    echo '<div class="faq-question">' . htmlspecialchars($faq['titulo']) . '</div>';
+                    echo '<div class="faq-answer">' . htmlspecialchars($faq['resposta']) . '</div>';
+                    echo '</div>';
 
-                $count++;
-                if ($count < $total) {
-                    echo '<div class="faq-divider"></div>';
+                    $count++;
+                    if ($count < $total) {
+                        echo '<div class="faq-divider"></div>';
+                    }
+
+                    $first = false;
                 }
 
-                $first = false;
+                echo '<div class="faq-spacer"></div>';
+            } else {
+                echo '<div class="faq-item">';
+                echo '<div class="faq-question">FAQ vazio</div>';
+                echo '<div class="faq-answer">Nenhuma pergunta frequente encontrada.</div>';
+                echo '</div>';
             }
 
-            echo '<div class="faq-spacer"></div>';
-        } else {
-            echo '<div class="faq-item">';
-            echo '<div class="faq-question">FAQ vazio</div>';
-            echo '<div class="faq-answer">Nenhuma pergunta frequente encontrada.</div>';
-            echo '</div>';
-        }
-
-        $conn->close();
-        ?>
-    </section>
+            $conn->close();
+            ?>
+        </section>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -65,6 +66,7 @@
             }
         });
     </script>
-    <?php include 'require/footer.php';?>
+    <?php include 'require/footer.php'; ?>
 </body>
+
 </html>

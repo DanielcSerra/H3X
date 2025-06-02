@@ -24,7 +24,6 @@ switch ($tipoUtilizador) {
         break;
 }
 
-// Carregar posts e utilizadores para selects
 $posts = $conn->query("SELECT id, titulo FROM posts");
 $utilizadores = $conn->query("SELECT id, nome FROM utilizadores");
 
@@ -92,7 +91,7 @@ $pageTitle = "H3X ADMIN - Criar Comentário";
                         <div class="mb-3">
                             <label for="conteudo" class="form-label">Conteúdo</label>
                             <textarea class="form-control" name="conteudo" id="conteudo" rows="5" required minlength="5"
-                                maxlength="500" title="O comentário deve ter entre 5 e 500 caracteres."><?= trim($comentario["conteudo"]) ?></textarea>
+                                maxlength="500" title="O comentário deve ter entre 5 e 500 caracteres."></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -129,6 +128,38 @@ $pageTitle = "H3X ADMIN - Criar Comentário";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+    <script>
+        document.getElementById('comentarioForm').addEventListener('submit', function (e) {
+            const conteudo = document.getElementById('conteudo').value.trim();
+            const idPost = document.getElementById('id_post').value;
+            const idUtilizador = document.getElementById('id_utilizador').value;
+
+            if (conteudo.length < 5 || conteudo.length > 500) {
+                alert("O comentário deve ter entre 5 e 500 caracteres.");
+                e.preventDefault();
+                return;
+            }
+
+            if (idPost === "") {
+                alert("Escolha um post.");
+                e.preventDefault();
+                return;
+            }
+
+            if (idUtilizador === "") {
+                alert("Escolha um utilizador.");
+                e.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
+
+<?php
+$posts->free();
+$utilizadores->free();
+
+$conn->close();
+?>
 
 </html>

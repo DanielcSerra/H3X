@@ -39,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result && $result->num_rows != 0) {
             $_SESSION["errors"]["email"] = "Email já existe";
+            $result->free();
         } else {
             $senhaHash = hash("sha512", $senha);
 
@@ -50,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql)) {
                 $_SESSION["success"] = "Conta criada com sucesso!";
+                $conn->close();
                 header("Location: login.php");
                 exit();
             } else {
@@ -62,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["errors"] = [];
 }
 
+$conn->close();
 header("Location: login.php");
 exit();
 ?>

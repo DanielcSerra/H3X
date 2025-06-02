@@ -98,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($conn->query($sql)) {
                 $_SESSION["errors"] = [];
                 $_SESSION["success"] = "Utilizador adicionado.";
+                $conn->close();
                 header("Location: admin_utilizadores.php");
                 exit();
             } else {
@@ -127,13 +128,15 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                 </a>
             </div>
 
-            <?php
-            if (isset($_SESSION["errors"])) {
-                foreach ($_SESSION["errors"] as $chave => $valor) {
-                    echo "<div class='alert alert-danger'>$valor</div>";
+            <div id="mensagens-erros">
+                <?php
+                if (isset($_SESSION["errors"])) {
+                    foreach ($_SESSION["errors"] as $chave => $valor) {
+                        echo "<div class='alert alert-danger'>$valor</div>";
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
 
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
@@ -142,9 +145,8 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
 
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="nome" required
-                                pattern="^[A-Za-zÀ-ÿ\s]{2,15}$"
-                                title="Nome deve conter apenas letras e pelo menos 2 caracteres.">
+                            <input type="text" class="form-control" name="nome" id="nome" required minlength="2"
+                                maxlength="15" title="Nome deve conter entre 2 e 15 caracteres.">
                         </div>
 
                         <div class="mb-3">
@@ -153,9 +155,9 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                         </div>
 
                         <div class="mb-3">
-                            <label for="telefone" class="form-label">Telefone</label>
-                            <input type="tel" class="form-control" name="telefone" id="telefone" pattern="[0-9]{9}"
-                                title="Telefone deve conter exatamente 9 dígitos numéricos.">
+                            <label for="telefone" class="form-label">Telefone (opcional)</label>
+                            <input type="tel" class="form-control" name="telefone" id="telefone" minlength="9"
+                                maxlength="9" title="Telefone deve conter exatamente 9 dígitos numéricos.">
                         </div>
 
                         <div class="mb-3">
@@ -167,7 +169,7 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                         <div class="mb-3">
                             <label for="senha" class="form-label">Palavra-passe</label>
                             <input type="password" class="form-control" name="senha" id="senha" required minlength="6"
-                                title="A palavra-passe deve ter pelo menos 6 caracteres.">
+                                maxlength="20" title="A palavra-passe deve ter entre 6 e 20 caracteres.">
                         </div>
 
                         <div class="mb-3">
@@ -194,5 +196,67 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
 
                 </div>
             </div>
+
+            <script>
+                function validarFormulario(e) {
+                    var nome = document.getElementById("nome").value.trim();
+                    var email = document.getElementById("email").value.trim();
+                    var telefone = document.getElementById("telefone").value.trim();
+                    var dataNascimento = document.getElementById("data_nascimento").value.trim();
+                    var senha = document.getElementById("senha").value.trim();
+                    var tipo = document.getElementById("tipo").value;
+
+                    if (nome.length < 2 || nome.length > 15) {
+                        alert("O nome deve ter entre 2 e 15 caracteres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (email === "") {
+                        alert("O email é obrigatório.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (email.length > 100) {
+                        alert("O email deve ter no máximo 100 caracteres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (telefone !== "") {
+                        if (telefone.length !== 9 || isNaN(telefone)) {
+                            alert("O telefone deve conter exatamente 9 dígitos numéricos.");
+                            e.preventDefault();
+                            return;
+                        }
+                    }
+
+                    if (dataNascimento === "") {
+                        alert("Preencha a data de nascimento.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (senha.length < 6 || senha.length > 20) {
+                        alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (tipo === "") {
+                        alert("Selecione o tipo de utilizador.");
+                        e.preventDefault();
+                        return;
+                    }
+                }
+
+                window.onload = function () {
+                    var form = document.querySelector("form");
+                    form.addEventListener("submit", validarFormulario);
+                }
+            </script>
+
+
 
             <?php require 'partials/footer.php'; ?>

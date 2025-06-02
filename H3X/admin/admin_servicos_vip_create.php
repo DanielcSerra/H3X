@@ -54,21 +54,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar limite
         $sqlCheck = "SELECT COUNT(*) AS total FROM servicos_vip";
         $resultCheck = $conn->query($sqlCheck);
-    
+
         if ($resultCheck) {
             $row = $resultCheck->fetch_assoc();
             if ($row['total'] >= 3) {
                 $_SESSION["errors"]["limite"] = "Limite de 3 serviços VIP já atingido.";
             }
         }
-    
+
         // Se ainda estiver tudo certo, continua
         if (count($_SESSION["errors"]) === 0) {
             $titulo = mysqli_real_escape_string($conn, $titulo);
             $imagemNome = mysqli_real_escape_string($conn, $imagemNome);
-    
+
             $sql = "INSERT INTO servicos_vip (titulo, imagem) VALUES ('$titulo', '$imagemNome')";
-    
+
             if ($conn->query($sql)) {
                 $_SESSION["success"] = "Serviço VIP adicionado com sucesso.";
                 header("Location: admin_servicos_vip.php");
@@ -117,8 +117,8 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
 
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>
-                            <input type="text" class="form-control" name="titulo" id="titulo" required
-                                minlength="2" title="Insira um título válido.">
+                            <input type="text" class="form-control" name="titulo" id="titulo" required minlength="2"
+                                title="Insira um título válido.">
                         </div>
 
                         <div class="mb-3">

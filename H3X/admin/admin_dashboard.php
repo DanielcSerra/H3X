@@ -334,6 +334,20 @@ $resultReservasVIP = $conn->query($sqlUltimasReservasVIP);
                     window.postsPorSemana = <?= json_encode($postsPorSemana) ?>;
                 </script>
                 <script src="js/charts.js"></script>
+                <?php
+                if ($result)
+                    $result->free();
+                if ($resultTipos)
+                    $resultTipos->free();
+                if ($resultPostsSemana)
+                    $resultPostsSemana->free();
+                if ($resultContactos)
+                    $resultContactos->free();
+                if ($resultReservasVIP)
+                    $resultReservasVIP->free();
+
+                $conn->close();
+                ?>
                 <?php require 'partials/footer.php'; ?>
 
 </body>

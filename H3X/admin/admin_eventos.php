@@ -47,16 +47,8 @@ require 'partials/header.php';
             </div>
 
             <?php
-            if (!empty($_SESSION["success"])) {
-                echo "<div class='alert alert-success fade-out'>" . $_SESSION["success"] . "</div>";
-                unset($_SESSION["success"]);
-            }
-            if (!empty($_SESSION["errors"])) {
-                foreach ($_SESSION["errors"] as $erro) {
-                    echo "<div class='alert alert-danger fade-out'>$erro</div>";
-                }
-                unset($_SESSION["errors"]);
-            }
+            require_once('partials/erros_sucesso_msgs.php');
+            ?>
 
             $sql = "SELECT * FROM eventos ORDER BY data_inicio DESC";
             $result = $conn->query($sql);

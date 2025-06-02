@@ -60,6 +60,9 @@ if ($conn->query($deleteSql)) {
     $_SESSION["errors"]["db"] = "Erro ao eliminar utilizador: " . $conn->error;
 }
 
+$result->free();
+$conn->close();
+
 header("Location: admin_utilizadores.php");
 exit();
 ?>

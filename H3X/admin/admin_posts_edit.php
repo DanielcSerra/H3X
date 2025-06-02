@@ -37,6 +37,7 @@ if (!$result || $result->num_rows == 0) {
 }
 
 $post = $result->fetch_assoc();
+$result->free();
 
 $utilizadores = $conn->query("SELECT id, nome FROM utilizadores");
 $categorias = $conn->query("SELECT id, nome FROM categorias_posts");
@@ -133,15 +134,15 @@ $pageTitle = "H3X ADMIN - Editar Post";
                             <label for="titulo" class="form-label">Título</label>
                             <input type="text" class="form-control" name="titulo" id="titulo"
                                 value="<?= trim($post["titulo"]) ?>" required maxlength="20"
-                                pattern="^[A-Za-zÀ-ÿ0-9\s.,!?\"'()-]{5,20}$" title="O título deve ter entre 5 e 20 caracteres">
+                                title="O título deve no maximo 20 caracteres.">
                         </div>
 
                         <div class="mb-3">
                             <label for="conteudo" class="form-label">Conteúdo</label>
-                            <textarea class="form-control" name="conteudo" id="conteudo" rows="5" required
-                                minlength="10"
-                                title="O conteúdo deve ter pelo menos 10 caracteres."><?= trim($post["conteudo"]) ?></textarea>
+                            <textarea class="form-control" name="conteudo" id="conteudo" rows="10" required
+                                minlength="10" title="Mínimo 10 caracteres"><?= trim($post["conteudo"]) ?></textarea>
                         </div>
+
 
                         <?php if (!empty($post["imagem"])): ?>
                             <div class="mb-3">
@@ -199,4 +200,33 @@ $pageTitle = "H3X ADMIN - Editar Post";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+    <?php $conn->close(); ?>
+    <script>
+        document.getElementById(' postForm').addEventListener('submit', function (e) {
+            const
+                titulo = document.getElementById('titulo').value.trim(); const
+                    conteudo = document.getElementById('conteudo').value.trim(); const
+                        imagem = document.getElementById('imagem').files.length; const
+                            utilizador = document.getElementById('id_utilizador').value; const
+                                categoria = document.getElementById('id_categoria').value; if (titulo.length < 5 ||
+                                    titulo.length > 20) {
+                alert("O título deve ter entre 5 e 20 caracteres.");
+                e.preventDefault();
+                return;
+            }
+
+            if (conteudo.length < 10) {
+                alert("O conteúdo deve ter pelo menos 10 caracteres.");
+                e.preventDefault(); return;
+            } if (imagem === 0) {
+                alert("Escolha uma imagem.");
+                e.preventDefault(); return;
+            } if (utilizador === "") {
+                alert("Escolha um utilizador.");
+                e.preventDefault(); return;
+            } if (categoria === "") {
+                alert("Escolha uma categoria.");
+                e.preventDefault(); return;
+            }
+        }); </script>
 </body>

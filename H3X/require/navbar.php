@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $fileName = basename($_SERVER["SCRIPT_NAME"]);
 ?>
 

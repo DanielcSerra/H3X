@@ -38,7 +38,6 @@ if (!$result || $result->num_rows == 0) {
 
 $comentario = $result->fetch_assoc();
 
-// Obter posts e utilizadores para dropdowns
 $posts = $conn->query("SELECT id, titulo FROM posts");
 $utilizadores = $conn->query("SELECT id, nome FROM utilizadores");
 
@@ -148,7 +147,44 @@ $pageTitle = "H3X ADMIN - Editar Comentário";
                 </div>
             </div>
 
-            <?php require 'partials/footer.php'; ?>
+            <?php
+            if ($result) {
+                $result->free();
+            }
+            if ($posts) {
+                $posts->free();
+            }
+            if ($utilizadores) {
+                $utilizadores->free();
+            }
+
+            $conn->close();
+            require 'partials/footer.php'; ?>
         </div>
     </div>
+    <script>
+        document.getElementById('comentarioForm').addEventListener('submit', function (e) {
+            const conteudo = document.getElementById('conteudo').value.trim();
+            const idPost = document.getElementById('id_post').value;
+            const idUtilizador = document.getElementById('id_utilizador').value;
+
+            if (conteudo.length < 5 || conteudo.length > 500) {
+                alert("O comentário deve ter entre 5 e 500 caracteres.");
+                e.preventDefault();
+                return;
+            }
+
+            if (idPost === "") {
+                alert("Escolha um post.");
+                e.preventDefault();
+                return;
+            }
+
+            if (idUtilizador === "") {
+                alert("Escolha um utilizador.");
+                e.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
