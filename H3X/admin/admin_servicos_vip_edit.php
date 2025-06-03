@@ -56,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagemCaminho);
             $imagemSql = ", imagem = '$imagemNome'";
 
-            // Elimina imagem anterior
             if (!empty($servico["imagem"])) {
                 $imagemAntiga = $dirUpload . "/" . $servico["imagem"];
                 if (file_exists($imagemAntiga)) {
@@ -100,14 +99,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
                     <input type="text" class="form-control" name="titulo" id="titulo"
-                        value="<?= htmlspecialchars($servico["titulo"]) ?>" required minlength="2" maxlength="100">
+                        value="<?= trim($servico["titulo"]) ?>" required minlength="2" maxlength="100">
                 </div>
 
                 <?php if (!empty($servico["imagem"])): ?>
                 <div class="mb-3">
                     <label class="form-label d-block">Imagem Atual:</label>
-                    <img src="../uploads/<?= htmlspecialchars($servico["imagem"]) ?>" alt="Imagem Serviço"
-                        class="img-thumbnail" style="max-width: 200px;">
+                    <img src="../uploads/<?= trim($servico["imagem"]) ?>" alt="Imagem Serviço" class="img-thumbnail"
+                        style="max-width: 200px;">
                 </div>
                 <?php endif; ?>
 

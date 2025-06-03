@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (count($_SESSION["errors"]) === 0) {
-        // Verificar limite
+       
         $sqlCheck = "SELECT COUNT(*) AS total FROM servicos_vip";
         $resultCheck = $conn->query($sqlCheck);
 
@@ -62,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // Se ainda estiver tudo certo, continua
         if (count($_SESSION["errors"]) === 0) {
             $titulo = mysqli_real_escape_string($conn, $titulo);
             $imagemNome = mysqli_real_escape_string($conn, $imagemNome);
