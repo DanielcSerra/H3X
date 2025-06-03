@@ -1,98 +1,173 @@
-<?php include 'require/head.php';?>
-    <title>H3X - Pagina</title>
-    <link rel="stylesheet" href="css/contact.css"> 
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <?php include 'partials/head.php'; ?>
+  <title>H3X - Contactos</title>
+
+  <link rel="stylesheet" href="css/contato.css">
+  <?php
+  require_once 'db_config.php';
+  require_once "admin/ultima_atividade.php";
+
+  $success = "";
+  $errors = [];
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = trim($_POST['nome'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $assunto = trim($_POST['assunto'] ?? '');
+    $telefone = trim($_POST['telefone'] ?? '');
+    $mensagem = trim($_POST['mensagem'] ?? '');
+
+    if (empty($nome)) {
+      $errors[] = "O campo nome é obrigatório.";
+    }
+    if (empty($assunto)) {
+      $errors[] = "Por favor escolha um assunto.";
+    }
+    if (empty($email)) {
+      $errors[] = "O campo email é obrigatório.";
+    }
+    if (empty($telefone)) {
+      $errors[] = "O campo telefone é obrigatório.";
+    }
+    if (empty($mensagem)) {
+      $errors[] = "O campo telefone é mensagem é obrigatorio.";
+    }
+
+    if (empty($errors)) {
+      $stmt = $conn->prepare("INSERT INTO contactos (nome,assunto, email, telefone, mensagem,data_envio) VALUES (?,?, ?, ?, ?, NOW() )");
+      $stmt->bind_param("sssss", $nome, $assunto, $email, $telefone, $mensagem);
+
+      if ($stmt->execute()) {
+        $success = "Mensagem enviada com sucesso!";
+        $nome = $assunto = $email = $telefone = $mensagem = '';
+      } else {
+        $errors[] = "Erro ao enviar a mensagem. Tente novamente.";
+      }
+      $stmt->close();
+    }
+  }
+
+
+  ?>
+
+
 </head>
+
 <body>
-    <?php include 'require/navbar.php';?>
-    <div class="Banner">
-    <img src="img/bannercontacto.png" alt="BannerContactos">
-    <h1>Segurança</h1>
-    </div>
+  <?php include 'partials/navbar.php'; ?>
 
-<section class="fundo">
-  <!-- Seção Segurança -->
-
-  <section class="container">
-  <div class="texto">
-          <p>
-            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">TELEFONE 9988888887 </span><br><br>
-            <img src="img/Subtract.png" class="imagem-informa" alt=""><span class="text-informa">EMAIL h3xnightclub@gmai.com </span><br><br>
-            <img src="img/iconelocalizacao.png" class="imagem-informa" alt=""><span class="text-informa">LOCALIZAÇÃO Av. Brasília 66, 1200-481 Lisboa </span><br><br>
-          </p>
-        </div>
-        
-    </div>
-
-    <div class="formulario ">
-        
-        <div class="mb-3">
-<label for="exampleFormControlInput1" class="form-label"> nome</label>
-<input type="text" class="form-control" id="nome" name ="email" placeholder=" Escreve o.com">
-</div>
-
-<div class="mb-3">
-<label for="exampleFormControlInput1" class="form-label">Assunto</label>
-<input type="text" class="form-control" id="exampleFormControlInput1" name ="email" placeholder=" name@example.com">
-</div>
-<div class="mb-3">
-<label for="exampleFormControlInput1" class="form-label">Telefone</label>
-<input type="text" class="form-control" id="exampleFormControlInput1" name ="email" placeholder=" name@example.com">
-</div>
-
-<div class="mb-3">
-<label for="exampleFormControlInput1" class="form-label">Email address</label>
-<input type="email" class="form-control" id="exampleFormControlInput1" name ="email" placeholder=" name@example.com">
-</div>
-
-<div class="mb-3">
-<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-
-</div>
-
-  </section>
-
-
-  
-
-  <!-- Seção Serviços -->
-  <section class=" cards text-white  text-center">
-    <h2 class="section-title">SERVIÇOS</h2>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="card1 col-md-6 mb-4">
-          <div class="border-container">
-            <div class="imgcard1">
-            <img src="img/Segurancaimg2.png"  alt="DJ">
-      </div>
+  <div class="Banner">
+    <img src="img/bannercontacto.png" alt="Banner Contactos">
+    <h1>Contactos</h1>
+  </div>
+  <div class="barra">
+    <img src="img/barrabranca.png" class="barra_branca" alt="">
+  </div>
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="icon-box">
+            <img src="img/Group 244.png" alt="Telefone">
           </div>
-
-          <p class="textocard1">
-            <span>Oferecemos Auscutadores</span><br>
-            <p class="subtextocard1">Caso queira nos ofererecemos auscutadores<br> para as pessoas que desejarem<p>
-          </p>
+          <div class="contact-text">
+            <span class="contact-label">TELEFONE</span>
+            <span class="contact-detail">959 888 888</span>
+          </div>
         </div>
 
-        
-     
-        <div class="card2 col-md-6 mb-4">
-          <div class="custom-card">
-            <div class="card1 border-container">
-            <div class="imgcard2">
-              <img src="img/SegurancaIMG3.png" alt="Transporte">
-              </div>
-            </div>
-            <p  class="textocard2">
-              <span>Motoristas para levar a casa</span><br>
-              <p class="subtextocard1">Ofererecemos trasnporte privado por apenas 13.99 euros</p>
-            </p>
+        <div class="contact-item">
+          <div class="icon-box">
+            <img src="img/Subtract.png" class="email-icon" alt="Email">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">EMAIL</span>
+            <span class="contact-detail">h3xnightclub@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-box">
+            <img src="img/iconelocalizacaopng" alt="Localização">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">LOCALIZAÇÃO</span>
+            <span class="contact-detail">Av. Brasília 66, 1200-481 Lisboa</span>
           </div>
         </div>
       </div>
+
+      <div class="contact-form">
+        <?php if (!empty($errors)): ?>
+          <div class="alert alert-danger">
+            <?php foreach ($errors as $error): ?>
+              <p><?= htmlspecialchars($error) ?></p>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($success)): ?>
+
+
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= $success ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Escreve o teu nome"
+              value="<?= htmlspecialchars($nome ?? '') ?>" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="assunto" class="form-label">Assunto</label>
+            <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Teu número de telefone"
+              value="<?= htmlspecialchars($assunto ?? '') ?>" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+              value="<?= htmlspecialchars($email ?? '') ?>" required>
+          </div>
+
+
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Teu número de telefone"
+              value="<?= htmlspecialchars($telefone ?? '') ?>" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" placeholder="Escreve a tua mensagem"
+              required><?= htmlspecialchars($mensagem ?? '') ?></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+        </form>
+      </div>
     </div>
   </section>
-</section>
-<?php include 'require/footer.php';?>
+  <div class="mapa_container">
+    <div class="mapa_discoteca">
+      <div class="mapa_escuro">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.228507335417!2d-8.825259736107782!3d39.73451765260679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd22735a4e067afb%3A0xcfaf619f4450fa76!2sPolit%C3%A9cnico%20de%20Leiria%20%7C%20ESTG%20-%20Escola%20Superior%20de%20Tecnologia%20e%20Gest%C3%A3o_Edif%C3%ADcio%20D!5e0!3m2!1spt-PT!2spt!4v1748532881324!5m2!1spt-PT!2spt"
+          height="450" style="border:0; width:100%; filter: invert(90%)" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div>
+  </div>
+  <?php include 'partials/footer.php'; ?>
 </body>
+
 </html>

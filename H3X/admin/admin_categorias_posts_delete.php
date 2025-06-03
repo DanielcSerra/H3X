@@ -24,6 +24,9 @@ $sql = "SELECT * FROM categorias_posts WHERE id = $id";
 $result = $conn->query($sql);
 
 if (!$result || $result->num_rows === 0) {
+    if ($result)
+        $result->free();
+    $conn->close();
     $_SESSION["errors"]["not_found"] = "Categoria não encontrada.";
     header("Location: admin_categorias_posts.php");
     exit();
@@ -33,10 +36,14 @@ $verificaPosts = $conn->query("SELECT COUNT(*) as total FROM posts WHERE id_cate
 $contagem = $verificaPosts->fetch_assoc()["total"];
 
 if ($contagem > 0) {
-    $_SESSION["errors"]["ligacoes"] = "Não é possível eliminar esta categoria porque existem $contagem post(s) associados a ela.";
+    $result->free();
+    $conn->close();
+    $_SESSION["errors"]["ligacoes"] = "Não é possível eliminar esta categoria porque existem $contagem post(s) associados";
     header("Location: admin_categorias_posts.php");
     exit();
 }
+
+$result->free();
 
 $deleteSql = "DELETE FROM categorias_posts WHERE id = $id";
 if ($conn->query($deleteSql)) {
@@ -45,5 +52,6 @@ if ($conn->query($deleteSql)) {
     $_SESSION["errors"]["db"] = "Erro ao eliminar categoria: " . $conn->error;
 }
 
+$conn->close();
 header("Location: admin_categorias_posts.php");
 exit();

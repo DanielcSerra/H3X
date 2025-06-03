@@ -78,8 +78,8 @@
             }
             ?>
             <div class="profile-details">
-                <div><?= htmlspecialchars($nomeUtilizador) ?></div>
-                <small><?= htmlspecialchars($tipoLabel) ?></small>
+                <div><?= trim($nomeUtilizador) ?></div>
+                <small><?= trim($tipoLabel) ?></small>
             </div>
         </div>
 

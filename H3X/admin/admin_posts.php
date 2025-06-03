@@ -50,16 +50,7 @@ $pageTitle = "H3X ADMIN - Posts";
             </div>
 
             <?php
-            if (!empty($_SESSION["success"])) {
-                echo "<div class='alert alert-success fade-out'>" . $_SESSION["success"] . "</div>";
-                unset($_SESSION["success"]);
-            }
-            if (!empty($_SESSION["errors"])) {
-                foreach ($_SESSION["errors"] as $erro) {
-                    echo "<div class='alert alert-danger fade-out'>$erro</div>";
-                }
-                unset($_SESSION["errors"]);
-            }
+            require_once('partials/erros_sucesso_msgs.php');
             ?>
 
             <?php
@@ -170,13 +161,42 @@ $pageTitle = "H3X ADMIN - Posts";
                                 <td>
                                     <a href="admin_posts_edit.php?id=<?= urlencode($id) ?>" title="Editar"><i
                                             class="fas fa-pen-to-square text-warning"></i></a>
-                                    <a href="admin_posts_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
-                                            class="fas fa-trash text-danger"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal<?= $id ?>"
+                                        title="Apagar">
+                                        <i class="fas fa-trash text-danger ms-2"></i>
+                                    </a>
+
+                                    <div class="modal fade" id="confirmDeleteModal<?= $id ?>" tabindex="-1"
+                                        aria-labelledby="confirmDeleteLabel<?= $id ?>" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmDeleteLabel<?= $id ?>">Eliminar Post</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Fechar"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Tem certeza que deseja eliminar o post
+                                                    <strong><?= htmlspecialchars($post->titulo) ?></strong>?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="admin_posts.php" class="btn btn-secondary">Cancelar</a>
+                                                    <a href="admin_posts_delete.php?id=<?= urlencode($id) ?>"
+                                                        class="btn btn-danger">Confirmar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
                 </table>
+                <?php
+                $result->free();
+                $conn->close();
+                ?>
             <?php else: ?>
                 <p class="alert alert-warning">Sem resultados encontrados.</p>
             <?php endif; ?>

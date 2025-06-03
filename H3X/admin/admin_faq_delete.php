@@ -12,7 +12,7 @@ require_once 'ultima_atividade.php';
 $_SESSION["errors"] = [];
 $_SESSION["success"] = "";
 
-// Verifica se foi fornecido o ID
+
 if (!isset($_GET["id"])) {
     $_SESSION["errors"]["id"] = "ID da FAQ não fornecido.";
     header("Location: admin_faq.php");
@@ -20,8 +20,8 @@ if (!isset($_GET["id"])) {
 }
 
 
-
-// Verifica se a FAQ existe
+$id = $_GET["id"];
+//Verifica se faq existe
 $sql = "SELECT * FROM faq WHERE id = $id";
 $result = $conn->query($sql);
 
@@ -31,7 +31,7 @@ if (!$result || $result->num_rows === 0) {
     exit();
 }
 
-// Elimina a FAQ
+
 $deleteSql = "DELETE FROM faq WHERE id = $id";
 if ($conn->query($deleteSql)) {
     $_SESSION["success"] = "FAQ eliminada com sucesso.";

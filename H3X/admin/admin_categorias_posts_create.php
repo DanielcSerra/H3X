@@ -32,13 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($nome) == 0) {
         $_SESSION["errors"]["nome"] = "Nome da categoria é obrigatório";
     } else {
-        // Verificar se já existe categoria com esse nome
         $nomeEscaped = mysqli_real_escape_string($conn, $nome);
         $checkSql = "SELECT id FROM categorias_posts WHERE nome = '$nomeEscaped' LIMIT 1";
         $checkResult = $conn->query($checkSql);
         if ($checkResult && $checkResult->num_rows > 0) {
             $_SESSION["errors"]["nome"] = "Já existe uma categoria com este nome.";
         }
+        $checkResult->free();
     }
 
     if (count($_SESSION["errors"]) === 0) {
@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO categorias_posts (nome) VALUES ('$nomeEscaped')";
 
         if ($conn->query($sql)) {
+            $conn->close();
             $_SESSION["success"] = "Categoria criada com sucesso.";
             header("Location: admin_categorias_posts.php");
             exit();
@@ -91,9 +92,8 @@ $pageTitle = "H3X ADMIN - Criar Categoria Post";
 
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da Categoria</label>
-                            <input type="text" class="form-control" name="nome" id="nome" required
-                                value="<?= trim($_POST['nome'] ?? '') ?>" maxlength="20" pattern="^[A-Za-zÀ-ÿ\s]{2,20}$"
-                                title="O nome da categoria deve ter entre 2 e 20 caracteres.">
+                            <input type="text" class="form-control" name="nome" id="nome" required minlength="2"
+                                maxlength="20" title="O nome da categoria deve ter entre 2 e 20 caracteres.">
                         </div>
 
                         <div class="mb-3 text-center">
@@ -110,6 +110,18 @@ $pageTitle = "H3X ADMIN - Criar Categoria Post";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+
+    <script>
+        document.getElementById('categoriaForm').addEventListener('submit', function (submitEvent) {
+            const nome = document.getElementById('nome').value.trim();
+
+            if (nome.length < 2 || nome.length > 20) {
+                alert("O nome da categoria deve ter entre 2 e 20 caracteres.");
+                submitEvent.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
 
 </html>

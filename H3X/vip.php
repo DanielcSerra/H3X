@@ -1,18 +1,20 @@
 <?php
+session_start();
 // 1. Conexão com o banco de dados
 require_once("db_config.php");
+require_once "admin/ultima_atividade.php";
 
 // 2. Consulta os dados
 $sql = "SELECT * FROM servicos_vip";
 $result = $conn->query($sql);
 ?>
-<?php include 'require/head.php';?>
+<?php include 'partials/head.php'; ?>
 <title>H3X - Pagina</title>
 <link rel="stylesheet" href="css/vip.css"> <!-- CSS AQUI -->
 </head>
 
 <body>
-    <?php include 'require/navbar.php';?>
+    <?php include 'partials/navbar.php'; ?>
 
     <div class="Parte1">
         <h1 class="terceiro">ZONA VIP</h1>
@@ -43,10 +45,12 @@ $result = $conn->query($sql);
     </div>
     <div class="container">
         <div class="form-botao">
-            <div class="botao">
-                <img src="img/caixabranca.png">
-                <h2>FORMULARIO</h2>
-            </div>
+            <a href="#formulario" class="botao-link">
+                <div class="botao">
+                    <img src="img/caixabranca.png">
+                    <h2>FORMULARIO</h2>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -55,20 +59,23 @@ $result = $conn->query($sql);
         <div class="container">
             <div class="caixas">
                 <h2 class="beneficios">BENEFÍCIOS VIP</h2>
-<div class="cartas2">
-    <div class="cartas-sobre-fundo">
-        <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="carta-bloco d-flex flex-column align-items-center">
-                <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2" alt="Card" style="height: 400px; object-fit: contain;">
-                <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
-            </div>
-        <?php endwhile; ?>
-    </div>
-</div>
-<?php $conn->close(); ?>
+                <div class="cartas2">
+                    <div class="cartas-sobre-fundo">
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <div class="carta-bloco d-flex flex-column align-items-center">
+                                <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2"
+                                    alt="Card" style="height: 400px; object-fit: contain;">
+                                <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+                <?php $conn->close(); ?>
                 <div class="botao-reservar">
-                    <img src="img/Botao_Rese.png" alt="Botão Reservar">
-                    <h2 class="texto-reservar">RESERVAR</h2>
+                    <a href="#formulario" class="botao-link">
+                        <img src="img/Botao_Rese.png" alt="Botão Reservar">
+                        <h2 class="texto-reservar">RESERVAR</h2>
+                    </a>
                 </div>
             </div>
         </div>
@@ -76,7 +83,7 @@ $result = $conn->query($sql);
         <img src="img/Ret_Branco.png" class="quadrado" alt="Carta 3">
     </section>
 
-    <div class="container">
+    <div class="container" id="formulario">
         <div class="formulario-container">
             <div class="mapa-area">
                 <img src="img/MAPA H3X 1.png" class="imagem-fundo" alt="Mapa do estabelecimento">
@@ -120,4 +127,4 @@ $result = $conn->query($sql);
     </div>
 
 </body>
-<?php include 'require/footer.php';?>
+<?php include 'partials/footer.php'; ?>

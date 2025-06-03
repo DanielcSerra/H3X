@@ -32,6 +32,7 @@ if (!$result || $result->num_rows === 0) {
 }
 
 $post = $result->fetch_assoc();
+$result->free();
 
 if (!empty($post["imagem"])) {
     $imagemPath = "../uploads/" . $post["imagem"];
@@ -47,7 +48,7 @@ if ($conn->query($deleteSql)) {
 } else {
     $_SESSION["errors"][] = "Não foi possível eliminar o post. Pode haver comentários associados.";
 }
-
+$conn->close();
 header("Location: admin_posts.php");
 exit();
 

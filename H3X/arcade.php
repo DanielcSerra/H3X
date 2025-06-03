@@ -1,15 +1,20 @@
+<?php
+session_start();
+require_once 'db_config.php';
+require_once "admin/ultima_atividade.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 
 <head>
-    <?php include 'require/head.php'; ?>
+    <?php include 'partials/head.php'; ?>
     <title>H3X - Arcade</title>
     <link rel="stylesheet" href="css/arcade.css">
 </head>
 
 <body>
 
-    <?php include 'require/navbar.php'; ?>
+    <?php include 'partials/navbar.php'; ?>
     <div class="hero d-flex justify-content-center align-items-center text-center position-relative">
         <h1>ARCADE</h1>
 
@@ -97,7 +102,7 @@
             </div>
         </div>
     </main>
-    <?php include 'require/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-/* Fundo principal */
 @keyframes oscillate3DImproved {
   0% {
     transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1);
