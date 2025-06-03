@@ -103,7 +103,7 @@ require 'partials/header.php';
 
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
-                    <form method="POST" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm w-100" style="max-width:600px;">
+                    <form method="POST" id="galeriaadminform" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm w-100" style="max-width:600px;">
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>
                             <textarea class="form-control" id="titulo" name="titulo" rows="1" maxlength="100" required><?= htmlspecialchars($_POST['titulo'] ?? '') ?></textarea>
@@ -131,5 +131,22 @@ require 'partials/header.php';
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+<script>
+document.getElementById('galeriaadminform').addEventListener('submit', function(submitEvent) {
+    const titulo = document.getElementById('titulo').value.trim();
+    
+    if (titulo.length < 3) {
+        alert("Por favor, insira um título maior");
+        submitEvent.preventDefault();
+        return;
+    }
+    
+    if (titulo.length > 100) {
+        alert("O título não pode exceder 100 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+});
+</script>
 </body>
 </html>

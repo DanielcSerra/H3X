@@ -127,7 +127,7 @@ require 'partials/header.php';
                                     <?php if ($img->aprovado) { ?>
                                         <a href="admin_galeria_disaproveimg.php?id=<?php echo urlencode($id); ?>" title="Desaprovar"
                                             class="ms-2">
-                                            <i class="fas fa-check-square text-secondary"></i>
+                                            <i class="fas fa-check-square text-danger"></i>
                                         </a>
                                     <?php } else { ?>
                                         <a href="admin_galeria_aproveimg.php?id=<?php echo urlencode($id); ?>" title="Aprovar"
