@@ -134,4 +134,54 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
                 </div>
             </div>
 
+            <script>
+            function validarFormulario(event) {
+                var titulo = document.getElementById("titulo").value.trim();
+                var imagemInput = document.getElementById("imagem");
+                var imagem = imagemInput.files[0];
+
+                // Validação do título
+                if (titulo.length < 2) {
+                    alert("O título deve ter pelo menos 2 caracteres.");
+                    event.preventDefault();
+                    return;
+                }
+
+                // Validação da imagem
+                if (!imagem) {
+                    alert("Selecione uma imagem.");
+                    event.preventDefault();
+                    return;
+                }
+
+                var tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+                if (tiposPermitidos.indexOf(imagem.type) === -1) {
+                    alert("Tipo de imagem inválido. Formatos permitidos: JPEG, PNG, GIF, WEBP.");
+                    event.preventDefault();
+                    return;
+                }
+
+                var tamanhoMaxMB = 5;
+                var tamanhoMaxBytes = tamanhoMaxMB * 1024 * 1024;
+
+                if (imagem.size > tamanhoMaxBytes) {
+                    alert("A imagem deve ter no máximo 5MB.");
+                    event.preventDefault();
+                    return;
+                }
+            }
+
+            window.onload = function() {
+                var form = document.querySelector("form");
+                form.addEventListener("submit", validarFormulario);
+            }
+            </script>
+
+
+
+
+
+
+
+
             <?php require 'partials/footer.php'; ?>

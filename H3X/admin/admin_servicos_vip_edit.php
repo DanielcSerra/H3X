@@ -126,4 +126,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php $conn->close(); require 'partials/footer.php'; ?>
         </div>
     </div>
+
+    <script>
+    function validarFormulario(event) {
+        var titulo = document.getElementById("titulo").value.trim();
+
+        if (titulo.length < 2 || titulo.length > 100) {
+            alert("O título deve ter entre 2 e 100 caracteres.");
+            event.preventDefault();
+            return;
+        }
+    }
+
+    window.onload = function() {
+        var form = document.querySelector("form");
+        form.addEventListener("submit", validarFormulario);
+    }
+    </script>
+
 </body>
