@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'db_config.php';
+require_once "admin/ultima_atividade.php";
 
 $categorias = [];
 $resultadoCategorias = mysqli_query($conn, "SELECT id, nome FROM categorias_posts ORDER BY nome");
@@ -118,7 +119,7 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
                             <div class="h3x-box text-white">
                                 <div class="h3x-img-container">
-                                    <img src="uploads/<?= trim($post['imagem']) ?>" alt="Imagem do post" />
+                                    <img src="uploads/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
                                 </div>
                                 <div class="h3x-content mt-2 px-2">
                                     <h6 class="fw-bold"><?= $post['titulo'] ?></h6>

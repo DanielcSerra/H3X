@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "admin/ultima_atividade.php";
 ?>
 <?php include 'partials/head.php'; ?>
 <title>HEYK Eventos</title>

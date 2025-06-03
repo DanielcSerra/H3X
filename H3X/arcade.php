@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "admin/ultima_atividade.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
