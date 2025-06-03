@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once "admin/ultima_atividade.php";
 ?>
 <?php include 'partials/head.php'; ?>
 <title>H3X - Pagina</title>
@@ -15,6 +14,7 @@ require_once "admin/ultima_atividade.php";
 
             <?php
             require_once 'db_config.php';
+            require_once "admin/ultima_atividade.php";
 
             $sql = "SELECT * FROM faq ORDER BY id";
             $result = $conn->query($sql);

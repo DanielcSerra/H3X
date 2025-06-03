@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once "admin/ultima_atividade.php";
 ?>
 
 <head>
@@ -8,6 +7,7 @@ require_once "admin/ultima_atividade.php";
     include 'partials/head.php';
 
     require_once 'db_config.php';
+    require_once "admin/ultima_atividade.php";
 
     $query = "SELECT * FROM eventos ORDER BY data_inicio LIMIT 1";
     $result = mysqli_query($conn, $query);

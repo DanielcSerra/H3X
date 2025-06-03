@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["foto"] = $user->foto;
                     $_SESSION["tipo"] = $user->tipo;
                     $_SESSION["errors"] = [];
+                    require_once "ultima_atividade.php";
                     $result->free();
                     $conn->close();
                     header("location:../index.php");

@@ -1,7 +1,3 @@
-<?php
-session_start();
-require_once "admin/ultima_atividade.php";
-?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -12,6 +8,7 @@ require_once "admin/ultima_atividade.php";
   <link rel="stylesheet" href="css/contato.css">
   <?php
   require_once 'db_config.php';
+  require_once "admin/ultima_atividade.php";
 
   $success = "";
   $errors = [];

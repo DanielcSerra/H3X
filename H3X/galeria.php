@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once "admin/ultima_atividade.php";
 ?>
 <?php include 'partials/navbar.php';
 $id_utilizador = $_SESSION['id'] ?? null;
 /* var_dump($id_utilizador);*/
 include 'partials/head.php';
 require_once 'db_config.php';
+require_once "admin/ultima_atividade.php";
 
 $sql = "SELECT g.*, u.id AS id_utilizador, u.nome AS nome_utilizador
         FROM imagens_galeria g

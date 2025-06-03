@@ -1,10 +1,8 @@
 <?php
 session_start();
-require_once "admin/ultima_atividade.php";
-?>
-<?php
 // 1. Conexão com o banco de dados
 require_once("db_config.php");
+require_once "admin/ultima_atividade.php";
 
 // 2. Consulta os dados
 $sql = "SELECT * FROM servicos_vip";
