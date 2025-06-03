@@ -93,7 +93,7 @@ require 'partials/header.php';
                                 <td><?= trim($img->titulo) ?></td>
                                 <td>
                                     <?php if (!empty($img->imagem)): ?>
-                                        <img src="../uploads/<?= trim($img->imagem) ?>" alt="Imagem <?= $id ?>"
+                                        <img src="../uploads/galeria/<?= trim($img->imagem) ?>" alt="Imagem <?= $id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $id ?>" />
 
