@@ -56,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagemCaminho);
             $imagemSql = ", imagem = '$imagemNome'";
 
-            // Elimina imagem anterior
             if (!empty($servico["imagem"])) {
                 $imagemAntiga = $dirUpload . "/" . $servico["imagem"];
                 if (file_exists($imagemAntiga)) {

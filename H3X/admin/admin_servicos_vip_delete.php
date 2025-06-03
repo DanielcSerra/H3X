@@ -12,7 +12,6 @@ require_once 'ultima_atividade.php';
 $_SESSION["errors"] = [];
 $_SESSION["success"] = "";
 
-// Verifica se o ID foi passado
 if (!isset($_GET["id"])) {
     $_SESSION["errors"]["id"] = "ID do serviço não fornecido.";
     header("Location: admin_servicos_vip.php");
@@ -21,7 +20,6 @@ if (!isset($_GET["id"])) {
 
 $id = intval($_GET["id"]);
 
-// Verifica se o serviço existe
 $sql = "SELECT * FROM servicos_vip WHERE id = $id";
 $result = $conn->query($sql);
 
@@ -33,7 +31,6 @@ if (!$result || $result->num_rows === 0) {
 
 $servico = $result->fetch_assoc();
 
-// Elimina imagem se existir
 if (!empty($servico["imagem"])) {
     $imagemPath = "../uploads/" . $servico["imagem"];
     if (file_exists($imagemPath)) {
@@ -41,7 +38,6 @@ if (!empty($servico["imagem"])) {
     }
 }
 
-// Elimina o serviço da base de dados
 $deleteSql = "DELETE FROM servicos_vip WHERE id = $id";
 if ($conn->query($deleteSql)) {
     $_SESSION["success"] = "Serviço VIP eliminado com sucesso.";
