@@ -117,6 +117,12 @@ p {
   border-image: "img/caixabranca.png";
 }
 
+.botao-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
 .beneficios {
   font-size: 64px;
   color: transparent;
@@ -203,7 +209,7 @@ p {
 .carta-bloco,
 .carta-bloco2,
 .carta-bloco3 {
-  width: 30%;
+  width: 0%;
   text-align: center;
   flex: 1;
 }
