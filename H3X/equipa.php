@@ -30,24 +30,21 @@ session_start();
         </div>
     </div>
 
-    <div class="areastaff">
-        <div class="staff-background">
-            <div class="titulostaff">
-                <h3>STAFF</h3>
-            </div>
+    <div class="imagem-topo">
+        <img src="img/before.png" alt="Barra decorativa">
+    </div>
 
-            <img src="img/before.png" alt="barra" class="barrabranca">
-            <img src="img/Retangulo21.png" alt="branco" class="retangulo">
-
-            <!-- Container com as imagens -->
+    <section class="staff-section">
+        <div class="staff2">
+            <h3 class="titulo-staff">STAFF</h3>
             <div class="staff-imagens">
-                <img src="img/ImagemBAR.png" alt="barra" class="staff-img">
-                <img src="img/ImagemBAR2.png" alt="barra" class="staff-img">
-                <img src="img/ImagemSecur.png" alt="barra" class="staff-img">
-                <img src="img/ImagemDJ.png" alt="barra" class="staff-img">
+                <img src="img/ImagemBAR.png" alt="Staff 1">
+                <img src="img/ImagemBAR2.png" alt="Staff 2">
+                <img src="img/ImagemSecur.png" alt="Staff 3">
+                <img src="img/ImagemDJ.png" alt="Staff 4">
             </div>
         </div>
-    </div>
+    </section>
 
     <div class="barraverme">
         <img src="img/Barra.png" alt="barra" class="Barra2">
