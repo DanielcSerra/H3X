@@ -56,12 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (count($_SESSION["errors"]) === 0) {
         $nomeEscaped = mysqli_real_escape_string($conn, $nome);
         $assuntoEscaped = mysqli_real_escape_string($conn, $assunto);
-        $telemovelEscaped = mysqli_real_escape_string($conn, $telemovel);
+        $telefoneEscaped = mysqli_real_escape_string($conn, $telefone);
         $emailEscaped = mysqli_real_escape_string($conn, $email);
         $mensagemEscaped = mysqli_real_escape_string($conn, $mensagem);
 
         $sql = "INSERT INTO contactos (nome, assunto, telemovel, email, mensagem) 
-                VALUES ('$nomeEscaped', '$assuntoEscaped', '$telemovelEscaped', '$emailEscaped', '$mensagemEscaped')";
+                VALUES ('$nomeEscaped', '$assuntoEscaped', '$telefoneEscaped', '$emailEscaped', '$mensagemEscaped')";
 
         if ($conn->query($sql)) {
             $_SESSION["success"] = "Contacto adicionado com sucesso.";
