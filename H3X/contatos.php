@@ -175,7 +175,7 @@ require_once "admin/ultima_atividade.php";
 
   <script>
 function validarFormulario(submitEvent) {
-    var id = document.getElementById("id")?.value.trim(); /
+    var id = document.getElementById("id")?.value.trim(); 
     var nome = document.getElementById("nome").value.trim();
     var assunto = document.getElementById("assunto").value.trim();
     var telefone = document.getElementById("telefone").value.trim();
