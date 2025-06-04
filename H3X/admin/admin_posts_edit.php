@@ -73,7 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $timestamp = date("Y-m-d_H-i-s");
 
-            $imagemNome = uniqid() . "_" . $timestamp;
+            $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+            $imagemNome = uniqid() . "_" . $timestamp . "." . $extensao;
             move_uploaded_file($_FILES["imagem"]["tmp_name"], "$dirUpload/$imagemNome");
 
             $imagemSql = ", imagem = '$imagemNome'";

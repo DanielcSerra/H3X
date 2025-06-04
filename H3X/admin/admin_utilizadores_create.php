@@ -87,7 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $timestamp = date("Y-m-d_H-i-s");
 
-                $fotoNome = uniqid() . "_" . $timestamp;
+                $extensao = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
+                $fotoNome = uniqid() . "_" . $timestamp . "." . $extensao;
 
                 move_uploaded_file($_FILES["foto"]["tmp_name"], $dirUpload . "/" . $fotoNome);
             }
