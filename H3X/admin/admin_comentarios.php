@@ -66,7 +66,7 @@ $pageTitle = "H3X ADMIN - Comentários";
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-                <table id="utilizadoresTable" class="display table table-striped table-hover" style="width:100%">
+                <table id="comentariosTable" class="display table table-striped table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>

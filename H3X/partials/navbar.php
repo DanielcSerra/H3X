@@ -57,6 +57,6 @@ $fileName = basename($_SERVER["SCRIPT_NAME"]);
     <a href="blog.php" class="<?= $fileName == 'blog.php' ? 'sel_nav' : '' ?>">BLOG</a>
     <a href="arcade.php" class="<?= $fileName == 'arcade.php' ? 'sel_nav' : '' ?>">ARCADE</a>
     <a href="comochegar.php" class="<?= $fileName == 'comochegar.php' ? 'sel_nav' : '' ?>">COMO CHEGAR</a>
-    <a href="contatos.php" class="<?= $fileName == 'contatos.php' ? 'sel_nav' : '' ?>">CONTACTOS</a>
+    <a href="contactos.php" class="<?= $fileName == 'contatos.php' ? 'sel_nav' : '' ?>">CONTACTOS</a>
   </div>
 </div>

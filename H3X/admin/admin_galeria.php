@@ -63,7 +63,7 @@ require 'partials/header.php';
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-                <table id="utilizadoresTable" class="display table table-striped table-hover" style="width:100%">
+                <table id="galeriaTable" class="display table table-striped table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>

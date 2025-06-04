@@ -38,21 +38,112 @@ setTimeout(function () {
 
 $(document).ready(function () {
   $("#utilizadoresTable").DataTable({
-    pageLength: 10,
-    lengthMenu: [5, 10, 25, 50, 100],
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [1, 9], searchable: false },
+      { targets: [1, 9], orderable: false },
+    ],
     language: {
-      search: "Pesquisar:",
-      lengthMenu: "Mostrar _MENU_ registros por página",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-      paginate: {
-        first: "Primeiro",
-        last: "Último",
-        next: "Próximo",
-        previous: "Anterior",
-      },
-      zeroRecords: "Nenhum registro encontrado",
-      infoEmpty: "Mostrando 0 a 0 de 0 registros",
-      infoFiltered: "(filtrado de _MAX_ registros no total)",
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#svipTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [2, 3], searchable: false },
+      { targets: [2, 3], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#postsTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [7, 8], searchable: false },
+      { targets: [7, 8], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#galeriaTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [2, 6], searchable: false },
+      { targets: [2, 6], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#faqTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [3], searchable: false },
+      { targets: [3], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#eventosTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [4, 5], searchable: false },
+      { targets: [4, 5], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#comentariosTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [5], searchable: false },
+      { targets: [5], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#cpostTable").DataTable({
+    order: [[0, "asc"]],
+    columnDefs: [
+      { targets: 1, type: "string" },
+      { targets: [2], searchable: false },
+      { targets: [2], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
     },
   });
 });
