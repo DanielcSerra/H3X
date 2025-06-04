@@ -129,9 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form id="galeriauserform" method="POST" enctype=multipart/form-data>
         <div class="form-group">
             <label class="text-white" for="titulo">Título</label>
-            <textarea class="form-control" id="titulo" name="titulo" rows="1"></textarea>
+            <textarea class="form-control" id="titulo" name="titulo" rows="1" required></textarea>
         </div>  
-            <input type="file" id="img" name="imgfile" />
+            <input type="file" id="img" name="imgfile" required/>
                 <label for="img" class="file-upload">
                     <img src="img/imgattach.png" alt="Attach file icon" />
                     <h4 class="text-black">Attach File</h4>
