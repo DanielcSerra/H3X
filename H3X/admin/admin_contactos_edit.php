@@ -12,6 +12,22 @@ require_once 'ultima_atividade.php';
 $_SESSION["errors"] = [];
 $_SESSION["success"] = "";
 
+$id_utilizador = $_SESSION["id"] ?? null;
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
+$tipoUtilizador = $_SESSION["tipo"] ?? "c";
+
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
+}
+ 
 // Verifica se o ID foi fornecido
 if (!isset($_GET["id"])) {
     $_SESSION["errors"]["not_found"] = "ID do contacto não fornecido.";
