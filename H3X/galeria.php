@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0) {
             $imagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
-            $upload_path = "uploads/galeria/" . $imagem;
+            $upload_path = "uploads/" . $imagem;
             move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path);
         }
 
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <section id="populares">
             <div class="container">
-                <h1>Fotos Populares</h1>
+                <h1>Fotos Recentes</h1>
             </div>
             <div class="container d-flex flex-column flex-md-row justify-content-center mt-4">
                 <?php
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     while ($image = $result->fetch_object()) {
                         echo '
             <div class="caixaimg">
-                <img class="imgborder" src="uploads/galeria/' . htmlspecialchars($image->imagem) . '" 
+                <img class="imgborder" src="uploads/' . htmlspecialchars($image->imagem) . '" 
                      alt="' . htmlspecialchars($image->titulo ?: 'Gallery image') . '">
             </div>';
                     }
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<div class="containersubmit mt-5 mb-5">
 <div class="submitimg">
 <h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
-    <form method="POST" enctype=multipart/form-data>
+    <form id="galeriauserform" method="POST" enctype=multipart/form-data>
         <div class="form-group">
             <label class="text-white" for="titulo">Título</label>
             <textarea class="form-control" id="titulo" name="titulo" rows="1"></textarea>
@@ -156,5 +156,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </section>
     </main>
-</body>
+    <script>
+document.getElementById('galeriauserform').addEventListener('submit', function(submitEvent) {
+    const titulo = document.getElementById('titulo').value.trim();
+    
+    if (titulo.length < 3) {
+        alert("Por favor, insira um título maior");
+        submitEvent.preventDefault();
+        return;
+    }
+    
+    if (titulo.length > 100) {
+        alert("O título não pode exceder 100 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+});
+</script>
 <?php include 'partials/footer.php'; ?>
+</body>

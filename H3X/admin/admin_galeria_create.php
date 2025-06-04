@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($_SESSION["errors"])) {
 
         $imagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
-        $upload_path = "../uploads/galeria/" . $imagem;
+        $upload_path = "../uploads/" . $imagem;
 
         if (move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path)) {
             $tituloEscaped = $conn->real_escape_string($titulo);
