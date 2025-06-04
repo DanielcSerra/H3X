@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailEscaped = mysqli_real_escape_string($conn, $email);
         $mensagemEscaped = mysqli_real_escape_string($conn, $mensagem);
 
-        $sql = "INSERT INTO contactos (nome, assunto, telemovel, email, mensagem) 
+        $sql = "INSERT INTO contactos (nome, assunto, telefone, email, mensagem) 
                 VALUES ('$nomeEscaped', '$assuntoEscaped', '$telefoneEscaped', '$emailEscaped', '$mensagemEscaped')";
 
         if ($conn->query($sql)) {
@@ -125,7 +125,7 @@ $pageTitle = "H3X ADMIN - Adicionar Contacto";
                             <label for="telefone" class="form-label">Telemóvel</label>
                             <input type="tel" class="form-control" name="telefone" id="telefone" required pattern="\d{9}"
                                 maxlength="9" title="Telemóvel deve conter exatamente 9 dígitos numéricos"
-                                placeholder="912345678" value="<?= htmlspecialchars($_POST['telemovel'] ?? '') ?>">
+                                placeholder="912345678" value="<?= htmlspecialchars($_POST['telefone'] ?? '') ?>">
                         </div>
 
                         <div class="mb-3">
