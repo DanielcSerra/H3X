@@ -58,8 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!is_dir($dirUpload))
             mkdir($dirUpload, 0777, true);
         $timestamp = date("Y-m-d_H-i-s");
-
-        $imagemNome = uniqid() . "_" . $timestamp;
+        $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+        $imagemNome = uniqid() . "_" . $timestamp . "." . $extensao;
         move_uploaded_file($_FILES["imagem"]["tmp_name"], "$dirUpload/$imagemNome");
 
         $sql = "INSERT INTO posts (titulo, conteudo, data_criacao, aprovado, id_utilizador, id_categoria, imagem)
