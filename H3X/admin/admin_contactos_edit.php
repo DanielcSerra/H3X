@@ -34,11 +34,11 @@ if (!$result || $result->num_rows == 0) {
 $contacto = $result->fetch_assoc();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = trim($_POST["nome"] ?? "");
-    $assunto = trim($_POST["assunto"] ?? "");
+    $nome = $_POST["nome"] ?? "";
+    $assunto = $_POST["assunto"] ?? "";
     $telefone = trim($_POST["telefone"] ?? "");
     $email = trim($_POST["email"] ?? "");
-    $mensagem = trim($_POST["mensagem"] ?? "");
+    $mensagem = $_POST["mensagem"] ?? "";
 
     if ($nome === "")
         $_SESSION["errors"]["nome"] = "Nome não pode estar vazio.";
@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["errors"]["assunto"] = "Assunto não pode estar vazio.";
     if ($telefone === "")
         $_SESSION["errors"]["telefone"] = "Telemóvel não pode estar vazio.";
+    
     if ($email === "")
         $_SESSION["errors"]["email"] = "Email não pode estar vazio.";
     if ($mensagem === "")
@@ -150,4 +151,6 @@ $pageTitle = "H3X ADMIN - Editar Contacto";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+
+    sc
 </body>
