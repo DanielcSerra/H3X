@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nome = isset($_POST["nome"]) ? trim($_POST["nome"]) : "";
     $assunto = isset($_POST["assunto"]) ? trim($_POST["assunto"]) : "";
-    $telemovel = isset($_POST["telefone"]) ? trim($_POST["telefone"]) : "";
+    $telefone = isset($_POST["telefone"]) ? trim($_POST["telefone"]) : "";
     $email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
     $mensagem = isset($_POST["mensagem"]) ? trim($_POST["mensagem"]) : "";
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["errors"]["assunto"] = "Assunto inválido";
     }
 
-    if (strlen($telemovel) == 0 || !preg_match('/^\d{9}$/', $telemovel)) {
+    if (strlen($telefone) == 0 ) {
         $_SESSION["errors"]["telefone"] = "Telemóvel inválido (deve conter 9 dígitos)";
     }
 
