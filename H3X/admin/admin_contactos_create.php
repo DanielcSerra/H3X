@@ -172,7 +172,7 @@ function validarFormulario(submitEvent) {
     }
 
     if (assunto.length < 10 || assunto.length > 100) {
-        alert("O assunto deve ter entre 2 e 100 caracteres.");
+        alert("O assunto deve ter entre 10 e 100 caracteres.");
         submitEvent.preventDefault();
         return;
     }
