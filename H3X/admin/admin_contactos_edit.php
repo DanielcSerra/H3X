@@ -152,5 +152,60 @@ $pageTitle = "H3X ADMIN - Editar Contacto";
         </div>
     </div>
 
-    sc
+   
+  <script>
+function validarFormulario(submitEvent) {
+    var id = document.getElementById("id")?.value.trim(); 
+    var nome = document.getElementById("nome").value.trim();
+    var assunto = document.getElementById("assunto").value.trim();
+    var telefone = document.getElementById("telefone").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var mensagem = document.getElementById("mensagem").value.trim();
+
+    if (nome.length < 2 || nome.length > 50) {
+        alert("O nome deve ter entre 2 e 50 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+
+    if (assunto.length < 10 || assunto.length > 100) {
+        alert("O assunto deve ter entre 2 e 100 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+
+    if (telefone !== "") {
+        if (telefone.length !== 9 || isNaN(telefone)) {
+            alert("O telefone deve conter exatamente 9 dígitos numéricos.");
+            submitEvent.preventDefault();
+            return;
+        }
+    }
+
+    if (email === "") {
+        alert("O email é obrigatório.");
+        submitEvent.preventDefault();
+        return;
+    }
+
+    if (email.length > 150) {
+        alert("O email deve ter no máximo 100 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+
+
+    if (mensagem.length < 5 || mensagem.length > 300) {
+        alert("A mensagem deve ter entre 5 e 300 caracteres.");
+        submitEvent.preventDefault();
+        return;
+    }
+}
+
+window.onload = function () {
+    var form = document.querySelector("form");
+    form.addEventListener("submit", validarFormulario);
+}
+</script>
+
 </body>
