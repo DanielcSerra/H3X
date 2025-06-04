@@ -94,7 +94,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#faqTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
       { targets: 1, type: "string" },
       { targets: [3], searchable: false },
@@ -141,6 +141,19 @@ $(document).ready(function () {
       { targets: 1, type: "string" },
       { targets: [2], searchable: false },
       { targets: [2], orderable: false },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#contactosTable").DataTable({
+    order: [[1, "asc"]],
+    columnDefs: [
+      { targets: [6], searchable: false },
+      { targets: [6], orderable: false },
     ],
     language: {
       url: "https://cdn.datatables.net/plug-ins/2.3.0/i18n/pt-PT.json",
