@@ -38,7 +38,7 @@ setTimeout(function () {
 
 $(document).ready(function () {
   $("#utilizadoresTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[2, "asc"]],
     columnDefs: [
       { targets: 1, type: "string" },
       { targets: [1, 9], searchable: false },
@@ -52,9 +52,9 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#svipTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
-      { targets: 1, type: "string" },
+      { targets: 2, type: "string" },
       { targets: [2, 3], searchable: false },
       { targets: [2, 3], orderable: false },
     ],
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#postsTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
       { targets: 1, type: "string" },
       { targets: [7, 8], searchable: false },
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#galeriaTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
       { targets: 1, type: "string" },
       { targets: [2, 6], searchable: false },
@@ -96,7 +96,6 @@ $(document).ready(function () {
   $("#faqTable").DataTable({
     order: [[1, "asc"]],
     columnDefs: [
-      { targets: 1, type: "string" },
       { targets: [3], searchable: false },
       { targets: [3], orderable: false },
     ],
@@ -108,9 +107,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#eventosTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
-      { targets: 1, type: "string" },
       { targets: [4, 5], searchable: false },
       { targets: [4, 5], orderable: false },
     ],
@@ -122,9 +120,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#comentariosTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
-      { targets: 1, type: "string" },
       { targets: [5], searchable: false },
       { targets: [5], orderable: false },
     ],
@@ -136,9 +133,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#cpostTable").DataTable({
-    order: [[0, "asc"]],
+    order: [[1, "asc"]],
     columnDefs: [
-      { targets: 1, type: "string" },
       { targets: [2], searchable: false },
       { targets: [2], orderable: false },
     ],
