@@ -208,19 +208,12 @@ function validarFormulario(submitEvent) {
         return;
     }
 
-    if (email.length > 100) {
+    if (email.length > 150) {
         alert("O email deve ter no máximo 100 caracteres.");
         submitEvent.preventDefault();
         return;
     }
 
-    // Validação de formato de email simples (opcional)
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("O email inserido não é válido.");
-        submitEvent.preventDefault();
-        return;
-    }
 
     if (mensagem.length < 5 || mensagem.length > 300) {
         alert("A mensagem deve ter entre 5 e 300 caracteres.");
