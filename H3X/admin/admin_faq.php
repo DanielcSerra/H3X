@@ -59,7 +59,7 @@ require 'partials/header.php';
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-                <table id="utilizadoresTable" class="display table table-striped table-hover" style="width:100%">
+                <table id="faqTable" class="display table table-striped table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -88,7 +88,8 @@ require 'partials/header.php';
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="respostaModalLabel<?= $id ?>">Resposta -
-                                                        <?= $titulo ?></h5>
+                                                        <?= $titulo ?>
+                                                    </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Fechar"></button>
                                                 </div>

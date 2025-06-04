@@ -57,7 +57,7 @@
         <span class="link-text">FAQ</span>
     </a>
 
-    <a href="#" class="nav-link">
+    <a href="admin_contactos.php" class="nav-link">
         <i class="fas fa-chart-pie"></i>
         <span class="link-text">Contactos</span>
     </a>

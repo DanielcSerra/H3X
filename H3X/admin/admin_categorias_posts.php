@@ -59,7 +59,7 @@ $pageTitle = "H3X ADMIN - Categorias Posts";
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-                <table id="utilizadoresTable" class="display table table-striped table-hover" style="width:100%">
+                <table id="cpostTable" class="display table table-striped table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
