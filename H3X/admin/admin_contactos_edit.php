@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? "");
     $mensagem = trim($_POST["mensagem"] ?? "");
 
-    // Validações básicas
     if ($nome === "")
         $_SESSION["errors"]["nome"] = "Nome não pode estar vazio.";
     if ($assunto === "")
@@ -49,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["errors"]["telemovel"] = "Telemóvel não pode estar vazio.";
     if ($email === "")
         $_SESSION["errors"]["email"] = "Email não pode estar vazio.";
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
-        $_SESSION["errors"]["email"] = "Email inválido.";
     if ($mensagem === "")
         $_SESSION["errors"]["mensagem"] = "Mensagem não pode estar vazia.";
 

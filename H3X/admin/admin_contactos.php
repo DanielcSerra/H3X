@@ -72,8 +72,8 @@ require 'partials/header.php';
                     <tbody>
                         <?php while ($contacto = $result->fetch_object()):
                             $id = $contacto->id;
-                            $nome = trim($contacto->nome);
-                            $assunto = trim($contacto->assunto);
+                            $nome = $contacto->nome;
+                            $assunto = $contacto->assunto;
                             $telemovel = trim($contacto->telemovel);
                             $email = trim($contacto->email);
                             $mensagem_resumida = mb_strimwidth(strip_tags($contacto->mensagem), 0, 80, '...');

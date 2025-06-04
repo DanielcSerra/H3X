@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["errors"]["telemovel"] = "Telemóvel inválido (deve conter 9 dígitos)";
     }
 
-    if (strlen($email) == 0 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (strlen($email) == 0) {
         $_SESSION["errors"]["email"] = "Email inválido";
     }
 
