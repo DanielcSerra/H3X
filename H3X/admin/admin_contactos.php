@@ -72,17 +72,17 @@ require 'partials/header.php';
                     <tbody>
                         <?php while ($contacto = $result->fetch_object()):
                             $id = $contacto->id;
-                            $nome = trim($contacto->nome);
-                            $assunto = trim($contacto->assunto);
-                            $telemovel = trim($contacto->telemovel);
-                            $email = trim($contacto->email);
+                            $nome = $contacto->nome;
+                            $assunto = $contacto->assunto??'';
+                            $telefone = $contacto->telefone??'';
+                            $email = $contacto->email;
                             $mensagem_resumida = mb_strimwidth(strip_tags($contacto->mensagem), 0, 80, '...');
                             ?>
                             <tr>
                                 <td><?= $id ?></td>
                                 <td><?= htmlspecialchars($nome) ?></td>
                                 <td><?= htmlspecialchars($assunto) ?></td>
-                                <td><?= htmlspecialchars($telemovel) ?></td>
+                                <td><?= htmlspecialchars($telefone) ?></td>
                                 <td><?= htmlspecialchars($email) ?></td>
                                 <td>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#mensagemModal<?= $id ?>">

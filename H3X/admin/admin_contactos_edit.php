@@ -36,35 +36,32 @@ $contacto = $result->fetch_assoc();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = trim($_POST["nome"] ?? "");
     $assunto = trim($_POST["assunto"] ?? "");
-    $telemovel = trim($_POST["telemovel"] ?? "");
+    $telefone = trim($_POST["telefone"] ?? "");
     $email = trim($_POST["email"] ?? "");
     $mensagem = trim($_POST["mensagem"] ?? "");
 
-    // Validações básicas
     if ($nome === "")
         $_SESSION["errors"]["nome"] = "Nome não pode estar vazio.";
     if ($assunto === "")
         $_SESSION["errors"]["assunto"] = "Assunto não pode estar vazio.";
-    if ($telemovel === "")
-        $_SESSION["errors"]["telemovel"] = "Telemóvel não pode estar vazio.";
+    if ($telefone === "")
+        $_SESSION["errors"]["telefone"] = "Telemóvel não pode estar vazio.";
     if ($email === "")
         $_SESSION["errors"]["email"] = "Email não pode estar vazio.";
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
-        $_SESSION["errors"]["email"] = "Email inválido.";
     if ($mensagem === "")
         $_SESSION["errors"]["mensagem"] = "Mensagem não pode estar vazia.";
 
     if (count($_SESSION["errors"]) === 0) {
         $nomeEscaped = mysqli_real_escape_string($conn, $nome);
         $assuntoEscaped = mysqli_real_escape_string($conn, $assunto);
-        $telemovelEscaped = mysqli_real_escape_string($conn, $telemovel);
+        $telefoneEscaped = mysqli_real_escape_string($conn, $telefone);
         $emailEscaped = mysqli_real_escape_string($conn, $email);
         $mensagemEscaped = mysqli_real_escape_string($conn, $mensagem);
 
         $sqlUpdate = "UPDATE contactos SET 
             nome = '$nomeEscaped', 
             assunto = '$assuntoEscaped', 
-            telemovel = '$telemovelEscaped', 
+            telefone = '$telefoneEscaped', 
             email = '$emailEscaped', 
             mensagem = '$mensagemEscaped' 
             WHERE id = $id";
@@ -125,9 +122,9 @@ $pageTitle = "H3X ADMIN - Editar Contacto";
                         </div>
 
                         <div class="mb-3">
-                            <label for="telemovel" class="form-label">Telemóvel</label>
-                            <input type="text" class="form-control" name="telemovel" id="telemovel"
-                                value="<?= htmlspecialchars($contacto["telemovel"]) ?>" required>
+                            <label for="telefone" class="form-label">Telemóvel</label>
+                            <input type="text" class="form-control" name="telefone" id="telefone"
+                                value="<?= htmlspecialchars($contacto["telefone"]) ?>" required>
                         </div>
 
                         <div class="mb-3">
