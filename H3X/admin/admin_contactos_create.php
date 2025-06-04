@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nome = isset($_POST["nome"]) ? trim($_POST["nome"]) : "";
     $assunto = isset($_POST["assunto"]) ? trim($_POST["assunto"]) : "";
-    $telemovel = isset($_POST["telemovel"]) ? trim($_POST["telemovel"]) : "";
+    $telemovel = isset($_POST["telefone"]) ? trim($_POST["telefone"]) : "";
     $email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
     $mensagem = isset($_POST["mensagem"]) ? trim($_POST["mensagem"]) : "";
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (strlen($telemovel) == 0 || !preg_match('/^\d{9}$/', $telemovel)) {
-        $_SESSION["errors"]["telemovel"] = "Telemóvel inválido (deve conter 9 dígitos)";
+        $_SESSION["errors"]["telefone"] = "Telemóvel inválido (deve conter 9 dígitos)";
     }
 
     if (strlen($email) == 0) {
@@ -122,8 +122,8 @@ $pageTitle = "H3X ADMIN - Adicionar Contacto";
                         </div>
 
                         <div class="mb-3">
-                            <label for="telemovel" class="form-label">Telemóvel</label>
-                            <input type="tel" class="form-control" name="telemovel" id="telemovel" required pattern="\d{9}"
+                            <label for="telefone" class="form-label">Telemóvel</label>
+                            <input type="tel" class="form-control" name="telefone" id="telefone" required pattern="\d{9}"
                                 maxlength="9" title="Telemóvel deve conter exatamente 9 dígitos numéricos"
                                 placeholder="912345678" value="<?= htmlspecialchars($_POST['telemovel'] ?? '') ?>">
                         </div>

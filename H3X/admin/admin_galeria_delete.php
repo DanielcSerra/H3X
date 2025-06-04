@@ -22,11 +22,19 @@ $id = (int) $_GET["id"];
 
 $sql = "SELECT * FROM imagens_galeria WHERE id = $id";
 $result = $conn->query($sql);
+$img = $result->fetch_object();
 
 if (!$result || $result->num_rows === 0) {
     $_SESSION["errors"]["not_found"] = "Imagem não encontrada";
     header("Location: admin_galeria.php");
     exit();
+}
+
+if (!empty($img->imagem)) {
+    $imagemPath = "../uploads/" . $img->imagem;
+    if (file_exists($imagemPath)) {
+        unlink($imagemPath);
+    }
 }
 
 $deleteSql = "DELETE FROM imagens_galeria WHERE id = $id";
