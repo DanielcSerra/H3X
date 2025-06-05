@@ -3,7 +3,7 @@ session_start();
 ?>
 <?php include 'partials/navbar.php';
 $id_utilizador = $_SESSION['id'] ?? null;
-/* var_dump($id_utilizador);*/
+
 include 'partials/head.php';
 require_once 'db_config.php';
 require_once "admin/ultima_atividade.php";
@@ -15,7 +15,7 @@ $sql = "SELECT g.*, u.id AS id_utilizador, u.nome AS nome_utilizador
         ORDER BY g.data_upload DESC
         LIMIT 4";
 
-/* $result = $conn->query($sql); */
+
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -88,29 +88,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $conn->query($sql);
 
                 if ($result && $result->num_rows > 0) {
-                    while ($image = $result->fetch_object()) {
-                        echo '
-            <div class="caixaimg">
-                <img class="imgborder" src="uploads/' . htmlspecialchars($image->imagem) . '" 
-                     alt="' . htmlspecialchars($image->titulo ?: 'Gallery image') . '">
-            </div>';
-                    }
-                } else {
+                    while ($image = $result->fetch_object()) { ?>
+                        <div class="caixaimg">
+                            <img class="imgborder" src="uploads/<?= htmlspecialchars($image->imagem) ?>"
+                                alt="<?= htmlspecialchars($image->titulo ?: 'Gallery image') ?>">
+                        </div>
+                    <?php }
 
-                    echo '
-        <div class="caixaimg">
-            <img class="imgborder" src="img/galeria1.jpg" alt="foto">
-        </div>
-        <div class="caixaimg">
-            <img class="imgborder" src="img/galeria2.jpg" alt="">
-        </div>
-        <div class="caixaimg">
-            <img class="imgborder" src="img/galeria3.jpg" alt="">
-        </div>
-        <div class="caixaimg">
-            <img class="imgborder" src="img/galeria4.jpg" alt="">
-        </div>';
-                }
+                } else { ?>
+
+
+                    <div class="caixaimg">
+                        <img class="imgborder" src="img/galeria1.jpg" alt="foto">
+                    </div>
+                    <div class="caixaimg">
+                        <img class="imgborder" src="img/galeria2.jpg" alt="">
+                    </div>
+                    <div class="caixaimg">
+                        <img class="imgborder" src="img/galeria3.jpg" alt="">
+                    </div>
+                    <div class="caixaimg">
+                        <img class="imgborder" src="img/galeria4.jpg" alt="">
+                    </div>
+                <?php }
                 ?>
             </div>
             <div class="container d-flex justify-content-end mt-4">
@@ -121,28 +121,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="caixa">
                 <?php
                 if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
-                    echo "<h3 class='mt-5 w-75'>Para submeter a sua própria imagem, por favor <a href='admin/login.php'>registe</a> ou dê <a href='admin/login.php'>login</a></h3>";
-                } else {
-                    echo '<div class="containersubmit mt-5 mb-5">
-<div class="submitimg">
-<h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
-    <form id="galeriauserform" method="POST" enctype=multipart/form-data>
-        <div class="form-group">
-            <label class="text-white" for="titulo">Título</label>
-            <textarea class="form-control" id="titulo" name="titulo" rows="1" required></textarea>
-        </div>  
-            <input type="file" id="img" name="imgfile" required/>
-                <label for="img" class="file-upload">
-                    <img src="img/imgattach.png" alt="Attach file icon" />
-                    <h4 class="text-black">Attach File</h4>
-                </label>
-                <div class="submit-btn-container mt-3">
-                <input type="submit" value="Submeter" name="post" class="submit-btn">
-                </div>
-        </div>
-    </form>
-</div>';
-                } ?>
+                    ?>
+                    <h3 class='mt-5 w-75'>Para submeter a sua própria imagem, por favor <a
+                            href='admin/login.php'>registe</a> ou dê <a href='admin/login.php'>login</a></h3>
+                <?php } else { ?>
+                    <div class="containersubmit mt-5 mb-5">
+                        <div class="submitimg">
+                            <h3 class="mb-5 mt-0">Adicionar imagem á coleção</h3>
+                            <form id="galeriauserform" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label class="text-white" for="titulo">Título</label>
+                                    <textarea class="form-control" id="titulo" name="titulo" rows="1" required></textarea>
+                                </div>
+                                <input type="file" id="img" name="imgfile" required />
+                                <label for="img" class="file-upload">
+                                    <img src="img/imgattach.png" alt="Attach file icon" />
+                                    <h4 class="text-black">Attach File</h4>
+                                </label>
+                                <div class="submit-btn-container mt-3">
+                                    <input type="submit" value="Submeter" name="post" class="submit-btn">
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                <?php } ?>
 
                 <div class="regras">
                     <h2>Olá Utilizador</h2>
@@ -157,21 +159,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
     </main>
     <script>
-document.getElementById('galeriauserform').addEventListener('submit', function(submitEvent) {
-    const titulo = document.getElementById('titulo').value.trim();
-    
-    if (titulo.length < 3) {
-        alert("Por favor, insira um título maior");
-        submitEvent.preventDefault();
-        return;
-    }
-    
-    if (titulo.length > 100) {
-        alert("O título não pode exceder 100 caracteres.");
-        submitEvent.preventDefault();
-        return;
-    }
-});
-</script>
-<?php include 'partials/footer.php'; ?>
+        document.getElementById('galeriauserform').addEventListener('submit', function (submitEvent) {
+            const titulo = document.getElementById('titulo').value.trim();
+
+            if (titulo.length < 3) {
+                alert("Por favor, insira um título maior");
+                submitEvent.preventDefault();
+                return;
+            }
+
+            if (titulo.length > 100) {
+                alert("O título não pode exceder 100 caracteres.");
+                submitEvent.preventDefault();
+                return;
+            }
+        });
+    </script>
+    <?php include 'partials/footer.php'; ?>
 </body>

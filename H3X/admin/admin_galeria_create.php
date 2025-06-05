@@ -55,8 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $imagemEscaped = $conn->real_escape_string($imagem);
             $dataEscaped = $conn->real_escape_string($data);
 
+            $aprovado = isset($_POST['aprovado']) ? (int) $_POST['aprovado'] : 1;
             $sql = "INSERT INTO imagens_galeria (titulo, imagem, data_upload, id_utilizador, aprovado)
-                    VALUES ('$tituloEscaped', '$imagemEscaped', '$dataEscaped', '$id_utilizador', 1)";
+        VALUES ('$tituloEscaped', '$imagemEscaped', '$dataEscaped', '$id_utilizador', $aprovado)";
+
 
             if ($conn->query($sql)) {
                 $_SESSION["success"] = "Imagem inserida com sucesso.";
@@ -103,22 +105,29 @@ require 'partials/header.php';
 
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
-                    <form method="POST" id="galeriaadminform" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm w-100" style="max-width:600px;">
+                    <form method="POST" id="galeriaadminform" enctype="multipart/form-data"
+                        class="bg-white p-4 rounded shadow-sm w-100" style="max-width:600px;">
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>
-                            <textarea class="form-control" id="titulo" name="titulo" rows="1" maxlength="100" required><?= htmlspecialchars($_POST['titulo'] ?? '') ?></textarea>
+                            <textarea class="form-control" id="titulo" name="titulo" rows="1" maxlength="100"
+                                required><?= htmlspecialchars($_POST['titulo'] ?? '') ?></textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="data" class="form-label">Data e Hora</label>
-                            <input type="datetime-local" class="form-control" id="data" name="data" value="<?= htmlspecialchars($_POST['data'] ?? date('Y-m-d\TH:i')) ?>" required>
+                            <input type="datetime-local" class="form-control" id="data" name="data"
+                                value="<?= htmlspecialchars($_POST['data'] ?? date('Y-m-d\TH:i')) ?>" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="imgfile" class="form-label">Imagem</label>
-                            <input type="file" class="form-control" id="imgfile" name="imgfile" accept="image/*" required>
+                            <input type="file" class="form-control" id="imgfile" name="imgfile" accept="image/*"
+                                required>
                         </div>
-
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" name="aprovado" id="aprovado" value="1">
+                            <label class="form-check-label" for="aprovado">Aprovado</label>
+                        </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-success" name="post">
                                 <i class="fas fa-upload me-1"></i> Submeter
@@ -131,22 +140,23 @@ require 'partials/header.php';
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
-<script>
-document.getElementById('galeriaadminform').addEventListener('submit', function(submitEvent) {
-    const titulo = document.getElementById('titulo').value.trim();
-    
-    if (titulo.length < 3) {
-        alert("Por favor, insira um título maior");
-        submitEvent.preventDefault();
-        return;
-    }
-    
-    if (titulo.length > 100) {
-        alert("O título não pode exceder 100 caracteres.");
-        submitEvent.preventDefault();
-        return;
-    }
-});
-</script>
+    <script>
+        document.getElementById('galeriaadminform').addEventListener('submit', function (submitEvent) {
+            const titulo = document.getElementById('titulo').value.trim();
+
+            if (titulo.length < 3) {
+                alert("Por favor, insira um título maior");
+                submitEvent.preventDefault();
+                return;
+            }
+
+            if (titulo.length > 100) {
+                alert("O título não pode exceder 100 caracteres.");
+                submitEvent.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
+
 </html>
