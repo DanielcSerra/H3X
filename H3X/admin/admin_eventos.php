@@ -54,7 +54,7 @@ require 'partials/header.php';
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-                <table id="utilizadoresTable" class="display table table-striped table-hover" style="width:100%">
+                <table id="eventosTable" class="display table table-striped table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -144,7 +144,7 @@ require 'partials/header.php';
                                 
                                 <td>
                                     <?php if (!empty($evento->video_banner)): ?>
-                                        <img src="../uploads/<?= trim($evento->video_banner) ?>" alt="Video <?= $evento->id ?>"
+                                        <video src="../uploads/<?= trim($evento->video_banner) ?>" alt="Video <?= $evento->id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $evento->id ?>">
 
