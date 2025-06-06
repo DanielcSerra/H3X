@@ -140,14 +140,12 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
                 var imagemInput = document.getElementById("imagem");
                 var imagem = imagemInput.files[0];
 
-                // Validação do título
                 if (titulo.length < 2) {
                     alert("O título deve ter pelo menos 2 caracteres.");
                     event.preventDefault();
                     return;
                 }
 
-                // Validação da imagem
                 if (!imagem) {
                     alert("Selecione uma imagem.");
                     event.preventDefault();
