@@ -1,10 +1,9 @@
 <?php
 session_start();
-// 1. Conexão com o banco de dados
+ 
 require_once("db_config.php");
 require_once "admin/ultima_atividade.php";
 
-// 2. Consulta os dados
 $sql = "SELECT * FROM servicos_vip";
 $result = $conn->query($sql);
 ?>
@@ -55,32 +54,36 @@ $result = $conn->query($sql);
     </div>
 
 
-    <section>
-        <div class="container">
-            <div class="caixas">
-                <h2 class="beneficios">BENEFÍCIOS VIP</h2>
-                <div class="cartas2">
-                    <div class="cartas-sobre-fundo">
-                        <?php while ($row = $result->fetch_assoc()): ?>
-                        <div class="carta-bloco d-flex flex-column align-items-center">
-                            <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2"
-                                alt="Card" style="height: 400px; object-fit: contain;">
-                            <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
-                        </div>
-                        <?php endwhile; ?>
-                    </div>
+    <div class="imagem-topo">
+        <img src="img/before.png" width="100%" atl="Barra decorativa">
+    </div>
+
+    <section class="staff-section">
+        <div class="staff2">
+            <h3 class="titulo-staff">BENEFÍCIOS VIP</h3>
+            <div class="staff-imagens">
+                <?php 
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                <div class="staff-item">
+                    <img src="img/<?php echo trim($row['imagem']); ?>" alt="<?php echo trim($row['titulo']); ?>"
+                        style="height: 500px; object-fit: contain;">
+                    <h3><?php echo trim($row['titulo']); ?></h3>
                 </div>
-                <?php $conn->close(); ?>
-                <div class="botao-reservar">
-                    <a href="#formulario" class="botao-link">
-                        <img src="img/Botao_Rese.png" alt="Botão Reservar">
-                        <h2 class="texto-reservar">RESERVAR</h2>
-                    </a>
-                </div>
+                <?php
+                    }
+                } else {
+                    echo "<p>Nenhum benefício VIP encontrado.</p>";
+                }
+                ?>
+            </div>
+            <div class="botao-form-Reservar d-flex justify-content-center">
+                <button type="submit" class="botao-reservar-form text-black">
+                    RESERVAR
+                </button>
             </div>
         </div>
-        <img src="img/before.png" class="before" alt="Carta 3">
-        <img src="img/Ret_Branco.png" class="quadrado" alt="Carta 3">
     </section>
 
     <div class="container">

@@ -123,135 +123,51 @@ p {
   display: inline-block;
 }
 
-.beneficios {
-  font-size: 64px;
+.staff-section {
+  background-image: url("../img/Retangulo21.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.staff2 {
+  display: inline-block;
+}
+
+.titulo-staff {
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
   color: transparent;
   -webkit-text-stroke: 2px rgb(0, 0, 0);
-  text-align: center;
 }
 
-.botao-reservar {
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-}
-
-.botao-reservar img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.texto-reservar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: Laceration, sans-serif;
-  font-size: 18px;
-  color: white;
-  pointer-events: none;
-}
-
-.before {
-  width: 100%;
-}
-
-.quadrado {
-  width: 100%;
-  height: 700px;
-}
-
-.caixas {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding-top: 60px;
+.staff-imagens {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 60px;
-}
-
-.beneficios {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 64px;
-  z-index: 2;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.cartas2 {
-  position: absolute;
-  top: 180px;
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
-  width: 80%;
-  z-index: 2;
+  color: black;
 }
 
-.cartas-sobre-fundo {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.CARD {
-  border: none;
-}
-
-.carta-bloco,
-.carta-bloco2,
-.carta-bloco3 {
-  width: 0%;
-  text-align: center;
-  flex: 1;
-}
-
-.carta-bloco img,
-.carta-bloco2 img,
-.carta-bloco3 img {
-  max-width: 100%;
-  height: auto;
-}
-
-.carta-bloco h3 {
-  margin-left: -40px;
-}
-
-.carta-bloco h3,
-.carta-bloco2 h3,
-.carta-bloco3 h3 {
-  color: rgb(0, 0, 0);
-  font-size: 18px;
+.staff-imagens h3 {
+  margin-top: 15px;
   font-family: Aldrich, sans-serif;
-  margin-top: 10px;
+  font-size: 25px;
 }
 
-.botao-reservar {
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 690px;
-  transform: translateX(-50%);
-  z-index: 2;
-  margin-bottom: 60px;
+.staff-imagens img {
+  width: 350px;
+  transition: transform 0.3s;
 }
 
-.texto-reservar {
-  color: rgb(0, 0, 0);
-  font-size: 24px;
+.staff-imagens img:hover {
+  transform: scale(1.05);
 }
 
-.imagem-fundo {
-  width: 100%;
-}
 .imagemplanta {
   align-items: center;
   display: flex;
@@ -312,7 +228,6 @@ p {
 
 .form-label:hover {
   background: transparent;
-  color: white;
 }
 
 .botao-reservar-form {
@@ -326,6 +241,11 @@ p {
   border: none;
   padding: 40px 80px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.botao-reservar-form:hover {
+  transform: scale(1.03);
 }
 
 @media (max-width: 768px) {
@@ -344,61 +264,33 @@ p {
   .terceiro {
     position: static;
   }
-
-  .beneficios {
-    width: 100%;
-    font-size: 45px;
-  }
-
-  .cartas2 {
-    flex-direction: column;
-    margin-top: 50px;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-
-  .cartas-sobre-fundo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0 16px;
-    margin: 0 auto;
-    gap: 20px;
-  }
-
-  .carta-bloco,
-  .carta-bloco2,
-  .carta-bloco3 {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .carta-bloco h3,
-  .carta-bloco2 h3,
-  .carta-bloco3 h3 {
-    margin: 10px 0 0 0;
-    text-align: center;
-  }
-
-  .quadrado {
-    min-height: 1750px;
-  }
-
-  .botao-reservar {
-    margin-top: 1020px;
-    text-align: center;
-  }
-
   .form-botao {
-    margin-top: 50px;
+    margin-top: 64px;
   }
-  .botao-reservar h2 {
-    font-size: 18px;
+  .imagem-topo {
+    margin-top: 64px;
+  }
+  .imagem-topo img {
+    height: 16px;
+  }
+
+  .imagemplanta {
+    margin-bottom: 64px;
+  }
+  .imagemplanta img {
+    width: 100%;
+    height: auto;
+  }
+
+  .formulario h4 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .botao-reservar-form {
+    width: 100%;
+    font-size: 24px;
+    padding: 12px 0;
   }
 }
 
@@ -407,15 +299,5 @@ p {
     width: 600vw;
     width: 100%;
     font-size: 45px;
-  }
-  .carta-bloco,
-  .carta-bloco2,
-  .carta-bloco3 {
-    text-align: center;
-  }
-
-  .textodepois {
-    text-align: center;
-    margin-top: 10px;
   }
 }

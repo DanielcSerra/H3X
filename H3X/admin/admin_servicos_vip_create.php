@@ -52,16 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (count($_SESSION["errors"]) === 0) {
        
-        $sqlCheck = "SELECT COUNT(*) AS total FROM servicos_vip";
-        $resultCheck = $conn->query($sqlCheck);
-
-        if ($resultCheck) {
-            $row = $resultCheck->fetch_assoc();
-            if ($row['total'] >= 3) {
-                $_SESSION["errors"]["limite"] = "Limite de 3 serviços VIP já atingido.";
-            }
-        }
-
         if (count($_SESSION["errors"]) === 0) {
             $titulo = mysqli_real_escape_string($conn, $titulo);
             $imagemNome = mysqli_real_escape_string($conn, $imagemNome);
