@@ -252,78 +252,80 @@ p {
 .imagem-fundo {
   width: 100%;
 }
-
-/* Formulário */
-.formulario-container {
+.imagemplanta {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+}
+
+.row {
   margin-top: 100px;
+}
+
+.formulario h4 {
+  text-align: center;
   font-family: Aldrich, sans-serif;
-}
-
-.mapa-area,
-.formulario-area {
-  flex: 1;
-  padding: 20px;
-}
-
-.form-group {
-  margin-bottom: 80px;
-}
-
-.mapa-area img {
-  margin-top: 200px;
-}
-
-.formulario-area h1 {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
   font-size: 64px;
+}
+
+.botao-form-Reservar {
   text-align: center;
 }
-
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 3px solid #ffffff;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-  transition: border 0.3s ease;
-  background-color: #d9d9d9;
-  opacity: 30%;
-  font-family: Aldrich, sans-serif;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus,
-input[type="tel"]:focus,
-select:focus,
-textarea:focus {
-  font-family: Aldrich, sans-serif;
-  border-color: #ffffff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.image-submit-button {
+.botao-reservar-form {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
 }
 
-.image-submit-button img {
-  max-width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
+.form-label {
+  -webkit-text-stroke: 0.5px white;
+  font-size: 23px;
+  color: transparent;
+}
+.form-control {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 0;
+  color: white;
+}
+
+.form-select {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 0;
+  color: white;
+}
+
+.form-select option {
+  color: black;
+}
+
+.form-control::placeholder {
+  color: white;
+}
+.form-control:hover {
+  background: transparent;
+  color: white;
+}
+
+.form-label:hover {
+  background: transparent;
+  color: white;
+}
+
+.botao-reservar-form {
+  font-family: "Laceration", sans-serif;
+  font-size: 24px;
+  color: white;
+  background-image: url("../img/Botao_Rese.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  padding: 40px 80px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -342,34 +344,6 @@ textarea:focus {
   .terceiro {
     position: static;
   }
-  .formulario-container {
-    flex-direction: column;
-    align-items: center;
-    margin-top: -140px;
-  }
-
-  .mapa-area,
-  .formulario-area {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .formulario-area h1 {
-    font-size: 24px;
-  }
-
-  form {
-    flex-direction: column;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="tel"],
-  select,
-  textarea {
-    font-size: 14px;
-  }
 
   .beneficios {
     width: 100%;
@@ -387,7 +361,7 @@ textarea:focus {
   .cartas-sobre-fundo {
     display: flex;
     flex-direction: column;
-    align-items: center; /* centra horizontalmente os blocos */
+    align-items: center;
     justify-content: center;
     width: 100%;
     padding: 0 16px;
@@ -399,7 +373,7 @@ textarea:focus {
   .carta-bloco2,
   .carta-bloco3 {
     width: 100%;
-    max-width: 300px; /* controla a largura máxima das cartas */
+    max-width: 300px;
     text-align: center;
     margin: 0 auto;
   }

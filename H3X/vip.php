@@ -62,11 +62,11 @@ $result = $conn->query($sql);
                 <div class="cartas2">
                     <div class="cartas-sobre-fundo">
                         <?php while ($row = $result->fetch_assoc()): ?>
-                            <div class="carta-bloco d-flex flex-column align-items-center">
-                                <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2"
-                                    alt="Card" style="height: 400px; object-fit: contain;">
-                                <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
-                            </div>
+                        <div class="carta-bloco d-flex flex-column align-items-center">
+                            <img src="uploads/<?php echo trim($row['imagem']); ?>" class="CARD img-fluid mb-2"
+                                alt="Card" style="height: 400px; object-fit: contain;">
+                            <h3 class="text-center m-0"><?php echo trim($row['titulo']); ?></h3>
+                        </div>
                         <?php endwhile; ?>
                     </div>
                 </div>
@@ -83,44 +83,52 @@ $result = $conn->query($sql);
         <img src="img/Ret_Branco.png" class="quadrado" alt="Carta 3">
     </section>
 
-    <div class="container" id="formulario">
-        <div class="formulario-container">
-            <div class="mapa-area">
-                <img src="img/MAPA H3X 1.png" class="imagem-fundo" alt="Mapa do estabelecimento">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 imagemplanta">
+                <img src="img/MAPA H3X 1.png" alt="Planta Discoteca">
             </div>
-            <div class="formulario-area">
-                <h1>FORMULÁRIO DE RESERVA</h1>
-                <form action="#" method="post">
-                    <label for="nome">Nome:</label><br>
-                    <input type="text" id="nome" name="nome" required><br><br>
-
-                    <label for="telefone">Telefone:</label><br>
-                    <input type="tel" id="telefone" name="telefone" required><br><br>
-
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-
-                    <label for="data_nascimento">Data de Nascimento:</label><br>
-                    <input type="date" id="data_nascimento" name="data_nascimento" required><br><br>
-
-                    <label for="mesa">Escolher a Mesa:</label><br>
-                    <select id="mesa" name="mesa" required>
-                        <option value="mesa1">Mesa 1</option>
-                        <option value="mesa2">Mesa 2</option>
-                        <option value="mesa3">Mesa 3</option>
-                        <option value="mesa4">Mesa 4</option>
-                    </select><br><br>
-
-                    <label for="instagram">@ Instagram:</label><br>
-                    <input type="text" id="instagram" name="instagram" required><br><br>
-
-                    <label for="mensagem">Mensagem:</label><br>
-                    <textarea id="mensagem" name="mensagem" rows="4" cols="50" required></textarea><br><br>
-
-                    <!-- Botão de submit como imagem -->
-                    <button type="submit" class="image-submit-button">
-                        <img src="img/Botao_Reserv3.png" alt="Reservar">
-                    </button>
+            <div class="col-md-6 formulario">
+                <h4>FORMULÁRIO DE RESERVA</h4>
+                <form>
+                    <div class="mb-3 ">
+                        <label for="name" class="form-label">NOME</label>
+                        <input type="text" class="form-control" id="name" placeholder="Escreva o seu nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">TELEFONE</label>
+                        <input type="tel" class="form-control" id="Telefone" placeholder="Escreva o seu número">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">EMAIL</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="Escreva o seu email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataReserva" class="form-label">DATA DA RESERVA</label>
+                        <input type="date" class="form-control" id="dataReserva" name="dataReserva"
+                            placeholder="Indique a sua reserva" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mesa" class="form-label">ESCOLHA A SUA MESA</label>
+                        <select class="form-select" id="mesa" name="mesa" required>
+                            <option value="" disabled selected>Selecione uma mesa</option>
+                            <option value="1">Mesa 1</option>
+                            <option value="2">Mesa 2</option>
+                            <option value="3">Mesa 3</option>
+                            <option value="3">Mesa 4</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label">MENSAGEM</label>
+                        <textarea class="form-control" id="mensagem" name="mensagem" rows="4"
+                            placeholder="Escreva uma mensagem"></textarea>
+                    </div>
+                    <div class="botao-form-Reservar d-flex justify-content-center">
+                        <button type="submit" class="botao-reservar-form">
+                            RESERVAR
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
