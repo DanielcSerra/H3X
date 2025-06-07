@@ -146,11 +146,6 @@ INSERT INTO `eventos` (`id`, `titulo`, `data_inicio`, `data_fim`, `imagem_banner
 	(12, 'Techno Bear', '2025-09-15 08:00:00', '2025-09-16 07:59:00', '6840effa0fb2_dgdtzp-81afd847-0e4a-44b4-8d03-72c5e26a841d.png', '6840effa0fb9_background3.mp4', '6840effa0fb8_maxresdefault.jpg', 'DJ Gummy Bear; DJ Leopoldina', 1),
 	(13, 'asdasd', '2025-06-12 00:00:00', '2025-06-15 06:00:00', '68418ccf89c72_artworks-000195124570-4jd3zy-t500x500-removebg-preview 1.png', '68418ccf89c9f_Rectangle 1.png', '68418ccf89c94_abstract-colorful-party-silhouettes_1048-295.png', 'SDJSDSD ; JASDJASD ; AJSDJSAD', 1);
 
--- A despejar estrutura para vista h3x.eventos_futuros
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `eventos_futuros` 
-) ENGINE=MyISAM;
-
 -- A despejar estrutura para tabela h3x.faq
 CREATE TABLE IF NOT EXISTS `faq` (
   `id` int NOT NULL,
@@ -374,11 +369,6 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `comentarios_post` AS selec
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `contatos_detalhada`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `contatos_detalhada` AS select `contactos`.`id` AS `ID`,`contactos`.`nome` AS `Nome`,`contactos`.`email` AS `Email`,`contactos`.`telefone` AS `Telefone`,`contactos`.`mensagem` AS `Mensagem`,`utilizadores`.`nome` AS `Nome (Cliente)` from (`contactos` left join `utilizadores` on((`contactos`.`id_utilizador` = `utilizadores`.`id`)))
-;
-
--- A remover tabela temporária e a criar estrutura VIEW final
-DROP TABLE IF EXISTS `eventos_futuros`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `eventos_futuros` AS select `eventos`.`id` AS `ID`,`eventos`.`titulo` AS `Título`,`eventos`.`data_inicio` AS `Data início`,`eventos`.`data_fim` AS `Data fim`,`eventos`.`hora_inicio` AS `Hora início`,`eventos`.`hora_fim` AS `Hora fim` from `eventos` where (`eventos`.`data_inicio` >= curdate())
 ;
 
 -- A remover tabela temporária e a criar estrutura VIEW final
