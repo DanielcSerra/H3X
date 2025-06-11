@@ -29,9 +29,10 @@ switch ($tipoUtilizador) {
         break;
 }
 
-$pageTitle = "H3X ADMIN - Contactos";
+$pageTitle = "H3X ADMIN - Reservas VIP";
 
 require 'partials/header.php';
+
 ?>
 
 <body>
@@ -41,9 +42,9 @@ require 'partials/header.php';
 
         <div class="content">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="table-title m-0">Vip</h1>
+                <h1 class="table-title m-0">Reservas VIP</h1>
                 <div>
-                    <a href="admin_contactos_create.php" class="btn btn-success shadow-sm px-4 py-2 fw-semibold">
+                    <a href="admin_vip_create.php" class="btn btn-success shadow-sm px-4 py-2 fw-semibold">
                         <i class="fas fa-plus me-2"></i> Adicionar Vip
                     </a>
                 </div>
@@ -52,41 +53,54 @@ require 'partials/header.php';
             <?php require_once('partials/erros_sucesso_msgs.php'); ?>
 
             <?php
-            $sql = "SELECT * FROM contactos ORDER BY id DESC";
+
+            $sql = "
+            SELECT vip.id, vip.mensagem, vip.data_reserva,
+                    utilizadores.nome AS nome_utilizador,
+                    utilizadores.telefone,
+                    utilizadores.email,
+                    mesas.nome AS nome_mesa
+            FROM vip
+            LEFT JOIN utilizadores ON vip.id_utilizador = utilizadores.id
+            LEFT JOIN mesas ON vip.id_mesa = mesas.id
+            ORDER BY vip.id DESC
+            ";
             $result = $conn->query($sql);
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-            <table id="contactosTable" class="display table table-striped table-hover" style="width:100%">
+            <table id="svipTable" class="display table table-striped table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nome</th>
-                        <th>Assunto</th>
+                        <th>Nome Utilizador</th>
+                        <th>Mesa</th>
                         <th>Telemóvel</th>
                         <th>Email</th>
                         <th>Mensagem</th>
+                        <th>Data Reserva</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($contacto = $result->fetch_object()):
-                            $id = $contacto->id;
-                            $nome = $contacto->nome;
-                            $assunto = $contacto->assunto??'';
-                            $telefone = $contacto->telefone??'';
-                            $email = $contacto->email;
-                            $mensagem_resumida = mb_strimwidth(strip_tags($contacto->mensagem), 0, 80, '...');
-                            ?>
+                    <?php while ($reserva = $result->fetch_object()):
+                            $id = $reserva->id;
+                            $nome = $reserva->nome_utilizador ?? 'Sem nome';
+                            $telefone = $reserva->telefone ?? '';
+                            $email = $reserva->email ?? '';
+                            $nome_mesa = $reserva->nome_mesa ?? 'Sem mesa';
+                            $mensagem_resumida = mb_strimwidth(strip_tags($reserva->mensagem), 0, 80, '...');
+                            $data_reserva = $reserva->data_reserva ?? '';
+                    ?>
                     <tr>
                         <td><?= $id ?></td>
-                        <td><?= htmlspecialchars($nome) ?></td>
-                        <td><?= htmlspecialchars($assunto) ?></td>
-                        <td><?= htmlspecialchars($telefone) ?></td>
-                        <td><?= htmlspecialchars($email) ?></td>
+                        <td><?= trim($nome) ?></td>
+                        <td><?= trim($nome_mesa) ?></td>
+                        <td><?= trim($telefone) ?></td>
+                        <td><?= trim($email) ?></td>
                         <td>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#mensagemModal<?= $id ?>">
-                                <?= htmlspecialchars($mensagem_resumida) ?>
+                                <?= trim($mensagem_resumida) ?>
                             </a>
 
                             <div class="modal fade" id="mensagemModal<?= $id ?>" tabindex="-1"
@@ -95,12 +109,12 @@ require 'partials/header.php';
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="mensagemModalLabel<?= $id ?>">Mensagem de
-                                                <?= htmlspecialchars($nome) ?></h5>
+                                                <?= trim($nome) ?></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Fechar"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p><?= nl2br(htmlspecialchars(trim($contacto->mensagem))) ?></p>
+                                            <p><?= nl2br(trim(trim($reserva->mensagem))) ?></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -110,10 +124,11 @@ require 'partials/header.php';
                                 </div>
                             </div>
                         </td>
+                        <td><?= trim($data_reserva) ?></td>
                         <td>
-                            <a href="admin_contactos_edit.php?id=<?= urlencode($id) ?>" title="Editar"><i
+                            <a href="admin_vip_edit.php?id=<?= urlencode($id) ?>" title="Editar"><i
                                     class="fas fa-pen-to-square text-warning"></i></a>
-                            <a href="admin_contactos_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
+                            <a href="admin_vip_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
                                     class="fas fa-trash text-danger"></i></a>
                         </td>
                     </tr>
@@ -121,7 +136,7 @@ require 'partials/header.php';
                 </tbody>
             </table>
             <?php else: ?>
-            <p class="alert alert-warning">Sem contactos encontrados.</p>
+            <p class="alert alert-warning">Sem reservas VIP encontradas.</p>
             <?php endif; ?>
 
         </div>

@@ -4,8 +4,36 @@ session_start();
 require_once("db_config.php");
 require_once "admin/ultima_atividade.php";
 
+
+$errors = [];
+$success = "";
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_mesa = $_POST['id_mesa'] ?? '';
+    $mensagem = $_POST['mensagem'] ?? '';
+    $data_reserva = $_POST['data_reserva'] ?? '';
+    $id_utilizador = $_SESSION['id'] ?? null; 
+
+    if (!$id_mesa || !$data_reserva) {
+        $_SESSION['errors'][] = "Por favor preencha os campos obrigatórios.";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO vip (id_mesa, mensagem, data_reserva, id_utilizador) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("issi", $id_mesa, $mensagem, $data_reserva, $id_utilizador);
+
+        if ($stmt->execute()) {
+            $_SESSION['success'] = "Reserva efetuada com sucesso!";
+            header("Location: vip.php#formulario");
+            exit();
+        } else {
+            $_SESSION['errors'][] = "Erro ao efetuar reserva: " . $stmt->error;
+        }
+    }
+}
+
 $sql = "SELECT * FROM servicos_vip";
 $result = $conn->query($sql);
+
 ?>
 <?php include 'partials/head.php'; ?>
 <title>H3X - Pagina</title>
@@ -55,7 +83,7 @@ $result = $conn->query($sql);
 
 
     <div class="imagem-topo">
-        <img src="img/before.png" width="100%" atl="Barra decorativa">
+        <img src="img/before.png" width="100%" alt="Barra decorativa">
     </div>
 
     <section class="staff-section">
@@ -68,7 +96,7 @@ $result = $conn->query($sql);
                         ?>
                 <div class="staff-item">
                     <img src="img/<?php echo trim($row['imagem']); ?>" alt="<?php echo trim($row['titulo']); ?>"
-                        style="height: 500px; object-fit: contain;">
+                        style="height: 450px; object-fit: contain;">
                     <h3><?php echo trim($row['titulo']); ?></h3>
                 </div>
                 <?php
@@ -89,32 +117,19 @@ $result = $conn->query($sql);
     <div class="container">
         <div class="row">
             <div class="col-md-6 imagemplanta">
-                <img src="img/MAPA H3X 1.png" alt="Planta Discoteca">
+                <img src="img/MAPA H3X 1.png" alt="Planta Discoteca" class="img-fluid">
             </div>
-            <div class="col-md-6 formulario">
+            <div class="col-md-6 formulario" id="formulario" method="post">
                 <h4>FORMULÁRIO DE RESERVA</h4>
-                <form>
-                    <div class="mb-3 ">
-                        <label for="name" class="form-label">NOME</label>
-                        <input type="text" class="form-control" id="name" placeholder="Escreva o seu nome">
-                    </div>
+                <form action="#formulario" method="post">
                     <div class="mb-3">
-                        <label for="telefone" class="form-label">TELEFONE</label>
-                        <input type="tel" class="form-control" id="Telefone" placeholder="Escreva o seu número">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">EMAIL</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="Escreva o seu email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="dataReserva" class="form-label">DATA DA RESERVA</label>
-                        <input type="date" class="form-control" id="dataReserva" name="dataReserva"
+                        <label for="data_reserva" class="form-label">DATA DA RESERVA</label>
+                        <input type="date" class="form-control" id="data_reserva" name="data_reserva"
                             placeholder="Indique a sua reserva" required>
                     </div>
                     <div class="mb-3">
-                        <label for="mesa" class="form-label">ESCOLHA A SUA MESA</label>
-                        <select class="form-select" id="mesa" name="mesa" required>
+                        <label for="id_mesa" class="form-label">ESCOLHA A SUA MESA</label>
+                        <select class="form-select" id="id_mesa" name="id_mesa" required>
                             <option value="" disabled selected>Selecione uma mesa</option>
                             <option value="1">Mesa 1</option>
                             <option value="2">Mesa 2</option>

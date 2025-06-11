@@ -102,12 +102,18 @@ p {
   position: relative;
 }
 
+.form-botao:hover {
+  transform: scale(1.03);
+}
+
 .form-botao {
   margin: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 .form-botao h2 {
   color: white;
@@ -274,6 +280,18 @@ p {
     height: 16px;
   }
 
+  .form-botao {
+    text-align: center;
+  }
+
+  .form-botao h2 {
+    font-size: 24px;
+  }
+
+  .form-botao img {
+    width: 350px;
+    height: auto;
+  }
   .imagemplanta {
     margin-bottom: 64px;
   }
@@ -295,9 +313,17 @@ p {
 }
 
 @media (max-width: 1200px) {
-  .beneficios {
-    width: 600vw;
-    width: 100%;
-    font-size: 45px;
+  .formulario h4 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .form-botao h2 {
+    font-size: 24px;
+  }
+
+  .form-botao img {
+    width: 350px;
+    height: auto;
   }
 }
