@@ -165,11 +165,4 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
             }
             </script>
 
-
-
-
-
-
-
-
             <?php require 'partials/footer.php'; ?>

@@ -31,8 +31,8 @@
         <i class="fas fa-chevron-down arrow-icon ms-auto"></i>
     </div>
     <div class="dropdown-container" id="dropdown1">
-        <a href="admin_vip.php">VIP</a>
-        <a href="admin_servicos_vip.php">Serviços</a>
+        <a href="admin_vip.php">Reservas Vip</a>
+        <a href="admin_servicos_vip.php">Serviços Vip</a>
     </div>
 
 
