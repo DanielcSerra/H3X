@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
+$pageTitle = "H3X ADMIN - Adicionar Serviço Vip";
 ?>
 
 <?php require 'partials/header.php'; ?>
@@ -80,7 +80,7 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
 
         <div class="content">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="table-title m-0"><i class="fas fa-star me-2"></i>Adicionar Serviço VIP</h1>
+                <h1 class="table-title m-0"><i class="fas fa-plus me-2"></i>Adicionar Serviço Vip</h1>
                 <a href="admin_servicos_vip.php" class="btn btn-secondary shadow-sm px-4 py-2 fw-semibold">
                     <i class="fas fa-arrow-left me-2"></i> Voltar
                 </a>
@@ -117,7 +117,7 @@ $pageTitle = "H3X ADMIN - Adicionar Serviço VIP";
 
                         <div class="mb-3 text-center">
                             <button type="submit" class="btn btn-success">
-                                <i class="fas fa-plus me-1"></i> Adicionar Serviço
+                                <i class="fas fa-plus me-1"></i> Adicionar Serviço Vip
                             </button>
                         </div>
                     </form>

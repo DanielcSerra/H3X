@@ -34,7 +34,7 @@ switch ($tipoUtilizador) {
 
 $pageTitle = "H3X ADMIN - Serviços VIP";
 if (!isset($_GET["id"])) {
-    $_SESSION["errors"]["not_found"] = "ID da reserva VIP não fornecido.";
+    $_SESSION["errors"]["not_found"] = "ID da reserva Vip não fornecido.";
     header("Location: admin_vip.php");
     exit();
 }
@@ -45,7 +45,7 @@ $sql = "SELECT vip.*, mesas.nome AS nome_mesa FROM vip LEFT JOIN mesas ON vip.id
 $result = $conn->query($sql);
 
 if (!$result || $result->num_rows == 0) {
-    $_SESSION["errors"]["not_found"] = "Reserva VIP não encontrada.";
+    $_SESSION["errors"]["not_found"] = "Reserva Vip não encontrada.";
     header("Location: admin_vip.php");
     exit();
 }
@@ -88,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-$pageTitle = "Editar Reserva VIP";
+$pageTitle = "Editar Reserva Vip";
+
 require 'partials/header.php';
 ?>
 

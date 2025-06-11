@@ -24,7 +24,7 @@ $sql = "SELECT * FROM vip WHERE id = $id";
 $result = $conn->query($sql);
 
 if (!$result || $result->num_rows === 0) {
-    $_SESSION["errors"]["not_found"] = "Reserva VIP não encontrada.";
+    $_SESSION["errors"]["not_found"] = "Reserva Vip não encontrada.";
     header("Location: admin_vip.php");
     exit();
 }

@@ -9,6 +9,21 @@ if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
 require_once "../db_config.php";
 require_once 'ultima_atividade.php';
 
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
+$tipoUtilizador = $_SESSION["tipo"] ?? "c";
+
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
+}
+
 $pageTitle = "H3X ADMIN - Adicionar Reserva VIP";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -28,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("issi", $id_mesa, $mensagem, $data_reserva, $id_utilizador);
 
         if ($stmt->execute()) {
-            $_SESSION["success"] = "Reserva VIP adicionada com sucesso.";
+            $_SESSION["success"] = "Reserva Vip adicionada com sucesso.";
             header("Location: admin_vip.php");
             exit();
         } else {
@@ -46,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="content">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="table-title m-0">Adicionar Reserva VIP</h1>
+                <h1 class="table-title m-0"><i class="fas fa-plus me-2"></i>Adicionar Reserva Vip</h1>
                 <a href="admin_vip.php" class="btn btn-secondary shadow-sm px-4 py-2 fw-semibold">
                     <i class="fas fa-arrow-left me-2"></i> Voltar
                 </a>
@@ -118,7 +133,7 @@ $mesas = $conn->query("SELECT id, nome FROM mesas");
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">
-                        <i class="fas fa-plus me-1"></i> Adicionar Reserva VIP
+                        <i class="fas fa-plus me-1"></i> Adicionar Reserva Vip
                     </button>
                 </div>
             </form>

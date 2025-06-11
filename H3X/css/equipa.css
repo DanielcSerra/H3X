@@ -166,7 +166,6 @@ p {
   top: 0;
   position: relative;
   -webkit-text-stroke: 2px white;
-  animation: aparecer 0.5s forwards;
 }
 
 .seg {
@@ -174,7 +173,6 @@ p {
   position: relative;
   -webkit-text-stroke: 2px #cacaca;
   animation-delay: 0.5s;
-  animation: aparecer 1s forwards;
 }
 
 .terc {
@@ -182,7 +180,6 @@ p {
   position: relative;
   -webkit-text-stroke: 2px #828282;
   animation-delay: 1s;
-  animation: aparecer 1.5s forwards;
 }
 
 .imagens-dj {
@@ -272,5 +269,9 @@ p {
 
   .terc {
     top: -50px;
+  }
+
+  .imagem-topo img {
+    height: 16px;
   }
 }
