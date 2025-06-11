@@ -62,10 +62,10 @@ require_once "admin/ultima_atividade.php";
     <div class="contactos">
         <h2>Precisa de ajuda?</h2>
         <p class="pmaior">Entre em contacto connosco</p>
-        <div class="botao2">
+        <a href="contactos.php" class="botao2">
             <img src="img/caixabranca.png">
             <h2>CONTACTOS</h2>
-        </div>
+        </a>
     </div>
     <?php include 'partials/footer.php'; ?>
 </body>

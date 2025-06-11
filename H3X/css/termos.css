@@ -91,6 +91,13 @@ p {
   align-items: center;
   justify-content: center;
   top: 7%;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.botao2:hover {
+  transform: scale(1.03);
 }
 
 .botoes h2 {
@@ -108,6 +115,7 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 .contactos h2 {
   color: white;
