@@ -182,18 +182,19 @@ $pageTitle = "H3X ADMIN - Editar Utilizador";
                             <label for="tipo" class="form-label">Tipo</label>
                             <select class="form-select" name="tipo" id="tipo" required>
                                 <option value="c" <?= $utilizador["tipo"] == "c" ? "selected" : "" ?>>Cliente</option>
-                                <option value="f" <?= $utilizador["tipo"] == "f" ? "selected" : "" ?>>Funcionário</option>
+                                <option value="f" <?= $utilizador["tipo"] == "f" ? "selected" : "" ?>>Funcionário
+                                </option>
                                 <option value="a" <?= $utilizador["tipo"] == "a" ? "selected" : "" ?>>Administrador
                                 </option>
                             </select>
                         </div>
 
                         <?php if (!empty($utilizador["foto"])): ?>
-                            <div class="mb-3">
-                                <label class="form-label d-block">Foto Atual:</label>
-                                <img src="../uploads/<?= trim($utilizador["foto"]) ?>" alt="Foto de perfil"
-                                    class="img-thumbnail" style="max-width: 100px;">
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">Foto Atual:</label>
+                            <img src="../uploads/<?= trim($utilizador["foto"]) ?>" alt="Foto de perfil"
+                                class="img-thumbnail" style="max-width: 100px;">
+                        </div>
                         <?php endif; ?>
 
                         <div class="mb-3">
@@ -217,62 +218,62 @@ $pageTitle = "H3X ADMIN - Editar Utilizador";
         </div>
     </div>
     <script>
-        function validarFormulario(submitEvent) {
-            var nome = document.getElementById("nome").value.trim();
-            var email = document.getElementById("email").value.trim();
-            var telefone = document.getElementById("telefone").value.trim();
-            var dataNascimento = document.getElementById("data_nascimento").value.trim();
-            var senha = document.getElementById("senha").value.trim();
-            var tipo = document.getElementById("tipo").value;
+    function validarFormulario(submitEvent) {
+        var nome = document.getElementById("nome").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var telefone = document.getElementById("telefone").value.trim();
+        var dataNascimento = document.getElementById("data_nascimento").value.trim();
+        var senha = document.getElementById("senha").value.trim();
+        var tipo = document.getElementById("tipo").value;
 
-            if (nome.length < 2 || nome.length > 15) {
-                alert("O nome deve ter entre 2 e 15 caracteres.");
-                submitEvent.preventDefault();
-                return;
-            }
+        if (nome.length < 2 || nome.length > 15) {
+            alert("O nome deve ter entre 2 e 15 caracteres.");
+            submitEvent.preventDefault();
+            return;
+        }
 
-            if (email === "") {
-                alert("O email é obrigatório.");
-                submitEvent.preventDefault();
-                return;
-            }
+        if (email === "") {
+            alert("O email é obrigatório.");
+            submitEvent.preventDefault();
+            return;
+        }
 
-            if (email.length > 100) {
-                alert("O email deve ter no máximo 100 caracteres.");
-                submitEvent.preventDefault();
-                return;
-            }
+        if (email.length > 100) {
+            alert("O email deve ter no máximo 100 caracteres.");
+            submitEvent.preventDefault();
+            return;
+        }
 
-            if (telefone !== "") {
-                if (telefone.length !== 9 || isNaN(telefone)) {
-                    alert("O telefone deve conter exatamente 9 dígitos numéricos.");
-                    submitEvent.preventDefault();
-                    return;
-                }
-            }
-
-            if (dataNascimento === "") {
-                alert("Preencha a data de nascimento.");
-                submitEvent.preventDefault();
-                return;
-            }
-
-            if (senha.length > 0 && (senha.length < 6 || senha.length > 20)) {
-                alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
-                submitEvent.preventDefault();
-                return;
-            }
-
-            if (tipo === "") {
-                alert("Selecione o tipo de utilizador.");
+        if (telefone !== "") {
+            if (telefone.length !== 9 || isNaN(telefone)) {
+                alert("O telefone deve conter exatamente 9 dígitos numéricos.");
                 submitEvent.preventDefault();
                 return;
             }
         }
 
-        window.onload = function () {
-            var form = document.querySelector("form");
-            form.addEventListener("submit", validarFormulario);
+        if (dataNascimento === "") {
+            alert("Preencha a data de nascimento.");
+            submitEvent.preventDefault();
+            return;
         }
+
+        if (senha.length > 0 && (senha.length < 6 || senha.length > 20)) {
+            alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
+            submitEvent.preventDefault();
+            return;
+        }
+
+        if (tipo === "") {
+            alert("Selecione o tipo de utilizador.");
+            submitEvent.preventDefault();
+            return;
+        }
+    }
+
+    window.onload = function() {
+        var form = document.querySelector("form");
+        form.addEventListener("submit", validarFormulario);
+    }
     </script>
 </body>

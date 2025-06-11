@@ -12,6 +12,23 @@ require_once 'ultima_atividade.php';
 $_SESSION["errors"] = [];
 $_SESSION["success"] = "";
 
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
+$tipoUtilizador = $_SESSION["tipo"] ?? "c";
+
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
+}
+
+$pageTitle = "H3X ADMIN - Serviços VIP";
+
 if (!isset($_GET["id"])) {
     $_SESSION["errors"]["not_found"] = "ID do serviço não fornecido.";
     header("Location: admin_servicos_vip.php");
@@ -84,7 +101,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php require 'partials/sidebar.php'; ?>
 
         <div class="content">
-            <h1 class="mb-4"><i class="fas fa-star me-2"></i>Editar Serviço VIP</h1>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="table-title m-0"><i class="fas fa-edit me-2"></i>Editar Serviços Vip</h1>
+                <a href="admin_servicos_vip.php" class="btn btn-secondary shadow-sm px-4 py-2 fw-semibold">
+                    <i class="fas fa-arrow-left me-2"></i> Voltar
+                </a>
+            </div>
 
             <?php
             if (!empty($_SESSION["errors"])) {
