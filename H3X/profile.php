@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
 
 <head>
     <meta charset="UTF-8">
-    <title>H3X | <?= htmlspecialchars($userNome) ?></title>
+    <title>H3X | <?= trim($userNome) ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
 </head>
@@ -143,16 +143,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                 <div class="col-md-4 text-center mb-4">
                     <div class="avatar-wrapper">
                         <?php if (!empty($_SESSION['foto'])): ?>
-                            <img src="uploads/<?= htmlspecialchars($userFoto) ?>" alt="Foto de Perfil" class="user-img">
+                            <img src="uploads/<?= trim($userFoto) ?>" alt="Foto de Perfil" class="user-img">
                         <?php else: ?>
                             <div class="user-placeholder"><?= strtoupper(substr($userNome, 0, 1)) ?></div>
                         <?php endif; ?>
                     </div>
 
-                    <h3><strong><?= htmlspecialchars($userNome) ?></strong></h3>
-                    <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
+                    <h3><strong><?= trim($userNome) ?></strong></h3>
+                    <p><strong>Email:</strong> <?= trim($email) ?></p>
                     <p><strong>Telefone:</strong>
-                        <?= !empty($userTelefone) ? htmlspecialchars($userTelefone) : 'Sem número' ?></p>
+                        <?= !empty($userTelefone) ? trim($userTelefone) : 'Sem número' ?></p>
                     <p><strong>Nascimento:</strong> <?= $userNascimento ?></p>
                     <button class="btn btn-outline-light mt-3" data-bs-toggle="modal"
                         data-bs-target="#editarPerfilModal">
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                                     <div class="alert alert-danger mx-3 my-2">
                                         <ul>
                                             <?php foreach ($_SESSION['errors'] as $error): ?>
-                                                <li><?= htmlspecialchars($error) ?></li>
+                                                <li><?= trim($error) ?></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </div>
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                                     <div class="mb-4">
                                         <label for="nome" class="form-label">Nome</label>
                                         <input type="text" class="form-control" name="nome" id="nome"
-                                            value="<?= htmlspecialchars($userNome) ?>" required minlength="2"
+                                            value="<?= trim($userNome) ?>" required minlength="2"
                                             maxlength="15" pattern="[A-Za-zÀ-ÿ '´`-]{2,15}"
                                             title="Nome deve conter entre 2 e 15 letras.">
                                     </div>
@@ -199,13 +199,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                                     <div class="mb-4">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control" name="email" id="email"
-                                            value="<?= htmlspecialchars($userEmail) ?>" required>
+                                            value="<?= trim($userEmail) ?>" required>
                                     </div>
 
                                     <div class="mb-4">
                                         <label for="telefone" class="form-label">Telefone</label>
                                         <input type="tel" class="form-control" name="telefone" id="telefone"
-                                            value="<?= htmlspecialchars($userTelefone) ?>" pattern="\d{9}" minlength="9"
+                                            value="<?= trim($userTelefone) ?>" pattern="\d{9}" minlength="9"
                                             maxlength="9" title="Telefone deve conter exatamente 9 dígitos numéricos.">
                                     </div>
 
@@ -246,9 +246,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                         <?php if (mysqli_num_rows($galeria) > 0): ?>
                             <?php while ($img = mysqli_fetch_assoc($galeria)): ?>
                                 <div class="col-6 col-md-4 mb-3 gallery-item">
-                                    <img src="uploads/<?= htmlspecialchars($img['imagem']) ?>"
-                                        alt="<?= htmlspecialchars($img['titulo']) ?>">
-                                    <small><?= htmlspecialchars($img['titulo']) ?></small>
+                                    <img src="uploads/<?= trim($img['imagem']) ?>"
+                                        alt="<?= trim($img['titulo']) ?>">
+                                    <small><?= trim($img['titulo']) ?></small>
                                 </div>
                             <?php endwhile; ?>
                         <?php else: ?>
@@ -261,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                         <?php while ($post = mysqli_fetch_assoc($posts)): ?>
                             <div class="card custom-card mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= htmlspecialchars($post['titulo']) ?></h5>
+                                    <h5 class="card-title"><?= trim($post['titulo']) ?></h5>
                                     <p class="card-text"><small>Publicado em:
                                             <?= date('d/m/Y', strtotime($post['data_criacao'])) ?></small></p>
                                 </div>
@@ -276,7 +276,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                         <?php while ($reserva = mysqli_fetch_assoc($reservas)): ?>
                             <div class="card custom-card mb-3">
                                 <div class="card-body">
-                                    <p><strong>Mensagem:</strong> <?= htmlspecialchars($reserva['mensagem']) ?></p>
+                                    <p><strong>Mensagem:</strong> <?= trim($reserva['mensagem']) ?></p>
                                     <p><strong>Data:</strong> <?= date("d/m/Y", strtotime($reserva['data_reserva'])) ?></p>
                                 </div>
                             </div>

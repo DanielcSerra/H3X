@@ -85,7 +85,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
             <?php if (!empty($_SESSION['authenticated'])): ?>
                 <form method="POST" class="coment-form" id="comentarioForm">
                     <?php if (!empty($_SESSION['foto'])): ?>
-                        <img src="uploads/<?= htmlspecialchars(trim($_SESSION['foto'])) ?>" alt="Foto" class="user-img">
+                        <img src="uploads/<?= trim(trim($_SESSION['foto'])) ?>" alt="Foto" class="user-img">
                     <?php else: ?>
                         <div class="user-placeholder"><?= strtoupper(substr($_SESSION['nome'], 0, 1)) ?></div>
                     <?php endif; ?>
