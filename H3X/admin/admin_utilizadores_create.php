@@ -25,15 +25,15 @@ switch ($tipoUtilizador) {
         break;
 }
 
+$nome = isset($_POST["nome"]) ? trim($_POST["nome"]) : "";
+$email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
+$telefone = isset($_POST["telefone"]) ? trim($_POST["telefone"]) : "";
+$data_nascimento = isset($_POST["data_nascimento"]) ? $_POST["data_nascimento"] : "";
+$senha = isset($_POST["senha"]) ? trim($_POST["senha"]) : "";
+$tipo = isset($_POST["tipo"]) ? $_POST["tipo"] : "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["errors"] = [];
-
-    $nome = isset($_POST["nome"]) ? trim($_POST["nome"]) : "";
-    $email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
-    $telefone = isset($_POST["telefone"]) ? trim($_POST["telefone"]) : "";
-    $data_nascimento = isset($_POST["data_nascimento"]) ? $_POST["data_nascimento"] : "";
-    $senha = isset($_POST["senha"]) ? trim($_POST["senha"]) : "";
-    $tipo = isset($_POST["tipo"]) ? $_POST["tipo"] : "";
 
     if (strlen($nome) == 0) {
         $_SESSION["errors"]["nome"] = "Nome inválido";
@@ -139,6 +139,8 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                 ?>
             </div>
 
+            <div id="mensagemErro" class="alert alert-danger d-none" role="alert"></div>
+
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                     <form method="POST" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm w-100"
@@ -147,44 +149,50 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
                             <input type="text" class="form-control" name="nome" id="nome" required minlength="2"
-                                maxlength="15" title="Nome deve conter entre 2 e 15 caracteres.">
+                                pattern="[A-Za-zÀ-ÿ\s'´`-]{2,15}" maxlength="15"
+                                title="Nome deve conter entre 2 e 15 caracteres."
+                                value="<?= trim($nome) ?>">
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" required>
+                            <input type="email" class="form-control" name="email" id="email" required
+                                value="<?= trim($email) ?>">
                         </div>
 
                         <div class="mb-3">
                             <label for="telefone" class="form-label">Telefone (opcional)</label>
                             <input type="tel" class="form-control" name="telefone" id="telefone" minlength="9"
-                                maxlength="9" title="Telefone deve conter exatamente 9 dígitos numéricos.">
+                                pattern="\d{9}" maxlength="9"
+                                title="Telefone deve conter exatamente 9 dígitos numéricos."
+                                value="<?= trim($telefone) ?>">
                         </div>
 
                         <div class="mb-3">
                             <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                            <input type="date" class="form-control" name="data_nascimento" id="data_nascimento"
-                                required>
+                            <input type="date" class="form-control" name="data_nascimento" id="data_nascimento" required
+                                value="<?= trim($data_nascimento) ?>">
                         </div>
 
                         <div class="mb-3">
                             <label for="senha" class="form-label">Palavra-passe</label>
                             <input type="password" class="form-control" name="senha" id="senha" required minlength="6"
-                                maxlength="20" title="A palavra-passe deve ter entre 6 e 20 caracteres.">
+                                pattern=".{6,20}" maxlength="20"
+                                title="A palavra-passe deve ter entre 6 e 20 caracteres.">
                         </div>
 
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo</label>
                             <select class="form-select" name="tipo" id="tipo" required>
-                                <option value="">Selecione</option>
-                                <option value="c">Cliente</option>
-                                <option value="f">Funcionário</option>
-                                <option value="a">Administrador</option>
+                                <option value="" <?= $tipo === '' ? 'selected' : '' ?>>Selecione</option>
+                                <option value="c" <?= $tipo === 'c' ? 'selected' : '' ?>>Cliente</option>
+                                <option value="f" <?= $tipo === 'f' ? 'selected' : '' ?>>Funcionário</option>
+                                <option value="a" <?= $tipo === 'a' ? 'selected' : '' ?>>Administrador</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="foto" class="form-label">Foto de Perfil</label>
+                            <label for="foto" class="form-label">Foto de Perfil (opcional)</label>
                             <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
                         </div>
 
@@ -199,6 +207,12 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
             </div>
 
             <script>
+                function mostrarErro(msg) {
+                    const alerta = document.getElementById('mensagemErro');
+                    alerta.textContent = msg;
+                    alerta.classList.remove('d-none');
+                }
+
                 function validarFormulario(submitEvent) {
                     var nome = document.getElementById("nome").value.trim();
                     var email = document.getElementById("email").value.trim();
@@ -206,49 +220,70 @@ $pageTitle = "H3X ADMIN - Criar Utilizador";
                     var dataNascimento = document.getElementById("data_nascimento").value.trim();
                     var senha = document.getElementById("senha").value.trim();
                     var tipo = document.getElementById("tipo").value;
+                    var inputFoto = document.getElementById("foto");
+
+                    document.getElementById('mensagemErro').classList.add('d-none');
 
                     if (nome.length < 2 || nome.length > 15) {
-                        alert("O nome deve ter entre 2 e 15 caracteres.");
+                        mostrarErro("O nome deve ter entre 2 e 15 caracteres.");
                         submitEvent.preventDefault();
                         return;
                     }
 
                     if (email === "") {
-                        alert("O email é obrigatório.");
+                        mostrarErro("O email é obrigatório.");
                         submitEvent.preventDefault();
                         return;
                     }
 
                     if (email.length > 100) {
-                        alert("O email deve ter no máximo 100 caracteres.");
+                        mostrarErro("O email deve ter no máximo 100 caracteres.");
                         submitEvent.preventDefault();
                         return;
                     }
 
                     if (telefone !== "") {
                         if (telefone.length !== 9 || isNaN(telefone)) {
-                            alert("O telefone deve conter exatamente 9 dígitos numéricos.");
+                            mostrarErro("O telefone deve conter exatamente 9 dígitos numéricos.");
                             submitEvent.preventDefault();
                             return;
                         }
                     }
 
                     if (dataNascimento === "") {
-                        alert("Preencha a data de nascimento.");
+                        mostrarErro("Preencha a data de nascimento.");
                         submitEvent.preventDefault();
                         return;
                     }
 
                     if (senha.length < 6 || senha.length > 20) {
-                        alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
+                        mostrarErro("A palavra-passe deve ter entre 6 e 20 caracteres.");
                         submitEvent.preventDefault();
                         return;
                     }
 
                     if (tipo === "") {
-                        alert("Selecione o tipo de utilizador.");
+                        mostrarErro("Selecione o tipo de utilizador.");
                         submitEvent.preventDefault();
                         return;
+                    }
+
+                    if (inputFoto.files.length > 0) {
+                        var file = inputFoto.files[0];
+                        var allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+
+                        if (!allowedTypes.includes(file.type)) {
+                            mostrarErro("Por favor, selecione um ficheiro de imagem válido (JPEG, PNG, GIF, WEBP, BMP).");
+                            submitEvent.preventDefault();
+                            return;
+                        }
+
+                        var maxSize = 2 * 1024 * 1024; 
+                        if (file.size > maxSize) {
+                            mostrarErro("A imagem não pode ter mais que 2MB.");
+                            submitEvent.preventDefault();
+                            return;
+                        }
                     }
                 }
 

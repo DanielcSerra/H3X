@@ -126,6 +126,8 @@ $pageTitle = "H3X ADMIN - Editar Post";
             }
             ?>
 
+            <div id="mensagemErro" class="alert alert-danger d-none" role="alert"></div>
+
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                     <form method="POST" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm w-100"
@@ -135,7 +137,7 @@ $pageTitle = "H3X ADMIN - Editar Post";
                             <label for="titulo" class="form-label">Título</label>
                             <input type="text" class="form-control" name="titulo" id="titulo"
                                 value="<?= trim($post["titulo"]) ?>" required maxlength="20"
-                                title="O título deve no maximo 20 caracteres.">
+                                pattern="^[\wÀ-ÿ\s'.,!?-]{5,20}$" title="O título deve no maximo 20 caracteres.">
                         </div>
 
                         <div class="mb-3">
@@ -154,7 +156,7 @@ $pageTitle = "H3X ADMIN - Editar Post";
                         <?php endif; ?>
 
                         <div class="mb-3">
-                            <label for="imagem" class="form-label">Nova Imagem (opcional)</label>
+                            <label for="imagem" class="form-label">Nova Imagem (opcional) (máx. 10MB)</label>
                             <input type="file" class="form-control" name="imagem" id="imagem" accept="image/*">
                         </div>
 
@@ -203,31 +205,65 @@ $pageTitle = "H3X ADMIN - Editar Post";
     </div>
     <?php $conn->close(); ?>
     <script>
-        document.getElementById(' postForm').addEventListener('submit', function (submitEvent) {
-            const
-                titulo = document.getElementById('titulo').value.trim(); const
-                    conteudo = document.getElementById('conteudo').value.trim(); const
-                        imagem = document.getElementById('imagem').files.length; const
-                            utilizador = document.getElementById('id_utilizador').value; const
-                                categoria = document.getElementById('id_categoria').value; if (titulo.length < 5 ||
-                                    titulo.length > 20) {
-                alert("O título deve ter entre 5 e 20 caracteres.");
+        function mostrarErro(msg) {
+            const alerta = document.getElementById('mensagemErro');
+            alerta.textContent = msg;
+            alerta.classList.remove('d-none');
+        }
+
+        document.getElementById('postForm').addEventListener('submit', function (submitEvent) {
+            const titulo = document.getElementById('titulo').value.trim();
+            const conteudo = document.getElementById('conteudo').value.trim();
+            const imagemInput = document.getElementById('imagem');
+            const imagem = imagemInput.files;
+            const utilizador = document.getElementById('id_utilizador').value;
+            const categoria = document.getElementById('id_categoria').value;
+
+            if (titulo.length < 5 || titulo.length > 20) {
+                mostrarErro("O título deve ter entre 5 e 20 caracteres.");
                 submitEvent.preventDefault();
                 return;
             }
 
             if (conteudo.length < 10) {
-                alert("O conteúdo deve ter pelo menos 10 caracteres.");
-                submitEvent.preventDefault(); return;
-            } if (imagem === 0) {
-                alert("Escolha uma imagem.");
-                submitEvent.preventDefault(); return;
-            } if (utilizador === "") {
-                alert("Escolha um utilizador.");
-                submitEvent.preventDefault(); return;
-            } if (categoria === "") {
-                alert("Escolha uma categoria.");
-                submitEvent.preventDefault(); return;
+                mostrarErro("O conteúdo deve ter pelo menos 10 caracteres.");
+                submitEvent.preventDefault();
+                return;
             }
-        }); </script>
+
+            if (imagem.length === 0) {
+                mostrarErro("Escolha uma imagem.");
+                submitEvent.preventDefault();
+                return;
+            } else {
+                const file = imagem[0];
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+                const maxSize = 10 * 1024 * 1024;
+
+                if (!allowedTypes.includes(file.type)) {
+                    mostrarErro("Por favor, selecione uma imagem válida (JPEG, PNG, GIF, WEBP, BMP).");
+                    submitEvent.preventDefault();
+                    return;
+                }
+
+                if (file.size > maxSize) {
+                    mostrarErro("A imagem não pode ter mais que 10MB.");
+                    submitEvent.preventDefault();
+                    return;
+                }
+            }
+
+            if (utilizador === "") {
+                mostrarErro("Escolha um utilizador.");
+                submitEvent.preventDefault();
+                return;
+            }
+
+            if (categoria === "") {
+                mostrarErro("Escolha uma categoria.");
+                submitEvent.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>

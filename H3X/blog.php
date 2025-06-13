@@ -44,6 +44,60 @@ if ($categoriaSelecionada > 0) {
 }
 $resultadoTotal = mysqli_query($conn, $sqlCount);
 $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
+
+
+$categorias = $conn->query("SELECT id, nome FROM categorias_posts");
+
+$titulo = isset($_POST["titulo"]) ? trim($_POST["titulo"]) : "";
+$conteudo = isset($_POST["conteudo"]) ? trim($_POST["conteudo"]) : "";
+$id_categoria = $_POST["id_categoria"] ?? "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $_SESSION["errors"] = [];
+
+    if (!isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] !== true) {
+        $_SESSION["errors"][] = "Tens de iniciar sessão para criar um post.";
+    }
+
+    if (strlen($titulo) < 5 || strlen($titulo) > 20)
+        $_SESSION["errors"]["titulo"] = "Título deve ter entre 5 e 20 caracteres.";
+    if (strlen($conteudo) < 10)
+        $_SESSION["errors"]["conteudo"] = "Conteúdo deve ter no mínimo 10 caracteres.";
+    if (strlen($id_categoria) == 0)
+        $_SESSION["errors"]["id_categoria"] = "Categoria inválida.";
+
+    if (count($_SESSION["errors"]) === 0) {
+        $titulo = mysqli_real_escape_string($conn, $titulo);
+        $conteudo = mysqli_real_escape_string($conn, $conteudo);
+        $id_categoria = mysqli_real_escape_string($conn, $id_categoria);
+        $id = $_SESSION["id"];
+
+        $dirUpload = "../uploads";
+        if (!is_dir($dirUpload))
+            mkdir($dirUpload, 0777, true);
+
+        $timestamp = date("Y-m-d_H-i-s");
+        $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+        $imagemNome = uniqid() . "_" . $timestamp . "." . $extensao;
+
+        if (move_uploaded_file($_FILES["imagem"]["tmp_name"], "$dirUpload/$imagemNome")) {
+            $sql = "INSERT INTO posts (titulo, conteudo, data_criacao, aprovado, id_categoria, id_utilizador, imagem)
+                    VALUES ('$titulo', '$conteudo', NOW(), '0', '$id_categoria', $id,'$imagemNome')";
+
+            if ($conn->query($sql)) {
+                $_SESSION["success"] = "Post criado com sucesso.";
+                header("Location: blog.php");
+                exit();
+            } else {
+                $_SESSION["errors"]["db"] = "Erro ao inserir no banco: " . $conn->error;
+            }
+        } else {
+            $_SESSION["errors"]["imagem"] = "Falha no upload da imagem.";
+        }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +173,8 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
                             <div class="h3x-box text-white">
                                 <div class="h3x-img-container">
-                                    <img src="uploads/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
+                                    <img src="uploads/<?= trim($post['imagem']) ?>" alt="<?= $post['titulo'] ?>"
+                                        loading="lazy" />
                                 </div>
                                 <div class="h3x-content mt-2 px-2">
                                     <h6 class="fw-bold"><?= $post['titulo'] ?></h6>
@@ -151,7 +206,7 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
                     + POSTS
                 </a>
             <?php else: ?>
-                <span class="botao-custom px-4 py-2" style="background-color:#ccc; cursor: not-allowed;">Não há mais
+                <span class="botao-custom px-4 py-2" style="background-color:#ccc; cursor: not-allowed;">Sem mais
                     posts</span>
             <?php endif; ?>
         </div>
@@ -182,32 +237,59 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
                         <img src="img/leftbottom.png" class="canto bottom-left d-none d-md-block" alt="">
                         <img src="img/rightbottom.png" class="canto bottom-right d-none d-md-block" alt="">
 
-                        <form class="mt-4">
+                        <form method="POST" enctype="multipart/form-data" class="mt-4 form-size" id="postForm">
+                            <?php if (!empty($_SESSION["success"])): ?>
+                                <div class="alert-custom alert-success-custom">
+                                    <?= trim($_SESSION["success"]) ?>
+                                </div>
+                                <?php unset($_SESSION["success"]); ?>
+                            <?php endif; ?>
+
+                            <?php if (!empty($_SESSION["errors"])): ?>
+                                <div class="alert-error">
+                                    <ul class="mb-0">
+                                        <?php foreach ($_SESSION["errors"] as $erro): ?>
+                                            <li><?= trim($erro) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION["errors"]); ?>
+                            <?php endif; ?>
+
+                            <div id="mensagemErro" class="alert-error d-none"></div>
+
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título do Post</label>
                                 <input type="text" class="form-control inputtext bg-transparent text-white" id="titulo"
-                                    placeholder="Digite o título do post">
+                                    name="titulo" placeholder="Digite o título do post" required maxlength="20"
+                                    pattern="^[\wÀ-ÿ\s'.,!?-]{5,20}$" title="O título deve ter entre 5 e 20 caracteres."
+                                    value="<?= trim($titulo) ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label for="imagem" class="form-label">Imagem</label>
                                 <input type="file" class="form-control inputtext bg-transparent text-white" id="imagem"
-                                    accept="image/*">
+                                    name="imagem" accept="image/*" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="categoria" class="form-label">Categoria</label>
-                                <select class="form-select bg-transparent text-white border-white" id="categoria">
-                                    <option value="categoria1">Eventos Semanais</option>
-                                    <option value="categoria2">Notícias</option>
-                                    <option value="categoria3">Outros</option>
+                                <select class="form-select select-cat" id="id_categoria" name="id_categoria" required>
+                                    <option value="">Escolher categoria</option>
+                                    <?php foreach ($categorias as $c): ?>
+                                        <option value="<?= trim($c['id']) ?>">
+                                            <?= trim($c['nome']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="texto" class="form-label">Texto</label>
-                                <textarea class="form-control inputtext bg-transparent text-white" id="texto" rows="4"
-                                    placeholder="Digite o conteúdo do post"></textarea>
+                                <textarea class="form-control inputtext bg-transparent text-white" id="conteudo"
+                                    name="conteudo" rows="4" placeholder="Digite o conteúdo do post" required
+                                    minlength="10"><?= trim($conteudo) ?></textarea>
                             </div>
 
                             <div class="d-flex justify-content-center my-4">
@@ -230,6 +312,61 @@ $totalPosts = mysqli_fetch_assoc($resultadoTotal)['total'];
     </main>
 
     <?php include 'partials/footer.php'; ?>
+    <script>
+        function mostrarErro(msg) {
+            const alerta = document.getElementById('mensagemErro');
+            alerta.textContent = msg;
+            alerta.classList.remove('d-none');
+        }
+
+        document.getElementById('postForm').addEventListener('submit', function (event) {
+            const titulo = document.getElementById('titulo').value.trim();
+            const conteudo = document.getElementById('conteudo').value.trim();
+            const imagemInput = document.getElementById('imagem');
+            const imagem = imagemInput.files;
+            const categoria = document.getElementById('id_categoria').value;
+
+            if (titulo.length < 5 || titulo.length > 20) {
+                mostrarErro("O título deve ter entre 5 e 20 caracteres.");
+                event.preventDefault();
+                return;
+            }
+
+            if (conteudo.length < 10) {
+                mostrarErro("O conteúdo deve ter no mínimo 10 caracteres.");
+                event.preventDefault();
+                return;
+            }
+
+            if (imagem.length === 0) {
+                mostrarErro("Escolha uma imagem.");
+                event.preventDefault();
+                return;
+            } else {
+                const file = imagem[0];
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+                const maxSize = 10 * 1024 * 1024;
+
+                if (!allowedTypes.includes(file.type)) {
+                    mostrarErro("Formato de imagem inválido. Use JPEG, PNG, GIF, WEBP ou BMP.");
+                    event.preventDefault();
+                    return;
+                }
+
+                if (file.size > maxSize) {
+                    mostrarErro("Imagem deve ter no máximo 10MB.");
+                    event.preventDefault();
+                    return;
+                }
+            }
+
+            if (categoria === "") {
+                mostrarErro("Escolha uma categoria.");
+                event.preventDefault();
+                return;
+            }
+        });
+    </script>
 
 </body>
 

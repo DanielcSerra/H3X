@@ -49,7 +49,7 @@ if (isset($_SESSION["email"])) {
          <div class="mb-3 text-start">
             <label for="password" class="form-label">Palavra-passe</label>
             <input type="password" name="password" class="form-control" id="password"
-               placeholder="Digite a palavra-passe" required minlength="6" maxlength="20"
+               placeholder="Digite a palavra-passe" required minlength="6" maxlength="20" pattern=".{6,20}"
                title="A palavra-passe deve ter entre 6 e 20 caracteres.">
          </div>
          <button type="submit" class="botao-custom pequeno px-4 py-2">Entrar</button>
@@ -62,7 +62,8 @@ if (isset($_SESSION["email"])) {
          <div class="mb-3 text-start">
             <label for="nome-register" class="form-label">Nome</label>
             <input type="text" name="nome" class="form-control" id="nome-register" placeholder="Digite o nome" required
-               minlength="2" maxlength="15" title="Nome deve conter apenas letras e pelo menos 2 caracteres.">
+               pattern="[A-Za-zÀ-ÿ\s'´`-]{2,15}" minlength="2" maxlength="15"
+               title="Nome deve conter apenas letras e pelo menos 2 caracteres.">
          </div>
          <div class="mb-3 text-start">
             <label for="email-register" class="form-label">Email</label>
@@ -72,7 +73,7 @@ if (isset($_SESSION["email"])) {
          <div class="mb-3 text-start">
             <label for="telefone-register" class="form-label">Telefone <small>(Opcional)</small></label>
             <input type="tel" name="telefone" class="form-control" id="telefone-register"
-               placeholder="Digite o telefone" minlength="9" maxlength="9"
+               placeholder="Digite o telefone" minlength="9" maxlength="9" pattern="\d{9}"
                title="Telefone deve conter exatamente 9 dígitos numéricos.">
          </div>
          <div class="mb-3 text-start">
@@ -82,7 +83,7 @@ if (isset($_SESSION["email"])) {
          <div class="mb-3 text-start">
             <label for="password-register" class="form-label">Palavra-passe</label>
             <input type="password" name="password" class="form-control" id="password-register"
-               placeholder="Digite a palavra-passe" required minlength="6" maxlength="20"
+               placeholder="Digite a palavra-passe" required minlength="6" maxlength="20" pattern=".{6,20}"
                title="A palavra-passe deve ter entre 6 e 20 caracteres.">
          </div>
          <button type="submit" class="botao-custom pequeno px-4 py-2">Criar</button>
@@ -95,22 +96,32 @@ if (isset($_SESSION["email"])) {
    <script src="js/login.js"></script>
 
    <script>
-      document.getElementById('login-form').addEventListener('submit', function (submitEvent) {
+      document.getElementById('login-form').addEventListener('submit', function (e) {
+         e.preventDefault();
+
          const email = document.getElementById('email').value.trim();
          const password = document.getElementById('password').value;
 
          if (email === "" || email.length > 100) {
             alert("Preencha um email válido.");
-            submitEvent.preventDefault();
             return;
          }
 
          if (password.length < 6 || password.length > 20) {
             alert("A palavra-passe deve ter entre 6 e 20 caracteres.");
-            submitEvent.preventDefault();
             return;
          }
+
+         let loginButton = e.target.querySelector('button[type="submit"]');
+         loginButton.disabled = true;
+         const originalText = loginButton.textContent;
+         loginButton.textContent = 'A entrar...';
+
+         setTimeout(() => {
+            e.target.submit();
+         }, 2000);
       });
+
 
       document.getElementById('register-form').addEventListener('submit', function (submitEvent) {
          const nome = document.getElementById('nome-register').value.trim();

@@ -42,7 +42,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
 
 <head>
     <?php include 'partials/head.php'; ?>
-    <title>H3X | <?= htmlspecialchars($post['titulo']) ?></title>
+    <title>H3X | <?= trim($post['titulo']) ?></title>
     <link rel="stylesheet" href="css/post.css">
 </head>
 
@@ -55,14 +55,13 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
         <div class="container post-container mt-5 pt-5">
 
             <div class="h3x-box">
-                <img src="uploads/<?= htmlspecialchars(trim($post['imagem'])) ?>" alt="Imagem do post"
-                    class="img-moldurada">
+                <img src="uploads/<?= trim(trim($post['imagem'])) ?>" alt="Imagem do post" class="img-moldurada">
             </div>
 
-            <div class="post-title"><?= htmlspecialchars($post['titulo']) ?></div>
-            <div class="post-body"><?= nl2br(htmlspecialchars($post['conteudo'])) ?></div>
+            <div class="post-title"><?= trim($post['titulo']) ?></div>
+            <div class="post-body"><?= nl2br(trim($post['conteudo'])) ?></div>
             <div class="post-meta mt-4">
-                Publicado por <strong><?= htmlspecialchars($post['autor']) ?></strong> em
+                Publicado por <strong><?= trim($post['autor']) ?></strong> em
                 <?= date("d/m/Y", strtotime($post['data_criacao'])) ?>
             </div>
             <div class="mt-5">
@@ -84,7 +83,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
             </div>
 
             <?php if (!empty($_SESSION['authenticated'])): ?>
-                <form method="POST" class="coment-form">
+                <form method="POST" class="coment-form" id="comentarioForm">
                     <?php if (!empty($_SESSION['foto'])): ?>
                         <img src="uploads/<?= htmlspecialchars(trim($_SESSION['foto'])) ?>" alt="Foto" class="user-img">
                     <?php else: ?>
@@ -92,11 +91,13 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
                     <?php endif; ?>
 
                     <div class="textarea-wrapper w-100">
-                        <textarea name="comentario" class="comentario-textarea" placeholder="Escreve o teu comentário"
-                            required></textarea>
+                        <textarea name="comentario" class="comentario-textarea" id="comentario"
+                            placeholder="Escreve o teu comentário" required minlength="5" maxlength="300"></textarea>
+
                         <button type="submit" class="btn-enviar">Enviar</button>
                     </div>
                 </form>
+
             <?php else: ?>
                 <p class="text-white mb-4">Precisas de ter <a href="admin/login.php" class="link-rosa">login</a> para
                     comentar.</p>
@@ -115,7 +116,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
                     <div class="comentario d-flex gap-3">
                         <?php
                         if (!empty($coment['foto'])) {
-                            echo '<img src="uploads/' . htmlspecialchars(trim($coment['foto'])) . '" alt="Foto" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
+                            echo '<img src="uploads/' . trim(trim($coment['foto'])) . '" alt="Foto" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
                         } else {
                             $letraComent = strtoupper(substr($coment['nome'], 0, 1));
                             echo '<div class="bg-light text-dark rounded-circle text-center fw-bold d-flex justify-content-center align-items-center" 
@@ -124,9 +125,9 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
                         ?>
 
                         <div>
-                            <div class="nome"><?= htmlspecialchars($coment['nome']) ?></div>
+                            <div class="nome"><?= trim($coment['nome']) ?></div>
                             <div class="data"><?= date("d/m/Y H:i", strtotime($coment['data_criacao'])) ?></div>
-                            <div class="conteudo"><?= nl2br(htmlspecialchars($coment['conteudo'])) ?></div>
+                            <div class="conteudo"><?= nl2br(trim($coment['conteudo'])) ?></div>
                         </div>
                     </div>
                 <?php endwhile; ?>
@@ -139,6 +140,26 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
     </main>
 
     <?php include 'partials/footer.php'; ?>
+    <script>
+        document.getElementById('comentarioForm').addEventListener('submit', function (e) {
+            const comentario = document.getElementById('comentario').value.trim();
+            const erro = document.getElementById('comentarioErro');
+
+            erro.textContent = "";
+
+            if (comentario.length < 5) {
+                erro.classList.remove('d-none');
+                e.preventDefault();
+                return;
+            }
+
+            if (comentario.length > 300) {
+                erro.classList.remove('d-none');
+                e.preventDefault();
+                return;
+            }
+        });
+    </script>
 
 </body>
 

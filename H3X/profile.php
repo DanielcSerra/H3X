@@ -27,7 +27,7 @@ $user = mysqli_fetch_assoc($resultUser);
 $userId = $user['id'];
 $userNome = $user['nome'];
 $userEmail = $user['email'];
-$userTelefone = $user['telefone'] ;
+$userTelefone = $user['telefone'];
 $userNascimento = date('d/m/Y', strtotime($user['data_nascimento']));
 $userFoto = $user['foto'] ?: '';
 
@@ -121,7 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
     } else {
         $_SESSION['errors']['db'] = "Erro ao atualizar: " . $conn->error;
     }
-
     header("Location: profile.php");
     exit();
 }
@@ -152,7 +151,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
 
                     <h3><strong><?= htmlspecialchars($userNome) ?></strong></h3>
                     <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
-                    <p><strong>Telefone:</strong> <?= !empty($userTelefone) ? htmlspecialchars($userTelefone) : 'Sem número' ?></p>
+                    <p><strong>Telefone:</strong>
+                        <?= !empty($userTelefone) ? htmlspecialchars($userTelefone) : 'Sem número' ?></p>
                     <p><strong>Nascimento:</strong> <?= $userNascimento ?></p>
                     <button class="btn btn-outline-light mt-3" data-bs-toggle="modal"
                         data-bs-target="#editarPerfilModal">
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                     <div class="modal fade" id="editarPerfilModal" tabindex="-1"
                         aria-labelledby="editarPerfilModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <form method="POST" enctype="multipart/form-data" action="profile.php"
+                            <form id="perfilForm" method="POST" enctype="multipart/form-data" action="profile.php"
                                 class="modal-content border-0 shadow-lg rounded-4 p-4">
                                 <div class="modal-header border-0 pb-0">
                                     <h5 class="modal-title w-100" id="editarPerfilModalLabel">Editar Perfil</h5>
@@ -184,6 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                                     </div>
                                     <?php unset($_SESSION['errors']); ?>
                                 <?php endif; ?>
+
+                                <div id="mensagemErro" class="alert alert-danger d-none"></div>
 
                                 <div class="modal-body pt-2">
                                     <div class="mb-4">
@@ -288,6 +290,104 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
     </main>
 
     <?php include 'partials/footer.php'; ?>
+    <script>
+        function mostrarErro(msg) {
+            const alerta = document.getElementById('mensagemErro');
+            alerta.textContent = msg;
+            alerta.classList.remove('d-none');
+        }
+
+        function validarFormulario(event) {
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const telefone = document.getElementById("telefone").value.trim();
+            const dataNascimento = document.getElementById("data_nascimento").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+            const inputFoto = document.getElementById("foto");
+
+            const alerta = document.getElementById('mensagemErro');
+            alerta.classList.add('d-none');
+            alerta.textContent = '';
+
+            if (nome.length < 2 || nome.length > 15) {
+                mostrarErro("O nome deve ter entre 2 e 15 caracteres.");
+                event.preventDefault();
+                return false;
+            }
+
+            if (email === "") {
+                mostrarErro("O email é obrigatório.");
+                event.preventDefault();
+                return false;
+            }
+
+            if (email.length > 100) {
+                mostrarErro("O email deve ter no máximo 100 caracteres.");
+                event.preventDefault();
+                return false;
+            }
+
+            if (telefone !== "") {
+                if (telefone.length !== 9 || isNaN(telefone)) {
+                    mostrarErro("O telefone deve conter exatamente 9 dígitos numéricos.");
+                    event.preventDefault();
+                    return false;
+                }
+            }
+
+            if (dataNascimento === "") {
+                mostrarErro("Preencha a data de nascimento.");
+                event.preventDefault();
+                return false;
+            }
+
+            if (senha.length > 0 && (senha.length < 6 || senha.length > 20)) {
+                mostrarErro("A palavra-passe deve ter entre 6 e 20 caracteres.");
+                event.preventDefault();
+                return false;
+            }
+
+            if (inputFoto.files.length > 0) {
+                const file = inputFoto.files[0];
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+                const maxSize = 2 * 1024 * 1024;
+
+                if (!allowedTypes.includes(file.type)) {
+                    mostrarErro("Por favor, selecione um ficheiro de imagem válido (JPEG, PNG, GIF, WEBP, BMP).");
+                    event.preventDefault();
+                    return false;
+                }
+
+                if (file.size > maxSize) {
+                    mostrarErro("A imagem não pode ter mais que 2MB.");
+                    event.preventDefault();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        window.onload = function () {
+            const form = document.getElementById('perfilForm');
+            const modalElement = document.getElementById('editarPerfilModal');
+
+            const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+
+            form.addEventListener("submit", function (event) {
+                const valido = validarFormulario(event);
+                if (!valido) {
+                    event.preventDefault();
+                } else {
+                    event.preventDefault(); 
+                    form.submit();
+                    modal.hide(); 
+                }
+            });
+        }
+
+    </script>
+
 </body>
 
 </html>

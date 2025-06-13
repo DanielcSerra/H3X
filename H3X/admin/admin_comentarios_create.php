@@ -84,6 +84,8 @@ $pageTitle = "H3X ADMIN - Criar Comentário";
             }
             ?>
 
+            <div id="mensagemErro" class="alert alert-danger d-none" role="alert"></div>
+
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                     <form method="POST" class="bg-white p-4 rounded shadow-sm w-100" style="max-width:600px;">
@@ -129,25 +131,31 @@ $pageTitle = "H3X ADMIN - Criar Comentário";
         </div>
     </div>
     <script>
+        function mostrarErro(msg) {
+            const alerta = document.getElementById('mensagemErro');
+            alerta.textContent = msg;
+            alerta.classList.remove('d-none');
+        }
+
         document.getElementById('comentarioForm').addEventListener('submit', function (submitEvent) {
             const conteudo = document.getElementById('conteudo').value.trim();
             const idPost = document.getElementById('id_post').value;
             const idUtilizador = document.getElementById('id_utilizador').value;
 
             if (conteudo.length < 5 || conteudo.length > 500) {
-                alert("O comentário deve ter entre 5 e 500 caracteres.");
+                mostrarErro("O comentário deve ter entre 5 e 500 caracteres.");
                 submitEvent.preventDefault();
                 return;
             }
 
             if (idPost === "") {
-                alert("Escolha um post.");
+                mostrarErro("Escolha um post.");
                 submitEvent.preventDefault();
                 return;
             }
 
             if (idUtilizador === "") {
-                alert("Escolha um utilizador.");
+                mostrarErro("Escolha um utilizador.");
                 submitEvent.preventDefault();
                 return;
             }

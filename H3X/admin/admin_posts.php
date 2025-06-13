@@ -177,7 +177,7 @@ $pageTitle = "H3X ADMIN - Posts";
                                                 </div>
                                                 <div class="modal-body">
                                                     Tem certeza que deseja eliminar o post
-                                                    <strong><?= htmlspecialchars($post->titulo) ?></strong>?
+                                                    <strong><?= trim($post->titulo) ?></strong>?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="admin_posts.php" class="btn btn-secondary">Cancelar</a>

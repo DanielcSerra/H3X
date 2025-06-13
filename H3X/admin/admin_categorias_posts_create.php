@@ -80,11 +80,9 @@ $pageTitle = "H3X ADMIN - Criar Categoria Post";
                 }
                 unset($_SESSION["errors"]);
             }
-            if (isset($_SESSION["success"])) {
-                echo "<div class='alert alert-success'>" . $_SESSION["success"] . "</div>";
-                unset($_SESSION["success"]);
-            }
             ?>
+
+            <div id="mensagemErro" class="alert alert-danger d-none" role="alert"></div>
 
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
@@ -93,7 +91,8 @@ $pageTitle = "H3X ADMIN - Criar Categoria Post";
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da Categoria</label>
                             <input type="text" class="form-control" name="nome" id="nome" required minlength="2"
-                                maxlength="20" title="O nome da categoria deve ter entre 2 e 20 caracteres.">
+                                pattern="[A-Za-zÀ-ÿ\s'´`-]{2,20}" maxlength="20"
+                                title="O nome da categoria deve ter entre 2 e 20 caracteres.">
                         </div>
 
                         <div class="mb-3 text-center">
@@ -112,11 +111,16 @@ $pageTitle = "H3X ADMIN - Criar Categoria Post";
     </div>
 
     <script>
+        function mostrarErro(msg) {
+            const alerta = document.getElementById('mensagemErro');
+            alerta.textContent = msg;
+            alerta.classList.remove('d-none');
+        }
         document.getElementById('categoriaForm').addEventListener('submit', function (submitEvent) {
             const nome = document.getElementById('nome').value.trim();
 
             if (nome.length < 2 || nome.length > 20) {
-                alert("O nome da categoria deve ter entre 2 e 20 caracteres.");
+                mostrarErro("O nome da categoria deve ter entre 2 e 20 caracteres.");
                 submitEvent.preventDefault();
                 return;
             }

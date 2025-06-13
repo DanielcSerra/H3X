@@ -136,6 +136,7 @@ $sqlUltimasReservasVIP = "
     ORDER BY v.data_reserva DESC
     LIMIT 5
 ";
+
 $resultReservasVIP = $conn->query($sqlUltimasReservasVIP);
 
 ?>
@@ -295,7 +296,6 @@ $resultReservasVIP = $conn->query($sqlUltimasReservasVIP);
                         </div>
                     </div>
 
-
                     <div class="col-md-6">
                         <div class="card shadow">
                             <div class="card-body">
@@ -320,35 +320,36 @@ $resultReservasVIP = $conn->query($sqlUltimasReservasVIP);
                         </div>
                     </div>
 
-
                 </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.utilizadoresData = [
+            <?= $tiposCount['a'] ?>,
+            <?= $tiposCount['f'] ?>,
+            <?= $tiposCount['c'] ?>
+        ];
 
-                <script>
-                    window.utilizadoresData = [
-                        <?= $tiposCount['a'] ?>,
-                        <?= $tiposCount['f'] ?>,
-                        <?= $tiposCount['c'] ?>
-                    ];
+        window.semanasLabels = <?= json_encode($semanasLabels) ?>;
+        window.postsPorSemana = <?= json_encode($postsPorSemana) ?>;
+    </script>
+    <script src="js/charts.js"></script>
+    <?php
+    if ($result)
+        $result->free();
+    if ($resultTipos)
+        $resultTipos->free();
+    if ($resultPostsSemana)
+        $resultPostsSemana->free();
+    if ($resultContactos)
+        $resultContactos->free();
+    if ($resultReservasVIP)
+        $resultReservasVIP->free();
 
-                    window.semanasLabels = <?= json_encode($semanasLabels) ?>;
-                    window.postsPorSemana = <?= json_encode($postsPorSemana) ?>;
-                </script>
-                <script src="js/charts.js"></script>
-                <?php
-                if ($result)
-                    $result->free();
-                if ($resultTipos)
-                    $resultTipos->free();
-                if ($resultPostsSemana)
-                    $resultPostsSemana->free();
-                if ($resultContactos)
-                    $resultContactos->free();
-                if ($resultReservasVIP)
-                    $resultReservasVIP->free();
-
-                $conn->close();
-                ?>
-                <?php require 'partials/footer.php'; ?>
+    $conn->close();
+    ?>
+    <?php require 'partials/footer.php'; ?>
 
 </body>
 
