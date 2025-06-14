@@ -168,31 +168,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $conn->query($sql);
                 if ($result && $result->num_rows != 0) {
                     foreach ($posts as $post): ?>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                            <div class="h3x-box text-white">
-                                <div class="h3x-img-container">
-                                    <img src="uploads/blog/<?= trim($post['imagem']) ?>" alt="<?= $post['titulo'] ?>"
-                                        loading="lazy" />
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                            <a href="post.php?id=<?= $post['id'] ?>" class="text-decoration-none text-white w-100 h-100">
+                                <div class="h3x-box d-flex flex-column h-100">
+                                    <div class="h3x-img-container">
+                                        <img src="uploads/blog/<?= trim($post['imagem']) ?>" alt="<?= $post['titulo'] ?>"
+                                            loading="lazy" />
+                                    </div>
+
+                                    <div class="h3x-content d-flex flex-column flex-grow-1 mt-2 px-2">
+                                        <div class="mb-2">
+                                            <h6 class="fw-bold mb-0"><?= $post['titulo'] ?></h6>
+                                            <h5 class="mb-4 mt-4"><?= $post['data_criacao'] ?></h5>
+                                            <h5 class="mb-0"><?= $post['autor'] ?></h5>
+                                        </div>
+
+                                        <div class="mt-auto pt-2">
+                                            <i class="ri-arrow-right-up-line"></i> IR PARA POST
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="h3x-content mt-2 px-2">
-                                    <h6 class="fw-bold"><?= $post['titulo'] ?></h6>
-                                    <h5><?= $post['data_criacao'] ?></h5>
-                                    <h5><?= $post['autor'] ?></h5>
-                                    <a href="post.php?id=<?= $post['id'] ?>" class="post-link">
-                                        <i class="ri-arrow-right-up-line"></i> IR PARA POST
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     <?php endforeach;
-                } else {
-                    echo "
-<div class='bg-dark text-light border border-secondary rounded p-4 text-center'>
-  <i class='bi bi-exclamation-triangle-fill me-2'></i>
-  Nenhum post encontrado.
-</div>";
-
-                } ?>
+                } else { ?>
+                    <div class="bg-dark text-light border border-secondary rounded p-4 text-center">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Nenhum post encontrado.
+                    </div>
+                <?php } ?>
             </div>
         </div>
 

@@ -562,6 +562,12 @@
 @media (max-width: 768px) {
   .regras-imagem {
     max-width: 350px;
-    min-width: 350px;
+    min-width: 250px;
   }
+}
+
+
+.post-link {
+    display: block;
+    cursor: pointer;
 }
