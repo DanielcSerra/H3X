@@ -72,28 +72,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_categoria = mysqli_real_escape_string($conn, $id_categoria);
         $id = $_SESSION["id"];
 
-        $dirUpload = "../uploads";
+        $dirUpload = "uploads/blog/";
         if (!is_dir($dirUpload))
             mkdir($dirUpload, 0777, true);
-
         $timestamp = date("Y-m-d_H-i-s");
         $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
         $imagemNome = uniqid() . "_" . $timestamp . "." . $extensao;
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], "$dirUpload/$imagemNome");
 
-        if (move_uploaded_file($_FILES["imagem"]["tmp_name"], "$dirUpload/$imagemNome")) {
-            $sql = "INSERT INTO posts (titulo, conteudo, data_criacao, aprovado, id_categoria, id_utilizador, imagem)
+        $sql = "INSERT INTO posts (titulo, conteudo, data_criacao, aprovado, id_categoria, id_utilizador, imagem)
                     VALUES ('$titulo', '$conteudo', NOW(), '0', '$id_categoria', $id,'$imagemNome')";
 
-            if ($conn->query($sql)) {
-                $_SESSION["success"] = "Post criado com sucesso.";
-                header("Location: blog.php");
-                exit();
-            } else {
-                $_SESSION["errors"]["db"] = "Erro ao inserir no banco: " . $conn->error;
-            }
+        if ($conn->query($sql)) {
+            $_SESSION["success"] = "Post criado com sucesso.";
+            header("Location: blog.php");
+            exit();
         } else {
-            $_SESSION["errors"]["imagem"] = "Falha no upload da imagem.";
+            $_SESSION["errors"]["db"] = "Erro ao inserir no banco: " . $conn->error;
         }
+    } else {
+        $_SESSION["errors"]["imagem"] = "Falha no upload da imagem.";
     }
 }
 
@@ -173,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
                             <div class="h3x-box text-white">
                                 <div class="h3x-img-container">
-                                    <img src="uploads/<?= trim($post['imagem']) ?>" alt="<?= $post['titulo'] ?>"
+                                    <img src="uploads/blog/<?= trim($post['imagem']) ?>" alt="<?= $post['titulo'] ?>"
                                         loading="lazy" />
                                 </div>
                                 <div class="h3x-content mt-2 px-2">

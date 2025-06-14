@@ -35,7 +35,7 @@ $post = $result->fetch_assoc();
 $result->free();
 
 if (!empty($post["imagem"])) {
-    $imagemPath = "../uploads/" . $post["imagem"];
+    $imagemPath = "../uploads/blog/" . $post["imagem"];
     if (file_exists($imagemPath)) {
         unlink($imagemPath);
     }

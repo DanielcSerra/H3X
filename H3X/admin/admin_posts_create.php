@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_utilizador = mysqli_real_escape_string($conn, $id_utilizador);
         $id_categoria = mysqli_real_escape_string($conn, $id_categoria);
 
-        $dirUpload = "../uploads";
+        $dirUpload = "../uploads/blog/";
         if (!is_dir($dirUpload))
             mkdir($dirUpload, 0777, true);
         $timestamp = date("Y-m-d_H-i-s");

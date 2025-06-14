@@ -43,10 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["errors"]["email"] = "Email inválido";
     }
 
-    if (strlen($telefone) == 0) {
-        $_SESSION["errors"]["telefone"] = "Telefone inválido";
-    }
-
     if (strlen($data_nascimento) == 0) {
         $_SESSION["errors"]["data_nascimento"] = "Data de nascimento inválida";
     }

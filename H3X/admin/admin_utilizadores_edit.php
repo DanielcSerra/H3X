@@ -53,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["errors"]["nome"] = "Nome inválido";
     if ($email === "")
         $_SESSION["errors"]["email"] = "Email inválido";
-    if ($telefone === "")
-        $_SESSION["errors"]["telefone"] = "Telefone inválido";
     if ($data_nascimento === "")
         $_SESSION["errors"]["data_nascimento"] = "Data de nascimento inválida";
     if ($tipo === "" || !in_array($tipo, ['a', 'f', 'c']))

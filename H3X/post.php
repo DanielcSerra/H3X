@@ -55,7 +55,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
         <div class="container post-container mt-5 pt-5">
 
             <div class="h3x-box">
-                <img src="uploads/<?= trim(trim($post['imagem'])) ?>" alt="Imagem do post" class="img-moldurada">
+                <img src="uploads/blog/<?= trim(trim($post['imagem'])) ?>" alt="Imagem do post" class="img-moldurada">
             </div>
 
             <div class="post-title"><?= trim($post['titulo']) ?></div>
@@ -85,7 +85,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
             <?php if (!empty($_SESSION['authenticated'])): ?>
                 <form method="POST" class="coment-form" id="comentarioForm">
                     <?php if (!empty($_SESSION['foto'])): ?>
-                        <img src="uploads/<?= trim(trim($_SESSION['foto'])) ?>" alt="Foto" class="user-img">
+                        <img src="uploads/<?= trim(trim($_SESSION['foto'])) ?>" alt="Foto Perfil" class="user-img">
                     <?php else: ?>
                         <div class="user-placeholder"><?= strtoupper(substr($_SESSION['nome'], 0, 1)) ?></div>
                     <?php endif; ?>
@@ -116,7 +116,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
                     <div class="comentario d-flex gap-3">
                         <?php
                         if (!empty($coment['foto'])) {
-                            echo '<img src="uploads/' . trim(trim($coment['foto'])) . '" alt="Foto" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
+                            echo '<img src="uploads/' . trim(trim($coment['foto'])) . '" alt="Foto Perfil" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
                         } else {
                             $letraComent = strtoupper(substr($coment['nome'], 0, 1));
                             echo '<div class="bg-light text-dark rounded-circle text-center fw-bold d-flex justify-content-center align-items-center" 

@@ -126,7 +126,7 @@ $pageTitle = "H3X ADMIN - Posts";
 
                                 <td>
                                     <?php if (!empty($post->imagem)): ?>
-                                        <img src="../uploads/<?= trim($post->imagem) ?>" alt="Imagem do post <?= $id ?>"
+                                        <img src="../uploads/blog/<?= trim($post->imagem) ?>" alt="Imagem do post <?= $id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $id ?>" />
 
@@ -142,7 +142,7 @@ $pageTitle = "H3X ADMIN - Posts";
                                                             aria-label="Fechar"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="../uploads/<?= trim($post->imagem) ?>"
+                                                        <img src="../uploads/blog/<?= trim($post->imagem) ?>"
                                                             alt="Imagem do post <?= $id ?>" class="img-fluid" />
                                                     </div>
                                                     <div class="modal-footer">

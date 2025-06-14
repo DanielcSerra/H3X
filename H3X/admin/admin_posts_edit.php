@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $imagemSql = "";
         if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] === 0) {
-            $dirUpload = "../uploads";
+            $dirUpload = "../uploads/blog/";
 
             if (!is_dir($dirUpload))
                 mkdir($dirUpload, 0777, true);
@@ -150,7 +150,7 @@ $pageTitle = "H3X ADMIN - Editar Post";
                         <?php if (!empty($post["imagem"])): ?>
                             <div class="mb-3">
                                 <label class="form-label d-block">Imagem Atual:</label>
-                                <img src="../uploads/<?= trim($post["imagem"]) ?>" alt="Imagem do post"
+                                <img src="../uploads/blog/<?= trim($post["imagem"]) ?>" alt="Imagem do post"
                                     class="img-thumbnail" style="max-width: 150px;">
                             </div>
                         <?php endif; ?>

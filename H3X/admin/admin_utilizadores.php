@@ -106,7 +106,7 @@ $pageTitle = "H3X ADMIN - Utilizadores";
 
                                 <td><?= trim($utilizador->nome) ?></td>
                                 <td><?= trim($utilizador->email) ?></td>
-                                <td><?= trim($utilizador->telefone) ?></td>
+                                <td><?= trim($utilizador->telefone) ? trim($utilizador->telefone) : 'Sem número' ?></td>
                                 <td><?= trim($utilizador->data_nascimento) ?></td>
                                 <td><?= $tipo ?></td>
 
