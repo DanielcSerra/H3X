@@ -81,19 +81,19 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
 
                 <div class="left-button ">
                     <div class="button-content">
-                    <span class="button-text">VER MAIS</span>
+                    <span class="button-text">VIP</span>
                     </div>
                 </div>
 
                 <div class="center-button">
                     <div class="button-content">
-                    <span class="button-text">VER MAIS</span>
+                    <span class="button-text">EVENTOS</span>
                     </div>
                 </div>
                 
                 <div class="right-button">
                     <div class="button-content">
-                    <span class="button-text">VER MAIS</span>
+                    <span class="button-text">BLOG</span>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                                             <?= nl2br(str_replace(';', '<br>', htmlspecialchars($eventoCard['lineup']))); ?>
                                         </div>
                                     </div>
-                                    <button class="mini-button"><span class="button-text">Details</span></button>
+                                    <button class="mini-button"><span class="button-text">+ INFO</span></button>
                                 </div>
                             </div>
                         <?php endwhile; ?>
@@ -146,7 +146,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
 
                     <div class="eventos-button">
                         <a href="eventos.php"></a> 
-                        <span class="button-text">VER MAIS</span>
+                        <span class="button-text">+ EVENTOS</span>
                     </div>
 
                     
@@ -262,7 +262,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
 
                     </div>
                     <div class="bottom-button">
-                        <button class="galeria-button"><span>+ IMAGENS</span></button>
+                        <button class="galeria-button"><span>+ POSTS</span></button>
                     </div>
                 </div>
                  
