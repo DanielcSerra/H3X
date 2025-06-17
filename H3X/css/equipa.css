@@ -20,13 +20,13 @@ body {
 
 h1 {
   font-family: Aldrich, sans-serif;
-  font-size: clamp(32px, 8vw, 96px);
+  font-size: clamp(32px, 8vw, 80px);
   color: transparent;
   -webkit-text-stroke: 2px white;
 }
 h2 {
   font-family: Aldrich, sans-serif;
-  font-size: clamp(30px, 8vw, 40);
+  font-size: clamp(30px, 8vw, 40px);
   color: white;
 }
 p {
@@ -157,7 +157,7 @@ p {
 .prim,
 .seg,
 .terc {
-  font-size: 96px;
+  font-size: clamp(36px, 7vw, 96px);
   white-space: nowrap;
   opacity: 0.5;
 }
@@ -219,10 +219,6 @@ p {
     width: 80%;
   }
 
-  .titulo h1 {
-    font-size: 32px;
-  }
-
   .titulo-staff h3 {
     font-size: 1px;
     margin-top: 20px;
@@ -255,12 +251,6 @@ p {
 
   .titulo23 {
     margin-top: 60px;
-  }
-
-  .prim,
-  .seg,
-  .terc {
-    font-size: 37px;
   }
 
   .seg {

@@ -152,6 +152,36 @@ require 'partials/header.php';
             <?php $conn->close(); require 'partials/footer.php'; ?>
         </div>
     </div>
+    <script>
+    function validarFormulario(event) {
+        const mensagem = document.getElementById("mensagem").value.trim();
+        const dataReserva = document.querySelector("input[name='data_reserva']").value;
+        const idMesa = document.getElementById("id_mesa").value;
+
+        if (mensagem.length < 2 || mensagem.length > 1000) {
+            alert("A mensagem deve ter entre 2 e 1000 caracteres.");
+            event.preventDefault();
+            return;
+        }
+
+        if (!dataReserva) {
+            alert("Por favor, selecione uma data de reserva.");
+            event.preventDefault();
+            return;
+        }
+
+        if (!idMesa) {
+            alert("Por favor, selecione uma mesa.");
+            event.preventDefault();
+            return;
+        }
+    }
+
+    window.onload = function() {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", validarFormulario);
+    }
+    </script>
 </body>
 
 </html>

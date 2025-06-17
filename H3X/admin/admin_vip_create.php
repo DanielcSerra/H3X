@@ -156,6 +156,42 @@ $mesas = $conn->query("SELECT id, nome FROM mesas");
             telefoneField.value = '';
         }
     });
+
+    function validarFormulario(event) {
+        var mesa = document.querySelector("select[name='id_mesas']").value.trim();
+        var utilizador = document.getElementById("id_utilizador").value.trim();
+        var dataReserva = document.querySelector("input[name='data_reserva']").value.trim();
+
+        if (!mesa) {
+            alert("Por favor, selecione uma mesa.");
+            event.preventDefault();
+            return;
+        }
+
+        if (!utilizador) {
+            alert("Por favor, selecione um utilizador.");
+            event.preventDefault();
+            return;
+        }
+
+        if (!dataReserva) {
+            alert("Por favor, selecione a data da reserva.");
+            event.preventDefault();
+            return;
+        }
+
+        var mensagem = document.querySelector("textarea[name='mensagem']").value.trim();
+        if (mensagem && mensagem.length < 5) {
+            alert("A mensagem deve ter pelo menos 5 caracteres, ou deixe-a em branco.");
+            event.preventDefault();
+            return;
+        }
+    }
+
+    window.onload = function() {
+        var form = document.querySelector("form");
+        form.addEventListener("submit", validarFormulario);
+    }
     </script>
 
     <?php require 'partials/footer.php'; ?>

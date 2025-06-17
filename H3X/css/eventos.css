@@ -825,3 +825,131 @@
 }
 }
 
+
+
+.light-gray-section {
+  background-color: rgba(211, 211, 211, 6.8); /* light gray with low opacity */
+  padding: 4rem 0;
+}
+
+.light-gray-container {
+  position: relative;
+  max-width: 100vw;
+  width: 100%;
+  background: transparent;
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.light-gray-container .canto.top-left,
+.light-gray-container .canto.bottom-right {
+  position: absolute;
+  width: 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.light-gray-container .canto.top-left {
+  top: 0;
+  left: 0;
+}
+
+.light-gray-container .canto.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+/* Sideways title container */
+.sideways-titulo {
+  position: relative;
+  font-family: 'Aldrich', sans-serif;
+  color: transparent;
+  writing-mode: vertical-rl; /* rotate text sideways */
+  text-orientation: mixed;
+  font-size: clamp(3rem, 7vw, 7rem);
+  -webkit-text-stroke: 2px #CACACA;
+  user-select: none;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  line-height: 1.2;
+}
+
+/* Shadow texts for sideways title */
+.sideways-titulo.shadow1 {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px #828282;
+  z-index: -1;
+  filter: blur(0.5px);
+}
+
+.sideways-titulo.shadow2 {
+  position: absolute;
+  left: -6px;
+  top: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  z-index: -2;
+  filter: blur(0.3px);
+}
+
+/* Left text + button block */
+.left-text-block {
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  color: #333;
+  z-index: 10;
+}
+
+.left-text-block p {
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+}
+
+/* Button styling can reuse .center-button with overrides */
+.left-text-block .center-button {
+  width: 100%;
+  max-width: 250px;
+  height: clamp(50px, 5vw, 70px);
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+.left-text-block .center-button:hover {
+  background-image: url('../img/caixa3.png');
+  transform: scale(1.1);
+}
+
+.left-text-block .center-button .button-text {
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  color: #A853A8;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.left-text-block .center-button:hover .button-text {
+  transform: scale(1.1);
+}
+
+

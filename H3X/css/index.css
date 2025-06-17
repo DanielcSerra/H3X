@@ -1,0 +1,829 @@
+.banner-container {
+  position: relative;
+  text-align: center;
+  top: -6%;
+}
+
+.h3x-logo {
+  position: absolute;
+  top:-1%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height:60vh;
+  z-index: 10;
+}
+
+.butterfly {
+  width: 70vw; /* Stretch wider */
+  height: 50vh; /* Keep same height */
+  object-fit: fill; /* Stretch content to fit */
+  border: 1px solid white; /* White border */
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-top: 12%;
+  z-index: 5;
+}
+
+.butoes{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.center-button {
+  position: relative;
+  width: clamp(380px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.left-button {
+  position: relative;
+  width: clamp(380px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixaesquerda.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.right-button {
+  position: relative;
+  width: clamp(380px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixadireita.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.center-button:hover {
+  background-image: url('../img/caixa3.png');
+  transform:  scale(1.05);
+}
+
+.left-button:hover {
+  background-image: url('../img/caixa1.png');
+  transform:  scale(1.05);
+}
+
+.right-button:hover {
+  background-image: url('../img/caixa2.png');
+  transform:  scale(1.05);
+}
+
+.button-text {
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+.right-button:hover .button-text,
+.left-button:hover .button-text,
+.center-button:hover .button-text {
+  color: #A853A8;
+  transform: scale(1.05);
+  font-size: clamp(1.05rem, 2.2vw, 2.05rem);
+}
+
+.divisao{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.divisao img{
+    width: 45%;
+    height: 24px;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+.top-right {
+    top: 0;
+    right: 0;
+}
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+.caixa-com-cantos {
+  position: relative;
+  background: transparent;
+  max-width: 100vw;
+  width: 100%;
+}
+  
+.canto {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  pointer-events: none;
+   z-index: 0; 
+}
+
+.titulo {
+  position: relative;
+  width: 100%;
+  height: 150px;
+}
+
+.prim, .seg, .terc {
+  position: absolute;
+  top: 0; /* align to top of box */
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 5rem);
+  color: transparent;
+  margin: 0;
+}
+
+/* Individually place them relative to the center */
+.prim {
+  left: 50%;
+  transform: translateX(26%); /* adjust to the right */
+  -webkit-text-stroke: 2px white;
+  animation: aparecer 0.5s forwards;
+}
+
+.seg {
+  left: 50%;
+  transform: translateX(-50%); /* perfectly centered */
+  -webkit-text-stroke: 2px #CACACA;
+  animation: aparecer 1s forwards;
+}
+
+.terc {
+  left: 50%;
+  transform: translateX(-126%); /* adjust to the left */
+  -webkit-text-stroke: 2px #828282;
+  animation: aparecer 1.5s forwards;
+}
+h1 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 96px);
+  color: transparent; 
+  right : 10%;
+  -webkit-text-stroke: 2px white;
+}
+
+
+.destaque-card {
+  position: relative;
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;
+  width: 265px;
+  height: 445px;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.destaque-card:hover {
+  transform: scale(1.05);
+}
+
+
+.destaque-card .card-bg {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  width: 89%;
+  height: 95%;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.7); 
+  z-index: 0;
+}
+
+
+.destaque-card .card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+
+.destaque-card .event-date {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+
+.destaque-card .event-title {
+  z-index: 3;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: auto; 
+}
+
+
+.destaque-card .dj1-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.destaque-card .dj1-image-wrapper img {
+  position: absolute;
+  z-index: 1;
+  bottom: 30px;
+  max-width: 220px;   
+  max-height: 220px; 
+  object-fit: contain;
+}
+
+
+.destaque-card .event-lineup {
+  color:white;
+  z-index: 3;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: pre-line;
+  margin-top: auto;
+  text-align: center;
+}
+
+
+.destaque-card .mini-button {
+  position: absolute;
+  left: 50%;
+  bottom: -4%; 
+  transform: translateX(-50%);
+  width: 170px; 
+  height: 60px; 
+  background-image: url("../img/caixasec.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  border: none;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.destaque-card .mini-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  background-image: url('../img/caixasec.png'); 
+}
+
+.destaque-card .mini-button .button-text {
+  font-family: 'Aldrich', sans-serif;
+  color: white;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.destaque-card .mini-button:hover .button-text {
+  transform: scale(1.1);
+  font-size: 1.9rem;
+}
+
+
+.eventos-button {
+  position: relative;
+  left: 50%;
+  margin-top:7%;
+  transform: translate(-50%, -50%);
+  width: clamp(440px, 9vw, 470px);
+  height: clamp(50px, 5vw, 80px);
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.eventos-button:hover {
+  background-image: url('../img/caixa3.png');
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.button-text {
+  font-family: 'Laceration', sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.eventos-button:hover .button-text {
+  color: #A853A8;
+  transform: scale(1.1);
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+.button-content {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.vip-title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: transparent;
+  -webkit-text-stroke: 2px #A853A8;
+  margin: 0;
+  z-index: 2;
+}
+
+
+
+.white-section {
+  background-color: white;
+  padding: 3rem 0;
+
+}
+
+
+.white-section-card {
+  font-family: 'Aldrich', sans-serif;
+  position: relative;
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;
+  width: 320px;   /* slightly bigger than destaque-card's 265px */
+  height: 580px;  /* slightly bigger than destaque-card's 445px */
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: rgb(255, 255, 255);
+  text-shadow: none;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  margin: 0 1rem; /* spacing between boxes */
+  z-index: 3;
+}
+
+/* Optional: make images inside scale nicely */
+.white-section-card img {
+  max-width: 100%;
+  height:100%;
+  object-fit: contain;
+}
+
+.vip-text {
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: transparent;
+  -webkit-text-stroke: 2px #000000;
+  margin: 0;
+  z-index: 2;
+  transform: translateY(-140%)
+}
+
+.borboleta {
+    position: absolute;
+    width: 75vw;
+    opacity: 0.6;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+
+
+
+/* New corners class for Sobre-Nós section */
+.canto-sobre.top-left,
+.canto-sobre.bottom-right {
+  position: absolute;
+  width: 210px;  /* slightly bigger */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.canto-sobre.top-left {
+  top: 0;
+  left: 0;
+}
+
+.canto-sobre.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+/* Light gray background with padding */
+.light-gray-section {
+  background-color: rgba(88, 88, 88, 0.349);
+  padding: 4rem 0;
+}
+
+/* Container with corners */
+.light-gray-container {
+  position: relative;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+/* Flex container for three parts */
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Left part with text and button */
+.left-part {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #333;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1.1rem;
+  max-width: 300px;
+  color: white;
+}
+
+.left-part p {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Button with slightly bigger text */
+.left-part .center-button {
+  max-width: 290px;
+  height: 55px;
+  font-family: 'Laceration', cursive;
+  font-size: 1.6rem; /* slightly bigger */
+  background-image: url("../img/caixabranca.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.left-part .center-button:hover {
+  background-image: url("../img/caixa3.png");
+  transform: scale(1.05);
+}
+
+
+/* Center card like white-section card but with destaque-card background */
+.center-card {
+  position: relative;
+  background: url("../img/caixa.png") no-repeat center center;
+  background-size: 100% 100%;   /* slightly bigger than destaque-card's 265px */
+  height: 520px;  /* slightly bigger than destaque-card's 445px */
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: black; /* since background is white */
+  text-shadow: none;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  margin: 0 1rem; /* spacing between boxes */
+}
+
+.center-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Right sideways title - inverted vertically */
+.right-title {
+  max-width: 290px;
+  flex: 0 0 auto;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Aldrich', sans-serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(180deg);
+
+}
+
+.prim2 {
+  transform: translateX(5%); /* adjust to the right */
+  -webkit-text-stroke: 2px white;
+  animation: aparecer 0.5s forwards;
+  
+  
+}
+
+.seg2 {
+  transform: translateX(50%); /* perfectly centered */
+  -webkit-text-stroke: 2px #CACACA;
+  animation: aparecer 1s forwards;
+  opacity: 50%;
+  
+}
+
+.terc2 {
+  transform: translateX(95%); /* adjust to the left */
+  -webkit-text-stroke: 2px #828282;
+  animation: aparecer 1.5s forwards;
+  opacity: 50%;
+  
+}
+
+
+
+
+
+
+
+
+
+
+.blog-gallery-section {
+  padding: 5rem 2rem;
+  color: white;
+}
+
+.blog-gallery-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.top-content {
+  display: flex;
+  height: 90%;
+}
+
+.rotated-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 5rem;
+  font-family: 'Aldrich', sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  user-select: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.mirrored {
+  transform: rotate(180deg);
+}
+
+.blog-image-stack, .galeria-image-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.blog-card{
+  background: url('../img/caixa10.png') no-repeat center/cover;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  margin-bottom: -60px;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.galeria-card {
+ background: url('../img/caixa10.png') no-repeat center/cover;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  margin-bottom: -60px;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+
+.blog-card-overlap {
+  margin-top: -80px;
+}
+
+.galeria-card-offset {
+  margin-top: -60px;
+}
+
+.blog-card img, .galeria-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bottom-button {
+  height: 10%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.blog-button, .galeria-button {
+  font-family: 'Laceration', cursive;
+  font-size: 1.5rem;
+  background: url('../img/caixabranca.png') no-repeat center/contain;
+  background-size: 100% 100%;
+  border: none;
+  width: 300px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transform: translateY(85%);
+}
+
+.divider-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+}
+
+.divider-bar img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+
+
+
+
+
+.h3x-box1 {
+  flex: 1 1 260px;
+  max-width: 100%;
+  min-width: 260px;
+  min-height: 260px;
+  background: url("../img/caixa4.png") no-repeat center center;
+  background-size: 100% 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.h3x-box2 {
+  flex: 1 1 260px;
+  max-width: 100%;
+  min-width: 260px;
+  min-height: 260px;
+  background: url("../img/caixa4.png") no-repeat center center;
+  background-size: 100% 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+
+.h3x-box:hover {
+  transform: scale(1.03);
+}
+
+.h3x-img-container {
+  height: 100%;
+  padding: 3px 11px 0 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.h3x-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.h3x-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h3x-content h6 {
+  font-size: 18px;
+  padding: 5px;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.h3x-content h5 {
+  font-size: 10px;
+  padding-left: 5px;
+  margin: 0;
+}

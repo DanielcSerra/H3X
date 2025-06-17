@@ -89,9 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($result && $result->num_rows > 0) {
                     while ($image = $result->fetch_object()) { ?>
+                    <div class="container">
+                    <h3><?= htmlspecialchars($image->titulo) ?></h>
                         <div class="caixaimg">
                             <img class="imgborder" src="uploads/<?= htmlspecialchars($image->imagem) ?>"
                                 alt="<?= htmlspecialchars($image->titulo ?: 'Gallery image') ?>">
+                        </div>
                         </div>
                     <?php }
 
@@ -115,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="container d-flex justify-content-end mt-4">
                 <div class="botao direita">
-                    <h2>Ver album completo</h2>
+                    <h2><a href="galeria_album.php">Ver album completo</a></h2>
                 </div>
             </div>
             <div class="caixa">

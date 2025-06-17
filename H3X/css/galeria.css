@@ -16,7 +16,19 @@ main{
 a{
   text-decoration: none;
   color:#cf44e9;
+}
 
+h2 a:hover{
+  -webkit-text-stroke: 1px #cf44e9;
+  color:transparent;
+}
+
+h2 a{
+    color:transparent;
+}
+
+a:hover{
+  color:lightgreen;
 }
 
 h1{
