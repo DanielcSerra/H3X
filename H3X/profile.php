@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
             <div class="row">
                 <div class="col-md-4 text-center mb-4">
                     <div class="avatar-wrapper">
-                        <?php if (!empty($_SESSION['foto'])): ?>
+                        <?php if (!empty($userFoto)): ?>
                             <img src="uploads/<?= trim($userFoto) ?>" alt="Foto de Perfil" class="user-img">
                         <?php else: ?>
                             <div class="user-placeholder"><?= strtoupper(substr($userNome, 0, 1)) ?></div>
@@ -191,8 +191,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                                     <div class="mb-4">
                                         <label for="nome" class="form-label">Nome</label>
                                         <input type="text" class="form-control" name="nome" id="nome"
-                                            value="<?= trim($userNome) ?>" required minlength="2"
-                                            maxlength="15" pattern="[A-Za-zÀ-ÿ '´`-]{2,15}"
+                                            value="<?= trim($userNome) ?>" required minlength="2" maxlength="15"
+                                            pattern="[A-Za-zÀ-ÿ '´`-]{2,15}"
                                             title="Nome deve conter entre 2 e 15 letras.">
                                     </div>
 
@@ -246,8 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
                         <?php if (mysqli_num_rows($galeria) > 0): ?>
                             <?php while ($img = mysqli_fetch_assoc($galeria)): ?>
                                 <div class="col-6 col-md-4 mb-3 gallery-item">
-                                    <img src="uploads/<?= trim($img['imagem']) ?>"
-                                        alt="<?= trim($img['titulo']) ?>">
+                                    <img src="uploads/<?= trim($img['imagem']) ?>" alt="<?= trim($img['titulo']) ?>">
                                     <small><?= trim($img['titulo']) ?></small>
                                 </div>
                             <?php endwhile; ?>
@@ -290,103 +289,93 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar_perfil'])) 
     </main>
 
     <?php include 'partials/footer.php'; ?>
-    <script>
-        function mostrarErro(msg) {
-            const alerta = document.getElementById('mensagemErro');
-            alerta.textContent = msg;
-            alerta.classList.remove('d-none');
+  <script>
+    function mostrarErro(msg) {
+        const alerta = document.getElementById('mensagemErro');
+        alerta.textContent = msg;
+        alerta.classList.remove('d-none');
+    }
+
+    function validarFormulario() {
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefone = document.getElementById("telefone").value.trim();
+        const dataNascimento = document.getElementById("data_nascimento").value.trim();
+        const senha = document.getElementById("senha").value.trim();
+        const inputFoto = document.getElementById("foto");
+
+        const alerta = document.getElementById('mensagemErro');
+        alerta.classList.add('d-none');
+        alerta.textContent = '';
+
+        // Validações
+        if (nome.length < 2 || nome.length > 15) {
+            mostrarErro("O nome deve ter entre 2 e 15 caracteres.");
+            return false;
         }
 
-        function validarFormulario(event) {
-            const nome = document.getElementById("nome").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const telefone = document.getElementById("telefone").value.trim();
-            const dataNascimento = document.getElementById("data_nascimento").value.trim();
-            const senha = document.getElementById("senha").value.trim();
-            const inputFoto = document.getElementById("foto");
-
-            const alerta = document.getElementById('mensagemErro');
-            alerta.classList.add('d-none');
-            alerta.textContent = '';
-
-            if (nome.length < 2 || nome.length > 15) {
-                mostrarErro("O nome deve ter entre 2 e 15 caracteres.");
-                event.preventDefault();
-                return false;
-            }
-
-            if (email === "") {
-                mostrarErro("O email é obrigatório.");
-                event.preventDefault();
-                return false;
-            }
-
-            if (email.length > 100) {
-                mostrarErro("O email deve ter no máximo 100 caracteres.");
-                event.preventDefault();
-                return false;
-            }
-
-            if (telefone !== "") {
-                if (telefone.length !== 9 || isNaN(telefone)) {
-                    mostrarErro("O telefone deve conter exatamente 9 dígitos numéricos.");
-                    event.preventDefault();
-                    return false;
-                }
-            }
-
-            if (dataNascimento === "") {
-                mostrarErro("Preencha a data de nascimento.");
-                event.preventDefault();
-                return false;
-            }
-
-            if (senha.length > 0 && (senha.length < 6 || senha.length > 20)) {
-                mostrarErro("A palavra-passe deve ter entre 6 e 20 caracteres.");
-                event.preventDefault();
-                return false;
-            }
-
-            if (inputFoto.files.length > 0) {
-                const file = inputFoto.files[0];
-                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
-                const maxSize = 2 * 1024 * 1024;
-
-                if (!allowedTypes.includes(file.type)) {
-                    mostrarErro("Por favor, selecione um ficheiro de imagem válido (JPEG, PNG, GIF, WEBP, BMP).");
-                    event.preventDefault();
-                    return false;
-                }
-
-                if (file.size > maxSize) {
-                    mostrarErro("A imagem não pode ter mais que 2MB.");
-                    event.preventDefault();
-                    return false;
-                }
-            }
-
-            return true;
+        if (email === "") {
+            mostrarErro("O email é obrigatório.");
+            return false;
         }
 
-        window.onload = function () {
-            const form = document.getElementById('perfilForm');
-            const modalElement = document.getElementById('editarPerfilModal');
-
-            const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
-
-            form.addEventListener("submit", function (event) {
-                const valido = validarFormulario(event);
-                if (!valido) {
-                    event.preventDefault();
-                } else {
-                    event.preventDefault(); 
-                    form.submit();
-                    modal.hide(); 
-                }
-            });
+        if (email.length > 100) {
+            mostrarErro("O email deve ter no máximo 100 caracteres.");
+            return false;
         }
 
-    </script>
+        if (telefone !== "") {
+            if (telefone.length !== 9 || isNaN(telefone)) {
+                mostrarErro("O telefone deve conter exatamente 9 dígitos numéricos.");
+                return false;
+            }
+        }
+
+        if (dataNascimento === "") {
+            mostrarErro("Preencha a data de nascimento.");
+            return false;
+        }
+
+        if (senha.length > 0 && (senha.length < 6 || senha.length > 20)) {
+            mostrarErro("A palavra-passe deve ter entre 6 e 20 caracteres.");
+            return false;
+        }
+
+        if (inputFoto.files.length > 0) {
+            const file = inputFoto.files[0];
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+            const maxSize = 2 * 1024 * 1024;
+
+            if (!allowedTypes.includes(file.type)) {
+                mostrarErro("Por favor, selecione um ficheiro de imagem válido (JPEG, PNG, GIF, WEBP, BMP).");
+                return false;
+            }
+
+            if (file.size > maxSize) {
+                mostrarErro("A imagem não pode ter mais que 2MB.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('perfilForm');
+        const modalElement = document.getElementById('editarPerfilModal');
+        const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+
+        form.addEventListener("submit", function (event) {
+            const valido = validarFormulario();
+            if (!valido) {
+                event.preventDefault(); 
+            } else {
+                modal.hide(); 
+            }
+        });
+    });
+</script>
+
 
 </body>
 
