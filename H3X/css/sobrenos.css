@@ -4,6 +4,17 @@ html {
 body{
     overflow-x: hidden;
 }
+
+a{
+    color:transparent;
+    text-decoration: none;
+}
+
+a:hover{
+    color:white;
+    text-decoration: none;
+}
+
 .banner{
     position:relative; 
     width:100vw;

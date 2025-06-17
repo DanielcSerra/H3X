@@ -143,7 +143,7 @@ require_once "admin/ultima_atividade.php";
                         <h1>Sobre a nossa equipa</h1>
                         <img src="img/equipa.png" alt="sobre equipa">
                         <div class="botaosobrenos">
-                            <h1>VER MAIS</h1>
+                            <h1><a href="equipa.php">VER MAIS</a></h1>
                         </div>
                         <p>Vem descobrir sobre quem está por traz desta discoteca do outro mundo</p>
                     </div>
@@ -151,7 +151,7 @@ require_once "admin/ultima_atividade.php";
                         <h1>Contacte-nos</h1>
                         <img src="img/contatossobre.png" alt="sobre equipa">
                         <div class="botaosobrenos">
-                            <h1>VER MAIS</h1>
+                            <h1><a href="contactos.php">VER MAIS</a></h1>
                         </div>
                         <p>Caso precise veja a página contactos para ajuda ou perguntas profissionais</p>
                     </div>
@@ -159,7 +159,7 @@ require_once "admin/ultima_atividade.php";
                         <h1>FAQ</h1>
                         <img src="img/faqsobrenos.png" alt="sobre equipa">
                         <div class="botaosobrenos">
-                            <h1>VER MAIS</h1>
+                            <h1><a href="faq.php">VER MAIS</a></h1>
                         </div>
                         <p>Perguntas frequentamente recebidas</p>
                     </div>
