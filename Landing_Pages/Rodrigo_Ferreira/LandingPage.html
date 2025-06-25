@@ -6,6 +6,7 @@
     <title>Landing Page - Rodrigo</title>
     <!--CSS MEU-->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/normalize.css" />
   </head>
 
   <body>
@@ -45,32 +46,16 @@
         </p>
       </div>
 
-      <div class="imagens">
-        <img
-          src="assets/img/ImagemVIP1.jpg"
-          width="300"
-          height="450"
-          alt="Imagem 1"
-        />
-        <img
-          src="assets/img/ImagemVIP2.jpg"
-          width="300"
-          height="450"
-          alt="Imagem 2"
-        />
-        <img
-          src="assets/img/ImagemVIP3.jpg"
-          width="300"
-          height="450"
-          alt="Imagem 1"
-        />
-        <img
-          src="assets/img/ImagemVIP4.jpg"
-          width="300"
-          height="450"
-          alt="Imagem 2"
-        />
-      </div>
+      <section class="staff-section">
+        <div class="staff2">
+          <div class="staff-imagens">
+            <img src="assets/img/ImagemVIP1.jpg" alt="Imagem 1" />
+            <img src="assets/img/ImagemVIP2.jpg" alt="Imagem 2" />
+            <img src="assets/img/ImagemVIP4.jpg" alt="Imagem 3" />
+            <img src="assets/img/ImagemVIP3.jpg" alt="Imagem 4" />
+          </div>
+        </div>
+      </section>
     </div>
     <div class="caixa2">
       <div class="caixa2-conteudo">
@@ -82,7 +67,7 @@
         <div class="imagemplanta">
           <img src="assets/img/MAPA H3X 1.png" alt="Planta Discoteca" />
         </div>
-        <div class="formulario">
+        <div class="formulario" id="formulario">
           <h3>Formulário de Reserva</h3>
           <form action="LandingPage.html">
             <div class="texto3">
@@ -165,26 +150,16 @@
         <h1>TECHNO NIGHT</h1>
       </div>
     </div>
-    <footer
-      style="
-        text-align: center;
-        padding: 10px;
-        background-color: #000000bd;
-        color: rgb(255, 255, 255);
-        bottom: 0;
-        width: 100%;
-        font-weight: bold;
-        font-size: 12px;
-      "
-    >
-      <hr
-        style="
-          border: 2px solid rgb(255, 255, 255);
-          width: 100%;
-          margin-bottom: 20px;
-        "
-      />
-      HX3 · POLÍTICA DE PRIVACIDADE · POLÍTICA DE COOKIES · LIVRO DE RECLAMAÇÕES
+
+    <footer class="footer">
+      <hr class="footer-linha" />
+
+      <img src="assets/img/logo.png" alt="Imagem logo" class="footer-logo" />
+
+      <div class="footer-text">
+        HX3 · POLÍTICA DE PRIVACIDADE · POLÍTICA DE COOKIES · LIVRO DE
+        RECLAMAÇÕES
+      </div>
     </footer>
   </body>
 </html>

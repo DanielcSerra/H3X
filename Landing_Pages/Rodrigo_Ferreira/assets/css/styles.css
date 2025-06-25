@@ -8,6 +8,10 @@
   src: url(../fonts/Laceration.otf);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -59,9 +63,13 @@ p {
   text-align: center;
   justify-content: center;
   background-repeat: no-repeat;
+  width: 100%;
   background-size: cover;
+  background-position: top;
 }
-
+.hero h1 {
+  font-size: clamp(32px, 8vw, 60px);
+}
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -69,19 +77,19 @@ p {
   gap: 20px;
 }
 
-.btn {
+.hero .btn {
   background-image: url("../img/Botao_Rese.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
   border: none;
-  width: 300px;
   background-size: 100% 100%;
-  font-size: 24px;
+  font-size: 26px;
+  width: 250px;
 }
 
 .btn-reserva {
-  width: 45%;
+  width: 55%;
   padding: 10px;
   color: white;
   border: none;
@@ -109,53 +117,43 @@ p {
   padding: 20px 20px 20px 20px;
 }
 
-.Area1 {
-  padding: 0 120px;
-}
-
-.textoembaixo {
-  color: rgb(255, 255, 255);
-  margin-left: 120px;
-  margin-right: 120px;
-}
-
-.textoembaixo {
+.textoembaixo p {
   margin-bottom: 50px;
   margin-top: 30px;
-  line-height: 1.7;
+  line-height: 1.4;
   font-family: Aldrich;
-}
-
-.imagens {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.caixa4 {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url("../img/imagem21.png.png");
-  display: flex;
-  height: 400px;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.caixa4-conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-size: clamp(16px, 2.5vw, 20px);
+  padding: 0 5%;
 }
 
 .Area2 {
-  padding: 40px 120px 80px;
+  padding: 5% 5%;
+}
+
+.staff-section {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.staff2 {
+  display: inline-block;
+}
+
+.staff-imagens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.staff-imagens img {
+  width: 350px;
+  height: 500px;
+  transition: transform 0.3s;
+}
+
+.staff-imagens img:hover {
+  transform: scale(1.05);
 }
 
 .imagemplanta {
@@ -169,7 +167,7 @@ p {
   border-radius: 12px;
   width: 100%;
   padding: 30px 40px;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.425); /* brilho branco suave */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.425);
   color: rgb(255, 255, 255);
 }
 
@@ -184,6 +182,7 @@ p {
   flex-direction: column;
   gap: 12px;
 }
+
 .imagensdadisco {
   margin-top: 70px;
 }
@@ -191,32 +190,6 @@ p {
 .form-grupo {
   display: grid;
   gap: 10px;
-}
-@media (max-width: 768px) {
-  .texto {
-    font-size: 5rem;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  .container2 {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  h1 {
-    font-size: 35px;
-  }
-
-  h2 {
-    font-size: 28px;
-  }
-
-  h3 {
-    font-size: 30px;
-  }
 }
 
 .caixa1 {
@@ -286,4 +259,132 @@ p {
   -webkit-text-stroke: 0.5px white;
   font-size: 23px;
   color: transparent;
+}
+
+.caixa4 {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/imagem21.png.png");
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  margin-top: 50px;
+}
+
+.caixa4-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.caixa-conteudo h1 {
+  font-size: clamp(32px, 8vw, 60px);
+}
+
+.footer {
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-linha {
+  border: 2px solid rgb(255, 255, 255);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  margin: 0 auto 20px auto;
+  height: 50px;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: Aldrich, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero .btn {
+    width: 220px;
+    font-size: 18px;
+  }
+
+  .caixa2-conteudo h2 {
+    font-size: 26px;
+  }
+
+  .caixa1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .caixa1 img {
+    max-width: 100%;
+  }
+
+  .formulario {
+    width: 100%;
+    padding: 20px 20px;
+  }
+  .formulario h3 {
+    margin-bottom: 15px;
+  }
+
+  .texto3 {
+    gap: 8px;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .form-label,
+  .form-labelMen {
+    font-size: 18px;
+  }
+
+  .botao-reservar-form {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 20px;
+  }
+  .textoembaixo {
+    padding: 0 5%;
+  }
+
+  .footer {
+    padding: 20px 10px;
+  }
+
+  .footer-logo {
+    height: 35px;
+    margin-bottom: 10px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .caixa1 {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
