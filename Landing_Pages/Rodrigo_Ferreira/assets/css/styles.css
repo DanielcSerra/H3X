@@ -16,9 +16,6 @@
 
 body {
   background-color: black;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -83,6 +80,16 @@ p {
   font-size: 24px;
 }
 
+.btn-reserva {
+  width: 45%;
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: Laceration;
+}
+
 .caixa2 {
   background-image: url("../img/Linhafi.png.png");
   height: 75px;
@@ -102,6 +109,10 @@ p {
   padding: 20px 20px 20px 20px;
 }
 
+.Area1 {
+  padding: 0 120px;
+}
+
 .textoembaixo {
   color: rgb(255, 255, 255);
   margin-left: 120px;
@@ -109,55 +120,78 @@ p {
 }
 
 .textoembaixo {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   margin-top: 30px;
   line-height: 1.7;
   font-family: Aldrich;
 }
 
-.container {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  color: white;
-  margin: 0 auto;
-  padding: 0 150px;
+.imagens {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.caixa4 {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/imagem21.png.png");
+  display: flex;
+  height: 400px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caixa4-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Area2 {
+  padding: 40px 120px 80px;
+}
+
+.imagemplanta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  background-color: #11111157;
+  border-radius: 12px;
+  width: 100%;
+  padding: 30px 40px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.425); /* brilho branco suave */
+  color: rgb(255, 255, 255);
+}
+
+.formulario h3 {
+  text-align: center;
+  font-family: Aldrich, sans-serif;
+  font-size: 24px;
 }
 
 .texto3 {
-  font-family: Aldrich;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-
-label {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  color: rgb(255, 255, 255);
-  background-color: black;
-  border-color: black;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #000000;
-  color: white;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  font-size: 30px;
-  font-family: Laceration;
-}
-
 .imagensdadisco {
   margin-top: 70px;
 }
 
+.form-grupo {
+  display: grid;
+  gap: 10px;
+}
 @media (max-width: 768px) {
   .texto {
     font-size: 5rem;
@@ -187,4 +221,69 @@ button {
 
 .caixa1 {
   display: flex;
+  gap: 40px;
+}
+
+.botao-reservar-form {
+  font-family: "Laceration", sans-serif;
+  font-size: 24px;
+  color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  padding: 40px 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.botao-reservar-form:hover {
+  transform: scale(1.03);
+}
+
+.botao-form-Reservar {
+  text-align: center;
+  margin-top: 15px;
+}
+.botao-reservar-form {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.form-label {
+  -webkit-text-stroke: 0.5px white;
+  font-size: 23px;
+  color: transparent;
+}
+.form-control {
+  background: transparent;
+  border-radius: 0;
+  color: white;
+  padding: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.336);
+}
+
+.form-control::placeholder {
+  color: white;
+}
+.form-control:hover {
+  background: transparent;
+  color: white;
+}
+
+.form-label:hover {
+  background: transparent;
+}
+
+.botao-form-Reservar {
+  text-align: center;
+}
+
+.form-labelMen {
+  margin-top: 10px;
+  -webkit-text-stroke: 0.5px white;
+  font-size: 23px;
+  color: transparent;
 }
