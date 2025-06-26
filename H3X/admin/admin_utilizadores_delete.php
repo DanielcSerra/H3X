@@ -39,9 +39,29 @@ if (!$result || $result->num_rows === 0) {
 $utilizador = $result->fetch_assoc();
 
 $postCheck = $conn->query("SELECT id FROM posts WHERE id_utilizador = " . $utilizador["id"] . " LIMIT 1");
-
 if ($postCheck && $postCheck->num_rows > 0) {
     $_SESSION["errors"]["posts"] = "Não é possível eliminar o utilizador porque existem posts associados.";
+    header("Location: admin_utilizadores.php");
+    exit();
+}
+
+$comentarioCheck = $conn->query("SELECT id FROM comentarios WHERE id_utilizador = " . $utilizador["id"] . " LIMIT 1");
+if ($comentarioCheck && $comentarioCheck->num_rows > 0) {
+    $_SESSION["errors"]["comentarios"] = "Não é possível eliminar o utilizador porque existem comentários associados.";
+    header("Location: admin_utilizadores.php");
+    exit();
+}
+
+$galeriaCheck = $conn->query("SELECT id FROM imagens_galeria WHERE id_utilizador = " . $utilizador["id"] . " LIMIT 1");
+if ($galeriaCheck && $galeriaCheck->num_rows > 0) {
+    $_SESSION["errors"]["imagens_galeria"] = "Não é possível eliminar o utilizador porque existem imagens associadas.";
+    header("Location: admin_utilizadores.php");
+    exit();
+}
+
+$vipCheck = $conn->query("SELECT id FROM vip WHERE id_utilizador = " . $utilizador["id"] . " LIMIT 1");
+if ($vipCheck && $vipCheck->num_rows > 0) {
+    $_SESSION["errors"]["vip"] = "Não é possível eliminar o utilizador porque está associado à tabela VIP.";
     header("Location: admin_utilizadores.php");
     exit();
 }
