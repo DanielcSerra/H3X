@@ -1,0 +1,11 @@
+Alexandre Silva
+
+Daniel Serra - 2242571
+Front-Office(arcade,blog,post,login,profile)
+Back-Office(dashboard,utilizadores,posts,comentarios,categorias_posts)
+
+Duarte Santos
+
+Rodrigo Ferreira
+
+Rodrigo Cruz
