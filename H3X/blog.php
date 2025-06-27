@@ -213,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
 
-        <img class="barra" src="img/barrabranca.png" alt="barrabranca">
+        <img class="barra" src="img/barrabranca.png" alt="">
 
 
         <div class="container caixa-com-cantos my-5 py-5 px-3 px-md-5 position-relative">

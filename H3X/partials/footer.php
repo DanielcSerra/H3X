@@ -4,7 +4,7 @@
 
       <div class="footer-left mb-3 mb-md-0">
         <a href="index.php">
-          <img src="img/logo.png" alt="Logo" class="footer-logo">
+          <img src="img/logo.png" alt="Logo H3X" class="footer-logo">
         </a>
       </div>
 

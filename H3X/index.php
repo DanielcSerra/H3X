@@ -231,7 +231,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                                 
                                     <div class="h3x-box1 text-white">
                                         <div class="h3x-img-container">
-                                            <img src="uploads/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
+                                            <img src="uploads/blog/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
                                         </div>
 
                                         
