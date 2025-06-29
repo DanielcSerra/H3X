@@ -15,5 +15,5 @@ Front-Office(equipa,vip,termos)
 Back-Office(vip_servicos,vip)
 
 Rodrigo Cruz - 2242943
-Front-Office(eventos,como chegar)
+Front-Office(eventos,como chegar,index)
 Back-Office(eventos)
