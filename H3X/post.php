@@ -73,7 +73,7 @@ $totalComentarios = mysqli_num_rows($resultComentarios);
         </div>
 
         <div class="container post-container mb-5">
-            <img class="barra" src="img/barrabranca.png" alt="barrabranca">
+            <img class="barra" src="img/barrabranca.png" alt="">
 
             <div class="coment-title">COMENTÁRIOS</div>
             <div>

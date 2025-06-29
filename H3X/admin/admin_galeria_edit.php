@@ -14,8 +14,20 @@ if (!isset($_SESSION['tipo']) || !in_array($_SESSION['tipo'], ['a', 'f'])) {
 require_once "../db_config.php";
 require_once 'ultima_atividade.php';
 
-$id_utilizador = $_SESSION["id"] ?? null;
+$nomeUtilizador = $_SESSION["nome"] ?? "Utilizador";
 $tipoUtilizador = $_SESSION["tipo"] ?? "c";
+
+switch ($tipoUtilizador) {
+    case 'a':
+        $tipoLabel = "Administrador";
+        break;
+    case 'f':
+        $tipoLabel = "Funcionário";
+        break;
+    default:
+        $tipoLabel = "Cliente";
+        break;
+}
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     $_SESSION["errors"][] = "ID de imagem inválido.";
@@ -50,8 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $tituloEscaped = $conn->real_escape_string($titulo);
         $dataEscaped = $conn->real_escape_string($data);
 
-        // Atualizar imagem se foi enviada nova
-        $novaImagem = $imagemData['imagem']; // por defeito mantemos a imagem antiga
+        $novaImagem = $imagemData['imagem']; 
         if (isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] === UPLOAD_ERR_OK) {
             $novaImagem = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
             $upload_path = "../uploads/" . $novaImagem;

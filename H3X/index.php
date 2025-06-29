@@ -20,8 +20,9 @@ $evento = mysqli_fetch_assoc($resultBanner);
 $mostrarTodos = isset($_GET['mostrar']) && $_GET['mostrar'] === 'todos';
 
 $queryEventos = "SELECT * FROM eventos WHERE data_inicio >= '$hoje' ORDER BY data_inicio ASC";
+$defaultLimit = 1;
 if (!$mostrarTodos) {
-    $queryEventos .= " LIMIT 4";
+    $queryEventos .= " LIMIT $defaultLimit";
 }
 
 
@@ -76,30 +77,31 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
         </video>
 
         <!-- Buttons -->
-        <div class="container">
-            <div class="butoes mt-5 mb-5">
+        <div class="container ">
+            <div class="butoes">
 
                 <div class="left-button ">
                     <div class="button-content">
-                    <span class="button-text">VIP</span>
+                    <a href="vip.php "class="button-text button2">VIP</a>
                     </div>
                 </div>
 
                 <div class="center-button">
                     <div class="button-content">
-                    <span class="button-text">EVENTOS</span>
+                    <a href="eventos.php" class="button-text button2">EVENTOS</a>
                     </div>
                 </div>
                 
                 <div class="right-button">
                     <div class="button-content">
-                    <span class="button-text">BLOG</span>
+                    <a href="blog.php" class="button-text button2">BLOG</a>
                     </div>
                 </div>
             </div>
             
 
         </div>
+    </div>
         
         <!-- White Bar at Bottom -->
         <div class="divisao">
@@ -108,7 +110,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
         </div>
         <div class="container mt-5">
 
-            <div class="container caixa-com-cantos py-5 px-3 px-md-5 position-relative">
+            <div class="container caixa-com-cantos  px-md-5 position-relative">
                 <img src="img/bordatopesquerda.png" class="canto top-left d-none d-md-block">
                 <img src="img/bordatopdireita.png" class="canto top-right d-none d-md-block">
                 <img src="img/bordabotesquerda.png" class="canto bottom-left d-none d-md-block">
@@ -138,15 +140,14 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                                             <?= nl2br(str_replace(';', '<br>', htmlspecialchars($eventoCard['lineup']))); ?>
                                         </div>
                                     </div>
-                                    <button class="mini-button"><span class="button-text">+ INFO</span></button>
+                                    <a href="eventos2.php?id=<?= htmlspecialchars(urlencode($eventoCard['id'])) ?>" class="btn mini-button card-button">+ INFO</a>
                                 </div>
                             </div>
                         <?php endwhile; ?>
                     </div>
 
                     <div class="eventos-button">
-                        <a href="eventos.php"></a> 
-                        <span class="button-text">+ EVENTOS</span>
+                        <a href="eventos.php" class="button-text">+ EVENTOS</a>
                     </div>
 
                     
@@ -157,24 +158,29 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
         </div>
 
         <div class="white-section mt-5">
-            <div class="container d-flex justify-content-between align-items-center py-4 mt-4 mb-4">
+            <div class="white-section2 container d-flex justify-content-between align-items-center py-4 mt-4 mb-4">
             
                 <!-- Left box with image -->
-                <div class="white-section-card">
+                <div class="white-section-card white-card2">
                 <img src="uploads/MAPAH3X.png" alt="VIP Image">
                 </div>
                 
                 <!-- VIP big text -->
-                <h1 class="vip-text">VIP</h1>
-                <img class="borboleta" src="img/borboleta.png">
+                <div class="vip-text">
+                    <h1 class="prim3">VIP</h1>
+                    <h1 class="seg3">VIP</h1>
+                    <h1 class="terc3">VIP</h1>
+                </div>
                 
                 <!-- Right box with text + button -->
-                <div class="white-section-card d-flex flex-column justify-content-between">
+                <div class="white-section-card  d-flex flex-column justify-content-between">
                 <div>
                     <p>A H3X oferece uma experiência VIP exclusiva para quem procura elevar a sua noite a um novo patamar. A nossa área VIP proporciona um ambiente sofisticado e reservado, onde poderá desfrutar de atendimento personalizado, acesso prioritário e uma seleção premium de bebidas. Ideal para celebrar ocasiões especiais ou simplesmente para desfrutar da noite com conforto e estilo. Reserve já a sua mesa e descubra o que significa viver a verdadeira experiência VIP na H3X.</p>
                 </div>
-                <button class="center-button" style="width: 100%; height: auto; padding: 1rem 0;">
-                    <span class="button-text">VER MAIS</span>
+                <button class="center-button button2" style="width: 100%; height: auto; padding: 1rem 0;">
+                    <div class="button-content">
+                    <a href="vip.php" class="button-text">VER MAIS</a>
+                    </div>
                 </button>
                 </div>
                 
@@ -184,8 +190,8 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
         <section class="light-gray-section">
             <div class="container light-gray-container caixa-com-cantos">
                 <!-- New corners for Sobre-Nós -->
-                <img src="img/bordatopesquerda.png" alt="corner top left" class="canto-sobre top-left d-none d-md-block">
-                <img src="img/bordabotdireita.png" alt="corner bottom right" class="canto-sobre bottom-right d-none d-md-block">
+                <img src="img/bordatopesquerda.png" alt="corner top left" class="canto-sobre top-left  d-md-block">
+                <img src="img/bordabotdireita.png" alt="corner bottom right" class="canto-sobre bottom-right d-md-block">
 
                 <div class="content-wrapper">
                 
@@ -193,8 +199,10 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                 <div class="left-part">
                     <p>​A H3X é uma discoteca em Lisboa, inspirada na estética cyberpunk, que oferece uma experiência imersiva de música eletrónica. Localizada na Av. Brasília 66, em Alcântara, destaca-se por eventos temáticos semanais com DJs nacionais e internacionais.
                     Na H3X, comprometemo-nos a proporcionar um ambiente seguro, inclusivo e vibrante, onde todos são bem-vindos para celebrar a música e a cultura noturna de Lisboa.</p>
-                    <button class="center-button">
-                    <span class="button-text">Ver Mais</span>
+                    <button class="center-button button2">
+                        <div class="button-content">
+                        <a href="sobrenos.php" class="button-text">VER MAIS</a>
+                        </div>
                     </button>
                 </div>
 
@@ -231,7 +239,7 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                                 
                                     <div class="h3x-box1 text-white">
                                         <div class="h3x-img-container">
-                                            <img src="uploads/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
+                                            <img src="uploads/blog/<?= trim($post['imagem']) ?>" alt="Imagem do post" loading="lazy" />
                                         </div>
 
                                         
@@ -261,9 +269,13 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                          
 
                     </div>
-                    <div class="bottom-button">
-                        <button class="galeria-button"><span>+ POSTS</span></button>
-                    </div>
+                     <button class=" bottom-button button2">
+                            <div class="button-content">
+                                <a href="blog.php" class="button-text">+ POSTS</a>
+                            </div>
+
+                    </button>
+
                 </div>
                  
 
@@ -296,15 +308,24 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
                         <div class="rotated-title">GALERIA</div>
                         
                     </div>
-                    <div class="bottom-button">
-                        <button class="galeria-button"><span>+ IMAGENS</span></button>
-                    </div>
+                    
+                        <button class=" bottom-button button2">
+                            <div class="button-content">
+                                <a href="galeria.php" class="button-text">+ IMAGENS</a>
+                            </div>
+
+                        </button>
+
+                        
+
                 </div>
             </div>
         </section>
 
 
     <?php include 'partials/footer.php'; ?>
+    
+    <script src="js/index.js"></script>
 </body>
 
 </html>

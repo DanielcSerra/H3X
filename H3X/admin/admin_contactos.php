@@ -114,6 +114,10 @@ require 'partials/header.php';
                                             class="fas fa-pen-to-square text-warning"></i></a>
                                     <a href="admin_contactos_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
                                             class="fas fa-trash text-danger"></i></a>
+                                            <a href="admin_contactos_responder.php?id=<?= urlencode($id) ?>" title="Responder" class="ms-2">
+                                <i class="fas fa-reply text-primary"></i>
+</a>
+
                                 </td>
                             </tr>
                         <?php endwhile; ?>

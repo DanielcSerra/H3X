@@ -50,6 +50,7 @@ session_start();
             ?>
         </section>
     </div>
+    <?php include 'partials/footer.php'; ?>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const faqItems = document.querySelectorAll('.faq-item');
@@ -70,7 +71,7 @@ session_start();
             }
         });
     </script>
-    <?php include 'partials/footer.php'; ?>
+    
 </body>
 
 </html>

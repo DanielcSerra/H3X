@@ -172,7 +172,7 @@
   position: absolute;
   top: 70%;
   left: 50%;
-  
+  text-decoration: none;
   transform: translate(-50%, -50%);
   width: clamp(440px, 9vw, 470px);
   height: clamp(50px, 5vw, 80px);
@@ -236,6 +236,7 @@
 }
 
 .button-text {
+  text-decoration: none;
   font-family: 'Laceration', sans-serif;
   font-size: clamp(1rem, 2vw, 2rem);
   color: white;
@@ -953,3 +954,160 @@
 }
 
 
+.image2{
+  right:0%;
+  z-index:2;
+}
+.title2{
+  font-size: clamp(2rem, 8vw, 3rem);
+  transform: translateY(350%);
+  z-index: 3;
+
+}
+.lineup2{
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+
+}
+
+
+.banner2 {
+    height: 90vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.banner2-left {
+    flex: 0 0 60%;
+    position: relative;
+    color: white;
+}
+
+.banner2-left video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.banner2-overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4); /* optional dark overlay */
+}
+
+
+.banner2-right {
+    flex: 0 0 40%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.caixa-com-cantos h3,h2,h4{
+    font-family:'Aldrich', sans-serif;
+    color: #000000;
+}
+.divisao{
+  align-items: center;
+  text-align: center;
+}
+.divisao img {
+    width: 90%;
+    height: 3%;
+    background-size: contain;
+    margin: 1rem auto;
+}
+
+.small-video {
+    width: 100%;
+    max-height: 200px;
+    margin-top: 3rem;
+}
+
+
+.caixa-com-cantos {
+  position: relative;
+  background: transparent;
+  max-width: 95vw;
+  width: 95%;
+  height: 95%;
+  padding: 1.5rem;
+}
+  
+.canto {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  pointer-events: none;
+   z-index: 0; 
+}
+
+
+.canto-sobre.top-left,
+.canto-sobre.bottom-right {
+  position: absolute;
+  width: 210px;  /* slightly bigger */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.canto-sobre.top-left {
+  top: 0;
+  left: 0;
+}
+
+.canto-sobre.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+.mini-button{
+  position: absolute;
+  left: 50%;
+  margin-top:5%;
+  transform: translateX(-50%);
+  width: 170px; 
+  height: 60px; 
+  background-image: url("../img/caixasec.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  border: none;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.mini-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  background-image: url('../img/caixasec.png'); 
+}
+
+.mini-button .button-text {
+  font-family: 'Aldrich', sans-serif;
+  color: white;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+.mini-button:hover .button-text {
+  transform: scale(1.1);
+  font-size: 1.9rem;
+}

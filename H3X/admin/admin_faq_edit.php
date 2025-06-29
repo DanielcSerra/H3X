@@ -128,4 +128,34 @@ $pageTitle = "H3X ADMIN - Editar FAQ";
             <?php require 'partials/footer.php'; ?>
         </div>
     </div>
+
+
+    <script>
+function validarFAQ(event) {
+    var titulo = document.getElementById("titulo").value.trim();
+    var resposta = document.getElementById("resposta").value.trim();
+
+    if (titulo.length < 5 || titulo.length > 100) {
+        alert("O título deve ter entre 5 e 100 caracteres.");
+        event.preventDefault();
+        return;
+    }
+
+    if (resposta.length < 10 || resposta.length > 1000) {
+        alert("A resposta deve ter entre 10 e 1000 caracteres.");
+        event.preventDefault();
+        return;
+    }
+}
+
+window.onload = function () {
+    var form = document.querySelector("form");
+    if (form) {
+        form.addEventListener("submit", validarFAQ);
+    }
+}
+</script>
+
 </body>
+
+
