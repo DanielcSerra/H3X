@@ -69,9 +69,7 @@ $resultEventos = mysqli_query($conn, $queryEventos);
         </div>
 
         <div class="center-button">
-            <div class="button-content">
-                <span class="button-text">VER MAIS</span>
-            </div>
+                <a href="eventos2.php?id=<?php echo urlencode($evento['id']); ?>" class="button-text">VER MAIS</a>
         </div>
 
         <div class="banner-right-image">
@@ -115,7 +113,11 @@ $resultEventos = mysqli_query($conn, $queryEventos);
                                 <?= nl2br(str_replace(';', '<br>', htmlspecialchars($eventoCard['lineup']))); ?>
                             </div>
                         </div>
-                        <button class="mini-button"><span class="button-text">Details</span></button>
+<<<<<<< HEAD
+                        <a href="eventos2.php?id=<?= htmlspecialchars(urlencode($eventoCard['id'])) ?>" class="btn mini-button card-button">+ INFO</a>
+=======
+                        <a href="eventos2.php?id=<?php echo urlencode($evento['id']); ?>" class="btn mini-button card-button">+ INFO</a>
+>>>>>>> parent of fbbdbab (cruz)
                     </div>
                 </div>
             <?php endwhile; ?>

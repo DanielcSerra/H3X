@@ -35,17 +35,10 @@
         <a href="admin_servicos_vip.php">Serviços Vip</a>
     </div>
 
-
-    <div class="nav-link d-flex align-items-center" data-target="dropdown2">
+    <a href="admin_eventos.php" class="nav-link">
         <i class="fas fa-layer-group"></i>
-        <span class="link-text">Eventos</span>
-        <i class="fas fa-chevron-down arrow-icon ms-auto"></i>
-    </div>
-    <div class="dropdown-container" id="dropdown2">
-        <a href="admin_eventos.php">Eventos</a>
-        <a href="#">Categorias</a>
-        <a href="#">DJs</a>
-    </div>
+         <span class="link-text">Eventos</span>
+    </a>
 
     <a href="admin_galeria.php" class="nav-link">
         <i class="fas fa-chart-line"></i>

@@ -15,7 +15,6 @@
       </div>
 
       <div class="d-flex footer-links">
-        <a href="#"><i class="ri-shield-line"></i>Política e Cookies</a>
         <a href="termos.php"><i class="ri-file-list-3-line"></i>Termos e Condições</a>
         <a href="faq.php"><i class="ri-question-line"></i>FAQ</a>
         <a href="seguranca.php"><i class="ri-shield-check-line"></i>Segurança</a>

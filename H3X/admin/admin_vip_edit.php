@@ -125,7 +125,8 @@ require 'partials/header.php';
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Data da Reserva</label>
-                    <input type="date" name="data_reserva" class="form-control" required>
+                    <input type="date" name="data_reserva" class="form-control" required
+                        value="<?= trim($_POST['data_reserva'] ?? $reserva['data_reserva']) ?>">
                 </div>
 
                 <div class="mb-3">

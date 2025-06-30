@@ -1,0 +1,408 @@
+@font-face {
+  font-family: Aldrich;
+  src: url(../fonts/Aldrich-Regular.ttf);
+}
+
+@font-face {
+  font-family: Laceration;
+  src: url(../fonts/Laceration.otf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(32px, 8vw, 60px);
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+}
+h2 {
+  font-family: Aldrich, sans-serif;
+  font-size: clamp(30px, 8vw, 40px);
+  color: white;
+}
+p {
+  font-family: Aldrich, sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.hero {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/imagemFinal.png");
+  height: 500px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+}
+.hero h1 {
+  font-size: clamp(32px, 8vw, 60px);
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero .btn {
+  background-image: url("../img/Botao_Rese.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  background-size: 100% 100%;
+  font-size: 26px;
+  width: 280px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  background-image: url("../img/Botao_Rese.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  background-size: 100% 100%;
+  font-size: 26px;
+  width: 280px;
+  transform: scale(1.03);
+}
+
+.btn-reserva {
+  width: 55%;
+  padding: 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: Laceration;
+  margin-top: -50px;
+}
+
+.caixa2 {
+  background-image: url("../img/Linhafi.png.png");
+  height: 75px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caixa2-conteudo {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+}
+
+.textoembaixo p {
+  margin-bottom: 50px;
+  margin-top: 30px;
+  line-height: 1.4;
+  font-family: Aldrich;
+  font-size: clamp(16px, 2.5vw, 20px);
+  padding: 0 5%;
+}
+
+.Area2 {
+  padding: 5% 5%;
+}
+
+.staff-section {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.staff2 {
+  display: inline-block;
+}
+
+.staff-imagens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.staff-imagens img {
+  width: 350px;
+  height: 500px;
+  transition: transform 0.3s;
+}
+
+.staff-imagens img:hover {
+  transform: scale(1.05);
+}
+
+.imagemplanta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  background-color: #11111157;
+  border-radius: 12px;
+  width: 100%;
+  padding: 30px 40px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.425);
+  color: rgb(255, 255, 255);
+}
+
+.formulario h3 {
+  text-align: center;
+  font-family: Aldrich, sans-serif;
+  font-size: 24px;
+}
+
+.texto3 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imagensdadisco {
+  margin-top: 70px;
+}
+
+.form-grupo {
+  display: grid;
+  gap: 10px;
+}
+
+.caixa1 {
+  display: flex;
+  gap: 40px;
+}
+
+.botao-reservar-form {
+  font-family: "Laceration", sans-serif;
+  font-size: 24px;
+  color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  padding: 40px 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.botao-reservar-form:hover {
+  transform: scale(1.03);
+}
+
+.botao-form-Reservar {
+  text-align: center;
+  margin-top: 15px;
+}
+.botao-reservar-form {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.form-label {
+  -webkit-text-stroke: 0.5px white;
+  font-size: 23px;
+  color: transparent;
+}
+.form-control {
+  background: transparent;
+  border-radius: 0;
+  color: white;
+  padding: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.336);
+}
+
+.form-control::placeholder {
+  color: white;
+}
+.form-control:hover {
+  background: transparent;
+  color: white;
+}
+
+.form-label:hover {
+  background: transparent;
+}
+
+.botao-form-Reservar {
+  text-align: center;
+}
+
+.form-labelMen {
+  margin-top: 10px;
+  -webkit-text-stroke: 0.5px white;
+  font-size: 23px;
+  color: transparent;
+}
+
+.caixa4 {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/imagem21.png.png");
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  margin-top: 50px;
+}
+
+.caixa4-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.caixa-conteudo h1 {
+  font-size: clamp(32px, 8vw, 60px);
+}
+
+.footer {
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-linha {
+  border: 2px solid rgb(255, 255, 255);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  margin: 0 auto 20px auto;
+  height: 50px;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: Aldrich, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero .btn {
+    width: 220px;
+    font-size: 18px;
+  }
+
+  .caixa2-conteudo h2 {
+    font-size: 26px;
+  }
+
+  .caixa1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .caixa1 img {
+    max-width: 100%;
+  }
+
+  .formulario {
+    width: 100%;
+    padding: 20px 20px;
+  }
+  .formulario h3 {
+    margin-bottom: 15px;
+  }
+
+  .texto3 {
+    gap: 8px;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .form-label,
+  .form-labelMen {
+    font-size: 18px;
+  }
+
+  .botao-reservar-form {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 20px;
+  }
+  .textoembaixo {
+    padding: 0 5%;
+  }
+
+  .footer {
+    padding: 20px 10px;
+  }
+
+  .footer-logo {
+    height: 35px;
+    margin-bottom: 10px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .caixa1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+textarea {
+  resize: vertical;
+}

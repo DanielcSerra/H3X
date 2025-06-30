@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H3X - Reservar VIP</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  </head>
+  <body>
+    <header class="hero">
+      <video autoplay muted loop class="background-video">
+        <source
+          src="img//background3.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="overlay">
+        <nav>
+          <img src="img/logo.png" alt="" srcset="" />
+        </nav>
+        <div class="hero-content">
+          <h1>O SOM NÃO PARA. A NOITE É TUA. RESERVA O TEU VIP.</h1>
+          <a href="#contato">
+            <button class="btn">Ver Mais</button>
+          </a>
+        </div>
+      </div>
+    </header>
+    <section class="contador_main">
+      <div class="contador_pc">
+        <h1>OFERTA LIMITADA - <span id="contador_pc"></span></h1>
+      </div>
+      <div class="contador_mobile">
+        <h1>OFERTA LIMITADA</h1>
+        <h1 id="contador_mobile"></h1>
+      </div>
+    </section>
+    <section class="content">
+      <div class="overlay2">
+        <div class="info">
+          <h2>
+            Garante a tua experiência VIP com conforto e exclusividade. Preenche
+            o formulário para reservar teu lugar com
+            <span class="desconto">20% de Desconto</span>!
+          </h2>
+          <br />
+          <p>
+            <i class="ri-map-pin-line"></i> Localização: Rua Exemplo<br />
+            <i class="ri-phone-fill"></i> Telefone: 912345678 <br /><i
+              class="ri-mail-line"
+            ></i>
+            Email: h3x@disco.pt
+          </p>
+        </div>
+        <div class="contato" id="contato">
+          <h2>Reservar VIP</h2>
+          <form>
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Nome"
+              required
+            />
+
+            <label for="numero">Telefone</label>
+            <input
+              type="tel"
+              id="numero"
+              name="numero"
+              placeholder="Telefone"
+              pattern="[0-9]{10,15}"
+              title="Digite um número válido (10-15 dígitos)"
+              required
+            />
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required />
+
+            <label for="mensagem"
+              >Mensagem <span class="opcional">(opcional)</span></label
+            >
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              placeholder="Digita a tua mensagem"
+            ></textarea>
+
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>H3X © 2025</p>
+    </footer>
+  </body>
+  <script src="js/scripts.js"></script>
+</html>
