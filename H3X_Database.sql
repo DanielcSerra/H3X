@@ -1,25 +1,8 @@
--- --------------------------------------------------------
--- Anfitrião:                    127.0.0.1
--- Versão do servidor:           9.1.0 - MySQL Community Server - GPL
--- SO do servidor:               Win64
--- HeidiSQL Versão:              12.11.0.7065
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- A despejar estrutura da base de dados para h3x
-CREATE DATABASE IF NOT EXISTS `h3x` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `h3x` 
 USE `h3x`;
 
--- A despejar estrutura para tabela h3x.categorias_eventos
 CREATE TABLE IF NOT EXISTS `categorias_eventos` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -27,12 +10,10 @@ CREATE TABLE IF NOT EXISTS `categorias_eventos` (
   UNIQUE KEY `nome` (`nome`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.categorias_eventos: ~2 rows (aproximadamente)
 INSERT INTO `categorias_eventos` (`id`, `nome`) VALUES
 	(1, 'Techno'),
 	(2, 'House Music');
 
--- A despejar estrutura para tabela h3x.categorias_posts
 CREATE TABLE IF NOT EXISTS `categorias_posts` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
@@ -40,13 +21,11 @@ CREATE TABLE IF NOT EXISTS `categorias_posts` (
   UNIQUE KEY `nome` (`nome`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.categorias_posts: ~3 rows (aproximadamente)
 INSERT INTO `categorias_posts` (`id`, `nome`) VALUES
 	(1, 'Notícias'),
 	(2, 'Eventos Semanais'),
 	(3, 'Outros');
 
--- A despejar estrutura para tabela h3x.comentarios
 CREATE TABLE IF NOT EXISTS `comentarios` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `conteudo` text NOT NULL,
@@ -60,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.comentarios: ~13 rows (aproximadamente)
 INSERT INTO `comentarios` (`id`, `conteudo`, `data_criacao`, `id_post`, `id_utilizador`) VALUES
 	(10, 'Esta collab está insana 🔥 Adidas e techno é tudo o que eu quero!', '2025-06-14 14:11:15', 29, 9),
 	(11, 'Já quero essa T-shirt exclusiva!!', '2025-06-14 14:11:27', 29, 42),
@@ -76,18 +54,6 @@ INSERT INTO `comentarios` (`id`, `conteudo`, `data_criacao`, `id_post`, `id_util
 	(21, 'Jantei lá antes da festa, e foi tudo top. Ambiente + comida 👌', '2025-06-14 14:14:47', 24, 5),
 	(22, 'Lindo ver o reconhecimento do pessoal da luz. São eles que nos fazem sentir a música nos ossos.', '2025-06-14 14:15:03', 31, 3);
 
--- A despejar estrutura para vista h3x.comentarios_post
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `comentarios_post` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Conteúdo` TEXT NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Data/Hora` DATETIME NULL,
-	`ID Post` INT UNSIGNED NOT NULL,
-	`Título Post` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Nome` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
-);
-
--- A despejar estrutura para tabela h3x.contactos
 CREATE TABLE IF NOT EXISTS `contactos` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
@@ -102,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `contactos` (
   CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.contactos: ~6 rows (aproximadamente)
 INSERT INTO `contactos` (`id`, `nome`, `email`, `telefone`, `mensagem`, `id_utilizador`, `data_contactos`, `assunto`) VALUES
 	(3, 'aa', 'safdas@gmail.com', '123456789', '1243252352', NULL, '2025-06-04 11:26:44', '23242352345'),
 	(5, 'asdadasda', 'afsdfds@gmail.com', '123545', 'aaaaaaaaaaaaaaaaaaaaaa', NULL, '2025-06-04 11:51:14', 'asdasdasdas'),
@@ -111,18 +76,6 @@ INSERT INTO `contactos` (`id`, `nome`, `email`, `telefone`, `mensagem`, `id_util
 	(10, '111111111111111111111', '11111@1111.1111', '111111111', '11111111111111111111111111111111', NULL, '2025-06-18 11:11:42', '11111111111111111111'),
 	(11, 'alexandre Silva', 'name@gmail.com', '123456789', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', NULL, '2025-06-18 12:08:22', 'alllakakaka');
 
--- A despejar estrutura para vista h3x.contatos_detalhada
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `contatos_detalhada` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Nome` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Email` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Telefone` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Mensagem` TEXT NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Nome (Cliente)` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
-);
-
--- A despejar estrutura para tabela h3x.djs
 CREATE TABLE IF NOT EXISTS `djs` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -131,12 +84,10 @@ CREATE TABLE IF NOT EXISTS `djs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.djs: ~2 rows (aproximadamente)
 INSERT INTO `djs` (`id`, `nome`, `imagem`, `video`) VALUES
 	(1, 'DJ Tiesto', 'tiesto.jpg', 'tiesto_video.mp4'),
 	(2, 'Armin van Buuren', 'armin.jpg', 'armin_video.mp4');
 
--- A despejar estrutura para tabela h3x.eventos
 CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -150,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela h3x.eventos: ~6 rows (aproximadamente)
 INSERT INTO `eventos` (`id`, `titulo`, `data_inicio`, `data_fim`, `imagem_banner`, `video_banner`, `imagem_card`, `lineup`, `aprovado`) VALUES
 	(8, 'NECROTECH NIGHT', '2025-07-07 20:00:00', '2025-07-10 06:00:00', '6840e7f85567_artworks-000195124570-4jd3zy-t500x500-removebg-preview.png', '6840e7f85576d_1234.mp4', '6840e7f85576_Captura de ecrã 2025-04-06 145347.png', 'DJ SNTS;DJ Ø [Phase];DJ I Hate Models;DJ ¥OU$UKE ¥UK1MAT$U', 1),
 	(9, 'NEUROCHROME', '2025-07-28 22:00:00', '2025-07-30 06:00:00', '6840edfb0c93_ds#696-min-removebg-preview.png', '6840edfb0c99_background3.mp4', '6840edfb0c98_111 (1).jpg', 'Mort-X; HexError; Zerkernel; COD3NAME', 1),
@@ -159,12 +109,6 @@ INSERT INTO `eventos` (`id`, `titulo`, `data_inicio`, `data_fim`, `imagem_banner
 	(12, 'Techno Bear', '2025-09-15 08:00:00', '2025-09-16 07:59:00', '6840effa0fb2_dgdtzp-81afd847-0e4a-44b4-8d03-72c5e26a841d.png', '6840effa0fb9_background3.mp4', '6840effa0fb8_maxresdefault.jpg', 'DJ Gummy Bear; DJ Leopoldina', 1),
 	(13, 'asdasd', '2025-06-12 00:00:00', '2025-06-15 06:00:00', '68418ccf89c72_artworks-000195124570-4jd3zy-t500x500-removebg-preview 1.png', '68418ccf89c9f_Rectangle 1.png', '68418ccf89c94_abstract-colorful-party-silhouettes_1048-295.png', 'SDJSDSD ; JASDJASD ; AJSDJSAD', 1);
 
--- A despejar estrutura para vista h3x.eventos_futuros
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `eventos_futuros` 
-);
-
--- A despejar estrutura para tabela h3x.faq
 CREATE TABLE IF NOT EXISTS `faq` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(150) DEFAULT NULL,
@@ -172,15 +116,11 @@ CREATE TABLE IF NOT EXISTS `faq` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.faq: 3 rows
-/*!40000 ALTER TABLE `faq` DISABLE KEYS */;
 INSERT INTO `faq` (`id`, `titulo`, `resposta`) VALUES
 	(1, 'dtdra', 'Para redefinir sua senha, clique em "Esqueci minha senha" na página de login e siga as instruções.'),
 	(2, 'SADASD', 'ADASDASDAS'),
 	(3, '11111111111111111111', '11111111111111111111111111111111111111111111111111111111111111111111111112');
-/*!40000 ALTER TABLE `faq` ENABLE KEYS */;
 
--- A despejar estrutura para tabela h3x.imagens_galeria
 CREATE TABLE IF NOT EXISTS `imagens_galeria` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `titulo` varchar(150) DEFAULT NULL,
@@ -193,7 +133,6 @@ CREATE TABLE IF NOT EXISTS `imagens_galeria` (
   CONSTRAINT `imagens_galeria_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.imagens_galeria: ~7 rows (aproximadamente)
 INSERT INTO `imagens_galeria` (`id`, `titulo`, `imagem`, `aprovado`, `data_upload`, `id_utilizador`) VALUES
 	(16, 'O logo é brutal', '68401d9212490_borboleta2 3.png', 0, '2025-06-04 10:18:00', 16),
 	(18, 'Dj que vi esta noite', '68401e4d12195_c4e91c8cac4159f5f73369a2e8a987d5-removebg-preview.png', 1, '2025-06-04 10:21:00', 16),
@@ -203,18 +142,6 @@ INSERT INTO `imagens_galeria` (`id`, `titulo`, `imagem`, `aprovado`, `data_uploa
 	(29, 'O que faz um camelo aqui bro', '68528ad89178a_cee9b08c3f7dde984bda1583e88b4729.jpg', 1, '2025-06-18 09:44:00', 16),
 	(30, 'Definição desta disco', '68528baa11c7e_Captura de ecrã 2025-05-13 130040.png', 0, '2025-06-18 09:46:00', 16);
 
--- A despejar estrutura para vista h3x.imagens_por_aprovar
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `imagens_por_aprovar` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Título` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Imagem` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Data/Hora` DATETIME NULL,
-	`Aprovação` TINYINT(1) NULL,
-	`Nome` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
-);
-
--- A despejar estrutura para tabela h3x.mesas
 CREATE TABLE IF NOT EXISTS `mesas` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(15) NOT NULL,
@@ -222,12 +149,10 @@ CREATE TABLE IF NOT EXISTS `mesas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.mesas: ~2 rows (aproximadamente)
 INSERT INTO `mesas` (`id`, `nome`, `capacidade`) VALUES
 	(1, 'Mesa 1', 4),
 	(2, 'Mesa 2', 6);
 
--- A despejar estrutura para tabela h3x.posts
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `titulo` varchar(50) NOT NULL,
@@ -244,7 +169,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
   CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias_posts` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.posts: ~15 rows (aproximadamente)
 INSERT INTO `posts` (`id`, `titulo`, `conteudo`, `data_criacao`, `aprovado`, `id_utilizador`, `id_categoria`, `imagem`) VALUES
 	(15, 'Novos Cocktails no Bar', 'Apesar de estar a abrir agora, o H3X já promete tornar-se um dos grandes símbolos da vida noturna em Lisboa. Para celebrar a sua grande inauguração, a discoteca vai ter uma “festa memorável” já este sábado, 31 de agosto.\r\n\r\nSob o tema Neon Future, a noite promete surpreender os convidados com espetáculos envolventes e performances inesperadas que vão transformar a experiência num “evento único, extraordinário e inesquecível”, descreve a organização do espaço situado na zona de Santos.\r\n\r\nA música ficará a cargo dos famosos DJs brasileiros Bruna Lennon e Rodrigo Ribeiro. A eles juntam-se os residentes portugueses Ivo e Ricardo Coimbra, que vão garantir que “a energia na pista de dança se mantenha alta durante toda a noite”.\r\n\r\nA festa contará com a presença de mais de três mil pessoas, calculam os responsáveis pela discoteca, que tem cerca de dois mil metros quadrados. O melhor de tudo? A entrada é livre. Assim, todos poderão “fazer parte desta noite especial”, que será, simultaneamente, “a festa do ano”.\r\n\r\nAo longo dos dias, o H3X terá eventos temáticos com diferentes estilos musicais. Às quintas-feiras, por exemplo, poderá ouvir o melhor do funk brasileiro. A pop e a eletrónica também terão destaque. “As nossas festas refletem o melhor da vida noturna, combinando os sons mais atuais com DJs de renome internacional. Esta dedicação à excelência musical coloca-nos entre os melhores clubes e discotecas de Lisboa”, afirma a casa.\r\n\r\nAté ao final de setembro, o espaço estará aberto de terça-feira a sábado, da meia-noite às seis da manhã. Entre outubro e maio, poderá visitá-lo de quarta-feira a sábado, dentro do mesmo horário.\r\nAlém da pista de dança, ao lado do H3X encontra-se o Enigma, um restaurante que também oferece música ao vivo e outras performances, como dança. O espaço foi criado para proporcionar uma experiência completa, combinando gastronomia e entretenimento num só lugar.', '2025-05-15 19:30:00', 1, 16, 1, '684d74a333b20_2025-06-14_13-09-55.jpg'),
 	(22, 'HEX Thursdays', 'A H3X apresenta as HEX Thursdays, um novo conceito que vai transformar as quintas-feiras em noites obrigatórias no calendário noturno de Lisboa. Num ambiente onde a descontração se cruza com a ousadia, o clube dá palco ao melhor do funk brasileiro, reggaeton e sonoridades afro-tropicais, com DJs nacionais e internacionais a assumirem o controlo da pista.\r\n\r\nA estreia acontece já esta quinta-feira, 19 de setembro, com a presença da carioca MC Mari Cruz, referência do funk 150 BPM e conhecida por atuações que misturam sensualidade e energia eletrizante. A noite contará ainda com os sets do coletivo AfroLisba Groove, que trazem batidas africanas e sons urbanos para um início de noite vibrante.\r\n\r\n“Queremos que a quinta seja uma celebração da liberdade, do corpo e do ritmo. É para dançar sem filtros”, explica a organização da H3X. Para criar a atmosfera perfeita, o clube vai apostar numa cenografia especial com luzes quentes, projeções visuais tropicais e uma pista preparada para transpirar calor e movimento.\r\n\r\nA entrada é livre até à 1h e os primeiros 200 convidados receberão um cocktail de boas-vindas temático. O dress code para a noite convida à criatividade: "cores vivas, brilho, pele — queremos ver o verão continuar na pista", afirma a produção.\r\n\r\nAlém de HEX Thursdays, a H3X reforça que as quintas-feiras são o espaço da diversidade musical e cultural. Ao longo das semanas, nomes da cena brasileira, africana e latina vão trazer novos ritmos à cidade. “Lisboa sempre foi uma cidade aberta ao mundo. A H3X quer ser o reflexo disso”, conclui a casa.', '2025-06-14 13:42:08', 1, 1, 2, '684d6e20bd18b_2025-06-14_12-42-08.jpg'),
@@ -262,30 +186,6 @@ INSERT INTO `posts` (`id`, `titulo`, `conteudo`, `data_criacao`, `aprovado`, `id
 	(38, 'A festa Synesthesia', 'Ouvi falar da Synesthesia no Instagram e confesso que fui pela curiosidade. Uma festa que mistura som, cheiro, toque e luz? Parecia-me algo entre o estranho e o genial. Bem... posso dizer com certeza: foi genial.\r\n\r\nDesde o momento em que entrei, percebi que aquilo não era uma festa qualquer. Havia um aroma subtil a sândalo no ar, e o staff entregava pequenos frascos de óleo essencial personalizado com base no teu estado emocional (respondes a umas perguntas antes). Só isso já me desarmou. A sensação era de estar num spa techno.\r\n\r\nMas quando entrei na pista… wow. Havia zonas com texturas diferentes no chão, luzes suaves que pareciam respirar contigo, e um som que te envolvia como se estivesses dentro de uma bolha. A música era tão bem pensada — techno lento, profundo, mas que se colava ao teu corpo como seda. Às vezes sentia uma mão com tecido nas costas ou nos braços — performers discretos, quase invisíveis, que te tocavam suavemente enquanto dançavas.\r\n\r\nFoi sensorialmente poderoso. Tive momentos de êxtase, introspeção e pura alegria. Nunca pensei que uma discoteca pudesse mexer tanto comigo. Saí de lá com vontade de voltar e de recomendar a toda a gente.\r\n\r\nParabéns, H3X. Isto é o futuro.', '2025-06-14 14:07:48', 0, 42, 3, '684d7424aa81e_2025-06-14_13-07-48.webp'),
 	(39, 'A H3X animou-me', 'Sou frequentador assíduo de clubes desde que me lembro. Mas, nos últimos tempos, sentia que tudo soava ao mesmo: os mesmos DJs, os mesmos sons, a mesma pose. A H3X foi uma bofetada de frescura — no melhor sentido.\r\n\r\nFui pela primeira vez a uma noite temática chamada “Electric Bloom”, com um conceito visual de flores mutantes e estética cyberpunk. Não fazia ideia do que esperar. Entrei sozinho, com curiosidade, e saí com a sensação de que dancei durante horas sem parar. A música era pura eletricidade emocional: o DJ (que descobri depois que era o Ricardo Coimbra) fez uma progressão sonora tão fluida que nem percebi quando saí do warm-up para o pico da noite.\r\n\r\nO que mais me marcou, no entanto, foi o público. Ninguém ali estava a tentar parecer cool. As pessoas estavam ali para dançar de verdade. Vi movimentos espontâneos, genuínos, livres. Eu próprio dei por mim a libertar gestos que já não usava há anos. Senti-me em casa.\r\n\r\nQuando saí, já o sol nascia, e ainda havia gente lá dentro. Aquela noite ficou comigo — no corpo e na alma. A H3X devolveu-me o que achava que a noite lisboeta tinha perdido: autenticidade e prazer cru em dançar.', '2025-06-14 14:09:23', 0, 42, 3, '684d7483936ec_2025-06-14_13-09-23.webp');
 
--- A despejar estrutura para vista h3x.posts_por_aprovar
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `posts_por_aprovar` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Título` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Conteúdo` TEXT NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Data/Hora` DATETIME NULL,
-	`Aprovação` TINYINT(1) NULL,
-	`Nome` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Categoria` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
-);
-
--- A despejar estrutura para vista h3x.reservas_vip
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `reservas_vip` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Mesa` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Capacidade` INT UNSIGNED NULL,
-	`Mensagem` TEXT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Data` DATE NOT NULL,
-	`Nome` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
-);
-
--- A despejar estrutura para tabela h3x.servicos_vip
 CREATE TABLE IF NOT EXISTS `servicos_vip` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) NOT NULL,
@@ -294,14 +194,12 @@ CREATE TABLE IF NOT EXISTS `servicos_vip` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.servicos_vip: ~4 rows (aproximadamente)
 INSERT INTO `servicos_vip` (`id`, `titulo`, `imagem`, `criado_em`) VALUES
 	(1, 'eeeee', 'Garrafa.png', '2025-05-14 21:57:30'),
 	(2, 'Maior confor', 'Conforto.png', '2025-05-14 21:57:30'),
 	(4, '12121', '68418c6c297b7_2025-06-05_12-24-12_artworks-000195124570-4jd3zy-t500x500-removebg-preview 1.png', '2025-06-05 12:24:12'),
 	(5, 'SFSV', '68529f331b565_2025-06-18_11-12-51_Captura de ecrã 2024-09-19 142227.png', '2025-06-18 11:12:51');
 
--- A despejar estrutura para tabela h3x.utilizadores
 CREATE TABLE IF NOT EXISTS `utilizadores` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -317,7 +215,6 @@ CREATE TABLE IF NOT EXISTS `utilizadores` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.utilizadores: ~19 rows (aproximadamente)
 INSERT INTO `utilizadores` (`id`, `nome`, `email`, `telefone`, `pass`, `data_nascimento`, `tipo`, `estado`, `ultima_atividade`, `foto`) VALUES
 	(1, 'Ana Ferreira', 'ana.ferreira@gmail.com', '919525148', '6a0d81964747b912ae73dbb78e53fe3307c89cb327954d64ef5162d45be82d3ab07033e9408a7efc9d19a7718503bde61d8ea9a8075e9de5da6c152d18fe5d9b', '2002-08-06', 'f', 'd', '2025-06-14 11:31:46', '684d6bb206b24_2025-06-14_12-31-46.webp'),
 	(2, 'Tiago Ramos', 'tiago.ramos@gmail.com', '914679134', 'bbd64889a20c97863b24b3080640eb09e6628cd350b44c86eb224c38901589f6ab3b06170a58ef94c4ef5de64b7e38b5a8a12991bb09f64b4913e8cb0f0c5e69', '2000-09-04', 'c', 'd', '2025-06-14 11:29:21', ''),
@@ -334,21 +231,11 @@ INSERT INTO `utilizadores` (`id`, `nome`, `email`, `telefone`, `pass`, `data_nas
 	(13, 'Sofia Teixeira', 'sofia.teixeira@gmail.com', '912487350', '0271878e47ab45f5b948c1f7b6e5eeec7c6d99d3c79e83c0b07e349ceadf994fa02fa844f73a447206a1ebbe769ed61e6934c31e04bd1c541c768b65ccf1b68c', '1989-10-14', 'c', 'd', '2025-06-14 11:29:26', ''),
 	(14, 'Bruno Neves', 'bruno.neves@gmail.com', '913244551', '37b2a7a4f75d9e13e1bfb8e84cf03c6a86f3c26a7a29c7162b7e144a81c4a3cc63f34f8d8d0aa5fa4372a2a7ef6b7760a1b34aebbd54015f79a7f726cdd2354e', '1986-11-02', 'c', 'd', '2025-05-02 14:31:00', ''),
 	(15, 'Helena Cruz', 'helena.cruz@gmail.com', '914127888', '3cc48601a2512ef58cb8591e4f3b44b17795ce791cb9c98e80f4cecd8d755d3c512d4589b6177f25c2b671fa96bcf4f5f6cc8d199abb69a1eebd407bf0ef5b9f', '2000-04-18', 'c', 'd', '2025-05-10 07:17:00', ''),
-	(16, 'Admin2', 'admin@gmail.com', '914127888', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2000-04-06', 'a', 'a', '2025-06-18 11:17:41', '684d6bc53ea8d_2025-06-14_12-32-05.jpg'),
+	(16, 'Admin', 'admin@gmail.com', '914127888', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2000-04-06', 'a', 'a', '2025-06-18 11:17:41', '684d6bc53ea8d_2025-06-14_12-32-05.jpg'),
 	(28, 'Filipe Vieira', 'filipe@gmail.com', '912345678', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '1999-05-21', 'c', 'd', '2025-06-14 11:29:56', ''),
 	(41, 'Funcionário', 'funcionario@gmail.com', '', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2005-05-09', 'f', 'd', '2025-06-14 11:27:27', '684d6aafc0478_2025-06-14_12-27-27.jpg'),
 	(42, 'Cliente', 'cliente@gmail.com', '973456765', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2009-02-03', 'c', 'd', '2025-06-14 11:28:54', '684d6b067662c_2025-06-14_12-28-54.jpg');
 
--- A despejar estrutura para vista h3x.utilizadores_ativos
--- A criar tabela temporária para vencer erros de dependências VIEW
-CREATE TABLE `utilizadores_ativos` (
-	`ID` INT UNSIGNED NOT NULL,
-	`Nome` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Tipo` ENUM('c','f','a') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`Ultima` TIMESTAMP NULL
-);
-
--- A despejar estrutura para tabela h3x.vip
 CREATE TABLE IF NOT EXISTS `vip` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `id_mesa` int unsigned NOT NULL,
@@ -362,7 +249,6 @@ CREATE TABLE IF NOT EXISTS `vip` (
   CONSTRAINT `vip_ibfk_2` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.vip: ~6 rows (aproximadamente)
 INSERT INTO `vip` (`id`, `id_mesa`, `mensagem`, `data_reserva`, `id_utilizador`) VALUES
 	(1, 1, 'Reserva para o aniversário de João', '2025-05-10', 1),
 	(2, 2, 'Reserva para evento VIP', '2025-06-12', 2),
@@ -371,7 +257,6 @@ INSERT INTO `vip` (`id`, `id_mesa`, `mensagem`, `data_reserva`, `id_utilizador`)
 	(6, 2, 'Bananinhas', '2025-06-25', 37),
 	(7, 2, 'RODRIGO FERREIRAAAAAAAAAAAAAA', '2025-06-02', 16);
 
--- A despejar estrutura para tabela h3x.vip_mesas
 CREATE TABLE IF NOT EXISTS `vip_mesas` (
   `id_vip` int unsigned NOT NULL,
   `id_mesas` int unsigned NOT NULL,
@@ -381,48 +266,31 @@ CREATE TABLE IF NOT EXISTS `vip_mesas` (
   CONSTRAINT `vip_mesas_ibfk_2` FOREIGN KEY (`id_mesas`) REFERENCES `mesas` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- A despejar dados para tabela h3x.vip_mesas: ~2 rows (aproximadamente)
 INSERT INTO `vip_mesas` (`id_vip`, `id_mesas`) VALUES
 	(1, 1),
 	(2, 2);
 
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `comentarios_post`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `comentarios_post` AS select `comentarios`.`id` AS `ID`,`comentarios`.`conteudo` AS `Conteúdo`,`comentarios`.`data_criacao` AS `Data/Hora`,`posts`.`id` AS `ID Post`,`posts`.`titulo` AS `Título Post`,`utilizadores`.`nome` AS `Nome` from ((`comentarios` join `posts` on((`comentarios`.`id_post` = `posts`.`id`))) join `utilizadores` on((`comentarios`.`id_utilizador` = `utilizadores`.`id`)))
 ;
 
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `contatos_detalhada`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `contatos_detalhada` AS select `contactos`.`id` AS `ID`,`contactos`.`nome` AS `Nome`,`contactos`.`email` AS `Email`,`contactos`.`telefone` AS `Telefone`,`contactos`.`mensagem` AS `Mensagem`,`utilizadores`.`nome` AS `Nome (Cliente)` from (`contactos` left join `utilizadores` on((`contactos`.`id_utilizador` = `utilizadores`.`id`)))
 ;
 
--- A remover tabela temporária e a criar estrutura VIEW final
-DROP TABLE IF EXISTS `eventos_futuros`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `eventos_futuros` AS select `eventos`.`id` AS `ID`,`eventos`.`titulo` AS `Título`,`eventos`.`data_inicio` AS `Data início`,`eventos`.`data_fim` AS `Data fim`,`eventos`.`hora_inicio` AS `Hora início`,`eventos`.`hora_fim` AS `Hora fim` from `eventos` where (`eventos`.`data_inicio` >= curdate())
-;
-
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `imagens_por_aprovar`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `imagens_por_aprovar` AS select `imagens_galeria`.`id` AS `ID`,`imagens_galeria`.`titulo` AS `Título`,`imagens_galeria`.`imagem` AS `Imagem`,`imagens_galeria`.`data_upload` AS `Data/Hora`,`imagens_galeria`.`aprovado` AS `Aprovação`,`utilizadores`.`nome` AS `Nome` from (`imagens_galeria` join `utilizadores` on((`imagens_galeria`.`id_utilizador` = `utilizadores`.`id`))) where (`imagens_galeria`.`aprovado` = false)
 ;
 
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `posts_por_aprovar`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `posts_por_aprovar` AS select `posts`.`id` AS `ID`,`posts`.`titulo` AS `Título`,`posts`.`conteudo` AS `Conteúdo`,`posts`.`data_criacao` AS `Data/Hora`,`posts`.`aprovado` AS `Aprovação`,`utilizadores`.`nome` AS `Nome`,`categorias_posts`.`nome` AS `Categoria` from ((`posts` join `utilizadores` on((`posts`.`id_utilizador` = `utilizadores`.`id`))) join `categorias_posts` on((`posts`.`id_categoria` = `categorias_posts`.`id`))) where (`posts`.`aprovado` = false)
 ;
 
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `reservas_vip`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `reservas_vip` AS select `vip`.`id` AS `ID`,`mesas`.`nome` AS `Mesa`,`mesas`.`capacidade` AS `Capacidade`,`vip`.`mensagem` AS `Mensagem`,`vip`.`data_reserva` AS `Data`,`utilizadores`.`nome` AS `Nome` from ((`vip` join `mesas` on((`vip`.`id_mesa` = `mesas`.`id`))) join `utilizadores` on((`vip`.`id_utilizador` = `utilizadores`.`id`)))
 ;
 
--- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `utilizadores_ativos`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `utilizadores_ativos` AS select `utilizadores`.`id` AS `ID`,`utilizadores`.`nome` AS `Nome`,`utilizadores`.`tipo` AS `Tipo`,`utilizadores`.`ultima_atividade` AS `Ultima` from `utilizadores` where (`utilizadores`.`estado` = 'a')
 ;
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
