@@ -270,8 +270,8 @@ DROP TABLE IF EXISTS `comentarios_post`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `comentarios_post` AS select `comentarios`.`id` AS `ID`,`comentarios`.`conteudo` AS `Conteúdo`,`comentarios`.`data_criacao` AS `Data/Hora`,`posts`.`id` AS `ID Post`,`posts`.`titulo` AS `Título Post`,`utilizadores`.`nome` AS `Nome` from ((`comentarios` join `posts` on((`comentarios`.`id_post` = `posts`.`id`))) join `utilizadores` on((`comentarios`.`id_utilizador` = `utilizadores`.`id`)))
 ;
 
-DROP TABLE IF EXISTS `contatos_detalhada`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `contatos_detalhada` AS select `contactos`.`id` AS `ID`,`contactos`.`nome` AS `Nome`,`contactos`.`email` AS `Email`,`contactos`.`telefone` AS `Telefone`,`contactos`.`mensagem` AS `Mensagem`,`utilizadores`.`nome` AS `Nome (Cliente)` from (`contactos` left join `utilizadores` on((`contactos`.`id_utilizador` = `utilizadores`.`id`)))
+DROP VIEW IF EXISTS `contatos_detalhada`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `contatos_detalhada` AS SELECT id AS ID,nome AS Nome,email AS Email,telefone AS Telefone,mensagem AS Mensagem FROM contactos
 ;
 
 DROP TABLE IF EXISTS `imagens_por_aprovar`;
