@@ -217,10 +217,10 @@ CREATE TABLE IF NOT EXISTS `servicos_vip` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `servicos_vip` (`id`, `titulo`, `imagem`, `criado_em`) VALUES
-	(1, 'eeeee', 'Garrafa.png', '2025-05-14 21:57:30'),
-	(2, 'Maior confor', 'Conforto.png', '2025-05-14 21:57:30'),
-	(4, '12121', '68418c6c297b7_2025-06-05_12-24-12_artworks-000195124570-4jd3zy-t500x500-removebg-preview 1.png', '2025-06-05 12:24:12'),
-	(5, 'SFSV', '68529f331b565_2025-06-18_11-12-51_Captura de ecrã 2024-09-19 142227.png', '2025-06-18 11:12:51');
+	(1, 'Estacionamento VIP Gratuito', 'car.png', '2025-05-14 21:57:30'),
+	(2, '2 Garrafas Premium', 'Garrafa.png', '2025-05-14 21:57:30'),
+	(4, 'Conhece os DJs', 'Dj.png', '2025-06-05 12:24:12'),
+	(5, 'Zona VIP Reservada', 'Conforto.png', '2025-06-18 11:12:51');
 
 CREATE TABLE IF NOT EXISTS `mesas` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -231,7 +231,9 @@ CREATE TABLE IF NOT EXISTS `mesas` (
 
 INSERT INTO `mesas` (`id`, `nome`, `capacidade`) VALUES
 	(1, 'Mesa 1', 4),
-	(2, 'Mesa 2', 6);
+	(2, 'Mesa 2', 6),
+  (3, 'Mesa 3', 4),
+	(4, 'Mesa 4', 6);
 
 CREATE TABLE IF NOT EXISTS `vip` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -247,12 +249,21 @@ CREATE TABLE IF NOT EXISTS `vip` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `vip` (`id`, `id_mesa`, `mensagem`, `data_reserva`, `id_utilizador`) VALUES
-	(1, 1, 'Reserva para o aniversário de João', '2025-05-10', 1),
-	(2, 2, 'Reserva para evento VIP', '2025-06-12', 2),
-	(3, 1, '123', '2025-06-12', 16),
-	(5, 2, 'ola antonio', '2025-06-17', 28),
-	(6, 2, 'Bananinhas', '2025-06-25', 13),
-	(7, 2, 'RODRIGO FERREIRAAAAAAAAAAAAAA', '2025-06-02', 16);
+    (1, 1, 'Reserva para o aniversário de João', '2025-05-10', 1),
+    (2, 2, NULL, '2025-06-12', 2),
+    (3, 1, 'Jantar de negócios - Pedro Silva', '2025-06-12', 16),
+    (4, 3, NULL, '2025-06-15', 10),
+    (5, 2, 'Olá António, reserva confirmada', '2025-06-17', 15),
+    (6, 2, NULL, '2025-06-25', 13),
+    (7, 3, 'Reserva para jantar de despedida', '2025-06-02', 9),
+    (8, 4, NULL, '2025-07-01', 15),
+    (9, 2, 'Reunião com clientes importantes', '2025-07-03', 8),
+    (10, 3, NULL, '2025-07-05', 7),
+    (11, 1, 'Noite especial para o Pedro', '2025-07-10', 14),
+    (12, 4, NULL, '2025-07-12', 3),
+    (13, 1, 'Reserva para grupo de amigos', '2025-07-15', 11),
+    (14, 2, NULL, '2025-07-18', 3),
+    (15, 3, 'Reunião de projeto com a equipa', '2025-07-20', 5);
 
 
 DROP TABLE IF EXISTS `comentarios_post`;

@@ -69,74 +69,78 @@ require 'partials/header.php';
             ?>
 
             <?php if ($result && $result->num_rows > 0): ?>
-            <table id="svipTable" class="display table table-striped table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome Utilizador</th>
-                        <th>Mesa</th>
-                        <th>Telemóvel</th>
-                        <th>Email</th>
-                        <th>Mensagem</th>
-                        <th>Data Reserva</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($reserva = $result->fetch_object()):
+                <table id="svipTable" class="display table table-striped table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome Utilizador</th>
+                            <th>Mesa</th>
+                            <th>Telemóvel</th>
+                            <th>Email</th>
+                            <th>Mensagem</th>
+                            <th>Data Reserva</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($reserva = $result->fetch_object()):
                             $id = $reserva->id;
                             $nome = $reserva->nome_utilizador ?? 'Sem nome';
                             $telefone = $reserva->telefone ?? '';
                             $email = $reserva->email ?? '';
                             $nome_mesa = $reserva->nome_mesa ?? 'Sem mesa';
-                            $mensagem_resumida = mb_strimwidth(strip_tags($reserva->mensagem), 0, 80, '...');
-                            $data_reserva = $reserva->data_reserva ?? '';
-                    ?>
-                    <tr>
-                        <td><?= $id ?></td>
-                        <td><?= trim($nome) ?></td>
-                        <td><?= trim($nome_mesa) ?></td>
-                        <td><?= trim($telefone) ?></td>
-                        <td><?= trim($email) ?></td>
-                        <td>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#mensagemModal<?= $id ?>">
-                                <?= trim($mensagem_resumida) ?>
-                            </a>
+                            $mensagem_resumida = !empty(trim($reserva->mensagem ?? ''))
+                                ? mb_strimwidth(strip_tags($reserva->mensagem ?? ''), 0, 80, '...')
+                                : 'Sem mensagem';
 
-                            <div class="modal fade" id="mensagemModal<?= $id ?>" tabindex="-1"
-                                aria-labelledby="mensagemModalLabel<?= $id ?>" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="mensagemModalLabel<?= $id ?>">Mensagem de
-                                                <?= trim($nome) ?></h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Fechar"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><?= nl2br(trim(trim($reserva->mensagem))) ?></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Fechar</button>
+                            $data_reserva = $reserva->data_reserva ?? '';
+                            ?>
+                            <tr>
+                                <td><?= $id ?></td>
+                                <td><?= trim($nome) ?></td>
+                                <td><?= trim($nome_mesa) ?></td>
+                                <td><?= trim($telefone) ?></td>
+                                <td><?= trim($email) ?></td>
+                                <td>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#mensagemModal<?= $id ?>">
+                                        <?= trim($mensagem_resumida) ?>
+                                    </a>
+
+                                    <div class="modal fade" id="mensagemModal<?= $id ?>" tabindex="-1"
+                                        aria-labelledby="mensagemModalLabel<?= $id ?>" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="mensagemModalLabel<?= $id ?>">Mensagem de
+                                                        <?= trim($nome) ?>
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Fechar"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><?= nl2br(trim($reserva->mensagem ?? '')) ?></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td><?= trim($data_reserva) ?></td>
-                        <td>
-                            <a href="admin_vip_edit.php?id=<?= urlencode($id) ?>" title="Editar"><i
-                                    class="fas fa-pen-to-square text-warning"></i></a>
-                            <a href="admin_vip_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
-                                    class="fas fa-trash text-danger"></i></a>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+                                </td>
+                                <td><?= trim($data_reserva) ?></td>
+                                <td>
+                                    <a href="admin_vip_edit.php?id=<?= urlencode($id) ?>" title="Editar"><i
+                                            class="fas fa-pen-to-square text-warning"></i></a>
+                                    <a href="admin_vip_delete.php?id=<?= urlencode($id) ?>" title="Apagar" class="ms-2"><i
+                                            class="fas fa-trash text-danger"></i></a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
             <?php else: ?>
-            <p class="alert alert-warning">Sem reservas VIP encontradas.</p>
+                <p class="alert alert-warning">Sem reservas VIP encontradas.</p>
             <?php endif; ?>
 
         </div>
