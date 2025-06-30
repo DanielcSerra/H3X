@@ -121,7 +121,7 @@ require 'partials/header.php';
                 <div class="mb-3">
                     <label for="mensagem" class="form-label">Mensagem</label>
                     <textarea class="form-control" id="mensagem" name="mensagem" rows="4"
-                        required><?= trim($_POST["mensagem"] ?? $reserva["mensagem"]) ?></textarea>
+                        required><?= trim($_POST["mensagem"] ?? ($reserva["mensagem"] ?? '')) ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Data da Reserva</label>
