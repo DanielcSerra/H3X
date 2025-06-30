@@ -52,7 +52,9 @@ INSERT INTO `comentarios` (`id`, `conteudo`, `data_criacao`, `id_post`, `id_util
 	(19, 'Sou fã dos dois há anos! Ver os dois juntos na H3X vai ser mágico ✨', '2025-06-14 14:14:24', 28, 9),
 	(20, 'Ivo + Ricardo = destruição total na pista! 🔊', '2025-06-14 14:14:29', 28, 15),
 	(21, 'Jantei lá antes da festa, e foi tudo top. Ambiente + comida 👌', '2025-06-14 14:14:47', 24, 5),
-	(22, 'Lindo ver o reconhecimento do pessoal da luz. São eles que nos fazem sentir a música nos ossos.', '2025-06-14 14:15:03', 31, 3);
+	(22, 'Lindo ver o reconhecimento do pessoal da luz. São eles que nos fazem sentir a música nos ossos.', '2025-06-14 14:15:03', 31, 3),
+  (23, 'Opinião muito boa!', '2025-06-14 14:11:15', 39, 9),
+	(24, 'A festa foi top!', '2025-06-14 14:11:27', 39, 42);
 
 CREATE TABLE IF NOT EXISTS `contactos` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
