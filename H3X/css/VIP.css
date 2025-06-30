@@ -82,9 +82,8 @@ p {
 
 .botao img {
   position: absolute;
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
-  display: block;
   margin: 0 auto;
 }
 
@@ -115,13 +114,6 @@ p {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-.form-botao h2 {
-  color: white;
-}
-
-.form-botao button {
-  border-image: "img/caixabranca.png";
-}
 
 .botao-link {
   text-decoration: none;
@@ -146,7 +138,7 @@ p {
   margin-bottom: 30px;
   color: rgb(255, 255, 255);
   font-family: Aldrich, sans-serif;
-  font-size: clamp(32px, 8vw, 96px);
+  font-size: clamp(32px, 8vw, 80px);
   color: transparent;
   -webkit-text-stroke: 2px rgb(0, 0, 0);
 }

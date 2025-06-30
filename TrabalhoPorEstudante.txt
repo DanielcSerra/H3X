@@ -1,0 +1,19 @@
+Alexandre Silva - 2241755
+Front-Office(seguranca,faq,contactos)
+Back-Office(faq,contactos)
+
+Daniel Serra - 2242571
+Front-Office(arcade,blog,post,login,profile)
+Back-Office(dashboard,utilizadores,posts,comentarios,categorias_posts)
+
+Duarte Santos - 2241735
+Front-Office(galeria,sobrenos)
+Back-Office(galeria)
+
+Rodrigo Ferreira - 2241758
+Front-Office(equipa,vip,termos)
+Back-Office(vip_servicos,vip)
+
+Rodrigo Cruz - 2242943
+Front-Office(eventos,como chegar,index)
+Back-Office(eventos)

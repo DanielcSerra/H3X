@@ -93,7 +93,7 @@ $mesas = $conn->query("SELECT id, nome FROM mesas");
             <form method="POST" class="bg-white p-4 rounded shadow-sm" style="max-width:600px; margin:auto;">
                 <div class="mb-3">
                     <label class="form-label">Mesa</label>
-                    <select name="id_mesas" class="form-select" required>
+                    <select name="id_mesa" class="form-select" required>
                         <option value="">-- Selecionar Mesa --</option>
                         <?php foreach ($mesas as $row): ?>
                         <option value="<?= $row['id'] ?>"><?= trim($row['nome']) ?></option>
