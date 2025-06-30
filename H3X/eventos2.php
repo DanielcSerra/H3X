@@ -13,7 +13,7 @@ $queryBanner = "SELECT * FROM eventos WHERE data_inicio >= '$hoje' ORDER BY data
 $resultBanner = mysqli_query($conn, $queryBanner);
 
 if (mysqli_num_rows($resultBanner) === 0) {
-    
+    // Se não houver evento futuro, pega o mais recente do passado
     $queryBanner = "SELECT * FROM eventos WHERE data_inicio < '$hoje' ORDER BY data_inicio DESC LIMIT 1";
     $resultBanner = mysqli_query($conn, $queryBanner);
 }
@@ -44,7 +44,7 @@ if (mysqli_num_rows($result) === 0) {
 
 $evento = mysqli_fetch_assoc($result);
 
-
+// Format dates
 $startDate = new DateTime($evento['data_inicio']);
 $endDate = new DateTime($evento['data_fim']);
 $formattedDate = $startDate->format('d') . '-' . $endDate->format('d') . ' de ' . $startDate->format('F');
@@ -58,7 +58,7 @@ $formattedTime = $startDate->format('H:i') . ' - ' . $endDate->format('H:i');
     <title>H3X - Eventos2</title>
     <link rel="stylesheet" href="css/eventos2.css">
     <script async
-        src="https:
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRKosi_QbT8SoLjpqlJ7D5TuvaFvebKc&callback=console.debug&libraries=maps,marker&v=beta"></script>
 </head>
 <body>
     <?php include 'partials/navbar.php'; ?>
