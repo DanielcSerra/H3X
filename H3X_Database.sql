@@ -200,13 +200,22 @@ CREATE TABLE IF NOT EXISTS `imagens_galeria` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `imagens_galeria` (`id`, `titulo`, `imagem`, `aprovado`, `data_upload`, `id_utilizador`) VALUES
-	(16, 'O logo é brutal', '68401d9212490_borboleta2 3.png', 0, '2025-06-04 10:18:00', 16),
-	(18, 'Dj que vi esta noite', '68401e4d12195_c4e91c8cac4159f5f73369a2e8a987d5-removebg-preview.png', 1, '2025-06-04 10:21:00', 16),
-	(24, 'olhaaqui', '684fefc9b87d5_abstract-colorful-party-silhouettes_1048-295-removebg-preview.png', 0, '2025-06-16 11:19:53', 16),
-	(27, 'Old school h3x', '68528a426ecaa_Captura de ecrã 2025-03-25 093759.png', 1, '2025-06-18 09:42:00', 16),
-	(28, 'Praia fixe', '68528a631bd86_Captura de ecrã 2025-03-27 152842.png', 1, '2025-06-18 09:43:00', 16),
-	(29, 'O que faz um camelo aqui bro', '68528ad89178a_cee9b08c3f7dde984bda1583e88b4729.jpg', 1, '2025-06-18 09:44:00', 16),
-	(30, 'Definição desta disco', '68528baa11c7e_Captura de ecrã 2025-05-13 130040.png', 0, '2025-06-18 09:46:00', 16);
+(1, 'O logo é brutal', '68401d9212490_borboleta2 3.png', 1, '2025-06-04 10:18:00', 1),
+(2, 'Dj que vi esta noite', '68401e4d12195_c4e91c8cac4159f5f73369a2e8a987d5-removebg-preview.png', 1, '2025-06-04 10:21:00', 11),
+(3, 'Old school h3x', '68528a426ecaa_Captura de ecrã 2025-03-25 093759.png', 1, '2025-06-18 09:42:00', 10),
+(4, 'Definição desta disco', '68528baa11c7e_Captura de ecrã 2025-05-13 130040.png', 1, '2025-06-18 09:46:00', 15),
+(5, 'Foi uma boa noite', '686302f71e367_pexels-cottonbro-10188456.jpg', 1, '2025-06-30 21:13:00', 14),
+(6, 'bar é muito bom', '68630346771de_pexels-rdne-6174011.jpg', 1, '2025-06-30 21:34:00', 12),
+(7, 'Uns copos com o meu amigo', '6863035e3c074_pexels-mart-production-7270917.jpg', 1, '2025-06-30 21:36:00', 4),
+(8, 'Este dj tem aura', '6863036e01cc9_pexels-gustavo-h-328143-922322.jpg', 1, '2025-06-30 21:36:00', 1),
+(10, 'Dj que vi esta noite', '68401e4d12195_c4e91c8cac4159f5f73369a2e8a987d5-removebg-preview.png', 1, '2025-06-04 10:21:00', 11),
+(35, 'Sempre adorei este bar', '6863040948ba0_pexels-chanwalrus-941864.jpg', 1, '2025-06-30 21:39:00', 8),
+(36, 'Esta vibe meu deus', '6863042943f3c_pexels-maxandrey-1979252.jpg', 1, '2025-06-30 21:39:00', 28),
+(37, 'concerto hype', '68630442b8a42_pexels-doubleseven-736355.jpg', 1, '2025-06-30 21:40:00', 9),
+(38, 'Eu na noite passada', '686304a75a79f_pexels-mediocrememories-2240772.jpg', 1, '2025-06-30 21:41:00', 4),
+(39, 'Amigos para sempre', '686304bacd831_pexels-yankrukov-9005485.jpg', 1, '2025-06-30 21:42:00', 15),
+(40, 'Dj americano?', '686304c997974_pexels-maumascaro-1716400.jpg', 1, '2025-06-30 21:42:00', 12);
+
 
 CREATE TABLE IF NOT EXISTS `servicos_vip` (
   `id` int NOT NULL AUTO_INCREMENT,
