@@ -159,6 +159,65 @@ textarea.form-control {
   color: #fff;
 }
 
+.botao-faqs1 {
+  display: inline-block;
+  padding: 15px 30px;
+  background-image: url('../img/caixabranca.png');
+  background-color: transparent;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-family: 'Laceration', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition:  0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.botao-faqs1:hover {
+  transform: scale(1.03);
+}
+
+.botao-faqs1 h2 {
+  font-family: 'Laceration', sans-serif;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+
+.botao-faqs {
+  display: inline-block;
+  padding: 15px 30px;
+  background-image: url('../img/caixabranca.png');
+  background-size: cover;
+  color: white;
+  text-decoration: none;
+  font-family: 'Laceration', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.botao-faqs:hover {
+  transform: scale(1.03);
+}
+
+.botao-faqs h2 {
+  font-family: 'Laceration', sans-serif;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
 
 /* Responsividade */
 @media (max-width: 768px) {
