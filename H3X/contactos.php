@@ -10,8 +10,9 @@ require_once "admin/ultima_atividade.php";
   <?php include 'partials/head.php'; ?>
   <title>H3X - Contactos</title>
 
-  <link rel="stylesheet" href="css/contato.css">
+  
   <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/contato.css">
   <?php
   $success = "";
   $errors = [];
@@ -159,8 +160,10 @@ require_once "admin/ultima_atividade.php";
       </div>
     </div>
   </section>
-  <div class="mapa_container">
+  <div class="mapa_container"
+>
     <div class="mapa_discoteca">
+    <h1 class="texto-alinhado">Mapa</h1>
       <div class="mapa_escuro">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.228507335417!2d-8.825259736107782!3d39.73451765260679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd22735a4e067afb%3A0xcfaf619f4450fa76!2sPolit%C3%A9cnico%20de%20Leiria%20%7C%20ESTG%20-%20Escola%20Superior%20de%20Tecnologia%20e%20Gest%C3%A3o_Edif%C3%ADcio%20D!5e0!3m2!1spt-PT!2spt!4v1748532881324!5m2!1spt-PT!2spt"
@@ -214,6 +217,17 @@ require_once "admin/ultima_atividade.php";
   </section>
 </div>
 
+<div class="container">
+        <!-- Codigo Aqui -->
+        <div class="contactos">
+            <h2>Precisa de ajuda?</h2>
+            <p class="pmaior">Entre em contacto connosco</p>
+            <div class="botao2">
+                <img src="img/caixabranca.png">
+                <h2>CONTACTOS</h2>
+            </div>
+        </div>
+    </div>
 
 
   <?php include 'partials/footer.php'; ?>
