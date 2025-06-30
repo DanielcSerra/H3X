@@ -28,13 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION["errors"] = [];
     $titulo = trim($_POST["titulo"] ?? "");
     $datainic = $_POST["datainic"] ?? date("Y-m-d H:i:s");
-
     $datainic = str_replace('T', ' ', $datainic);
-
     $datafin = $_POST["datafin"] ?? date("Y-m-d H:i:s");
-
     $datafin = str_replace('T', ' ', $datafin);
-
+    $videoyt = trim($_POST["videoyt"] ?? "");
     $lineup = trim($_POST["lineup"] ?? "");
     
     if (empty($titulo)) {
@@ -45,11 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["errors"][] = "Erro ao carregar a imagem.";
     }
 
-     if (!isset($_FILES["imgfile2"]) || $_FILES["imgfile2"]["error"] !== UPLOAD_ERR_OK) {
+    if (!isset($_FILES["imgfile2"]) || $_FILES["imgfile2"]["error"] !== UPLOAD_ERR_OK) {
         $_SESSION["errors"][] = "Erro ao carregar a imagem.";
     }
 
-     if (!isset($_FILES["imgfile3"]) || $_FILES["imgfile3"]["error"] !== UPLOAD_ERR_OK) {
+    if (!isset($_FILES["imgfile3"]) || $_FILES["imgfile3"]["error"] !== UPLOAD_ERR_OK) {
         $_SESSION["errors"][] = "Erro ao carregar o vídeo.";
     }
 
@@ -58,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (empty($_SESSION["errors"])) {
-
         $imagem1 = uniqid() . "_" . basename($_FILES["imgfile"]["name"]);
         $imagem2 = uniqid() . "_" . basename($_FILES["imgfile2"]["name"]);
         $video = uniqid() . "_" . basename($_FILES["imgfile3"]["name"]);
@@ -67,8 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $upload_path2 = "../uploads/Eventos/" . $imagem2;
         $upload_path3 = "../uploads/Eventos/" . $video;
         
-
-
         if (
             move_uploaded_file($_FILES["imgfile"]["tmp_name"], $upload_path1) &&
             move_uploaded_file($_FILES["imgfile2"]["tmp_name"], $upload_path2) &&
@@ -80,15 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $videoEscaped = $conn->real_escape_string($video);
             $datainicEscaped = $conn->real_escape_string($datainic);
             $datafinEscaped = $conn->real_escape_string($datafin);
+            $videoytEscaped = $conn->real_escape_string($videoyt);
             $lineupEscaped = $conn->real_escape_string($lineup);
 
-            
             $sql = "INSERT INTO eventos (
-                titulo, data_inicio, data_fim, imagem_banner, imagem_card, video_banner, lineup, aprovado
+                titulo, data_inicio, data_fim, imagem_banner, imagem_card, video_banner, videoyt, lineup
             ) VALUES (
                 '$tituloEscaped', '$datainicEscaped', '$datafinEscaped',
                 '$imagem1Escaped', '$imagem2Escaped', '$videoEscaped',
-                '$lineupEscaped', 1
+                '$videoytEscaped', '$lineupEscaped'
             )";
             
             if ($conn->query($sql)) {
@@ -164,7 +158,12 @@ require 'partials/header.php';
 
                         <div class="mb-3">
                             <label for="imgfile3" class="form-label">Video</label>
-                            <input type="file" class="form-control" id="imgfile3" name="imgfile3" accept="image/*" required>
+                            <input type="file" class="form-control" id="imgfile3" name="imgfile3" accept="video/*" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="videoyt" class="form-label">YouTube Video URL</label>
+                            <input type="url" class="form-control" id="videoyt" name="videoyt" value="<?= htmlspecialchars($_POST['videoyt'] ?? '') ?>" placeholder="https://www.youtube.com/watch?v=...">
                         </div>
 
                         <div class="mb-3">
@@ -193,6 +192,7 @@ require 'partials/header.php';
         const imgfile = document.getElementById("imgfile").value;
         const imgfile2 = document.getElementById("imgfile2").value;
         const imgfile3 = document.getElementById("imgfile3").value;
+        const videoyt = document.getElementById("videoyt").value.trim();
         const lineup = document.getElementById("lineup").value.trim();
 
         if (titulo.length < 3 || titulo.length > 100) {
@@ -200,7 +200,6 @@ require 'partials/header.php';
             e.preventDefault();
             return;
         }
-
 
         if (!datainic || !datafin) {
             alert("As datas de início e fim são obrigatórias.");
@@ -214,13 +213,17 @@ require 'partials/header.php';
             return;
         }
 
-
         if (!imgfile || !imgfile2 || !imgfile3) {
             alert("Todas as imagens e vídeo devem ser carregados.");
             e.preventDefault();
             return;
         }
 
+        if (videoyt && !videoyt.includes('youtube.com') && !videoyt.includes('youtu.be')) {
+            alert("Por favor insira um URL válido do YouTube.");
+            e.preventDefault();
+            return;
+        }
 
         if (lineup.length === 3) {
             alert("O lineup é obrigatório.");
@@ -228,7 +231,6 @@ require 'partials/header.php';
             return;
         }
 
- 
         if (!lineup.includes(";") && lineup.split(" ").length < 2) {
             alert("O lineup deve conter pelo menos dois artistas separados por ';' ou um nome composto.");
             e.preventDefault();

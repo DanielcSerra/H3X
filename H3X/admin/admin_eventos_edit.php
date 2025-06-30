@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $titulo = trim($_POST["titulo"] ?? "");
     $datainic = str_replace('T', ' ', $_POST["datainic"] ?? "");
     $datafin = str_replace('T', ' ', $_POST["datafin"] ?? "");
+    $videoyt = trim($_POST["videoyt"] ?? "");
     $lineup = trim($_POST["lineup"] ?? "");
 
     if ($titulo === "") $_SESSION["errors"]["titulo"] = "Título inválido.";
@@ -54,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $titulo = $conn->real_escape_string($titulo);
         $datainic = $conn->real_escape_string($datainic);
         $datafin = $conn->real_escape_string($datafin);
+        $videoyt = $conn->real_escape_string($videoyt);
         $lineup = $conn->real_escape_string($lineup);
 
         $updates = [];
@@ -85,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "titulo = '$titulo'",
             "data_inicio = '$datainic'",
             "data_fim = '$datafin'",
+            "videoyt = '$videoyt'",
             "lineup = '$lineup'"
         ]);
 
@@ -171,6 +174,13 @@ require 'partials/header.php';
                         </div>
 
                         <div class="mb-3">
+                            <label for="videoyt" class="form-label">YouTube Video URL</label>
+                            <input type="url" class="form-control" id="videoyt" name="videoyt" 
+                                   value="<?= htmlspecialchars($evento["videoyt"] ?? '') ?>" 
+                                   placeholder="https://www.youtube.com/watch?v=...">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="lineup" class="form-label">Lineup (separado por ; )</label>
                             <textarea class="form-control" id="lineup" name="lineup" rows="2" maxlength="200"><?= htmlspecialchars($evento["lineup"]) ?></textarea>
                         </div>
@@ -194,15 +204,14 @@ require 'partials/header.php';
             const titulo = document.getElementById("titulo").value.trim();
             const datainic = document.getElementById("datainic").value;
             const datafin = document.getElementById("datafin").value;
+            const videoyt = document.getElementById("videoyt").value.trim();
             const lineup = document.getElementById("lineup").value.trim();
 
- 
             if (titulo.length < 3 || titulo.length > 100) {
                 alert("O título deve ter entre 3 e 100 caracteres.");
                 e.preventDefault();
                 return;
             }
-
 
             if (!datainic || !datafin) {
                 alert("As datas de início e fim são obrigatórias.");
@@ -212,6 +221,12 @@ require 'partials/header.php';
 
             if (new Date(datainic) >= new Date(datafin)) {
                 alert("A data final deve ser posterior à data de início.");
+                e.preventDefault();
+                return;
+            }
+
+            if (videoyt && !videoyt.includes('youtube.com') && !videoyt.includes('youtu.be')) {
+                alert("Por favor insira um URL válido do YouTube.");
                 e.preventDefault();
                 return;
             }

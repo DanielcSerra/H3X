@@ -4,6 +4,7 @@ include 'partials/head.php';
 require_once 'db_config.php';
 require_once "admin/ultima_atividade.php";
 
+
 // Obter o evento mais próximo (futuro)
 $hoje = date('Y-m-d');
 $queryBanner = "SELECT * FROM eventos WHERE data_inicio >= '$hoje' ORDER BY data_inicio ASC LIMIT 1";
@@ -44,26 +45,21 @@ $resultEventos = mysqli_query($conn, $queryEventos);
         </video>
         <div class="overlay"></div>
 
-        <div class="side-markers left-marker">
-            <img src="img/barra.png" alt="" class="marker-img left-img" />
-            <div class="side-text-left">
-                <div class="scroll-wrapper">
-                    <div class="scroll-content">
-                        <div class="text-block">ÚLTIMA HORA</div>
-                        <div class="text-block">ÚLTIMA HORA</div>
-                    </div>
-                </div>
-            </div>
 
-            <img src="img/barra.png" alt="" class="marker-img right-img" />
+        <div class="side-video left-video">
+            <video class="vertical-video" autoplay muted loop playsinline>
+                <source src="img/textolateral_1.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
+
         <div class="banner-left-texts">
-            <div class="event-date">
+            <div class="event-date date3">
                 <?= date("d–m", strtotime($evento['data_inicio'])) . ' – ' . date("d-m", strtotime($evento['data_fim'])) ?>
             </div>
-            <div class="event-title"><?= $evento['titulo']; ?></div>
-            <div class="event-lineup">
+            <div class="event-title eventtitle2"><?= $evento['titulo']; ?></div>
+            <div class="event-lineup lineup3">
                 <?= nl2br(str_replace(';', '<br>', $evento['lineup'])); ?>
             </div>
         </div>
@@ -76,18 +72,15 @@ $resultEventos = mysqli_query($conn, $queryEventos);
             <img src="uploads/Eventos/<?= htmlspecialchars($evento['imagem_banner']); ?>" alt="Foto DJ" />
         </div>
 
-        <div class="side-markers right-marker">
-            <img src="img/barra.png" alt="" class="marker-img left-img" />
-            <div class="side-text-right">
-                <div class="scroll-wrapper">
-                    <div class="scroll-content">
-                        <div class="text-block">ÚLTIMA HORA</div>
-                        <div class="text-block">ÚLTIMA HORA</div>
-                    </div>
-                </div>
-            </div>
-            <img src="img/barra.png" alt="" class="marker-img right-img" />
+
+        <div class="side-video right-video">
+            <video class="vertical-video" autoplay muted loop playsinline>
+                <source src="img/textolateral_1.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
         </div>
+
+
     </div>
 
     <div class="hr_title my-5">
@@ -113,11 +106,7 @@ $resultEventos = mysqli_query($conn, $queryEventos);
                                 <?= nl2br(str_replace(';', '<br>', htmlspecialchars($eventoCard['lineup']))); ?>
                             </div>
                         </div>
-<<<<<<< HEAD
                         <a href="eventos2.php?id=<?= htmlspecialchars(urlencode($eventoCard['id'])) ?>" class="btn mini-button card-button">+ INFO</a>
-=======
-                        <a href="eventos2.php?id=<?php echo urlencode($evento['id']); ?>" class="btn mini-button card-button">+ INFO</a>
->>>>>>> parent of fbbdbab (cruz)
                     </div>
                 </div>
             <?php endwhile; ?>
@@ -193,5 +182,7 @@ $resultEventos = mysqli_query($conn, $queryEventos);
     </div>
 
 
+
+    <script src="js/index.js"></script>
     <?php include 'partials/footer.php'; ?>
 </body>

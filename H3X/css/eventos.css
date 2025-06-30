@@ -60,90 +60,30 @@
 }
 
 
-.side-markers {
+
+
+.side-video {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  width: 20vw;
-  height: auto;
-  z-index: 5;
+  transform: translateY(-50%) rotate(-90deg);
+  width: auto;
+  height: 12.5vh;
+  z-index: 4;
+  pointer-events: none; /* prevents overlap from interfering with interaction */
 }
 
-.left-marker {
-  left: 1vw;
+.left-video {
+  left: -7%;
 }
 
-.right-marker {
-  right: 1vw;
+.right-video {
+  right: -7%;
+  transform: translateY(-50%) rotate(90deg); /* mirrored direction */
 }
 
-.left-img {
-    left:0;
-    top: 50%;
-    transform: translateY(0%) rotate(90deg);
-}
-
-.right-img {
-    right: 0;
-    top: 50%;
-    transform: translateY(0%) rotate(90deg);
-}
-
-.marker-img {
-    position: absolute;
-    width: auto;
-    height: 2vh;
-    transform: rotate(90deg);
-    object-fit: contain;
-}
-
-
-.side-text-left,
-.side-text-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: 'Aldrich', sans-serif;
-  font-size: clamp(2.5rem, 2vw, 7rem);
-  color: #fff;
-  text-align: center;
-  width: 3vh;
-  z-index: 10;
-}
-
-.side-text-left {
-  left: 17.5vh;
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.side-text-right {
-  right: 17.5vh;
-}
-
-.scroll-wrapper {
-  height: 50vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.scroll-content {
-  display: flex;
-  flex-direction: row;
-  gap:5%;
-  align-items: center;
-  animation: scroll-up-loop 4s linear infinite;
-  height: 200%;
-}
-
-.side-text-right .scroll-content {
-  animation: scroll-down-loop 4s linear infinite;
-}
-
-.text-block {
-  font-family: 'Aldrich', sans-serif;
-  padding: 1vh 0;
+.side-video video {
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -174,7 +114,7 @@
   left: 50%;
   text-decoration: none;
   transform: translate(-50%, -50%);
-  width: clamp(440px, 9vw, 470px);
+  width: clamp(240px, 20vw, 470px);
   height: clamp(50px, 5vw, 80px);
   background-image: url("../img/caixabranca.png");
   background-size: 100% 100%;
@@ -286,6 +226,9 @@
   text-transform: uppercase;
   font-family: 'Laceration', sans-serif;
 }
+.eventtitle2{
+  width: 80vw;
+}
 
 .event-lineup {
   font-size: clamp(1rem, 1.5vw, 1.3rem);
@@ -367,7 +310,7 @@
 
 .section-title {
   font-family: 'Aldrich', sans-serif;
-  font-size: 64px;
+  font-size: clamp(1.5rem, 5vw, 5rem);
   color: transparent;
   -webkit-text-stroke: 2px white;
   text-align: center;
@@ -645,97 +588,97 @@
 
 
 
-@media (max-width: 600px) {
-  .row-section {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  flex-wrap: wrap;
-  text-align: center;
-}
+@media (max-width: 768px) {
 
-.image-wrapper {
+.banner {
   position: relative;
-  width: 420px;
-  height: 420px;
-  order:1;
-
-}
-
-.frame-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 100vw;
+  height: 70vh;
+  overflow: hidden;
   z-index: 1;
 }
 
-.inner-image {
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  object-fit: cover;
-  position: absolute;
-  z-index: 2;
+.left-video {
+    display: none;
+  }
+
+.right-video {
+    top: 10%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) rotate(0deg);
+    height: 7vh;
+    width: 85vw;
 }
 
-.text-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  order:2;
-}
-.reverse-row {
-  text-align: center;
-}
-.reverse-row .text-column .button-wrapper {
-  align-self: center;
-}
-.button-wrapper {
-  margin-top: 10px;
-  align-self: center;
+.right-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.section-title2 {
+.eventtitle2{
+  width: 80vw;
+  position:absolute;
+  top:-35%
+}
+.event-date {
+  position:relative;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  font-weight: 700;
+  color:#A853A8;
   font-family: 'Aldrich', sans-serif;
-  font-size: 42px;
-  color: transparent;
-  -webkit-text-stroke: 2px rgb(0, 0, 0);
-  text-align: center;
+  
+  
+}
+.date3{
+  left:-30%;
+  width: 80vw;
 }
 
-.eventos-button {
-  position: relative; 
-  left: 50%;
+.event-lineup {
+  position:relative;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  line-height: 1.2;
+  white-space: pre-line;
+  color:#A853A8;
+  font-family: 'Aldrich', sans-serif;
+   
+}
+.lineup3{
+  left:-30%;
+}
+
+.center-button {
+  top: 90%;
+
+}
+.banner-right-image {
+   width: 70vw;
+   right: 0;
+}
+.cards-container{
+  gap:30px;
+}
+.eventos-button{
   margin-top:20%;
-  transform: translate(-50%, -50%);
-  width: clamp(440px, 9vw, 470px);
-  height: clamp(50px, 5vw, 80px);
-  background-image: url("../img/caixabranca.png"); 
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.section-title {
-  font-family: 'Aldrich', sans-serif;
-  font-size: 42px;
+  width: clamp(240px, 9vw, 470px);
 
 }
+.image-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
 }
+
+}
+
+
+
+ 
+   
+
+
 
 @media (max-width:1000px) {
    .row-section {
@@ -749,8 +692,8 @@
 
 .image-wrapper {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 360px;
+  height: 360px;
   order:1;
 
 }
@@ -795,21 +738,20 @@
 
 .section-title2 {
   font-family: 'Aldrich', sans-serif;
-  font-size: 60px;
+  font-size: clamp(1.5rem, 5vw, 5rem);
   color: transparent;
   -webkit-text-stroke: 2px rgb(0, 0, 0);
   text-align: center;
 }
 .section-title {
   font-family: 'Aldrich', sans-serif;
-  font-size: 60px;
+  font-size: clamp(1.5rem, 5vw, 5rem);
 }
 .eventos-button {
   position: relative; 
   left: 50%;
-  margin-top:15%;
   transform: translate(-50%, -50%);
-  width: clamp(440px, 9vw, 470px);
+  width: clamp(240px, 9vw, 470px);
   height: clamp(50px, 5vw, 80px);
   background-image: url("../img/caixabranca.png"); 
   background-size: 100% 100%;
@@ -825,6 +767,7 @@
   z-index: 10;
 }
 }
+ 
 
 
 

@@ -65,12 +65,16 @@ require 'partials/header.php';
                             <th>Img Banner</th>
                             <th>Vídeo</th>
                             <th>Lineup</th>
+                            <th>videoYT</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($evento = $result->fetch_object()): 
-                            $conteudo_resumido = mb_strimwidth($evento->lineup, 0, 80, '...');?>
+                            $conteudo_resumido = mb_strimwidth($evento->lineup, 0, 80, '...');
+                            $conteudo_resumido2 = mb_strimwidth($evento->videoyt, 0, 80, '...');
+                            ?>
+                            
                             <tr>
                                 <td><?= $evento->id ?></td>
                                 <td><?= trim($evento->titulo) ?></td>
@@ -175,6 +179,7 @@ require 'partials/header.php';
                                 
 
                                 <td><?= trim($conteudo_resumido) ?></td>
+                                <td><?= trim($conteudo_resumido2) ?></td>
 
                                 <td>
                                     <a href="admin_eventos_edit.php?id=<?= htmlspecialchars(urlencode($evento->id)) ?>" title="Editar"><i

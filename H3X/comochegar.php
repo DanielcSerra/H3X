@@ -43,7 +43,7 @@ require_once "admin/ultima_atividade.php";
 
         <div class="caixa3 mt-4">
 
-            <div class="botoes" id="autocarros">
+            <div class="botoes" data-target="autocarros">
                 <h2>AUTOCARROS</h2>
                 <div class="imagens2">
                     <img src="img/caixa10.png" alt="caixa2" class="botao">
@@ -53,7 +53,7 @@ require_once "admin/ultima_atividade.php";
             </div>
 
 
-            <div class="botoes" id="comboios">
+            <div class="botoes" data-target="comboios">
                 <h2>COMBOIOS</h2>
                 <div class="imagens2">
                     <img src="img/caixa10.png" alt="caixa2" class="botao">
@@ -61,7 +61,7 @@ require_once "admin/ultima_atividade.php";
                 </div>
             </div>
 
-            <div class="botoes" id="parque">
+            <div class="botoes" data-target="parque">
                 <h2>PARQUE</h2>
                 <div class="imagens2">
                     <img src="img/caixa10.png" alt="caixa2" class="botao">
@@ -90,7 +90,7 @@ require_once "admin/ultima_atividade.php";
                 <img src="img/caixa10.png" alt="caixa2" class="botao">
                 <img src="img/autocarro.png" alt="autocarros" class="botao2">
             </div>
-            <div class="container caixa-com-cantos py-5 px-3 px-md-5 position-relative">
+            <div class="container caixa-com-cantos py-5 px-3 px-md-5 position-relative" >
                 <img src="img/bordatopesquerda.png" class="canto top-left d-none d-md-block">
                 <img src="img/bordatopdireita.png" class="canto top-right d-none d-md-block">
                 <img src="img/bordabotesquerda.png" class="canto bottom-left d-none d-md-block">
@@ -121,7 +121,7 @@ require_once "admin/ultima_atividade.php";
                 <img src="img/bordabotesquerda.png" class="canto bottom-left d-none d-md-block">
                 <img src="img/bordabotdireita.png" class="canto bottom-right d-none d-md-block">
 
-                <div class="texto3 text-end" id="texto3end">
+                <div class="texto3 text-end" id="comboios">
                     <p class="pmaior">Comboios: </p>
                     <p>Estação Alcântara-Terra – a cerca de 2 minutos a pé do H3X</p>
                     <p>Linha de Azambuja</p>
@@ -190,6 +190,46 @@ require_once "admin/ultima_atividade.php";
     </div>
 
     <?php include 'partials/footer.php'; ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all transport option buttons
+            const transportButtons = document.querySelectorAll('.caixa3 .botoes');
+
+            // Add click event to each button
+            transportButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Get the target section ID from data-target attribute
+                    const targetId = this.dataset.target;
+
+                    // Find the corresponding section
+                    const targetSection = document.querySelector(`#${targetId}`);
+
+                    if (targetSection) {
+                        const offset = 100;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+
+                // Make buttons look clickable
+                button.style.cursor = 'pointer';
+                button.style.transition = 'transform 0.3s ease';
+
+                button.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.05)';
+                });
+
+                button.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

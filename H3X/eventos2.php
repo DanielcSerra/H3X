@@ -56,7 +56,7 @@ $formattedTime = $startDate->format('H:i') . ' - ' . $endDate->format('H:i');
 <head>
     <?php include 'partials/head.php'; ?>
     <title>H3X - Eventos2</title>
-    <link rel="stylesheet" href="css/eventos.css">
+    <link rel="stylesheet" href="css/eventos2.css">
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRKosi_QbT8SoLjpqlJ7D5TuvaFvebKc&callback=console.debug&libraries=maps,marker&v=beta"></script>
 </head>
@@ -83,8 +83,8 @@ $formattedTime = $startDate->format('H:i') . ' - ' . $endDate->format('H:i');
         <!-- Right side -->
         <div class="banner2-right">
             <div class="container caixa-com-cantos">
-                <img src="img/bordatopesquerda.png" alt="corner top left" class="canto-sobre top-left d-none d-md-block">
-                <img src="img/bordabotdireita.png" alt="corner bottom right" class="canto-sobre bottom-right d-none d-md-block">
+                <img src="img/bordatopesquerda.png" alt="corner top left" class="canto-sobre top-left  d-md-block">
+                <img src="img/bordabotdireita.png" alt="corner bottom right" class="canto-sobre bottom-right d-md-block">
                 <h3>Evento</h3>
                 <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
                 <div class="divisao">
@@ -96,7 +96,7 @@ $formattedTime = $startDate->format('H:i') . ' - ' . $endDate->format('H:i');
                     <source src="uploads/Eventos/<?php echo htmlspecialchars($evento['video_banner']); ?>" type="video/mp4">
                 </video>
 
-                <a href="vip.php" class="btn mini-button card-button">Details</a>
+                <a href="vip.php" class="mini-button card-button">RESERVAR VIP</a>
             </div>
         </div>
     </div>

@@ -251,6 +251,7 @@ gmp-map {
 
 
   @media (max-width: 995px){
+    
 
     .terc{
       -webkit-text-stroke: 2px #828282;
@@ -280,6 +281,7 @@ gmp-map {
         align-items: center;
         justify-content: center;
         width:100%;
+        margin-bottom: 20px;
     }
 
     .botao{
@@ -339,14 +341,14 @@ gmp-map {
       width:100%;
     }
     
-    .caixa3{
-      height: 250px;
-      display: flex;
-      flex-direction:row;
-      align-items: center;
-      justify-content: center;
-    
+     .caixa3 {
+        height: auto;
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 30px;
     }
+    
+
     .caixa3 h2{
       font-size: clamp(20px, 3vw, 30px);
     }
@@ -386,6 +388,17 @@ gmp-map {
       height: auto;
       pointer-events: none;
       z-index: 0; 
+    }
+    .titulo {
+        height: auto;
+        padding-top: 30%;
+        padding-bottom: 50px;
+    }
+    
+    .prim, .seg, .terc {
+        position: static;
+        top: auto;
+        margin: 5px 0;
     }
 
 
@@ -453,6 +466,7 @@ gmp-map {
     margin-bottom: 0;
     position:relative;
   }
+  
 
 
     }
