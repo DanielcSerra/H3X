@@ -144,24 +144,33 @@ INSERT INTO `contactos` (`id`, `assunto`, `nome`, `email`, `telefone`, `mensagem
 
 CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
   `data_inicio` datetime DEFAULT NULL,
   `data_fim` datetime DEFAULT NULL,
-  `imagem_banner` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `video_banner` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `imagem_card` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lineup` text COLLATE utf8mb4_general_ci,
-  `aprovado` tinyint(1) DEFAULT '0',
+  `imagem_banner` varchar(255) DEFAULT NULL,
+  `video_banner` varchar(255) DEFAULT NULL,
+  `imagem_card` varchar(255) DEFAULT NULL,
+  `lineup` text,
+  `videoyt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `eventos` (`id`, `titulo`, `data_inicio`, `data_fim`, `imagem_banner`, `video_banner`, `imagem_card`, `lineup`, `aprovado`) VALUES
-	(8, 'NECROTECH NIGHT', '2025-07-07 20:00:00', '2025-07-10 06:00:00', '6840e7f85567_artworks-000195124570-4jd3zy-t500x500-removebg-preview.png', '6840e7f85576d_1234.mp4', '6840e7f85576_Captura de ecrã 2025-04-06 145347.png', 'DJ SNTS;DJ Ø [Phase];DJ I Hate Models;DJ ¥OU$UKE ¥UK1MAT$U', 1),
-	(9, 'NEUROCHROME', '2025-07-28 22:00:00', '2025-07-30 06:00:00', '6840edfb0c93_ds#696-min-removebg-preview.png', '6840edfb0c99_background3.mp4', '6840edfb0c98_111 (1).jpg', 'Mort-X; HexError; Zerkernel; COD3NAME', 1),
-	(10, 'NoSleep Operation', '2025-08-06 21:00:00', '2025-08-12 07:00:00', '6840e2f4b7934_Credit-Soraya-Sanini-1e16107307385976-removebg-preview.png', '6840e2f4b793b_video landpage.mp4', '6840e2f4b793a_fundoofertez2.jpg', 'VX-13; CRPTA; Syntax Terror; Terminal_7; Holy Priest', 1),
-	(11, 'Aftercore', '2025-08-24 17:00:00', '2025-08-26 03:00:00', '6840e2ef23fd1_0phase-removebg-preview.png', '6840e2ef23fd5_background3.mp4', '6840e2ef23fd4_Captura de ecrã 2025-04-29 105836.png', 'Liqr; N-Kode; Fermion;', 1),
-	(12, 'Techno Bear', '2025-09-15 08:00:00', '2025-09-16 07:59:00', '6840effa0fb2_dgdtzp-81afd847-0e4a-44b4-8d03-72c5e26a841d.png', '6840effa0fb9_background3.mp4', '6840effa0fb8_maxresdefault.jpg', 'DJ Gummy Bear; DJ Leopoldina', 1),
-	(13, 'asdasd', '2025-06-12 00:00:00', '2025-06-15 06:00:00', '68418ccf89c72_artworks-000195124570-4jd3zy-t500x500-removebg-preview 1.png', '68418ccf89c9f_Rectangle 1.png', '68418ccf89c94_abstract-colorful-party-silhouettes_1048-295.png', 'SDJSDSD ; JASDJASD ; AJSDJSAD', 1);
+INSERT INTO `eventos` (`id`, `titulo`, `data_inicio`, `data_fim`, `imagem_banner`, `video_banner`, `imagem_card`, `lineup`, `videoyt`) VALUES
+(12, 'EMOTRANCE', '2025-09-15 08:00:00', '2025-09-16 07:59:00', '686307a50d5e9_ab6761610000e5eb61ad1f6f29edbabf3db5022f.png', '686307a50e3c4_684024fe8a360_background3 - Cópia.mp4', '686307a50dd8a_Captura de ecrã 2025-06-30 224650.png', 'Amelie Lens; ANNA; Enrico Sangiuliano; Tale of Us', 'https://youtu.be/vjR_gc6c1xw?si=YTdHEhIgp2y-djAW'),
+(9, 'NEUROCHROME', '2025-07-28 22:00:00', '2025-07-30 06:00:00', '686306ce24792_holy-priest-hd_optimized.png', '686306ce25f7a_video2.mp4', '686306ce251e1_Captura de ecrã 2025-06-30 224513.png', 'HOLY PRIEST; SaraLandry; DaxJ', 'https://youtu.be/pPGrNNQhXK4?si=L6SYNcoE61Ce4AlG'),
+(10, 'NoSleep Operation', '2025-08-06 21:00:00', '2025-08-12 07:00:00', '68630754c582e_Charlotte_De_Witte_Bandcamp_BW.png', '68630754c6cad_video1.mp4', '68630754c6303_Captura de ecrã 2025-06-30 224452.png', 'Charlotte de Witte; Chris Liebing; Richie Hawtin; Carl Cox', 'https://youtu.be/XFLIztjVaR8?si=6pMPVUG3KYuDXjuW'),
+(8, 'NECROTECH NIGHT', '2025-07-07 20:00:00', '2025-07-10 06:00:00', '6852139ba58f5_6840e7f855767_artworks-000195124570-4jd3zy-t500x500-removebg-preview - Cópia.png', '6852122fd31d6_6840e7f85576d_1234 - Cópia.mp4', '6852139ba607c_6840e7f85576c_Captura de ecrã 2025-04-06 145347 - Cópia.png', 'DJ SNTS;DJ Ø [Phase];DJ I Hate Models;DJ ¥ØU$UK€ ¥UK1MAT$U', 'https://www.youtube.com/live/Vk7Qr6I4nfk?si=jJAN7NLtTS9qgiWa'),
+(13, 'NOISE CODEX', '2025-08-14 23:00:00', '2025-08-22 06:00:00', '68630816debc6_ab6761610000e5ebd1b0c16bf77cfe30c09b4951.png', '68630816e02da_video2.mp4', '68630816df2dc_Captura de ecrã 2025-06-30 224513.png', 'Gesaffelstein; Brutalismus3000; Acid Asian; Spectral', 'https://youtu.be/AaAb9qNv_-U?si=Q0aKDmYL-2ccuw31'),
+(14, 'MECHANOID RITUAL', '2025-09-25 23:00:00', '2025-09-27 05:00:00', '686309d481eb9_unnamed.png', '686309d481ebe_video4.mp4', '686309d481ebc_Captura de ecrã 2025-06-30 224545.png', 'Surgeon; Rebekah; Paula Temple; Ancient Methods', 'https://youtu.be/Ww9VtKqprUY?si=eeCyfBPY7SypjSmr'),
+(15, 'CINEØTECH', '2025-08-24 00:00:00', '2025-08-26 06:00:00', '68630a57e8f7d_15954699.png', '68630a57e8f91_video5.mp4', '68630a57e8f8d_Captura de ecrã 2025-06-30 224600.png', 'Anyma; Boris Brejcha; &ME; Miss Monique', 'https://youtu.be/lIdrRRofKm0?si=BJH2xQtauVTNoGAr'),
+(16, 'RITUALIZED WAVES', '2025-06-26 22:00:00', '2025-06-27 05:00:00', '68630af239c29_4-2880x1909.png', '68630af239c33_686309d481ebe_video4.mp4', '68630af239c31_Captura de ecrã 2025-06-30 224545.png', 'NeneH; SPFDJ; Tauceti; Cloudy', 'https://youtu.be/Didjvrf66aE?si=RD6UjFR0Jkd4wOr1'),
+(17, 'FUTURE HERITAGE', '2025-07-11 00:00:00', '2025-07-14 22:00:00', '68630b504de99_6840e7f855767_artworks-000195124570-4jd3zy-t500x500-removebg-preview - Cópia.png', '68630b504dea0_68630816e02da_video2.mp4', '68630b504de9f_Captura de ecrã 2025-06-30 224513.png', 'SNTS; Bigod20; Jeff Mills; Sven Väth', ''),
+(18, 'MALIGNANCE', '2025-09-30 22:10:00', '2025-10-01 06:00:00', '68630c0057177_686306ce24792_holy-priest-hd_optimized.png', '68630c0057183_video3.mp4', '68630c0057181_Captura de ecrã 2025-06-30 224532.png', 'HOLY PRIEST;VANTABLACK MESSIAH; SISTER PHOBIA; KODEX NULL', 'https://youtu.be/pPGrNNQhXK4?si=DUNLskTjAN8rSvt5'),
+(19, 'RELIC UNIT', '2025-10-05 00:00:00', '2025-10-07 06:00:00', '68630c6e64a1b_6840edffbdc93_dsf8966-min-removebg-preview - Cópia.png', '68630c6e64a21_685213d15da93_6840edffbdc99_background3 - Cópia.mp4', '68630c6e64a20_Captura de ecrã 2025-06-30 224650.png', '¥ØU$UK€ ¥UK1MAT$U; CATHARSIS BLEED; NIGHT PACT; ALTAR XIII', 'https://youtu.be/T1tcUfUhR5U?si=K7IF5077ORDbQEwT'),
+(20, 'VOID SAINTS', '2026-01-05 22:15:00', '2026-01-06 22:15:00', '68630cdb625ea_6840e7f855767_artworks-000195124570-4jd3zy-t500x500-removebg-preview - Cópia.png', '68630cdb625f0_6852122fd31d6_6840e7f85576d_1234 - Cópia.mp4', '68630cdb625ef_6852122fcfb58_6840e7f85576c_Captura de ecrã 2025-04-06 145347 - Cópia.png', 'SNTS;MOURN CIRCUIT; DRONE SAINT; STIGMA VOID', 'https://www.youtube.com/live/Vk7Qr6I4nfk?si=9q908gsVLSwRWvlq'),
+(21, 'CRYPTOMORPH', '2025-09-06 22:00:00', '2025-09-11 05:00:00', '68630d5203f1f_68630a57e8f7d_15954699.png', '68630d5203f25_video6.mp4', '68630d5203f24_Captura de ecrã 2025-06-30 224617.png', 'Anyma;SYS!FAULT; K-TRAXX', 'https://youtu.be/lIdrRRofKm0?si=GfpDH9NMOYLwM2-4'),
+(22, 'BLOOD TEMPO', '2025-11-17 22:00:00', '2025-11-19 06:00:00', '68630da0ad2d6_6840ef2ef23d1_0phase-removebg-preview - Cópia.png', '68630da0ad2dc_video4.mp4', '68630da0ad2db_68630af239c31_Captura de ecrã 2025-06-30 224545.png', 'Ø [Phase];LUMINAIRE; SILTGRAVITY; DELPHOS', 'https://www.youtube.com/live/o2FFsovUGWE?si=YQxxuUE_G-qw70-R'),
+(23, 'OBELISK SOUND', '2025-12-24 22:20:00', '2025-12-26 05:20:00', '68630de57306b_6840ee74b7934_Credit-Soraya-Sanini-1-e1607370385976-removebg-preview - Cópia.png', '68630de573070_video1.mp4', '68630de57306f_Captura de ecrã 2025-06-30 224452.png', 'I Hate Models;OBSERVA; VARINTH; ECHOMORPH', 'https://youtu.be/8CT6HxYA0cg?si=Z4gmngBtT0HajAbr');
 
 CREATE TABLE IF NOT EXISTS `faq` (
   `id` int NOT NULL AUTO_INCREMENT,
