@@ -54,13 +54,13 @@ footer{
 }
 
 .faq-spacer {
-    height: 60px; /* Ajuste conforme necessário para separar do footer */
+    height: 60px; 
 }
 
 .faq-question::after {
     content: "▼";
     font-size: 0.8em;
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .faq-item.active .faq-question::after {
@@ -72,7 +72,7 @@ footer{
     line-height: 1.5;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding-top 0.3s ease;
+    transition:  0.3s ease,  0.3s ease;
 }
 
 .faq-item.active .faq-answer {
