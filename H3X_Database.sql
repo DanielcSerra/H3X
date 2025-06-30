@@ -3,17 +3,6 @@
 CREATE DATABASE IF NOT EXISTS `h3x` 
 USE `h3x`;
 
-CREATE TABLE IF NOT EXISTS `categorias_eventos` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `categorias_eventos` (`id`, `nome`) VALUES
-	(1, 'Techno'),
-	(2, 'House Music');
-
 CREATE TABLE IF NOT EXISTS `categorias_posts` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
@@ -62,33 +51,27 @@ CREATE TABLE IF NOT EXISTS `contactos` (
   `email` varchar(100) DEFAULT NULL,
   `telefone` varchar(9) DEFAULT NULL,
   `mensagem` text NOT NULL,
-  `id_utilizador` int unsigned DEFAULT NULL,
   `data_contactos` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `assunto` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_utilizador` (`id_utilizador`),
-  CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `contactos` (`id`, `nome`, `email`, `telefone`, `mensagem`, `id_utilizador`, `data_contactos`, `assunto`) VALUES
-	(3, 'aa', 'safdas@gmail.com', '123456789', '1243252352', NULL, '2025-06-04 11:26:44', '23242352345'),
-	(5, 'asdadasda', 'afsdfds@gmail.com', '123545', 'aaaaaaaaaaaaaaaaaaaaaa', NULL, '2025-06-04 11:51:14', 'asdasdasdas'),
-	(8, 'joao', 'joaoparracho@gmail.com', '999666333', 'okokokbtgrhbertdbrde', NULL, '2025-06-16 11:43:46', 'imgokokooooooooooooo'),
-	(9, 'alexandre Silva', 'xilkofonas@gmail.com', '987654321', 'akalaaaaaaaaaaaaaaaaaaaaa', NULL, '2025-06-18 10:58:35', 'o os eventos da noite'),
-	(10, '111111111111111111111', '11111@1111.1111', '111111111', '11111111111111111111111111111111', NULL, '2025-06-18 11:11:42', '11111111111111111111'),
-	(11, 'alexandre Silva', 'name@gmail.com', '123456789', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', NULL, '2025-06-18 12:08:22', 'alllakakaka');
-
-CREATE TABLE IF NOT EXISTS `djs` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `imagem` varchar(255) NOT NULL,
-  `video` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `djs` (`id`, `nome`, `imagem`, `video`) VALUES
-	(1, 'DJ Tiesto', 'tiesto.jpg', 'tiesto_video.mp4'),
-	(2, 'Armin van Buuren', 'armin.jpg', 'armin_video.mp4');
+INSERT INTO `contactos` (`id`, `assunto`, `nome`, `email`, `telefone`, `mensagem`, `data_contactos`) VALUES
+(1, 'Informação sobre eventos', 'Carlos Silva', 'carlos.silva@email.com', '912345678', 'Gostaria de saber mais sobre os próximos eventos.', '2025-06-01'),
+(2, 'Orçamento para casamento', 'Ana Oliveira', 'ana.oliveira@email.com', '913456789', 'Preciso de um orçamento para uma festa de casamento.', '2025-06-02'),
+(3, 'Aluguer de espaço', 'Ricardo Mendes', 'ricardo.mendes@email.com', '914567890', 'Quero alugar o espaço para uma festa privada.', '2025-06-03'),
+(4, 'Pedido de parceria', 'Mariana Costa', 'mariana.costa@email.com', '915678901', 'Gostaria de propor uma parceria comercial.', '2025-06-04'),
+(5, 'Feedback do evento', 'João Rocha', 'joao.rocha@email.com', '916789012', 'O evento foi excelente, parabéns!', '2025-06-05'),
+(6, 'Problema com reserva', 'Sofia Lima', 'sofia.lima@email.com', '917890123', 'Houve um problema com a minha reserva.', '2025-06-06'),
+(7, 'Pedido de informações técnicas', 'Tiago Martins', 'tiago.martins@email.com', '918901234', 'Quais são os requisitos técnicos do palco?', '2025-06-07'),
+(8, 'Voluntariado', 'Beatriz Gonçalves', 'beatriz.goncalves@email.com', '919012345', 'Gostaria de ser voluntária nos eventos.', '2025-06-08'),
+(9, 'Reclamação', 'André Sousa', 'andre.sousa@email.com', '910123456', 'O som estava muito alto durante o evento.', '2025-06-09'),
+(10, 'Informações sobre DJ', 'Cláudia Ferreira', 'claudia.ferreira@email.com', '911234567', 'Quem foi o DJ na última noite?', '2025-06-10'),
+(11, 'Pedido de orçamento empresarial', 'Pedro Ramos', 'pedro.ramos@email.com', '912345679', 'Pretendo organizar um evento da empresa.', '2025-06-11'),
+(12, 'Sugestão de melhoria', 'Inês Moreira', 'ines.moreira@email.com', '913456780', 'Sugiro mais opções vegetarianas nos eventos.', '2025-06-12'),
+(13, 'Confirmação de presença', 'Rui Carvalho', 'rui.carvalho@email.com', '914567891', 'Confirmo a minha presença no evento.', '2025-06-13'),
+(14, 'Informações sobre bilhetes', 'Lara Figueiredo', 'lara.figueiredo@email.com', '915678902', 'Onde posso comprar os bilhetes?', '2025-06-14'),
+(15, 'Evento infantil', 'Miguel Pinto', 'miguel.pinto@email.com', '916789013', 'Quais eventos são apropriados para crianças?', '2025-06-15');
 
 CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -119,9 +102,21 @@ CREATE TABLE IF NOT EXISTS `faq` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `faq` (`id`, `titulo`, `resposta`) VALUES
-	(1, 'dtdra', 'Para redefinir sua senha, clique em "Esqueci minha senha" na página de login e siga as instruções.'),
-	(2, 'SADASD', 'ADASDASDAS'),
-	(3, '11111111111111111111', '11111111111111111111111111111111111111111111111111111111111111111111111112');
+(1, 'Como posso comprar bilhetes?', 'Os bilhetes podem ser adquiridos online através do nosso site ou na bilheteira no dia do evento.'),
+(2, 'Qual é a idade mínima para entrar?', 'A idade mínima para entrada é 18 anos. É necessário apresentar documento de identificação.'),
+(3, 'Há estacionamento disponível?', 'Sim, temos estacionamento gratuito para os participantes durante o evento.'),
+(4, 'Aceitam pagamentos por MB Way?', 'Sim, aceitamos pagamentos por MB Way, multibanco, e cartões de crédito.'),
+(5, 'O evento tem acessibilidade para pessoas com mobilidade reduzida?', 'Sim, o espaço está adaptado para pessoas com mobilidade reduzida.'),
+(6, 'Posso levar comida ou bebida?', 'Não é permitido entrar com comida ou bebida. Temos bares e food trucks no local.'),
+(7, 'Os animais de estimação são permitidos?', 'Infelizmente, não é permitida a entrada de animais, exceto cães-guia.'),
+(8, 'Que tipo de música será tocada?', 'O evento é focado em música eletrónica, especialmente techno e house.'),
+(9, 'Como posso entrar em contacto com a organização?', 'Pode contactar-nos através do formulário no site ou pelo e-mail geral@h3xeventos.com.'),
+(10, 'Há zona VIP?', 'Sim, temos zonas VIP com serviços exclusivos. Pode reservar antecipadamente no nosso site.'),
+(11, 'Há guarda-roupa no local?', 'Sim, há serviço de guarda-roupa com um custo adicional simbólico.'),
+(12, 'O evento é cancelado em caso de chuva?', 'Não, o evento acontece em espaço coberto e não será afetado pela chuva.'),
+(13, 'Como posso ser voluntário?', 'Pode candidatar-se como voluntário através da nossa página de recrutamento no site.'),
+(14, 'Que roupa devo usar?', 'Sugerimos roupas confortáveis e estilosas. O tema é urbano e moderno.'),
+(15, 'Há reembolsos disponíveis?', 'Bilhetes não são reembolsáveis, exceto em caso de cancelamento do evento.');
 
 CREATE TABLE IF NOT EXISTS `imagens_galeria` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -143,17 +138,6 @@ INSERT INTO `imagens_galeria` (`id`, `titulo`, `imagem`, `aprovado`, `data_uploa
 	(28, 'Praia fixe', '68528a631bd86_Captura de ecrã 2025-03-27 152842.png', 1, '2025-06-18 09:43:00', 16),
 	(29, 'O que faz um camelo aqui bro', '68528ad89178a_cee9b08c3f7dde984bda1583e88b4729.jpg', 1, '2025-06-18 09:44:00', 16),
 	(30, 'Definição desta disco', '68528baa11c7e_Captura de ecrã 2025-05-13 130040.png', 0, '2025-06-18 09:46:00', 16);
-
-CREATE TABLE IF NOT EXISTS `mesas` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(15) NOT NULL,
-  `capacidade` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `mesas` (`id`, `nome`, `capacidade`) VALUES
-	(1, 'Mesa 1', 4),
-	(2, 'Mesa 2', 6);
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -259,18 +243,6 @@ INSERT INTO `vip` (`id`, `id_mesa`, `mensagem`, `data_reserva`, `id_utilizador`)
 	(6, 2, 'Bananinhas', '2025-06-25', 37),
 	(7, 2, 'RODRIGO FERREIRAAAAAAAAAAAAAA', '2025-06-02', 16);
 
-CREATE TABLE IF NOT EXISTS `vip_mesas` (
-  `id_vip` int unsigned NOT NULL,
-  `id_mesas` int unsigned NOT NULL,
-  PRIMARY KEY (`id_vip`,`id_mesas`),
-  KEY `id_mesas` (`id_mesas`),
-  CONSTRAINT `vip_mesas_ibfk_1` FOREIGN KEY (`id_vip`) REFERENCES `vip` (`id`),
-  CONSTRAINT `vip_mesas_ibfk_2` FOREIGN KEY (`id_mesas`) REFERENCES `mesas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `vip_mesas` (`id_vip`, `id_mesas`) VALUES
-	(1, 1),
-	(2, 2);
 
 DROP TABLE IF EXISTS `comentarios_post`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `comentarios_post` AS select `comentarios`.`id` AS `ID`,`comentarios`.`conteudo` AS `Conteúdo`,`comentarios`.`data_criacao` AS `Data/Hora`,`posts`.`id` AS `ID Post`,`posts`.`titulo` AS `Título Post`,`utilizadores`.`nome` AS `Nome` from ((`comentarios` join `posts` on((`comentarios`.`id_post` = `posts`.`id`))) join `utilizadores` on((`comentarios`.`id_utilizador` = `utilizadores`.`id`)))

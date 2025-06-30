@@ -117,15 +117,15 @@ while ($row = $resultPostsSemana->fetch_assoc()) {
 
 $sqlContactos = "
     SELECT 
-        COALESCE(u.nome, c.nome) AS nome,
-        c.mensagem,
-        c.data_contactos
-    FROM contactos c
-    LEFT JOIN utilizadores u ON c.id_utilizador = u.id
-    ORDER BY c.data_contactos DESC
+        nome,
+        mensagem,
+        data_contactos
+    FROM contactos
+    ORDER BY data_contactos DESC
     LIMIT 5
 ";
 $resultContactos = $conn->query($sqlContactos);
+
 
 
 
