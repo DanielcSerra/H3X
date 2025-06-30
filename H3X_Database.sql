@@ -222,6 +222,17 @@ INSERT INTO `utilizadores` (`id`, `nome`, `email`, `telefone`, `pass`, `data_nas
 	(41, 'Funcionário', 'funcionario@gmail.com', '', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2005-05-09', 'f', 'd', '2025-06-14 11:27:27', '684d6aafc0478_2025-06-14_12-27-27.jpg'),
 	(42, 'Cliente', 'cliente@gmail.com', '973456765', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2009-02-03', 'c', 'd', '2025-06-14 11:28:54', '684d6b067662c_2025-06-14_12-28-54.jpg');
 
+CREATE TABLE IF NOT EXISTS `mesas` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(15) NOT NULL,
+  `capacidade` int unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `mesas` (`id`, `nome`, `capacidade`) VALUES
+	(1, 'Mesa 1', 4),
+	(2, 'Mesa 2', 6);
+
 CREATE TABLE IF NOT EXISTS `vip` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `id_mesa` int unsigned NOT NULL,
