@@ -155,7 +155,7 @@ require_once "admin/ultima_atividade.php";
               required><?= htmlspecialchars($mensagem ?? '') ?></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+          <button type="submit" class="botao-faqs1">Enviar Mensagem</button>
         </form>
       </div>
     </div>
@@ -212,22 +212,12 @@ require_once "admin/ultima_atividade.php";
     }
     ?>
     <div style="text-align: center; padding: 20px;">
-      <a href="faq.php" class="btn btn-primary">Ver todas as FAQs</a>
+      <a href="faq.php" class="botao-faqs">Ver todas as FAQs</a>
     </div>
   </section>
 </div>
 
-<div class="container">
-        <!-- Codigo Aqui -->
-        <div class="contactos">
-            <h2>Precisa de ajuda?</h2>
-            <p class="pmaior">Entre em contacto connosco</p>
-            <div class="botao2">
-                <img src="img/caixabranca.png">
-                <h2>CONTACTOS</h2>
-            </div>
-        </div>
-    </div>
+
 
 
   <?php include 'partials/footer.php'; ?>
@@ -270,7 +260,7 @@ function validarFormulario(submitEvent) {
     }
 
     if (assunto.length < 10 || assunto.length > 100) {
-        alert("O assunto deve ter entre 2 e 100 caracteres.");
+        alert("O assunto deve ter entre 10 e 100 caracteres.");
         submitEvent.preventDefault();
         return;
     }
