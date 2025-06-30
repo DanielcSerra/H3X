@@ -104,12 +104,13 @@ width: 100vw;
 
 .contact-label {
   font-size: 10px;
-  color: #bbbbbb;
+  color: #ffffff;
   letter-spacing: 1px;
 }
 
 .contact-detail {
   font-size: 14px;
+  color: white;
 }
 
 /* Formulário - Estilo Original */
