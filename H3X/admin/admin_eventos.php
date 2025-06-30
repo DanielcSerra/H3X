@@ -85,7 +85,7 @@ require 'partials/header.php';
                                     <?= date('G:i', strtotime($evento->data_fim)) ?></td>
                                 <td>
                                     <?php if (!empty($evento->imagem_card)): ?>
-                                        <img src="../uploads/<?= trim($evento->imagem_card) ?>" alt="Card <?= $evento->id ?>"
+                                        <img src="../uploads/eventos/<?= trim($evento->imagem_card) ?>" alt="Card <?= $evento->id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $evento->id ?>">
 
@@ -98,7 +98,7 @@ require 'partials/header.php';
                                                             aria-label="Fechar"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="../uploads/<?= trim($evento->imagem_card) ?>" class="img-fluid"
+                                                        <img src="../uploads/eventos/<?= trim($evento->imagem_card) ?>" class="img-fluid"
                                                             alt="Card completo">
                                                     </div>
                                                     <div class="modal-footer">
@@ -116,7 +116,7 @@ require 'partials/header.php';
 
                                 <td>
                                     <?php if (!empty($evento->imagem_banner)): ?>
-                                        <img src="../uploads/<?= trim($evento->imagem_banner) ?>" alt="Banner <?= $evento->id ?>"
+                                        <img src="../uploads/eventos/<?= trim($evento->imagem_banner) ?>" alt="Banner <?= $evento->id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $evento->id ?>">
 
@@ -129,7 +129,7 @@ require 'partials/header.php';
                                                             aria-label="Fechar"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="../uploads/<?= trim($evento->imagem_banner) ?>" class="img-fluid"
+                                                        <img src="../uploads/eventos/<?= trim($evento->imagem_banner) ?>" class="img-fluid"
                                                             alt="Banner completo">
                                                     </div>
                                                     <div class="modal-footer">
@@ -148,7 +148,7 @@ require 'partials/header.php';
                                 
                                 <td>
                                     <?php if (!empty($evento->video_banner)): ?>
-                                        <video src="../uploads/<?= trim($evento->video_banner) ?>" alt="Video <?= $evento->id ?>"
+                                        <video src="../uploads/eventos/<?= trim($evento->video_banner) ?>" alt="Video <?= $evento->id ?>"
                                             style="width: 100px; height: 60px; object-fit: cover; cursor: pointer;"
                                             data-bs-toggle="modal" data-bs-target="#imagemModal<?= $evento->id ?>">
 
@@ -161,7 +161,7 @@ require 'partials/header.php';
                                                             aria-label="Fechar"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="../uploads/<?= trim($evento->imagem_banner) ?>" class="img-fluid"
+                                                        <img src="../uploads/eventos/<?= trim($evento->imagem_banner) ?>" class="img-fluid"
                                                             alt="Video completo">
                                                     </div>
                                                     <div class="modal-footer">
