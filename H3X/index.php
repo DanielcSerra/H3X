@@ -79,24 +79,23 @@ if ($resultIndex && mysqli_num_rows($resultIndex) > 0) {
         <!-- Buttons -->
         <div class="container ">
             <div class="butoes">
-
-                <div class="left-button ">
+                <a href="vip.php" class="left-button">
                     <div class="button-content">
-                    <a href="vip.php "class="button-text button2">VIP</a>
+                        <span class="button-text">VIP</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="center-button">
+                <a href="eventos.php" class="center-button">
                     <div class="button-content">
-                    <a href="eventos.php" class="button-text button2">EVENTOS</a>
+                        <span class="button-text">EVENTOS</span>
                     </div>
-                </div>
+                </a>
                 
-                <div class="right-button">
+                <a href="blog.php" class="right-button">
                     <div class="button-content">
-                    <a href="blog.php" class="button-text button2">BLOG</a>
+                        <span class="button-text">BLOG</span>
                     </div>
-                </div>
+                </a>
             </div>
             
 

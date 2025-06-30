@@ -5,6 +5,7 @@ require_once 'db_config.php';
 require_once "admin/ultima_atividade.php";
 
 
+
 // Obter o evento mais próximo (futuro)
 $hoje = date('Y-m-d');
 $queryBanner = "SELECT * FROM eventos WHERE data_inicio >= '$hoje' ORDER BY data_inicio ASC LIMIT 1";
@@ -37,6 +38,8 @@ $resultEventos = mysqli_query($conn, $queryEventos);
 
 <body>
     <?php include 'partials/navbar.php';
+
+    
     ?>
     <div class="banner">
         <video autoplay loop muted playsinline class="banner-video">
@@ -117,7 +120,7 @@ $resultEventos = mysqli_query($conn, $queryEventos);
                 <span class="button-text"><?= $mostrarTodos ? 'VER MENOS' : 'VER MAIS' ?></span>
             </a>
         </div>
-
+                
     </div>
 
     <div class="white-section">
@@ -183,6 +186,5 @@ $resultEventos = mysqli_query($conn, $queryEventos);
 
 
 
-    <script src="js/index.js"></script>
     <?php include 'partials/footer.php'; ?>
 </body>

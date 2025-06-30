@@ -888,10 +888,40 @@
     margin: 1rem auto;
 }
 
+.small-video-container {
+    width: 100%;
+    margin-top: 8rem;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.small-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Update the existing small-video class for the fallback */
 .small-video {
     width: 100%;
     max-height: 200px;
     margin-top: 8rem;
+}
+
+@media (max-width: 768px) {
+    .small-video-container {
+        margin-top: 3rem;
+        padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+    }
+    
+    .small-video {
+        max-height: 150px;
+        margin-top: 3rem;
+    }
 }
 
 

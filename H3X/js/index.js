@@ -1,22 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
   const observerOptions = {
-    threshold: 0.4 // trigger when 40% of element is visible
+    threshold: 0.4 
   };
 
   function handleIntersection(entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Add animation class once section is visible
+        
         const children = entry.target.querySelectorAll('h1');
         children.forEach(h => h.classList.add('animate-in'));
-        observer.unobserve(entry.target); // optional: only animate once
+        observer.unobserve(entry.target); 
       }
     });
   }
 
   const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-  // Observe both sections
+  
   const titulo = document.querySelector('.titulo');
   const vipText = document.querySelector('.vip-text');
   const righttitle = document.querySelector('.right-title');
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
           imgRight.style.animation = "slideInRightBar 1s ease-out forwards";
         }
 
-        observer2.unobserve(divisao); // run only once
+        observer2.unobserve(divisao); 
       }
     });
   }, {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(res => res.json())
         .then(data => {
             const container = document.querySelector('.cards-container');
-            container.innerHTML = ''; // Clear initial 1 item
+            container.innerHTML = ''; 
             data.forEach(evento => {
             const card = document.createElement('div');
             card.className = "col-12 col-sm-6 col-lg-3 d-flex justify-content-center";

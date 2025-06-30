@@ -6,7 +6,7 @@ $queryBanner = "SELECT * FROM eventos WHERE data_inicio >= '$hoje' ORDER BY data
 $resultBanner = mysqli_query($conn, $queryBanner);
 
 if (mysqli_num_rows($resultBanner) === 0) {
-    // Se não houver evento futuro, pega o mais recente do passado
+    
     $queryBanner = "SELECT * FROM eventos WHERE data_inicio < '$hoje' ORDER BY data_inicio DESC LIMIT 1";
     $resultBanner = mysqli_query($conn, $queryBanner);
 }

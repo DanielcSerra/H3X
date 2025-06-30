@@ -33,10 +33,10 @@
 }
 
 .butterfly {
-  width: 70vw; /* Stretch wider */
-  height: 50vh; /* Keep same height */
-  object-fit: fill; /* Stretch content to fit */
-  border: 1px solid white; /* White border */
+  width: 70vw;
+  height: 50vh;
+  object-fit: fill;
+  border: 1px solid white;
   border-top-left-radius: 150px;
   border-bottom-right-radius: 150px;
   border-top-right-radius: 0;
@@ -48,7 +48,7 @@
 
 @keyframes slideFromLeft {
   0% {
-    transform: translateX(-100px);
+    transform: translateX(-400px);
     opacity: 0;
   }
   100% {
@@ -59,7 +59,7 @@
 
 @keyframes dropFromTop {
   0% {
-    transform: translateY(-100px);
+    transform: translateY(-300px);
     opacity: 0;
   }
   100% {
@@ -70,7 +70,7 @@
 
 @keyframes slideFromRight {
   0% {
-    transform: translateX(100px);
+    transform: translateX(400px);
     opacity: 0;
   }
   100% {
@@ -93,11 +93,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .center-button {
   position: relative;
-  width: clamp(330px, 9vw, 470px);
+  width: clamp(360px, 9vw, 470px);
   height: clamp(50px, 5vw, 80px);
   background-image: url("../img/caixabranca.png");
   background-size: 100% 100%;
@@ -112,11 +113,12 @@
   transition: all 0.3s ease;
   z-index: 10;
   background-color: transparent;
+  text-decoration: none;
 }
 
 .left-button {
   position: relative;
-  width: clamp(330px, 9vw, 470px);
+  width: clamp(360px, 9vw, 470px);
   height: clamp(50px, 5vw, 80px);
   background-image: url("../img/caixaesquerda.png");
   background-size: 100% 100%;
@@ -130,12 +132,13 @@
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
+  text-decoration: none;
 }
 
 .right-button {
   
   position: relative;
-  width: clamp(330px, 9vw, 470px);
+  width: clamp(360px, 9vw, 470px);
   height: clamp(50px, 5vw, 80px);
   background-image: url("../img/caixadireita.png");
   background-size: 100% 100%;
@@ -149,21 +152,22 @@
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
+  text-decoration: none;
 }
 
 .center-button:hover {
   background-image: url('../img/caixa3.png');
-  transform:  scale(1.05);
+  transform:scale(1.05);
 }
 
 .left-button:hover {
   background-image: url('../img/caixa1.png');
-  transform:  scale(1.05);
+  transform:scale(1.05);
 }
 
 .right-button:hover {
   background-image: url('../img/caixa2.png');
-  transform:  scale(1.05);
+  transform:scale(1.05);
 }
 
 .button-text {
@@ -216,7 +220,7 @@
 }
 .divisao img{
     opacity: 0;
-    transform: translateX(0); /* reset default */
+    transform: translateX(0);
     
 
     width: 45%;
@@ -302,7 +306,7 @@
 
 .prim, .seg, .terc {
   position: absolute;
-  top: 0; /* align to top of box */
+  top: 0;
   font-family: 'Aldrich', sans-serif;
   font-size: clamp(1.5rem, 5vw, 5rem);
   color: transparent;
@@ -311,10 +315,10 @@
 
 }
 
-/* Individually place them relative to the center */
+
 .prim {
   left: 50%;
-  transform: translateX(26%); /* adjust to the right */
+  transform: translateX(26%);
   -webkit-text-stroke: 2px white;
 
 
@@ -326,7 +330,7 @@
 
 .seg {
   left: 50%;
-  transform: translateX(-50%); /* perfectly centered */
+  transform: translateX(-50%);
   -webkit-text-stroke: 2px #CACACA;
   
 }
@@ -337,7 +341,7 @@
 
 .terc {
   left: 50%;
-  transform: translateX(-126%); /* adjust to the left */
+  transform: translateX(-126%);
   -webkit-text-stroke: 2px #828282;
   
 }
@@ -597,7 +601,7 @@ h1 {
 
 .seg3 {
   left: 50%;
-  transform: translateY(-45%); /* perfectly centered */
+  transform: translateY(-45%);
   -webkit-text-stroke: 2px #2e2e2e;
   opacity: 0;
   
@@ -610,7 +614,7 @@ h1 {
 
 .terc3 {
   left: 50%;
-  transform: translateY(-85%); /* perfectly centered */
+  transform: translateY(-85%);
   -webkit-text-stroke: 2px #777777;
   opacity: 0;
   
@@ -639,8 +643,8 @@ h1 {
   position: relative;
   background: url("../img/caixa.png") no-repeat center center;
   background-size: 100% 100%;
-  width: 320px;   /* slightly bigger than destaque-card's 265px */
-  height: 580px;  /* slightly bigger than destaque-card's 445px */
+  width: 320px;  
+  height: 580px; 
   justify-content: space-between;
   padding-top: 40px;
   padding-bottom: 70px;
@@ -653,11 +657,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   overflow: visible;
-  margin: 0 1rem; /* spacing between boxes */
+  margin: 0 1rem;
   z-index: 3;
 }
 
-/* Optional: make images inside scale nicely */
+
 .white-section-card img {
   max-width: 100%;
   height:100%;
@@ -681,11 +685,11 @@ h1 {
 
 
 
-/* New corners class for Sobre-Nós section */
+
 .canto-sobre.top-left,
 .canto-sobre.bottom-right {
   position: absolute;
-  width: 210px;  /* slightly bigger */
+  width: 210px; 
   pointer-events: none;
   z-index: 1;
 }
@@ -700,13 +704,13 @@ h1 {
   right: 0;
 }
 
-/* Light gray background with padding */
+
 .light-gray-section {
   background-color: rgba(88, 88, 88, 0.349);
   padding: 4rem 0;
 }
 
-/* Container with corners */
+
 .light-gray-container {
   position: relative;
   padding: 3rem 2rem;
@@ -715,7 +719,7 @@ h1 {
   background: transparent;
 }
 
-/* Flex container for three parts */
+
 .content-wrapper {
   display: flex;
   align-items: center;
@@ -723,7 +727,7 @@ h1 {
   gap: 2rem;
 }
 
-/* Left part with text and button */
+
 .left-part {
   flex: 1;
   display: flex;
@@ -741,12 +745,12 @@ h1 {
   line-height: 1.5;
 }
 
-/* Button with slightly bigger text */
+
 .left-part .center-button {
   max-width: 290px;
   height: 55px;
   font-family: 'Laceration', cursive;
-  font-size: 1.6rem; /* slightly bigger */
+  font-size: 1.6rem;
   background-image: url("../img/caixabranca.png");
   background-size: 100% 100%;
   background-position: center;
@@ -767,25 +771,25 @@ h1 {
 }
 
 
-/* Center card like white-section card but with destaque-card background */
+
 .center-card {
   position: relative;
   background: url("../img/caixa.png") no-repeat center center;
-  background-size: 100% 100%;   /* slightly bigger than destaque-card's 265px */
-  height: 520px;  /* slightly bigger than destaque-card's 445px */
+  background-size: 100% 100%;  
+  height: 520px; 
   justify-content: space-between;
   padding-top: 40px;
   padding-bottom: 70px;
   padding-left: 30px;
   padding-right: 30px;
-  color: black; /* since background is white */
+  color: black;
   text-shadow: none;
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: visible;
-  margin: 0 1rem; /* spacing between boxes */
+  margin: 0 1rem;
 }
 
 .center-card img {
@@ -834,7 +838,7 @@ h1 {
 
 
 
-/* Right sideways title - inverted vertically */
+
 .right-title {
   max-width: 290px;
   flex: 0 0 auto;
@@ -852,7 +856,7 @@ h1 {
 }
 
 .prim2 {
-  transform: translateX(5%); /* adjust to the right */
+  transform: translateX(5%);
   -webkit-text-stroke: 2px white;
   opacity: 0;
   
@@ -865,7 +869,7 @@ h1 {
 }
 
 .seg2 {
-  transform: translateX(50%); /* perfectly centered */
+  transform: translateX(50%);
   -webkit-text-stroke: 2px #CACACA;
  
   opacity: 0;
@@ -876,7 +880,7 @@ h1 {
   animation-delay: 0.2s;
 }
 .terc2 {
-  transform: translateX(95%); /* adjust to the left */
+  transform: translateX(95%);
   -webkit-text-stroke: 2px #828282;
   opacity: 0;
   
@@ -1131,7 +1135,7 @@ h1 {
 
 @media screen and (max-width: 768px) {
 
-  /* Stack all major sections vertically */
+ 
   .butoes,
   .cards-container,
   .white-section2,
@@ -1192,7 +1196,7 @@ h1 {
 .canto-sobre.top-left,
 .canto-sobre.bottom-right {
   position: absolute;
-  width: 210px;  /* slightly bigger */
+  width: 210px; 
   pointer-events: none;
   z-index: 1;
 }
@@ -1211,7 +1215,7 @@ h1 {
   height: 100px
 }
 .prim2 {
-  transform: translateY(-5%); /* adjust to the right */
+  transform: translateY(-5%);
   -webkit-text-stroke: 2px white;
 
   
@@ -1219,7 +1223,7 @@ h1 {
 }
 
 .seg2 {
-  transform: translateY(-20px); /* perfectly centered */
+  transform: translateY(-20px);
   -webkit-text-stroke: 2px #CACACA;
 
   opacity: 50%;
@@ -1227,7 +1231,7 @@ h1 {
 }
 
 .terc2 {
-  transform: translateY(-40px); /* adjust to the left */
+  transform: translateY(-40px);
   -webkit-text-stroke: 2px #828282;
   opacity: 50%;
   
@@ -1265,7 +1269,7 @@ h1 {
 
 
 
-  /* Ensuring .blog-gallery-container stacks its two columns vertically */
+ 
   .blog-gallery-container {
     flex-direction: column !important;
     align-items: center;
@@ -1273,14 +1277,14 @@ h1 {
     max-width: 100%;
   }
 
-  /* Ensure each side-column takes full width */
+ 
   .blog-gallery-container .side-column {
     width: 100% !important;
     max-width: 100%;
     margin-bottom: 1rem;
   }
 
-  /* Ensure rotated titles are centered above content */
+ 
   .blog-gallery-container .rotated-title {
     writing-mode: horizontal-tb;
     transform: none;
@@ -1288,14 +1292,14 @@ h1 {
     margin-bottom: 1rem;
   }
 
-  /* Images/cards inside gallery stack */
+ 
   .blog-image-stack,
   .galeria-image-stack {
     width: 100% !important;
     margin: 0 auto 1rem auto;
   }
 
-  /* Adjust blog post and gallery item widths */
+ 
   .h3x-box1, .h3x-box2 {
     width: 100% !important;
     max-width: 100%;
@@ -1307,7 +1311,7 @@ h1 {
     margin-bottom: 1rem;
   }
 
-  /* Updated typography for readability */
+ 
   body {
     font-size: 16px;
     line-height: 1.5;
@@ -1375,14 +1379,14 @@ h1 {
 }
 .prim {
   left: 50%;
-  transform: translateX(29%); /* adjust to the right */
+  transform: translateX(29%);
   -webkit-text-stroke: 2px white;
   animation: aparecer 0.5s forwards;
 }
 
 .seg {
   left: 50%;
-  transform: translateX(-50%); /* perfectly centered */
+  transform: translateX(-50%);
   -webkit-text-stroke: 2px #CACACA;
   animation: aparecer 1s forwards;
   opacity: 50%;
@@ -1390,7 +1394,7 @@ h1 {
 
 .terc {
   left: 50%;
-  transform: translateX(-129%); /* adjust to the left */
+  transform: translateX(-129%);
   -webkit-text-stroke: 2px #828282;
   animation: aparecer 1.5s forwards;
   opacity: 50%;
@@ -1429,7 +1433,7 @@ h1 {
 .seg3 {
   left: 50%;
   font-size: clamp(4rem, 8vw, 6rem);
-  transform: translateY(-45%); /* perfectly centered */
+  transform: translateY(-45%);
   -webkit-text-stroke: 2px #828282;
   animation: aparecer 1s forwards;
 
@@ -1438,7 +1442,7 @@ h1 {
 .terc3 {
   left: 50%;
   font-size: clamp(4rem, 8vw, 6rem);
-  transform: translateY(-85%); /* perfectly centered */
+  transform: translateY(-85%);
   -webkit-text-stroke: 2px #CACACA;
   animation: aparecer 1.5s forwards;
 
@@ -1483,7 +1487,7 @@ h1 {
 }
 
 
-  /* Cards container show-logic remains */
+ 
   .cards-container .event-card {
     display: none;
     width: 100% !important;
@@ -1506,7 +1510,7 @@ h1 {
     font-size: 1rem;
   }
 
-  /* Hide desktop only elements */
+ 
   .desktop-only {
     display: none !important;
   }

@@ -11,7 +11,7 @@ require_once "admin/ultima_atividade.php";
     <title>H3X - Como Chegar</title>
     <link rel="stylesheet" href="css/comochegar.css">
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRKosi_QbT8SoLjpqlJ7D5TuvaFvebKc&callback=console.debug&libraries=maps,marker&v=beta"></script>
+        src="https:
 </head>
 
 <body>
@@ -192,16 +192,16 @@ require_once "admin/ultima_atividade.php";
     <?php include 'partials/footer.php'; ?>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Get all transport option buttons
+            
             const transportButtons = document.querySelectorAll('.caixa3 .botoes');
 
-            // Add click event to each button
+            
             transportButtons.forEach(button => {
                 button.addEventListener('click', function () {
-                    // Get the target section ID from data-target attribute
+                    
                     const targetId = this.dataset.target;
 
-                    // Find the corresponding section
+                    
                     const targetSection = document.querySelector(`#${targetId}`);
 
                     if (targetSection) {
@@ -216,7 +216,7 @@ require_once "admin/ultima_atividade.php";
                     }
                 });
 
-                // Make buttons look clickable
+                
                 button.style.cursor = 'pointer';
                 button.style.transition = 'transform 0.3s ease';
 
